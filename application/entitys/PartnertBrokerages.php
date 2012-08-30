@@ -1,16 +1,6 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of Usuario
- *
- * @author Laptop
- */
-class Application_Entity_PartnertBrokerages extends Application_Entity_Partnert {
+class Application_Entity_PartnertBrokerages extends Application_Entity_PartnertEnterprises{
     /* entidades publicas */
     
     function registerPlans(){
