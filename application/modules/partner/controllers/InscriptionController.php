@@ -52,7 +52,7 @@ class Partner_InscriptionController extends CST_Controller_ActionPartner {
                 $dataPartnert['_tipoCuenta'] = $params['accountType'];
                 $partner->setProperties($dataPartnert, $usuario);
                 $partner->createPartner();
-                $usuario->autentificateUser($params['mail'], $params['password']);
+                $usuario->autentificateUser($params['mail'], $params['password'],1);
                 switch ((int) $this->_request->getParam('accountType')) {
                     case 1:
                         $this->_redirect('/partner/single-agent/plans');
