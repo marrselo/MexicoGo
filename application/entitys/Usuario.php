@@ -103,14 +103,13 @@ class Application_Entity_Usuario extends CST_Entity {
     function autentificateUser($usuario, $password, $grupo) {
         $auth = Zend_Auth::getInstance();
         switch ($grupo) {
-            case 1:
-                
+            case 1://solo para los partner 
                 $adapter = new Zend_Auth_Adapter_DbTable(Zend_Registry::get('db'),
                                 'view_core_usuarios_partner',
                                 'usu_nick',
                                 'usu_contrasena');
                 break;
-            case 2:
+            case 2://para otro tipo de usuario
                 
                 $adapter = new Zend_Auth_Adapter_DbTable(Zend_Registry::get('db'),
                                 'view_core_usuarios_partner',
