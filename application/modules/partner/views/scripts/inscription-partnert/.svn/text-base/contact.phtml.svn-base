@@ -1,7 +1,0 @@
-<?php echo $this->navigation()->menu()->render();?>
-<style>
-    input[type="checkbox"]{
-        display: block !important;  
-    }
-    </style>
-<?php echo $this->form; ?>
