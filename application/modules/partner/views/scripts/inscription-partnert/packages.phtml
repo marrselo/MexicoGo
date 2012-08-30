@@ -1,0 +1,28 @@
+<?php echo $this->navigation()->menu()->render(); ?>
+<form method="post">
+    <lu>
+        <?php
+        switch ($this->typeAccount) {
+            case 2:
+                ?>
+                <li>SILVER PACKAGE<input type="radio" name="package" id="package" value="1"/></li>
+                <li>GOLD PACKAGE<input type="radio" name="package" id="package" value="2"/></li>
+                <li>DIAMOND PACKAGE<input type="radio" name="package" id="package" value="3"/></li>
+                <?php
+                break;
+            case 3:
+                ?>
+                <li>BASIC PARTNERSHIP<input type="radio" name="package" id="package" value="4"/></li>
+                <li>SMALL BUSINESS PARTNERSHIP<input type="radio" name="package" id="package" value="5"/></li>
+                <li>SILVER PARNERSHIP<input type="radio" name="package" id="package" value="6"/></li>
+                <li>GOLD PARTNERSHIP<input type="radio" name="package" id="package" value="7"/></li>
+                <li>DIAMOND PARTNERSHIP<input type="radio" name="package" id="package" value="8"/></li>
+                    <?php
+                    break;
+            }
+            ?>
+
+
+    </lu>
+    <input type="submit" value="contactar" />
+</form>

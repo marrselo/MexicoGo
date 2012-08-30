@@ -1,0 +1,181 @@
+<div id="central-content">
+    <p class="oswald" id="my-account">My Account</p>
+    <aside class="oswald" id="block-left">
+        <p class=" bg-white" id="hi-lateral">HI blackswaninteractive</p>
+        <div id="color-fondo">
+
+            <p class="lateral-selected " id="account-settings-menu"><a href="account-settings.php">ACCOUNT SETTINGS</a></p>
+            <nav>
+                <div class="menu-lateral-bg-gris-oscuro">
+                    <p class="text-white " id="manage-your-style">Manage your</p>
+                    <ul>
+                        <li class="text-yellow menu-lateral-relative"><a title="go to profile page" href="profile-page.php">PROFILE PAGE</a></li>
+                        <li class="lateral-selected text-yellow "><a title="go to agents" href="agents.php">AGENTS</a></li>
+                        <li class="text-yellow menu-lateral-relative"><a title="go to real estate listings" href="real-estate-listings.php">REAL ESTATE LISTINGS</a></li>
+                    </ul>
+                </div>
+                <ul>
+                    <li class="text-yellow menu-lateral-bg-gris-claro" id="menu-buy"><a href="">BUY</a></li>
+                    <li class="lateral-selected"><a href="">EMAIL PREFERENCES</a></li>
+                    <li><a href="reset-password">ACCOUNT PASSWORD</a></li>
+                    <li><a href="">SIGN OUT</a></li>
+                </ul>
+            </nav>    
+        </div>
+        <div id="linea-fondo">
+        </div>
+    </aside>
+    <section id="block-right">
+        <form class="form-account-setting" id="form-profile-page">
+            <h2 class="h2-cms oswald">Profile Page</h2>
+            <hr class="hr-gris">
+            <fieldset id="business-contact"><legend class="oswald">BUSINESS CONTACT DETAILS</legend>
+                <div id="div-drop-image">
+                    <div><label>logo:</label></div>
+                    <div class="drop-image"></div>
+                    <div>
+                        <p>This is the image we use to<br> represent you on Mexi-Go</p>
+                        <p>Your logo is shown at 145 x 145 pixels:</p>
+                    </div>
+
+                </div>
+                <br>
+                <hr class="hr-gris">
+                <label for="profileCompany">Company:</label>
+                <input type="text" name="profileCompany" id="profileCompany"><br>
+                <label for="profileEmail">*Email Address:</label>
+                <input type="text" name="profileEmail" id="profileEmail"><span class="email-icon"></span><br>
+                <label for="profileFullName">Website:</label>
+                <input type="text" name="profileWebsite" id="profileWebsite"><span class="website-icon"></span><br>
+                <label for="profilePhoneDescription1">Phone 1:</label>
+                <input type="text" value="Phone description" name="profileDescription" id="profileDecription1">
+                <input type="text" class="campo-chico-3" name="profilePhonePre1" id="profilePhonePre1"> -
+                <input type="text" class="campo-chico-3" name="profilePhone1" id="profilePhone1"> -
+                <input type="text" class="campo-chico-3" name="profilePhonepost1" id="profilePhonepost1"><br>
+                <label for="profilePhoneDescription2">Phone 2:</label>
+                <input type="text" value="Phone description" name="profileDescription2" id="profileDecription2">
+                <input type="text" class="campo-chico-3" name="profilePhonePre2" id="profilePhonePre2"> -
+                <input type="text" class="campo-chico-3" name="profilePhone2" id="profilePhone2"> -
+                <input type="text" class="campo-chico-3" name="profilePhonepost2" id="profilePhonepost2"><a class="boton-gris-1 oswald" href="">ADD ANOTHER PHONE &gt;&gt;</a><br>
+                <textarea name="profileDescription" id="profileDescription">Write a short description that will appear on your profile page</textarea>
+
+            </fieldset>
+            <hr class="hr-gris">
+            <fieldset id="upload-pdf"><legend class="oswald">YOUR PDF FILES</legend>
+                <input type="file" value=""><a class="boton-gris-1 oswald" href="">ADD ADDITIONAL PDF &gt;&gt;</a>
+            </fieldset>
+            <hr class="hr-gris">
+            <fieldset id="upload-image"><legend class="oswald">IMAGE GALLERY</legend>
+                <div class="round-border-gris" id="upload-gallery-images">
+                    Drag and drop your photos here<br>
+                    or<br>
+                    <span class="round-border-yellow">chose photos to upload</span>
+                </div>
+            </fieldset>
+            <hr class="hr-gris">
+            <fieldset id="upload-videos"><legend class="oswald">VIDEO GALLERY</legend>
+                <input type="text" name="profileVideo1" id="profileVideo1"><span class="text-gris-claro desc-subida-video">Insert your video link (vimeo or youtube)</span><br>
+                <input type="text" name="profileVideo2" id="profileVideo2"><span class="text-gris-claro desc-subida-video">Insert your video link (vimeo or youtube)</span><br>
+                <a class="no-margen-left boton-gris-1 oswald" href="">ADD MORE VIDEOS &gt;&gt;</a>                                
+            </fieldset>
+            <hr class="hr-gris">
+            <fieldset id="loaction"><legend class="oswald">LOCATION</legend>
+                <div style="width:370px;float:left">
+                    <label for="profileLocationAddress">Address:</label>
+                    <input type="text" name="profileLocationAddress" id="profileLocationAddress">
+
+                    <br>
+                    <label for="profileLocationSuite">*Suite/Apt./Unit:</label>
+                    <input type="text" name="profileLocationSuite" id="profileLocationSuite">
+                    <br>
+                    <div class="combo-fix">
+                        <label for="accountLocationCity">City:</label>
+                        <div class="flecha-combo"><select name="accountLocationCity" id="accountlocationCity" type="text"><option>Montevideo</option><option>Maldonado</option></select></div>
+                    </div><br>
+                    <div class="combo-fix">
+                        <label for="accountLocationCountry">Country:</label>
+                        <div class="flecha-combo"><select name="accountLocationCountry" id="accountLocationCountry" type="text"><option>Uruguay</option><option>Maldonado</option></select></div>
+                    </div><br>
+                    <div class="combo-fix">
+                        <label for="accountLocationState">State:</label>
+                        <div class="flecha-combo"><select name="accountLocationState" id="accountLocationState" type="text"><option>Montevideo</option><option>Maldonado</option></select></div>
+                    </div><br>
+                    <div class="combo-fix">
+                        <label for="accountLocationRegion">Region:</label>
+                        <div class="flecha-combo"><select name="accountLocationRegion" id="accountLocationRegion" type="text"><option>South America</option><option>Maldonado</option></select></div>
+                    </div><br>
+                    <div class="combo-fix">
+                        <label for="accountLocationZip">Zip/Postal Code:</label>
+                        <div class="flecha-combo"><select name="accountLocationZip" id="accountLocationZip" type="text"><option>12000</option><option>Maldonado</option></select></div>
+                    </div><br>
+                </div>
+                <div style="width:370px;float:left">
+                    <label for="profileLocationLatitud">Latitude:</label>
+                    <input type="text" name="profileLocationLatitud" id="profileLocationLatitud"><br>
+                    <label for="profileLocationLongitud">Longitud:</label>
+                    <input type="text" name="profileLocationLongitud" id="profileLocationLongitud"><br>
+                    <p class="align-right"><a href="">How to do it &gt;&gt;</a><br><a href="">How to do find it &gt;&gt;</a></p>
+                </div>
+
+            </fieldset>
+            <div>mapa</div>
+            <fieldset id="pick-categories"><legend class="oswald">PICK THE CATEGORIES WHERE YOUR PAGE WILL APPEAR</legend>
+                <p>(Two sections max.)</p>
+                <input type="checkbox" id="checkRealState"><label class="label-check" for="checkRealState">Real estate</label>
+                <input type="checkbox" id="checkTravel"><label class="label-check" for="checkTravel">Travel</label>
+                <input type="checkbox" id="checkRetirement"><label class="label-check" for="checkRetirement">Retirement</label>
+                <input type="checkbox" id="checkLiving"><label class="label-check" for="checkLiving">Living</label>
+                <input type="checkbox" id="checkPartners"><label class="label-check" for="checkPartners">Parteners</label>
+            </fieldset>
+            <fieldset id="pick-subcategories"><legend class="oswald">SELECT A SUBCATEGORY</legend>
+                <div class="pick-izq">
+                    <input type="checkbox" id="checkAccounting"><label class="label-check2" for="checkRealState">Accounting</label>
+                    <input type="checkbox" id="checkAirline"><label class="label-check2" for="checkAirline">Airline</label>
+                    <input type="checkbox" id="checkAll-inclusive"><label class="label-check2" for="checkAll-inclusive">All-inclusive resorts</label>
+                    <input type="checkbox" id="checkArtist"><label class="label-check2" for="checkArtist">Artist and entertainer</label>
+                    <input type="checkbox" id="checkBanking"><label class="label-check2" for="checkBanking">Banking</label>
+                    <input type="checkbox" id="checkAccounting"><label class="label-check2" for="checkRealState">Beauty salons</label>
+                    <input type="checkbox" id="checkAirline"><label class="label-check2" for="checkAirline">Bed and breakfast</label>
+                    <input type="checkbox" id="checkAll-inclusive"><label class="label-check2" for="checkAll-inclusive">Car rental</label>
+                    <input type="checkbox" id="checkArtist"><label class="label-check2" for="checkArtist">Construccion / renoval</label>
+                    <input type="checkbox" id="checkBanking"><label class="label-check2" for="checkBanking">Cosmetic surgery</label>
+                    <input type="checkbox" id="checkAccounting"><label class="label-check2" for="checkRealState">Dentist</label>
+                    <input type="checkbox" id="checkAirline"><label class="label-check2" for="checkAirline">Doctor</label>
+                    <input type="checkbox" id="checkAll-inclusive"><label class="label-check2" for="checkAll-inclusive">Education</label>
+                </div>
+                <div class="pick-med">
+                    <input type="checkbox" id="checkAccounting"><label class="label-check2" for="checkRealState">Fashion and retail</label>
+                    <input type="checkbox" id="checkAirline"><label class="label-check2" for="checkAirline">Fishing charters</label>
+                    <input type="checkbox" id="checkAll-inclusive"><label class="label-check2" for="checkAll-inclusive">Golfing</label>
+                    <input type="checkbox" id="checkArtist"><label class="label-check2" for="checkArtist">Government</label>
+                    <input type="checkbox" id="checkBanking"><label class="label-check2" for="checkBanking">Hotel</label>
+                    <input type="checkbox" id="checkAccounting"><label class="label-check2" for="checkRealState">Insurance</label>
+                    <input type="checkbox" id="checkAirline"><label class="label-check2" for="checkAirline">Lawyer</label>
+                    <input type="checkbox" id="checkAll-inclusive"><label class="label-check2" for="checkAll-inclusive">Long-term care</label>
+                    <input type="checkbox" id="checkArtist"><label class="label-check2" for="checkArtist">Notary public</label>
+                    <input type="checkbox" id="checkBanking"><label class="label-check2" for="checkBanking">Property management</label>
+                    <input type="checkbox" id="checkAccounting"><label class="label-check2" for="checkRealState">REal estate agent</label>
+                    <input type="checkbox" id="checkAirline"><label class="label-check2" for="checkAirline">Real estate brokerage</label>
+                    <input type="checkbox" id="checkAll-inclusive"><label class="label-check2" for="checkAll-inclusive">Real estate development</label>
+                </div>
+                <div class="pick-der">
+                    <input type="checkbox" id="checkAccounting"><label class="label-check2" for="checkRealState">Restaurant and bars</label>
+                    <input type="checkbox" id="checkAirline"><label class="label-check2" for="checkAirline">Retirement specialist</label>
+                    <input type="checkbox" id="checkAll-inclusive"><label class="label-check2" for="checkAll-inclusive">Retreats</label>
+                    <input type="checkbox" id="checkArtist"><label class="label-check2" for="checkArtist">Scuba diving and snorkeling</label>
+                    <input type="checkbox" id="checkBanking"><label class="label-check2" for="checkBanking">Shipping and warehousing</label>
+                    <input type="checkbox" id="checkAccounting"><label class="label-check2" for="checkRealState">Spas</label>
+                    <input type="checkbox" id="checkAirline"><label class="label-check2" for="checkAirline">Surgical care</label>
+                    <input type="checkbox" id="checkAll-inclusive"><label class="label-check2" for="checkAll-inclusive">Surfing</label>
+                    <input type="checkbox" id="checkTour"><label class="label-check2" for="checkTour">Tour Company</label>
+                    <input type="checkbox" id="checkTravelAgent"><label class="label-check2" for="checkTravelAgent">Travel agent</label>
+                    <input type="checkbox" id="checkVeterinarian"><label class="label-check2" for="checkVeterinarian">Veterinarian</label>
+                    <input type="checkbox" id="checkWedding"><label class="label-check2" for="checkWedding">Wedding planner</label>
+                    <input type="checkbox" id="checkYoga"><label class="label-check2" for="checkYoga">Yoga</label>
+                </div>
+
+            </fieldset>
+            <input type="submit" value="SAVE &gt;&gt;" class="boton-yellow-1 oswald">
+        </form>
+    </section>
+</div>

@@ -1,0 +1,40 @@
+<?php
+
+class Partner_BrokenController extends CST_Controller_ActionPartner
+{
+    public function init()
+    {
+        
+    }
+    
+    public function indexAction()
+    {
+        
+    }
+   
+    public function profilePageAction()
+    {
+        
+    }
+    
+    public function agentsAction()
+    {
+        
+    }
+    
+    public function realEstateListingsAction()
+    {
+        
+    }
+    
+    public function emailPreferencesAction()
+    {
+        
+    }
+    
+    public function martekingServiceAction()
+    {
+        
+    }
+        
+}

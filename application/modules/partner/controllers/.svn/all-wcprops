@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/mexigo/!svn/ver/34/mexicogo/application/modules/partner/controllers
+END
+RealEstateController.php
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/mexigo/!svn/ver/32/mexicogo/application/modules/partner/controllers/RealEstateController.php
+END
+SingleAgentController.php
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/mexigo/!svn/ver/21/mexicogo/application/modules/partner/controllers/SingleAgentController.php
+END
+IndexController.php
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/mexigo/!svn/ver/3/mexicogo/application/modules/partner/controllers/IndexController.php
+END
+InscriptionRealEstateController.php
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/mexigo/!svn/ver/21/mexicogo/application/modules/partner/controllers/InscriptionRealEstateController.php
+END
+InscriptionPartnertController.php
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/mexigo/!svn/ver/32/mexicogo/application/modules/partner/controllers/InscriptionPartnertController.php
+END
+InscriptionController.php
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/mexigo/!svn/ver/28/mexicogo/application/modules/partner/controllers/InscriptionController.php
+END
+LoginController.php
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/mexigo/!svn/ver/34/mexicogo/application/modules/partner/controllers/LoginController.php
+END
+BrokerController.php
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/mexigo/!svn/ver/31/mexicogo/application/modules/partner/controllers/BrokerController.php
+END

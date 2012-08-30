@@ -1,0 +1,59 @@
+<div id="central-content">
+    <div class="circle-step-div"><span class="circle-step">STEP 1</span></div>
+    <div id="rsa-block-left" class="label-format-1">
+        <form method="post"  action="/partner/inscription/create-account">
+        <h2 class="oswald">Create your account.</h2>
+        <label for="createFirstName">First Name*</label><input id="createFirstName" name="firstName" type="text" class="inputs-largos "/><br/>
+        <label for="createLastName">Last Name*</label><input id="createLastName" name="lastName" type="text" class="inputs-largos" /><br/>
+        <label for="createEmail1">Email*</label><input id="createEmail1" name="mail" type="text" class="inputs-largos "/><br/>
+        <label for="createEmail2">Email*</label><input id="createEmail2"  name="confirmMail" type="text" class="inputs-largos" /><br/>
+        <label for="createPassword">Password*</label><input id="createPassword" name="password" type="password" class="inputs-largos "/><br/>
+        <label for="createConfirmPassword">Confirm Password*</label><input id="createConfirmPassword" name="confirmPassword" type="password" class="inputs-largos" /><br/>
+        <p id="sales-representative">SALES REPRESENTATIVE</p>
+        <label for="createPromoCode">Promo code</label><input id="createPromoCode" name="promoCode" type="text" class="inputs-largos "/><br/>
+        <label for="createSalesFirstName">First Name</label><input id="createSalesFirstName" name="firstNameSalesRepresentative" type="text" class="inputs-largos" /><br/>
+        <label for="createSalesLastName">Last Name</label><input id="createSalesLastName" name="lastNameSalesRepresentative" type="text" class="inputs-largos "/><br/>
+        <div class="account-type-format-1 oswald">Acount type</div>
+        <div class="account-type-format-1-side">
+            <?php foreach ($this->arrayTypePartner as $index => $value): ?>
+                <?php if ($index != '4') { ?>
+                    <div><label id="label-checkType<?php echo $index; ?>" for="checkType<?php echo $index; ?>" class="ejecuto-label-negro label-check-negro check-special-negro display-inline oswald"><?php echo $value; ?></label><input value="<?php echo $index ?>" id="checkType<?php echo $index; ?>" type="checkbox" name="accountType" /><br/></div>
+                <?php } else { ?>
+                    <div><label id="label-checkType<?php echo $index; ?>" for="checkType<?php echo $index; ?>" class="ejecuto-label-negro label-check-negro check-special-negro display-inline oswald"><?php echo $value; ?></label><input value="<?php echo $index ?>" id="checkType<?php echo $index; ?>" type="checkbox" name="accountType" />
+                        <div class="combo-fix">                             
+                            <div class="flecha-combo">
+                                <select name="otherAccountType" id="otherAccountType" type="text">
+                                    <?php foreach($this->arrayOtherTypePartner as $index=>$value):?>
+                                    <option value="<?php echo $index; ?>"><?php echo $value; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br/>
+                </div>
+            <?php } ?>
+        <?php endforeach; ?>
+        <div id="create-boton">
+            <input type="submit" class="boton-dark-yellow boton-css-formato oswald round-corner-5" value="Create Account >>" />
+        </div>
+        <p><label id="label-emailUpdates" for="emailUpdates" class="oswald label-especial ejecuto-label-negro label-check-negro-2 check-special-negro-2 ">Yes, e-mail me updates and special offers from Mexi-Go!</label><input id="emailUpdates" name="emailUpdates" type="checkbox" /></p>
+        <p><label id="label-AgreeLicence" for="AgreeLicence" class="oswald label-especial ejecuto-label-negro label-check-negro-2 check-special-negro-2 ">I agree to Mexi-Go's Website Licensing Terms.</label><input id="AgreeLicence" name="AgreeLicence" type="checkbox" /></p>
+        </form>
+    </div>
+    <div id="rsa-block-right" class="label-format-2">
+        <form method="post" action="/partner/login" >
+            <p id="title-already" class="oswald">Already have an account?</p>
+            <label for="createAlreadyEmail">Email:</label><input id="createAlreadyEmail" name="mail" type="text" class="inputs-largos "/><br/>
+            <label for="createAlreadyPass">Password:</label><input id="createAlreadyPass" name="password" type="text" class="inputs-largos" /><br/>
+            <div style="height: 50px;width: 395px;"><input type="submit" class="boton-dark-yellow boton-css-formato oswald round-corner-5" value="Continue >>" /></div>
+            <p class="forgot-pass"><a href="">Forgot your password?</a></p>
+        </form>
+    </div>
+</div>
+
+<?php
+//echo $this->form;
+?>
+

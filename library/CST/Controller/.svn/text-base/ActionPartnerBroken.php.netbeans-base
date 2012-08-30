@@ -1,0 +1,69 @@
+<?php
+class CST_Controller_ActionPartnerBroken extends CST_Controller_ActionPartner {
+    
+    protected $_identityPartner;
+    protected $_sessionPartner;
+    
+    public function init()
+    {        
+        parent::init();
+
+        $container = new Zend_Navigation(array(
+            array('label' => 'ACCOUNT SETTINGS',
+                  'id' => 'account-settings-menu',
+                  'action' => 'account-settings',
+                  'controller'=>'broken',
+                  'order'=>1
+                  ),
+            array('label'=>'Manage your',
+                  'controller'=>'broken',
+                  'id'=>'manage-your-style',
+                  'class'=>'menu-lateral-bg-gris-oscuro',
+                  'pages'=>array(                      
+                      array(
+                          'label'=>'AGENTS',
+                          'action'=>'agents',
+                          'controller'=>'broken',
+                          'title'=>'go to agents',
+                          'class'=>'lateral text-yellow',
+                          'active'=>true
+                      ),
+                      array(
+                          'label'=>'REAL ESTATE LISTINGS',
+                          'action'=>'real-estate-listings',
+                          'controller'=>'broken',
+                          'title'=>'go to real estate listings',
+                          'class'=>'text-yellow menu-lateral-relative',
+                          'active'=>false
+                      ),
+                  )
+                ),
+            array(
+                'label'=>'BUY',
+                'class'=>'text-yellow menu-lateral-bg-gris-claro',
+                'id'=>'menu-buy',
+                'uri'=>'#',
+                array(
+                    'label'=>'EMAIL PREFERENCE',
+                    'class'=>'lateral',
+                    'action'=>'email-preference',
+                    'controller'=>'broken',
+                    'active'=>false
+                ),
+                array(
+                    'label'=>'ACCOUNT PASSWORD',
+                    'class'=>'',
+                    'action'=>'reset-password',
+                    'controller'=>'broken'
+                ),
+                array(
+                    'label'=>'SIGN OUT',
+                    'class'=>'',
+                    'controller'=>'broken',
+                    'action'=>'sign-out'
+                )
+            )
+            ));
+        $this->view->navigation($container);
+    }
+}

@@ -1,0 +1,74 @@
+<div id="central-content" class="registro-REA-step4">
+    <form id="payment-details-setting" class="input-default-format"  method="post">
+        <h2 class="oswald h2-cms">Payment Details</h2>
+        <fieldset id="profile"><legend class="oswald">PROFILE</legend>
+            <label for="paymentFirstName">First Name*</label>
+            <input type="text" value="<?php echo isset($this->paymentDetails['par_pay_first_name'])?$this->paymentDetails['par_pay_first_name']:'' ?>" id="paymentFirstName" name="firstName" /><br/>
+            <label for="paymentLastName">Last Name*</label>
+            <input type="text" value="<?php echo isset($this->paymentDetails['par_pay_last_name'])?$this->paymentDetails['par_pay_last_name']:'' ?>" id="paymentLastName" name="lastName" /><br/>
+            <label for="paymentPhonePre">Phone*</label>
+            <?php $arrayFone = isset($this->paymentDetails['par_pay_phone'])?explode('-',$this->paymentDetails['par_pay_phone']):'';?>
+            <input type="text" id="paymentPhonePre" name="phone1" value="<?php echo isset($arrayFone[0])?$arrayFone[0]:''; ?>" class="campo-chico-3"/> -
+            <input type="text" id="paymentPhone1" name="phone2" value="<?php echo isset($arrayFone[1])?$arrayFone[1]:''; ?>"class="campo-chico-3" /> -
+            <input type="text" id="paymentPhone2" name="phone3" value="<?php echo isset($arrayFone[2])?$arrayFone[2]:''; ?>"class="campo-chico-3" /><br/>
+        </fieldset>
+        <fieldset id="billing-information"><legend class="oswald">BILLING INFORMATION</legend>
+            <label for="paymentCompanyName">Company name:</label>
+            <input type="text" value="<?php echo isset($this->paymentDetails['par_pay_company_name'])?$this->paymentDetails['par_pay_company_name']:'' ?>" id="paymentCompanyName" name="companyName" /><br/>
+            <label for="paymentRfc">RFC:</label>
+            <input type="text" value="<?php echo isset($this->paymentDetails['par_pay_rfc'])?$this->paymentDetails['par_pay_rfc']:'' ?>" id="paymentRfc" name="rfc" /><br/>
+            <label for="paymentMailingAddress">Mailing Address:</label>
+            <input type="text" value="<?php echo isset($this->paymentDetails['par_pay_mail'])?$this->paymentDetails['par_pay_mail']:'' ?>" id="paymentMailingAddress" name="mail" /><br/>
+            <label for="paymentSuit">Suite/Apt./Unit:</label>
+            <input type="text" value="<?php echo isset($this->paymentDetails['par_pay_suite_ap_uni'])?$this->paymentDetails['par_pay_suite_ap_uni']:'' ?>" id="paymentSuit" name="siteUpUnit" /><br/>
+            <div class="combo-fix">
+                <label for="paymentCity">City:</label>
+                <div class="flecha-combo">
+                    <select id="paymentCity" name="city" >
+                        <option value="" >-------</option>
+                        <?php foreach($this->estados as $index=>$value):
+                            $estado = (isset($this->estado['est_id'])&&$this->estado['est_id']!='')?$this->estado['est_id']:'';
+                            $selected = $estado!=''?'Selected="Selected"':'';
+                            ?>
+                        <option <?php echo $selected; ?>  value="<?php echo $index?>" ><?php echo $value?></option>
+                        <?php endforeach;?>
+                    </select>
+                </div>
+            </div><br/>
+            <div class="combo-fix">
+                <label for="paymentState">State/Province:</label>
+                <div class="flecha-combo">
+                    <select  id="paymentState" name="state" >
+                        <option value="" >-------</option>
+                         <?php foreach($this->ciudades as $index=>$value):
+                            $estado = (isset($this->paymentDetails['par_pay_state_id'])&&$this->paymentDetails['par_pay_state_id']!='')?$this->paymentDetails['par_pay_state_id']:'';
+                            $selected = $estado!=''?'Selected="Selected"':'';
+                            ?>
+                        <option <?php echo $selected; ?>  value="<?php echo $index?>" ><?php echo $value?></option>
+                        <?php endforeach;?>
+                    </select>
+                </div>
+            </div><br/>
+            <label for="paymentRfc">Zip/Postal Code:</label>
+            <input type="text" value="<?php echo isset($this->paymentDetails['par_pay_zip'])?$this->paymentDetails['par_pay_zip']:'' ?>" id="paymentZip" name="zip" /><br/>                               
+        </fieldset>
+        <label class="label-width-fix">Use billing address for my Profile Page:</label>
+        <div class="input-width-fix"><input type="checkbox"  name="addressProfilePage" value="useBilling" /></div>
+        <table>
+            <tr><td colspan="3" class="oswald">PAYMENT OPTIONS</td></tr>
+            <tr>
+                <td><input type="radio" name="paymentOptions" value="1" /><img src="<?php echo CST_Server_ServerStatic::getUrl(); ?>/images/paypal-logo.png" /></td>
+                <td><input type="radio" name="paymentOptions" value="2" /><span>Bank transfer</span></td>
+                <td><input type="radio" name="paymentOptions" value="3" /><span>Check</span></td>
+            </tr>
+            <tr class="oswald">
+                <td>PAY ONLINE</td>
+                <td colspan="2">OTHER OPTIONS</td>
+            </tr>
+        </table>
+        <input type="submit" value="Continue >>" class="boton-dark-yellow boton-css-formato oswald round-corner-5">
+    </form>
+</div>
+<?php
+//echo $this->form;
+?>

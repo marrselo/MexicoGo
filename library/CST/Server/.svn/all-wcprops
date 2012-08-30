@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/mexigo/!svn/ver/3/mexicogo/library/CST/Server
+END
+ServerBaseUrl.php
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/mexigo/!svn/ver/3/mexicogo/library/CST/Server/ServerBaseUrl.php
+END
+ServerDinamic.php
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/mexigo/!svn/ver/3/mexicogo/library/CST/Server/ServerDinamic.php
+END
+ServerStaticAdmin.php
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/mexigo/!svn/ver/3/mexicogo/library/CST/Server/ServerStaticAdmin.php
+END
+ServerStatic.php
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/mexigo/!svn/ver/3/mexicogo/library/CST/Server/ServerStatic.php
+END
+Server.php
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/mexigo/!svn/ver/3/mexicogo/library/CST/Server/Server.php
+END
