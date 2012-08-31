@@ -1,7 +1,7 @@
 <?php
-
 class Partner_BrokerController extends CST_Controller_ActionPartnerBroker
 {
+    
     public function init()
     {
         parent::init();
@@ -12,6 +12,7 @@ class Partner_BrokerController extends CST_Controller_ActionPartnerBroker
         }else{
             $this->_redirect('/partner');
         }
+        
     }
     
     public function indexAction()
@@ -25,12 +26,19 @@ class Partner_BrokerController extends CST_Controller_ActionPartnerBroker
     }
     
     public function agentsAction()
-    {
-        
-        
-        
+    {  
     }
     
+    public function agentsProfileAction()
+    {
+       if($this->_request->isPost())
+       {
+           $params = $this->_request->getParams();
+           $broker = new Application_Entity_PartnertBrokerages();
+           
+        
+       }
+    }
     public function realEstateListingsAction()
     {
         

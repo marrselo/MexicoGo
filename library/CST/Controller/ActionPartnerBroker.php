@@ -1,7 +1,7 @@
 <?php
 
-class CST_Controller_ActionPartnerBroker extends CST_Controller_ActionPartner {
-
+class CST_Controller_ActionPartnerBroker extends CST_Controller_ActionPartner 
+{
     public function init() {
         parent::init();
         $container = new Zend_Navigation(array(
