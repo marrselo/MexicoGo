@@ -23,8 +23,6 @@ class Partner_LoginController extends CST_Controller_ActionPartner {
                     case 3:
                         $this->_redirect('/partner/real-estate');
                         break;
-                    case 4:
-                        break;
                     default:
                         break;
                 }

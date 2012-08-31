@@ -76,9 +76,6 @@ class Application_Entity_Partnert extends CST_Entity {
             case 3:
                 $this->_identityUsuario->_rol = 3;
                 break;
-//            case 4:
-//                $this->_identityUsuario->_rol = 4;
-//                break;
             default:
                 break;
         }
