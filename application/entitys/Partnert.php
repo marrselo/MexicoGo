@@ -59,17 +59,8 @@ class Application_Entity_Partnert extends CST_Entity {
     }
 
     function createPartner() {
-
         if ($this->_tipoCuenta != 3) { /* si es distinto de other */
             $param['par_flag_partner_profiler'] = 0;
-            
-            //$param['par_flag_partner_profiler'] = 0; /*hacel el cambio de 
-            //
-            //(par_flag_partner_profiler 
-            //por 
-            //par_flag_partner_profiler)*/
-            //
-            
             $this->_otherTypeAccount = null;
             //$this->_identityUsuario->_rol = 2;
         } else {

@@ -63,9 +63,8 @@ class Partner_InscriptionController extends CST_Controller_ActionPartner {
                     case 3:
                         $this->_redirect('/partner/inscription-partnert/packages');
                         break;
-                    case 4:
-                        break;
                     default:
+                        $this->_redirect('/partner/');
                         break;
                 }
             } else {
