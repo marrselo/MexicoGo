@@ -11,7 +11,7 @@ class Partner_AgentController extends CST_Controller_ActionPartner
 
     public function indexAction()
     {
-        echo "asdasdasd"; exit;
+       // echo "asdasdasd"; exit;
     }
     public function createAction()
     {
