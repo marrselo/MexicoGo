@@ -35,17 +35,19 @@ class Partner_LoginController extends CST_Controller_ActionPartner {
     }
 
     private function getNavigationSinglePartner() {
-        $container = new Zend_Navigation(array(
+        $container = array(
                     array(
                         'label' => 'ACCOUNT SETTINGS',
                         'id' => 'account-settings-menu',
                         'module' => 'partner',
                         'controller' => 'account-settings',
+                        'order' => 1
                     ),
                     array(
                         'label' => 'Manage your',
                         'id' => 'account-settings-menu',
                         'uri' => '#',
+                        'order' => 2,
                         'pages' => array(
                             array(
                                 'label' => 'AGENT',
@@ -53,12 +55,14 @@ class Partner_LoginController extends CST_Controller_ActionPartner {
                                 'module' => 'partner',
                                 'controller' => 'agent',
                                 'action' => 'edit',
+                                'order' => 1
                             ),
                             array(
                                 'label' => 'REAL ESTATE LISTINGS',
                                 'id' => 'account-settings-menu',
                                 'module' => 'partner',
                                 'controller' => 'real-estate',
+                                'order' => 2
                             ),)
                     ),
                     array(
@@ -67,6 +71,7 @@ class Partner_LoginController extends CST_Controller_ActionPartner {
                         'module' => 'partner',
                         'controller' => 'my-account',
                         'action' => 'email-preferences',
+                        'order' => 3
                     ),
                     array(
                         'label' => 'ACCOUNT PASSWORD',
@@ -74,6 +79,7 @@ class Partner_LoginController extends CST_Controller_ActionPartner {
                         'module' => 'partner',
                         'controller' => 'my-account',
                         'action' => 'account-password',
+                        'order' => 4
                     ),
                     array(
                         'label' => 'SIGN OUT',
@@ -81,42 +87,48 @@ class Partner_LoginController extends CST_Controller_ActionPartner {
                         'module' => 'partner',
                         'controller' => 'my-account',
                         'action' => 'sign-out',
+                        'order' => 5
                     ),
-                ));
-       
+                );
+
         $this->setRegisterNavigation($container);
     }
 
     private function getNavigationBroker() {
-        $container = new Zend_Navigation(array(
+        $container = array(
                     array(
                         'label' => 'ACCOUNT SETTINGS',
                         'id' => 'account-settings-menu',
                         'module' => 'partner',
                         'controller' => 'account-settings',
+                        'order' => 1
                     ),
                     array(
                         'label' => 'Manage your',
                         'id' => 'account-settings-menu',
                         'uri' => '#',
+                        'order' => 2,
                         'pages' => array(
                             array(
                                 'label' => 'PROFILER',
                                 'id' => 'account-settings-menu',
                                 'module' => 'partner',
                                 'controller' => 'profiler',
+                                'order' => 1
                             ),
                             array(
                                 'label' => 'AGENT',
                                 'id' => 'account-settings-menu',
                                 'module' => 'partner',
                                 'controller' => 'agent',
+                                'order' => 2
                             ),
                             array(
                                 'label' => 'REAL ESTATE LISTINGS',
                                 'id' => 'account-settings-menu',
                                 'module' => 'partner',
                                 'controller' => 'real-estate',
+                                'order' => 3
                             ),)
                     ),
                     array(
@@ -125,6 +137,7 @@ class Partner_LoginController extends CST_Controller_ActionPartner {
                         'module' => 'partner',
                         'controller' => 'my-account',
                         'action' => 'email-preferences',
+                        'order' => 3
                     ),
                     array(
                         'label' => 'ACCOUNT PASSWORD',
@@ -132,6 +145,7 @@ class Partner_LoginController extends CST_Controller_ActionPartner {
                         'module' => 'partner',
                         'controller' => 'my-account',
                         'action' => 'account-password',
+                        'order' => 4
                     ),
                     array(
                         'label' => 'SIGN OUT',
@@ -139,29 +153,33 @@ class Partner_LoginController extends CST_Controller_ActionPartner {
                         'module' => 'partner',
                         'controller' => 'my-account',
                         'action' => 'sign-out',
+                        'order' => 5
                     ),
-                ));
+                );
         $this->setRegisterNavigation($container);
     }
 
     private function getNavigationProfiler() {
-        $container = new Zend_Navigation(array(
+        $container = array(
                     array(
                         'label' => 'ACCOUNT SETTINGS',
                         'id' => 'account-settings-menu',
                         'module' => 'partner',
                         'controller' => 'account-settings',
+                        'order' => 1
                     ),
                     array(
                         'label' => 'Manage your',
                         'id' => 'account-settings-menu',
                         'uri' => '#',
+                        'order' => 2,
                         'pages' => array(
                             array(
                                 'label' => 'AGENT',
                                 'id' => 'account-settings-menu',
                                 'module' => 'partner',
                                 'controller' => 'profiler',
+                                'order' => 1
                             ),
                         )
                     ),
@@ -171,6 +189,7 @@ class Partner_LoginController extends CST_Controller_ActionPartner {
                         'module' => 'partner',
                         'controller' => 'my-account',
                         'action' => 'email-preferences',
+                        'order' => 3
                     ),
                     array(
                         'label' => 'ACCOUNT PASSWORD',
@@ -178,6 +197,7 @@ class Partner_LoginController extends CST_Controller_ActionPartner {
                         'module' => 'partner',
                         'controller' => 'my-account',
                         'action' => 'account-password',
+                        'order' => 4
                     ),
                     array(
                         'label' => 'SIGN OUT',
@@ -185,12 +205,13 @@ class Partner_LoginController extends CST_Controller_ActionPartner {
                         'module' => 'partner',
                         'controller' => 'my-account',
                         'action' => 'sign-out',
+                        'order' => 5
                     ),
-                ));
+                );
         $this->setRegisterNavigation($container);
     }
 
-    private function setRegisterNavigation(Zend_Navigation $navigator) {
+    private function setRegisterNavigation(array $navigator) {
         $this->_sessionPartner->navigator = $navigator;
     }
 

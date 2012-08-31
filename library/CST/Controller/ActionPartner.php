@@ -14,7 +14,10 @@ class CST_Controller_ActionPartner extends CST_Controller_Action {
        //print_r(Zend_Registry::get('db'));
         
         if(isset($this->_sessionPartner->navigator)){
-            $this->view->navigation($this->_sessionPartner->navigator);
+            //findOneByController
+            $container = new Zend_Navigation($this->_sessionPartner->navigator);
+            $this->view->navigation($container)
+                    ->findOneByController($this->getRequest()->getControllerName());
         }else{
             
         }
