@@ -32,8 +32,7 @@ class Partner_BrokerController extends CST_Controller_ActionPartnerBroker
        if($this->_request->isPost())
        {
            $params = $this->_request->getParams();
-           $broker = new Application_Entity_PartnertBrokerages();
-           
+           $broker = new Application_Entity_PartnertBrokerages();                      
         
        }
     }

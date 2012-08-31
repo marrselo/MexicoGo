@@ -9,7 +9,8 @@
         </div>
     </aside>
     <section id="block-right">
-        <form class="form-account-setting" id="form-profile-page" action="" method="post">
+        <form class="form-account-setting" id="form-profile-page" action=""
+              method="post" 'enctype='multipart/form-data'>
             <h2 class="h2-cms oswald">Agents</h2>
             <p id="number-published"><span>Create a new member profile</span></p>
             <fieldset id="agent-contact-details"><legend class="oswald">AGENT CONTACT DETAILS</legend>
@@ -17,6 +18,7 @@
                     <label for="profileCompany">Agent Photo:</label>  
                     <div class="drop-image"></div>
                     <div class="drop-image-text">
+                        <input type="file" name="image" >
                         <p>This is the image we use to<br> represent you on Mexi-Go</p>
                         <p>Your logo is shown at 145 x 145 pixels:</p>
                     </div>
@@ -54,10 +56,10 @@
             </fieldset>
             <hr class="hr-gris">
             <fieldset id="location-information"><legend class="oswald">Primary Location</legend>
-                <div class="combo-fix">
+<!--                <div class="combo-fix">
                     <label for="accountCountry">Country:</label>
                     <div class="flecha-combo"><select type="text" id="accountCountry" name="accountCountry"><option>Uruguay</option><option>Brasil</option></select></div>
-                </div><br>
+                </div><br>-->
                 <div class="combo-fix">
                     <label for="accountState">Region:</label>
                     <div class="flecha-combo"><select type="text" id="accountState" name="accountState"><option>Montevideo</option><option>Maldonado</option></select></div>
@@ -73,11 +75,11 @@
 
             </fieldset>
             <fieldset id="location-information"><legend class="oswald">Secondary Location</legend>
-                <div class="combo-fix">
+<!--                <div class="combo-fix">
                     <label for="accountCountry">Country:</label>
                     <div class="flecha-combo"><select type="text" id="accountCountry" name="accountCountry"><option>Uruguay</option><option>Brasil</option></select></div>
                     <input type="button" value="ADD ANOTHER LOCATION &gt;&gt;" class="grey-button button-shadow">
-                </div>
+                </div>-->
                 <div class="combo-fix">
                     <label for="accountState">Region:</label>
                     <div class="flecha-combo"><select type="text" id="accountState" name="accountState"><option>Montevideo</option><option>Maldonado</option></select></div>

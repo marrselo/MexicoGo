@@ -19,7 +19,7 @@ class Application_Entity_Agent extends CST_Entity
     }    
     
     private function setArrayBd(){        
-        $data['par_id']= $this->_idPartner;
+        
         $data['age_photo']=$this->_agePhoto;
         $data['age_first_name']=$this->_ageFirstName;
         $data['age_last_name'] = $this->_ageLastName;
@@ -35,6 +35,7 @@ class Application_Entity_Agent extends CST_Entity
     public function createAgents()
     {
         $data = $this->setArrayBd();
+        $data['par_id'] = $this->_idPartner;
         $this->_modelAgents->insert($data);
     }
     
