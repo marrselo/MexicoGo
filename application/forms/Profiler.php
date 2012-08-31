@@ -92,8 +92,5 @@ class Application_Form_Profiler extends CST_Form {
                 array(
                     )));
     }
-
-
 }
-
 ?>
