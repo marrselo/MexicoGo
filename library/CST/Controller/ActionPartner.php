@@ -11,11 +11,13 @@ class CST_Controller_ActionPartner extends CST_Controller_Action {
         $this->_sessionPartner = new Zend_Session_Namespace('sessionPartner');
         Zend_Layout::getMvcInstance()->setLayout('layout-partner');
         $this->view->identityPartner = $this->_identityPartner;
-        if(Zend_Registry::isRegistered('CstNavigator')){
-            $this->view->navigation(Zend_Registry::get('CstNavigator'));
+       //print_r(Zend_Registry::get('db'));
+        
+        if(isset($this->_sessionPartner->navigator)){
+            $this->view->navigation($this->_sessionPartner->navigator);
         }else{
             
         }
-     
+    
     }
 }

@@ -13,18 +13,19 @@ class Partner_LoginController extends CST_Controller_ActionPartner {
             $usuario = new Application_Entity_Usuario();
             $params = $this->_request->getParams();
             if ($usuario->autentificateUser($params['mail'], $params['password'], 1)) {
+                $this->_identityPartner = Zend_Auth::getInstance()->getIdentity();
                 switch ($this->_identityPartner->rol_id) {
                     case 1:
                         $this->getNavigationSinglePartner();
-                        $this->_redirect('/partner/single-agent/plans');
+                        $this->_redirect('/partner/account-settings');
                         break;
                     case 2:
                         $this->getNavigationBroker();
-                        $this->_redirect('/partner/broker');
+                        $this->_redirect('/partner/account-settings');
                         break;
                     case 3:
                         $this->getNavigationProfiler();
-                        $this->_redirect('/partner/real-estate');
+                        $this->_redirect('/partner/account-settings');
                         break;
                     default:
                         break;
@@ -40,7 +41,6 @@ class Partner_LoginController extends CST_Controller_ActionPartner {
                         'id' => 'account-settings-menu',
                         'module' => 'partner',
                         'controller' => 'account-settings',
-                        'order' => 1
                     ),
                     array(
                         'label' => 'Manage your',
@@ -53,14 +53,12 @@ class Partner_LoginController extends CST_Controller_ActionPartner {
                                 'module' => 'partner',
                                 'controller' => 'agent',
                                 'action' => 'edit',
-                                'order' => 1
                             ),
                             array(
                                 'label' => 'REAL ESTATE LISTINGS',
                                 'id' => 'account-settings-menu',
                                 'module' => 'partner',
                                 'controller' => 'real-estate',
-                                'order' => 1
                             ),)
                     ),
                     array(
@@ -69,7 +67,6 @@ class Partner_LoginController extends CST_Controller_ActionPartner {
                         'module' => 'partner',
                         'controller' => 'my-account',
                         'action' => 'email-preferences',
-                        'order' => 1
                     ),
                     array(
                         'label' => 'ACCOUNT PASSWORD',
@@ -77,17 +74,16 @@ class Partner_LoginController extends CST_Controller_ActionPartner {
                         'module' => 'partner',
                         'controller' => 'my-account',
                         'action' => 'account-password',
-                        'order' => 1
                     ),
                     array(
-                        'label' => 'ACCOUNT PASSWORD',
+                        'label' => 'SIGN OUT',
                         'id' => 'account-settings-menu',
                         'module' => 'partner',
                         'controller' => 'my-account',
-                        'action' => 'sign out',
-                        'order' => 1
+                        'action' => 'sign-out',
                     ),
                 ));
+       
         $this->setRegisterNavigation($container);
     }
 
@@ -98,7 +94,6 @@ class Partner_LoginController extends CST_Controller_ActionPartner {
                         'id' => 'account-settings-menu',
                         'module' => 'partner',
                         'controller' => 'account-settings',
-                        'order' => 1
                     ),
                     array(
                         'label' => 'Manage your',
@@ -106,25 +101,22 @@ class Partner_LoginController extends CST_Controller_ActionPartner {
                         'uri' => '#',
                         'pages' => array(
                             array(
-                                'label' => 'AGENT',
+                                'label' => 'PROFILER',
                                 'id' => 'account-settings-menu',
                                 'module' => 'partner',
                                 'controller' => 'profiler',
-                                'order' => 1
                             ),
                             array(
                                 'label' => 'AGENT',
                                 'id' => 'account-settings-menu',
                                 'module' => 'partner',
                                 'controller' => 'agent',
-                                'order' => 1
                             ),
                             array(
                                 'label' => 'REAL ESTATE LISTINGS',
                                 'id' => 'account-settings-menu',
                                 'module' => 'partner',
                                 'controller' => 'real-estate',
-                                'order' => 1
                             ),)
                     ),
                     array(
@@ -133,7 +125,6 @@ class Partner_LoginController extends CST_Controller_ActionPartner {
                         'module' => 'partner',
                         'controller' => 'my-account',
                         'action' => 'email-preferences',
-                        'order' => 1
                     ),
                     array(
                         'label' => 'ACCOUNT PASSWORD',
@@ -141,15 +132,13 @@ class Partner_LoginController extends CST_Controller_ActionPartner {
                         'module' => 'partner',
                         'controller' => 'my-account',
                         'action' => 'account-password',
-                        'order' => 1
                     ),
                     array(
-                        'label' => 'ACCOUNT PASSWORD',
+                        'label' => 'SIGN OUT',
                         'id' => 'account-settings-menu',
                         'module' => 'partner',
                         'controller' => 'my-account',
-                        'action' => 'sign out',
-                        'order' => 1
+                        'action' => 'sign-out',
                     ),
                 ));
         $this->setRegisterNavigation($container);
@@ -162,7 +151,6 @@ class Partner_LoginController extends CST_Controller_ActionPartner {
                         'id' => 'account-settings-menu',
                         'module' => 'partner',
                         'controller' => 'account-settings',
-                        'order' => 1
                     ),
                     array(
                         'label' => 'Manage your',
@@ -174,7 +162,6 @@ class Partner_LoginController extends CST_Controller_ActionPartner {
                                 'id' => 'account-settings-menu',
                                 'module' => 'partner',
                                 'controller' => 'profiler',
-                                'order' => 1
                             ),
                         )
                     ),
@@ -184,7 +171,6 @@ class Partner_LoginController extends CST_Controller_ActionPartner {
                         'module' => 'partner',
                         'controller' => 'my-account',
                         'action' => 'email-preferences',
-                        'order' => 1
                     ),
                     array(
                         'label' => 'ACCOUNT PASSWORD',
@@ -192,22 +178,20 @@ class Partner_LoginController extends CST_Controller_ActionPartner {
                         'module' => 'partner',
                         'controller' => 'my-account',
                         'action' => 'account-password',
-                        'order' => 1
                     ),
                     array(
-                        'label' => 'ACCOUNT PASSWORD',
+                        'label' => 'SIGN OUT',
                         'id' => 'account-settings-menu',
                         'module' => 'partner',
                         'controller' => 'my-account',
-                        'action' => 'sign out',
-                        'order' => 1
+                        'action' => 'sign-out',
                     ),
                 ));
         $this->setRegisterNavigation($container);
     }
 
     private function setRegisterNavigation(Zend_Navigation $navigator) {
-        Zend_Registry::set('CstNavigator', $navigator);
+        $this->_sessionPartner->navigator = $navigator;
     }
 
 }
