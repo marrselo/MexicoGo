@@ -48,9 +48,9 @@ class Application_Entity_Agent extends CST_Entity
         $this->_modelAgents->update($this->_idPartner,$data);
     }
         
-    public function deleteAgents()
+    public function deleteAgents($idAgent)
     {
-        $this->_modelAgents->deleteAgent()
+        $this->_modelAgents->deleteAgent($idAgent);
     }
     
 }
