@@ -1,49 +1,38 @@
 <?php
 
-class Partner_RealEstateController extends CST_Controller_ActionPartner
-{
-    public function init()
-    {
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ * Description of InscriptionController
+ *
+ * @author Laptop
+ */
+class Partner_RealEstateController extends CST_Controller_ActionPartner {
+
+    public function init() {
         parent::init();
-        if($this->_identityPartner->rol_id == 3){
-            if($this->_identityPartner->par_flag_customer==0){
-                $this->_redirect('/partner/inscription-partnert/packages');
-            }
-        }else{
-            $this->_redirect('/partner');
-        }
+        /* Initialize action controller here */
+    }
+
+    public function listingsAction() {
+        // action body
     }
     
-    public function indexAction()
-    {
-        
+    public function locationAction() {
+        // action body
     }
-   
-    public function profilePageAction()
-    {
-        
+    public function featuresAction() {
+        // action body
     }
-    
-    public function agentsAction()
-    {
-        
-        
-        
+    public function agentAssignAction() {
+        // action body
     }
-    
-    public function realEstateListingsAction()
-    {
-        
+    public function listingPreviewAction() {
+        // action body
     }
-    
-    public function emailPreferencesAction()
-    {
-        
-    }
-    
-    public function martekingServiceAction()
-    {
-        
-    }
-        
+
+ 
 }
