@@ -1,7 +1,6 @@
 <?php
 class Partner_BrokerController extends CST_Controller_ActionPartnerBroker
 {
-    
     public function init()
     {
         parent::init();
@@ -12,7 +11,6 @@ class Partner_BrokerController extends CST_Controller_ActionPartnerBroker
         }else{
             $this->_redirect('/partner');
         }
-        
     }
     
     public function indexAction()

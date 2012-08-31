@@ -9,10 +9,6 @@ class Partner_MyAccountController extends CST_Controller_ActionPartner
         /* Initialize action controller here */
     }
 
-    public function accountSettingsAction()
-    {
-        // action body
-    }
     
     public function emailPreferencesAction()
     {
