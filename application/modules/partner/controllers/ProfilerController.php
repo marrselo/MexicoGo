@@ -1,6 +1,6 @@
 <?php
 
-class Partner_IndexController extends CST_Controller_ActionPartner
+class Partner_ProfilerController extends CST_Controller_ActionPartner
 {
 
     public function init()
