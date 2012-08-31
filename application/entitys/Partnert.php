@@ -48,7 +48,7 @@ class Application_Entity_Partnert extends CST_Entity {
         $param['par_id'] = $this->_id;
         $param['usu_id'] = $this->_idUsuario;
         $param['par_email'] = $this->_email;
-        $param['par_flag_partner_real_estate'] = $this->_flagParnetRealState;
+        $param['par_flag_partner_profiler'] = $this->_flagParnetRealState;
         $param['par_state'] = $this->_estado;
         $param['par_full_name'] = $this->_fullName;
         $param['par_chief'] = $this->_chief;
@@ -60,12 +60,20 @@ class Application_Entity_Partnert extends CST_Entity {
 
     function createPartner() {
 
-        if ($this->_tipoCuenta != 4) { /* si es distinto de other */
-            $param['par_flag_partner_real_estate'] = 0;
+        if ($this->_tipoCuenta != 3) { /* si es distinto de other */
+            $param['par_flag_partner_profiler'] = 0;
+            
+            //$param['par_flag_partner_profiler'] = 0; /*hacel el cambio de 
+            //
+            //(par_flag_partner_profiler 
+            //por 
+            //par_flag_partner_profiler)*/
+            //
+            
             $this->_otherTypeAccount = null;
             //$this->_identityUsuario->_rol = 2;
         } else {
-            $param['par_flag_partner_real_estate'] = 1;
+            $param['par_flag_partner_profiler'] = 1;
         }
         switch ((int) $this->_tipoCuenta) {
             case 1:
@@ -77,9 +85,9 @@ class Application_Entity_Partnert extends CST_Entity {
             case 3:
                 $this->_identityUsuario->_rol = 3;
                 break;
-            case 4:
-                $this->_identityUsuario->_rol = 4;
-                break;
+//            case 4:
+//                $this->_identityUsuario->_rol = 4;
+//                break;
             default:
                 break;
         }
@@ -102,7 +110,7 @@ class Application_Entity_Partnert extends CST_Entity {
             $this->_id = $param['par_id'];
             $this->_idUsuario = $param['usu_id'];
             $this->_email = $param['par_email'];
-            $this->_flagParnetRealState = $param['par_flag_partner_real_estate'];
+            $this->_flagParnetRealState = $param['par_flag_partner_profiler'];
             $this->_estado = $param['par_state'];
             $this->_fullName = $param['par_full_name'];
             $this->_chief = $param['par_chief'];
