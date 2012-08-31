@@ -32,7 +32,7 @@ class Application_Model_Agents extends CST_Model {
     {
         if ($id != '' && $data != '') {
             $where = $this->_modelAgents->getAdapter()->quoteInto('age_id = ?', $id);
-            return $this->_modelAgents->update($data, $where);
+            $this->_modelAgents->update($data, $where);
         } else {
             return false;
         }
@@ -44,6 +44,18 @@ class Application_Model_Agents extends CST_Model {
                ->where('par_id = ?',$idPartner)
                ->query()
                ->fetchAll();
+    }
+    
+    public function deleteAgent($idAgent)
+    {
+        if(!empty($idAgent))
+        {
+            $where = $this->_modelAgents->getAdapter()
+                ->quoteInto('par_id =?',$idAgent);
+            $this->_modelAgents->update('age_state = 0',$where);
+        }else{
+            return false;
+        }
     }
 
 }

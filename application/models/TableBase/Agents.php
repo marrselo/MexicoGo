@@ -5,5 +5,3 @@ class Application_Model_TableBase_Agents extends CST_Db_Table{
     protected  $_primary = "age_id";
 
 }
-
-?>

@@ -11,18 +11,22 @@ class Partner_AgentController extends CST_Controller_ActionPartner
 
     public function indexAction()
     {
-        // action body
+        echo "asdasdasd"; exit;
     }
-    public function createAction(){
+    public function createAction()
+    {
         
     }
-    public function editAction(){
+    public function editAction()
+    {
         
     }
-    public function previewAction(){
+    public function previewAction()
+    {
         
     }
-    public function listingsAction(){
+    public function listingsAction()
+    {
         
     }
     
