@@ -91,6 +91,33 @@ class Application_Form_Profiler extends CST_Form {
         $this->addElement(new Zend_Form_Element_Text('profileVideo3',
                 array(
                     )));
+        
+        $element = new Zend_Form_Element_File('fileProfiler1');
+        $element->setLabel('Upload an image:')
+                ->setDestination(APPLICATION_PATH.
+                        '/../public/dinamic/partner/profiler/file/');
+        $element->addValidator('Count', false, 1);
+        $element->addValidator('Size', false, 102400);
+        $element->addValidator('Extension', false, 'pdf');
+        $this->addElement($element);
+        
+        $element = new Zend_Form_Element_File('fileProfiler2');
+        $element->setLabel('Upload an image:')
+                ->setDestination(APPLICATION_PATH.
+                        '/../public/dinamic/partner/profiler/file/');
+        $element->addValidator('Count', false, 1);
+        $element->addValidator('Size', false, 102400);
+        $element->addValidator('Extension', false, 'pdf');
+        $this->addElement($element);
+        
+        $element = new Zend_Form_Element_File('fileProfiler3');
+        $element->setLabel('Upload an image:')
+                ->setDestination(APPLICATION_PATH.
+                        '/../public/dinamic/partner/profiler/file/');
+        $element->addValidator('Count', false, 1);
+        $element->addValidator('Size', false, 102400);
+        $element->addValidator('Extension', false, 'pdf');
+        $this->addElement($element);
     }
 }
 ?>

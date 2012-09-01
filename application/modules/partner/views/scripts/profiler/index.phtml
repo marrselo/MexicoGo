@@ -10,7 +10,7 @@
         </div>
     </aside>
     <section id="block-right">
-        <form id="form-profile-page" class="form-account-setting">
+        <form id="form-profile-page" class="form-account-setting" method="post" enctype="multipart/form-data"  >
             <h2 class="h2-cms oswald">Profile Page</h2>
             <hr class="hr-gris">
             <fieldset id="business-contact"><legend class="oswald">BUSINESS CONTACT DETAILS</legend>
@@ -46,7 +46,11 @@
             </fieldset>
             <hr class="hr-gris">
             <fieldset id="upload-pdf"><legend class="oswald">YOUR PDF FILES</legend>
-                <input type="file" value=""><a href="" class="boton-gris-1 oswald">ADD ADDITIONAL PDF &gt;&gt;</a>
+                <input type="file" name="fileProfiler1"><p></p>
+                <input type="file" name="fileProfiler2"><p></p>
+                <input type="file" name="fileProfiler3">
+                
+                <a href="" class="boton-gris-1 oswald">ADD ADDITIONAL PDF &gt;&gt;</a>
             </fieldset>
             <hr class="hr-gris">
             <fieldset id="upload-image"><legend class="oswald">IMAGE GALLERY</legend>
