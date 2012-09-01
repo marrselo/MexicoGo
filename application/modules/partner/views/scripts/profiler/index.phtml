@@ -26,22 +26,35 @@
                 <br>
                 <hr class="hr-gris">
                 <label for="profileCompany">Company:</label>
-                <input type="text" id="profileCompany" name="profileCompany"><br>
+                <input type="text" id="profileCompany" name="profileCompany" value="<?php echo $this->dataProfiler['company'] ?>"><br>
                 <label for="profileEmail">*Email Address:</label>
-                <input type="text" id="profileEmail" name="profileEmail"><span class="email-icon"></span><br>
+                <input type="text" id="profileEmail" name="profileEmail" value="<?php echo $this->dataProfiler['email'] ?>"><span class="email-icon"></span><br>
                 <label for="profileFullName">Website:</label>
-                <input type="text" id="profileWebsite" name="profileWebsite"><span class="website-icon"></span><br>
+                <input type="text" id="profileWebsite" name="profileWebsite" value="<?php echo $this->dataProfiler['website'] ?>"><span class="website-icon"></span><br>
                 <label for="profilePhoneDescription1">Phone 1:</label>
-                <input type="text" id="profileDecription1" name="profileDescription" value="Phone description">
-                <input type="text" id="profilePhonePre1" name="profilePhonePre1" class="campo-chico-3"> -
-                <input type="text" id="profilePhone1" name="profilePhone1" class="campo-chico-3"> -
-                <input type="text" id="profilePhonepost1" name="profilePhonepost1" class="campo-chico-3"><br>
+                <input type="text" id="profileDecription1" name="profilePhoneDescription1" value="<?php echo $this->dataProfiler['phoneDes1'] != '' ? $this->dataProfiler['phoneDes1'] : 'Phone description'; ?>">
+                <input type="text" id="profilePhonePre1" name="profilePhone11" value="<?php echo $this->dataProfiler['phome11'] ?>" class="campo-chico-3"> -
+                <input type="text" id="profilePhone1" name="profilePhone12" value="<?php echo $this->dataProfiler['phome12'] ?>" class="campo-chico-3"> -
+                <input type="text" id="profilePhonepost1" name="profilePhone13" value="<?php echo $this->dataProfiler['phome13'] ?>" class="campo-chico-3"><br>
                 <label for="profilePhoneDescription2">Phone 2:</label>
-                <input type="text" id="profileDecription2" name="profileDescription2" value="Phone description">
-                <input type="text" id="profilePhonePre2" name="profilePhonePre2" class="campo-chico-3"> -
-                <input type="text" id="profilePhone2" name="profilePhone2" class="campo-chico-3"> -
-                <input type="text" id="profilePhonepost2" name="profilePhonepost2" class="campo-chico-3"><a href="" class="boton-gris-1 oswald">ADD ANOTHER PHONE &gt;&gt;</a><br>
-                <textarea id="profileDescription" name="profileDescription">Write a short description that will appear on your profile page</textarea>
+                <input type="text" id="profileDecription2" name="profilePhoneDescription2" value="<?php echo $this->dataProfiler['phoneDes2'] != '' ? $this->dataProfiler['phoneDes2'] : 'Phone description'; ?>">
+                <input type="text" id="profilePhonePre2" name="profilePhone21" value="<?php echo $this->dataProfiler['phome21'] ?>" class="campo-chico-3"> -
+                <input type="text" id="profilePhone2" name="profilePhone22" value="<?php echo $this->dataProfiler['phome22'] ?>" class="campo-chico-3"> -
+                <input type="text" id="profilePhonepost2" name="profilePhone23" value="<?php echo $this->dataProfiler['phome23'] ?>" class="campo-chico-3"><br>
+                <?php if ($this->dataProfiler['phoneDes3'] != '') { ?>
+                    <label for="profilePhoneDescription3">Phone 3:</label>
+                    <input type="text" id="profileDecription3" name="profilePhoneDescription3" value="<?php echo $this->dataProfiler['phoneDes3'] != '' ? $this->dataProfiler['phoneDes3'] : 'Phone description'; ?>">
+                    <input type="text" id="profilePhonePre3" name="profilePhone31" value="<?php echo $this->dataProfiler['phome31'] ?>" class="campo-chico-3"> -
+                    <input type="text" id="profilePhone3" name="profilePhone32" value="<?php echo $this->dataProfiler['phome32'] ?>" class="campo-chico-3"> -
+                    <input type="text" id="profilePhonepost3" name="profilePhone33" value="<?php echo $this->dataProfiler['phome33'] ?>" class="campo-chico-3">
+                <?php } ?>
+                <a href="" class="boton-gris-1 oswald">ADD ANOTHER PHONE &gt;&gt;</a><br>
+                <textarea id="profileDescription" name="profileDescription"><?php
+              if ($this->dataProfiler['descripcion'] != '') {
+                  echo $this->dataProfiler['descripcion'];
+                  } else {
+                      ?>Write a short description that will appear on your profile page<?php } ?>
+                </textarea>
 
             </fieldset>
             <hr class="hr-gris">
@@ -49,7 +62,7 @@
                 <input type="file" name="fileProfiler1"><p></p>
                 <input type="file" name="fileProfiler2"><p></p>
                 <input type="file" name="fileProfiler3">
-                
+
                 <a href="" class="boton-gris-1 oswald">ADD ADDITIONAL PDF &gt;&gt;</a>
             </fieldset>
             <hr class="hr-gris">
@@ -102,7 +115,7 @@
                     <input type="text" id="profileLocationLatitud" name="profileLocationLatitud"><br>
                     <label for="profileLocationLongitud">Longitud:</label>
                     <input type="text" id="profileLocationLongitud" name="profileLocationLongitud"><br>
-                    
+
                 </div>
 
             </fieldset>

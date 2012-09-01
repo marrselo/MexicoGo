@@ -8,6 +8,9 @@ class Partner_ProfilerController extends CST_Controller_ActionPartner {
     }
 
     public function indexAction() {
+        $partner = new Application_Entity_PartnertEnterprises();
+        $partner->identifiquePartner($this->_identityPartner->par_id);
+        $this->view->dataProfiler = $dataProfiler = $partner->getProfiler();
         if ($this->_request->isPost()) {
             $form = new Application_Form_Profiler();
             if ($form->isValid($this->_request->getParams())) {
@@ -32,6 +35,7 @@ class Partner_ProfilerController extends CST_Controller_ActionPartner {
                         echo 'no subio la fileProfiler';
                     }
                 }
+                
                 $array =$form->fileProfiler3->getFileName();
                 if (!empty($array)) {
 
@@ -43,6 +47,24 @@ class Partner_ProfilerController extends CST_Controller_ActionPartner {
                         echo 'no subio la fileProfiler';
                     }
                 }
+                $input['company'] = $form->getElement('profileCompany')->getValue();
+                $input['email']=$form->getElement('profileEmail')->getValue();
+                $input['website']=$form->getElement('profileWebsite')->getValue();
+                $input['phome11']=$form->getElement('profilePhone11')->getValue();
+                $input['phome12']=$form->getElement('profilePhone12')->getValue();
+                $input['phome13']=$form->getElement('profilePhone13')->getValue();
+                $input['phome21']=$form->getElement('profilePhone21')->getValue();
+                $input['phome22']=$form->getElement('profilePhone22')->getValue();
+                $input['phome23']=$form->getElement('profilePhone23')->getValue();
+                $input['phome31']=$form->getElement('profilePhone31')->getValue();
+                $input['phome32']=$form->getElement('profilePhone32')->getValue();
+                $input['phome33']=$form->getElement('profilePhone33')->getValue();
+                $input['descripcion']=$form->getElement('profileCompany')->getValue();
+                $input['phoneDes1']=$form->getElement('profilePhoneDescription1')->getValue();
+                $input['phoneDes2']=$form->getElement('profilePhoneDescription2')->getValue();
+                $input['phoneDes3']=$form->getElement('profilePhoneDescription3')->getValue();
+                $partner->registerProfiler($input);
+                $this->_redirect('/partner/profiler');
             } else {
                 print_r($form->getMessages());
             }
