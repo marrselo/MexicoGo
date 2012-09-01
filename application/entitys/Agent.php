@@ -63,5 +63,13 @@ class Application_Entity_Agent extends CST_Entity
     {
         $this->_modelAgents->deleteAgent($idAgent);
     }
+    public function listAgentsState($statePublic)
+    {        
+        return $this->_modelAgents->listAgentsStatePublic($this->_idPartner,$statePublic);
+    }
     
+    public function publish($id,$flag)
+    {
+        $this->_modelAgents->publishAgent($id,$flag);
+    }
 }
