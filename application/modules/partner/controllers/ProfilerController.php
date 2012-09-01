@@ -21,6 +21,7 @@ class Partner_ProfilerController extends CST_Controller_ActionPartner {
                 $array =$form->fileProfiler1->getFileName();
                 if (!empty($array)) {
                     $extn = pathinfo($form->fileProfiler1->getFileName(), PATHINFO_EXTENSION);
+                    $name = pathinfo($form->fileProfiler1->getFileName(), PATHINFO_FILENAME);
                     $nameFile = 'fileProfiler1_'.$this->_identityPartner->par_id . '.' . $extn;
                     $rutaFileAbs = $form->fileProfiler1->getDestination() . '/' . $nameFile;
                     $form->fileProfiler1->addFilter('Rename', array('target' => $rutaFileAbs, 'overwrite' => true));
@@ -47,6 +48,7 @@ class Partner_ProfilerController extends CST_Controller_ActionPartner {
                 if (!empty($array)) {
 
                     $extn = pathinfo($name=$form->fileProfiler3->getFileName(), PATHINFO_EXTENSION);
+                    $name = pathinfo($form->fileProfiler2->getFileName(), PATHINFO_FILENAME);
                     $nameFile = 'fileProfiler3_'.$this->_identityPartner->par_id . '.' . $extn;
                     $rutaFileAbs = $form->fileProfiler3->getDestination() . '/' . $nameFile;
                     $form->fileProfiler3->addFilter('Rename', array('target' => $rutaFileAbs, 'overwrite' => true));
@@ -78,6 +80,7 @@ class Partner_ProfilerController extends CST_Controller_ActionPartner {
                     $form->getElement('profileVideo3')->getValue()
                 );
                 $partner->addVideoProfiler($videosInput);
+                $partner->addFileProfiler($arrayFile);
                 print_r($arrayFile);
                // $this->_redirect('/partner/profiler');
             } else {

@@ -90,7 +90,7 @@ class Application_Entity_PartnertEnterprises extends Application_Entity_Partnert
         return $modelPartVid->getVideo($this->_id);
     }
 
-    function addFileProfiler($title, $source) {
+    function addFileProfiler($arrayFile) {
         
     }
 
