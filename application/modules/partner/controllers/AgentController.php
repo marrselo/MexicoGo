@@ -18,8 +18,7 @@ class Partner_AgentController extends CST_Controller_ActionPartner
     public function createAction()
     {        
         if($this->_request->isPost());
-        {
-            echo "POST"; exit;
+        {            
             $values = $this->_request->getParams();       
             //print_r($values); exit;             
             //$values = $form->getValues(); 
