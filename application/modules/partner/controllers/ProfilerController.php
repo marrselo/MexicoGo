@@ -14,7 +14,9 @@ class Partner_ProfilerController extends CST_Controller_ActionPartner {
         $partner = new Application_Entity_PartnertEnterprises();
         $partner->identifiquePartner($this->_identityPartner->par_id);
         $this->view->dataProfiler = $dataProfiler = $partner->getProfiler();
-        $this->view->dataVideo  = $partner->getProfilerVideo();
+        $this->view->dataVideo  = $partner->getVideoProfiler();
+        $this->view->file  = $partner->getProfilerFile();
+        
         if ($this->_request->isPost()) {
             $form = new Application_Form_Profiler();
             if ($form->isValid($this->_request->getParams())) {

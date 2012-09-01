@@ -85,12 +85,25 @@ class Application_Entity_PartnertEnterprises extends Application_Entity_Partnert
         return $input;
     }
 
-    function getProfilerVideo() {
-        $modelPartVid = new Application_Model_PartnerVideos();
-        return $modelPartVid->getVideo($this->_id);
+    function getProfilerFile() {
+        $modelPartVid = new Application_Model_PartnerFiles();
+        return $modelPartVid->getFilePartner($this->_id);
     }
 
     function addFileProfiler($arrayFile) {
+        $modelFilePartert = new Application_Model_PartnerFiles();
+        if(is_array($arrayFile)){
+            foreach($arrayFile as $index){
+                $data['fil_title'] = $index['title'];
+                $data['fil_source'] = $index['source'];
+                if($fileSource = $modelFilePartert->getFileSource($index['source'])){
+                    $modelFilePartert->update($fileSource['fil_id'], $data);
+                }else{
+                    $modelFilePartert->insert($data);
+                }
+                
+            }
+        }
         
     }
 
@@ -110,6 +123,11 @@ class Application_Entity_PartnertEnterprises extends Application_Entity_Partnert
                 return FALSE;
             }
         }
+    }
+    
+    function getVideoProfiler(){
+        $modelPartVid = new Application_Model_PartnerVideos();
+        return $modelPartVid->getVideo($this->_id);
     }
 
     function addVideoProfiler($videosInput = array()) {

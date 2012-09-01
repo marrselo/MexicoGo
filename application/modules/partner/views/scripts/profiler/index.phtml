@@ -59,10 +59,18 @@
             </fieldset>
             <hr class="hr-gris">
             <fieldset id="upload-pdf"><legend class="oswald">YOUR PDF FILES</legend>
+                <?php
+                if(count($this->file)>0){
+                foreach($this->file as $index => $value ){
+                ?>
+                <a href="<?php echo CST_Server_ServerDinamic::getUrl(); ?>/partner/profiler/file/<?php echo $value['fil_source'] ?>"> <?php echo $value['fil_title'] ?> </a><input type="file" name="fileProfiler<?php echo ($index+1);  ?>"><p></p>
+                <?php
+                }}else{
+                ?>
                 <input type="file" name="fileProfiler1"><p></p>
-                <input type="file" name="fileProfiler2"><p></p>
-                <input type="file" name="fileProfiler3">
-
+                <?php
+                }
+                ?>
                 <a href="" class="boton-gris-1 oswald">ADD ADDITIONAL PDF &gt;&gt;</a>
             </fieldset>
             <hr class="hr-gris">
