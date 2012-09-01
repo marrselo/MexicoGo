@@ -25,11 +25,11 @@ class Application_Model_PartnerVideos extends CST_Model {
                         ->select()
                         ->where('par_id = ?', $id)
                         ->query()
-                        ->fetch();
+                        ->fetchAll();
     }
 
     function deleteVideo($idVideo){
-        $where = $this->_modelPartnerVideos->getAdapter()->quoteInto('vid_id = ?', $id);
+        $where = $this->_modelPartnerVideos->getAdapter()->quoteInto('vid_id = ?', $idVideo);
         return $this->_modelPartnerVideos->delete($where);
     }
     

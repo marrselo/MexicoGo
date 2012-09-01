@@ -75,8 +75,25 @@
             </fieldset>
             <hr class="hr-gris">
             <fieldset id="upload-videos"><legend class="oswald">VIDEO GALLERY</legend>
-                <input type="text" id="profileVideo1" name="profileVideo1"><span class="text-gris-claro desc-subida-video">Insert your video link (vimeo or youtube)</span><br>
-                <input type="text" id="profileVideo2" name="profileVideo2"><span class="text-gris-claro desc-subida-video">Insert your video link (vimeo or youtube)</span><br>
+                <?php if(!empty($this->dataVideo)){ ?>
+                <?php foreach($this->dataVideo as $index=>$value): ?>
+                <input type="text" 
+                       id="profileVideo<?php echo $index+1?>" 
+                       name="profileVideo<?php echo $index+1 ?>"
+                       value="<?php echo $value['vid_uri'] ?>"
+                       />
+                <span class="text-gris-claro desc-subida-video">Insert your video link (vimeo or youtube)</span><br>
+                <?php endforeach;
+                if(count($this->dataVideo)==1){
+                    ?>
+                <input type="text" id="profileVideo2" name="profileVideo2" /><span class="text-gris-claro desc-subida-video">Insert your video link (vimeo or youtube)</span><br>                                
+                <?php
+                }
+                ?>
+                <?php }else {?>
+                <input type="text" id="profileVideo1" name="profileVideo1" /><span class="text-gris-claro desc-subida-video">Insert your video link (vimeo or youtube)</span><br>                
+                <input type="text" id="profileVideo2" name="profileVideo2" /><span class="text-gris-claro desc-subida-video">Insert your video link (vimeo or youtube)</span><br>                
+                <?php } ?>
                 <a href="" class="no-margen-left boton-gris-1 oswald">ADD MORE VIDEOS &gt;&gt;</a>                                
             </fieldset>
             <hr class="hr-gris">

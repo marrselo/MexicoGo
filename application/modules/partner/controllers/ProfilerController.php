@@ -8,9 +8,13 @@ class Partner_ProfilerController extends CST_Controller_ActionPartner {
     }
 
     public function indexAction() {
+        //$uri ='https://vimeo.com/32060845';
+        //print_r(CST_Utils::validateUrlVimeo($uri));
+        
         $partner = new Application_Entity_PartnertEnterprises();
         $partner->identifiquePartner($this->_identityPartner->par_id);
         $this->view->dataProfiler = $dataProfiler = $partner->getProfiler();
+        $this->view->dataVideo  = $partner->getProfilerVideo();
         if ($this->_request->isPost()) {
             $form = new Application_Form_Profiler();
             if ($form->isValid($this->_request->getParams())) {
@@ -20,31 +24,35 @@ class Partner_ProfilerController extends CST_Controller_ActionPartner {
                     $nameFile = 'fileProfiler1_'.$this->_identityPartner->par_id . '.' . $extn;
                     $rutaFileAbs = $form->fileProfiler1->getDestination() . '/' . $nameFile;
                     $form->fileProfiler1->addFilter('Rename', array('target' => $rutaFileAbs, 'overwrite' => true));
-                    if (!$form->fileProfiler1->receive()) {
-                        echo 'no subio la fileProfiler';
+                    if ($form->fileProfiler1->receive()) {
+                        $arrayFile[0]['title']= $name;
+                        $arrayFile[0]['source']= $nameFile;
                     }
                 }
                 $array =$form->fileProfiler2->getFileName();
                 if (!empty($array)) {
 
                     $extn = pathinfo($form->fileProfiler2->getFileName(), PATHINFO_EXTENSION);
+                    $name = pathinfo($form->fileProfiler2->getFileName(), PATHINFO_FILENAME);
                     $nameFile = 'fileProfiler2_'.$this->_identityPartner->par_id . '.' . $extn;
                     $rutaFileAbs = $form->fileProfiler2->getDestination() . '/' . $nameFile;
                     $form->fileProfiler2->addFilter('Rename', array('target' => $rutaFileAbs, 'overwrite' => true));
-                    if (!$form->fileProfiler2->receive()) {
-                        echo 'no subio la fileProfiler';
+                    if ($form->fileProfiler2->receive()) {
+                        $arrayFile[1]['title']= $name;
+                        $arrayFile[1]['source']= $nameFile;
                     }
                 }
                 
                 $array =$form->fileProfiler3->getFileName();
                 if (!empty($array)) {
 
-                    $extn = pathinfo($form->fileProfiler3->getFileName(), PATHINFO_EXTENSION);
+                    $extn = pathinfo($name=$form->fileProfiler3->getFileName(), PATHINFO_EXTENSION);
                     $nameFile = 'fileProfiler3_'.$this->_identityPartner->par_id . '.' . $extn;
                     $rutaFileAbs = $form->fileProfiler3->getDestination() . '/' . $nameFile;
                     $form->fileProfiler3->addFilter('Rename', array('target' => $rutaFileAbs, 'overwrite' => true));
-                    if (!$form->fileProfiler3->receive()) {
-                        echo 'no subio la fileProfiler';
+                    if ($form->fileProfiler3->receive()) {
+                        $arrayFile[2]['title']= $name;
+                        $arrayFile[2]['source']= $nameFile;
                     }
                 }
                 $input['company'] = $form->getElement('profileCompany')->getValue();
@@ -64,7 +72,14 @@ class Partner_ProfilerController extends CST_Controller_ActionPartner {
                 $input['phoneDes2']=$form->getElement('profilePhoneDescription2')->getValue();
                 $input['phoneDes3']=$form->getElement('profilePhoneDescription3')->getValue();
                 $partner->registerProfiler($input);
-                $this->_redirect('/partner/profiler');
+                $videosInput = array(
+                    $form->getElement('profileVideo1')->getValue(),
+                    $form->getElement('profileVideo2')->getValue(),
+                    $form->getElement('profileVideo3')->getValue()
+                );
+                $partner->addVideoProfiler($videosInput);
+                print_r($arrayFile);
+               // $this->_redirect('/partner/profiler');
             } else {
                 print_r($form->getMessages());
             }

@@ -85,6 +85,11 @@ class Application_Entity_PartnertEnterprises extends Application_Entity_Partnert
         return $input;
     }
 
+    function getProfilerVideo() {
+        $modelPartVid = new Application_Model_PartnerVideos();
+        return $modelPartVid->getVideo($this->_id);
+    }
+
     function addFileProfiler($title, $source) {
         
     }
@@ -93,34 +98,48 @@ class Application_Entity_PartnertEnterprises extends Application_Entity_Partnert
         
     }
 
-    function validateVideo($video) {
-        /*validate youtube*/
-        
-        /*validate vimeo*/
+    function validateVideo($uri) {
+        $result = CST_Utils::validateUrlYoutube($uri);
+        if ($result['validate'] != FALSE) {
+            return $result['type'];
+        } else {
+            $result2 = CST_Utils::validateUrlVimeo($uri);
+            if ($result2['validate'] != FALSE) {
+                return $result2['type'];
+            } else {
+                return FALSE;
+            }
+        }
     }
 
     function addVideoProfiler($videosInput = array()) {
         $modelPartVid = new Application_Model_PartnerVideos();
         $videos = $modelPartVid->getVideo($this->_id);
-        
-        $delete = false;
+
+        $delete = FALSE;
         if (is_array($videosInput) && !empty($videosInput)) {
             foreach ($videosInput as $index) {
-                $this->validateVideo($videosInput);
-                $data['par_id'] = $this->_id;
-                $data['vid_source'] = $index;
-                $modelPartVid->insert($data);
-                $delete = true;
+                if ($type = $this->validateVideo($index)) {
+                    $data['par_id'] = $this->_id;
+                    $data['vid_uri'] = $index;
+                    $data['vid_type'] = $type;
+                    $modelPartVid->insert($data);
+                    $delete = TRUE;
+                    
+                }
             }
         } else {
             if (is_string($videosInput) && !$videosInput != '') {
-                $data['par_id'] = $this->_id;
-                $data['vid_source'] = $videosInput;
-                $modelPartVid->insert($data);
-                $delete = true;
+                if ($type = $this->validateVideo($videosInput)) {
+                    $data['par_id'] = $this->_id;
+                    $data['vid_uri'] = $videosInput;
+                    $data['vid_type'] = $type;
+                    $modelPartVid->insert($data);
+                    $delete = TRUE;
+                }
             }
         }
-        if($delete) {
+        if ($delete!=FALSE) {
             foreach ($videos as $index) {
                 $modelPartVid->deleteVideo($index['vid_id']);
             }
