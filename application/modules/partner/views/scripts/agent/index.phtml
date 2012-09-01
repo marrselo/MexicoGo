@@ -29,16 +29,17 @@
                 </tr>
             </tbody></table>
         <div id="registros-agentes">
-            <p class="align-right"><a class="add-agents oswald" href="">Add Agents</a></p>
-            <div class="paginador">
+            <p class="align-right"><a class="add-agents oswald" href="agent/create">Add Agents</a></p>
+<!--            <div class="paginador">
                 <span class="previous"><a href="">&lt;&lt; previous</a></span>
                 <span class="number"><a href="">1</a></span>
                 <span class="number actual"><a href="">2</a></span>
                 <span class="puntos"></span>
                 <span class="number "><a href="">10</a></span>
                 <span class="next"><a href="">next &gt;&gt;</a></span>
-            </div>
+            </div>-->
             <hr class="hr-custom">
+            <?php if(!empty($this->listAgentPublic)): ?>
             <section id="published">
                 <h3><span class="oswald">Published</span> (Agents currently visible)</h3>
                 <table cellspacing="0" cellpadding="0">
@@ -49,23 +50,32 @@
                             <th class="th4"># Listings</th>
                             <th class="th5"></th>                                            
                         </tr>
+            <? foreach($this->listAgentPublic AS $value):?>
+            
                         <tr>
                             <td class="td1"><a class="delete-icon" href="">delete</a></td>
-                            <td class="td2">Member's name</td>
-                            <td class="td3">blackswan@bksn.mx</td>
+                            <td class="td2">
+                                <?php echo $value['age_first_name'].' '.$value['age_last_name']?>
+                            </td>
+                            <td class="td3"><?php echo $value['age_email']?></td>
                             <td class="td4">3</td>
                             <td class="td5">
                                 <a class="boton-yellow-1 oswald" href="">EDIT &gt;&gt;</a>
                                 <a class="boton-yellow-2 oswald" href="">PREVIEW &gt;&gt;</a>
-                                <a class="boton-yellow-2 oswald" href="">UNPUBLISH &gt;&gt;</a>
+                                <a class="boton-yellow-2 oswald" 
+                                   href="agent/unpublish/id/<?php echo $value['age_id']?>">
+                                    UNPUBLISH &gt;&gt;
+                                </a>
                             </td>                                            
                         </tr>
-
+            <?php endforeach; ?>
                     </tbody></table>
             </section>
             <hr class="hr-custom">
+            <?  endif; 
+            if(!empty($this->listAgentUnpublic)):?>
             <section id="draft">
-                <h3><span class="oswald">Published</span> (Agents currently visible)</h3>
+                <h3><span class="oswald">Draft</span> (These Agent's will not be visible you publish them)</h3>
                 <table cellspacing="0" cellpadding="0">
                     <tbody><tr>
                             <th class="th1"></th>
@@ -74,42 +84,34 @@
                             <th class="th4"># Listings</th>
                             <th class="th5"></th>                                            
                         </tr>
+            <?  foreach($this->listAgentUnpublic as $value): ?>                        
                         <tr class="grey-line-under">
                             <td class="td1"><a class="delete-icon" href="">delete</a></td>
-                            <td class="td2">Member's name</td>
-                            <td class="td3">blackswan@bksn.mx</td>
+                            <td class="td2">
+                                <?php echo $value['age_first_name'].' '.$value['age_last_name']?>
+                            </td>
+                            <td class="td3">
+                                <?php echo $value['age_email']?>
+                            </td>
                             <td class="td4">3</td>
                             <td class="td5">
-                                <a class="boton-yellow-1 oswald" href="">EDIT &gt;&gt;</a>
-                                <a class="boton-yellow-2 oswald" href="">PREVIEW &gt;&gt;</a>
-                                <a class="boton-yellow-2 oswald" href="">UNPUBLISH &gt;&gt;</a>
+                                <a class="boton-yellow-1 oswald" href="">
+                                    EDIT &gt;&gt;
+                                </a>
+                                <a class="boton-yellow-2 oswald" href="">
+                                    PREVIEW &gt;&gt;
+                                </a>
+                                <a class="boton-yellow-2 oswald" 
+                                   href="agent/publish/id/<?php echo $value['age_id']?>">
+                                    PUBLISH &gt;&gt;
+                                </a>
                             </td>                                            
                         </tr>
-                        <tr class="grey-line-under">
-                            <td href="" <a="" class="td1">delete</td>
-                            <td class="td2">Member's name</td>
-                            <td class="td3">blackswan@bksn.mx</td>
-                            <td class="td4">3</td>
-                            <td class="td5">
-                                <a class="boton-yellow-1 oswald" href="">EDIT &gt;&gt;</a>
-                                <a class="boton-yellow-2 oswald" href="">PREVIEW &gt;&gt;</a>
-                                <a class="boton-yellow-2 oswald" href="">UNPUBLISH &gt;&gt;</a>
-                            </td>                                            
-                        </tr>
-                        <tr>
-                            <td class="td1"><a class="delete-icon" href="">delete</a></td>
-                            <td class="td2">Member's name</td>
-                            <td class="td3">blackswan@bksn.mx</td>
-                            <td class="td4">3</td>
-                            <td class="td5">
-                                <a class="boton-yellow-1 oswald" href="">EDIT &gt;&gt;</a>
-                                <a class="boton-yellow-2 oswald" href="">PREVIEW &gt;&gt;</a>
-                                <a class="boton-yellow-2 oswald" href="">UNPUBLISH &gt;&gt;</a>
-                            </td>                                            
-                        </tr>
+            <?php endforeach; ?>            
                     </tbody></table>
-            </section>
-            <hr class="hr-custom">
+            </section>            
+            <? endif;?>
+<!--            <hr class="hr-custom">
             <div class="paginador">
                 <span class="previous"><a href="">&lt;&lt; previous</a></span>
                 <span class="number"><a href="">1</a></span>
@@ -118,7 +120,7 @@
                 <span class="number "><a href="">10</a></span>
                 <span class="next"><a href="">next &gt;&gt;</a></span>
             </div>
-            <hr class="hr-custom">
+            <hr class="hr-custom">-->
             <p class="auto-renewal">Auto Renewal ON</p>
         </div>
     </section>
