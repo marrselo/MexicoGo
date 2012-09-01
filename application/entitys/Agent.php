@@ -10,8 +10,17 @@ class Application_Entity_Agent extends CST_Entity
     protected $_idPartner;
     protected $_modelAgents;
     protected $_idAgent;
-
-
+    public $_agePhoto;
+    public $_ageFirstName;
+    public $_ageLastName;
+    public $_ageEmail;
+    public $_ageWebsite;
+    public $_ageBrokerage;
+    public $_ageProfileDsc;
+    public $_agePhone;
+    public $_ageMobilePhone;
+    
+    
     public function __construct($idPartner)
     {
         $this->_modelAgents = new Application_Model_Agents();
@@ -29,6 +38,7 @@ class Application_Entity_Agent extends CST_Entity
         $data['age_profile_dsc'] = $this->_ageProfileDsc;
         $data['age_phone'] = $this->_agePhone;
         $data['age_mobile_phone'] = $this->_ageMobilePhone;
+        $data['par_id'] = $this->_idPartner;
         return $data;
     }
     

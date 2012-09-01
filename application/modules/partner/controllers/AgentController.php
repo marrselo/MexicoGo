@@ -16,16 +16,28 @@ class Partner_AgentController extends CST_Controller_ActionPartner
     {
         if($this->_request->isPost())
         {
-            $params = $this->_request->getParams();
-            $agent = new Application_Entity_Agent($this->_identityPartner->par_id);
-            $data['par_id'] = $this->_identityPartner->par_id;
-            
-//            $marca = new Application_Entity_Marca();
-//                $values = $form->getValues();
-//                $data['_nombreMarca'] = $values['nombreMarca'];                
+            $values = $this->_request->getParams();       
+            //print_r($values); exit; 
+            $agent = new Application_Entity_Agent($this->_identityPartner->par_id);            
+            //$values = $form->getValues(); 
+            $data = array();
+            $data['_ageFirstName']=$values['firstName'];
+            $data['_ageLastName'] = $values['lastName'];
+            $data['_ageEmail']= $values['nameEmail'];
+            $data['_agePhoto']=$values['image'];
+            $data['_ageWebsite']= $values['profileWebsite'];
+            $data['_ageBrokerage'] = $values['profileBrokerage'];
+            $data['_ageProfileDsc'] = $values['agentDsc'];
+            $data['_agePhone'] = $values['prePhone'].'-'.
+                $values['phone'].'-'.$values['postPhone'];
+            $data['_ageMobilePhone'] = $values['prePhone2'].'-'.
+                $values['phone2'].'-'.$values['postPhone2'];            
+             $agent->setProperties($data);
+             $agent->createAgents();
+             //$this->render('create');
 //                $marca->setProperties($data);
 //                $marca->createMarca();
-//                $this->_redirect('/admin/marca/');
+            $this->_redirect('/partner/agent/');
             
         }
     }
