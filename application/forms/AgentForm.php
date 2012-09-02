@@ -30,45 +30,54 @@ class Application_Form_AgentForm extends CST_Form {
                     'validators'=>array(new Zend_Validate_EmailAddress())
                     )));  
         
-        $this->addElement(new Zend_Form_Element_Text('profileWebsite'),
-            array('label'=>'Web Site'));
-        
+        $this->addElement(new Zend_Form_Element_Text('profileWebsite2',array('label'=>'Web Site'))
+            );
         $this->addElement(new Zend_Form_Element_Text('profileBrokerage',
                 array(
                     'label' => 'Profile Brokerage ',
                     'maxlength' => '150'                    
                     )));
-        $this->addElement(new Zend_Form_Element_Textarea('agentDsc'),
-            array('maxlength'=>300,
-            'label'=>'Description Agent'));
         
-        $this->addElement(new Zend_Form_Elemen_Text('prePhone'),
+        $this->addElement(new Zend_Form_Element_Textarea('agentDsc',array('maxlength'=>300,
+            'label'=>'Description Agent'))
+            );
+        
+        $this->addElement(new Zend_Form_Element_Text('prePhone',
             array(
                 'label'=>'Phone-1',
-                'maxlength'=>'5'));
-        $this->addElement(new Zend_Form_Elemen_Text('phone'),
+                'required' => true,
+                'validators'=>array(new Zend_Validate_Int()),
+                'maxlength'=>'5')
+                ));
+        
+        $this->addElement(new Zend_Form_Element_Text('phone',
             array(
                 'label'=>'Phone',
-                'maxlength'=>'15'));
-        $this->addElement(new Zend_Form_Elemen_Text('postPhone'),
+                'required' => true,
+                'validators'=>array(new Zend_Validate_Int()),
+                'maxlength'=>'15')
+            ));
+        
+        $this->addElement(new Zend_Form_Element_Text('postPhone',
             array(
                 'label'=>'postPhone',
-                'maxlength'=>'5'));
+                'required' => true,
+                'validators'=>array(new Zend_Validate_Int()),
+                'maxlength'=>'5')));
         
-        $this->addElement(new Zend_Form_Elemen_Text('prePhone2'),
+        $this->addElement(new Zend_Form_Element_Text('prePhone2',
             array(
                 'label'=>'Phone-2',
-                'maxlength'=>'5'));
-        $this->addElement(new Zend_Form_Elemen_Text('phone'),
+                'maxlength'=>'5')));
+        $this->addElement(new Zend_Form_Element_Text('phone',
             array(
                 'label'=>'Phone',
-                'maxlength'=>'15'));
-        $this->addElement(new Zend_Form_Elemen_Text('postPhone'),
+                'maxlength'=>'15')));
+        
+        $this->addElement(new Zend_Form_Element_Text('postPhone',
             array(
                 'label'=>'postPhone',
-                'maxlength'=>'5'));
-        
-        
+                'maxlength'=>'5')));
     }
 
 }
