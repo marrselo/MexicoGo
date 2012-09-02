@@ -119,5 +119,8 @@ class Application_Form_Profiler extends CST_Form {
         $element->addValidator('Extension', false, 'pdf');
         $this->addElement($element);
     }
+    //public function isValid($data) {
+     //   parent::isValid($data);
+    //}
 }
 ?>
