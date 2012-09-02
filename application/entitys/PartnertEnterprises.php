@@ -92,20 +92,18 @@ class Application_Entity_PartnertEnterprises extends Application_Entity_Partnert
 
     function addFileProfiler($arrayFile) {
         $modelFilePartert = new Application_Model_PartnerFiles();
-        if(is_array($arrayFile)){
-            foreach($arrayFile as $index){
+        if (is_array($arrayFile)) {
+            foreach ($arrayFile as $index) {
                 $data['fil_title'] = $index['title'];
                 $data['fil_source'] = $index['source'];
                 $data['par_id'] = $this->_id;
-                if($fileSource = $modelFilePartert->getFileSource($index['source'])){
+                if ($fileSource = $modelFilePartert->getFileSource($index['source'])) {
                     $modelFilePartert->update($fileSource['fil_id'], $data);
-                }else{
+                } else {
                     $modelFilePartert->insert($data);
                 }
-                
             }
         }
-        
     }
 
     function addImageProfiler($name) {
@@ -125,8 +123,8 @@ class Application_Entity_PartnertEnterprises extends Application_Entity_Partnert
             }
         }
     }
-    
-    function getVideoProfiler(){
+
+    function getVideoProfiler() {
         $modelPartVid = new Application_Model_PartnerVideos();
         return $modelPartVid->getVideo($this->_id);
     }
@@ -144,7 +142,6 @@ class Application_Entity_PartnertEnterprises extends Application_Entity_Partnert
                     $data['vid_type'] = $type;
                     $modelPartVid->insert($data);
                     $delete = TRUE;
-                    
                 }
             }
         } else {
@@ -158,22 +155,58 @@ class Application_Entity_PartnertEnterprises extends Application_Entity_Partnert
                 }
             }
         }
-        if ($delete!=FALSE) {
+        if ($delete != FALSE) {
             foreach ($videos as $index) {
                 $modelPartVid->deleteVideo($index['vid_id']);
             }
         }
     }
 
-    function registerLocationProfiler($uriVideo) {
+    function registerLocationProfiler($input) {
+        $data['loc_address'] = $input['address'];
+        $data['loc_sute_apt_unit'] = $input['site'];
+        $data['cit_id'] = $input['city'];
+        $data['reg_id'] = $input['state'];
+        $data['loc_zip_posta_code'] = $input['zip'];
+        $data['loc_lat'] = $input['latitud'];
+        $data['loc_lon'] = $input['longitud'];
+        $data['par_id'] = $this->_id;
+        $modelPartnerLocation = new Application_Model_PartnerLocation();
+        echo 'asdad';
+        if($modelPartnerLocation->getProfilerPartner($this->_id) == FALSE){
+            return $modelPartnerLocation->insert($data);
+        }else{
+            return $modelPartnerLocation->update($data,$this->_id);
+        }
+    }
+
+    function getLocationProfiler() {
+        $input['address'] = '';
+        $input['site'] = '';
+        $input['city'] = '';
+        $input['state'] = '';
+        $input['zip'] = '';
+        $input['latitud'] = '';
+        $input['longitud'] = '';
+        $modelPartnerLocation = new Application_Model_PartnerLocation();
+        $data = $modelPartnerLocation->getProfilerPartner($this->_id);
+        if ($data != FALSE) {
+            $input['address'] = $data['loc_address'];
+            $input['site'] = $data['loc_sute_apt_unit'];
+            $input['city'] = $data['cit_id'];
+            $input['state'] = $data['reg_id'];
+            $input['zip'] = $data['loc_zip_posta_code'];
+            $input['latitud'] = $data['loc_lat'];
+            $input['longitud'] = $data['loc_lon'];
+        }
+        return $input;
+    }
+
+    function registerCategorieProfiler($data) {
         
     }
 
-    function registerCategorieProfiler($uriVideo) {
-        
-    }
-
-    function registerSubCategorieProfiler($uriVideo) {
+    function registerSubCategorieProfiler($data) {
         
     }
 

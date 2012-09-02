@@ -118,6 +118,33 @@ class Application_Form_Profiler extends CST_Form {
         $element->addValidator('Size', false, 102400);
         $element->addValidator('Extension', false, 'pdf');
         $this->addElement($element);
+        
+        
+        $this->addElement(new Zend_Form_Element_Text('profileLocationAddress',
+                array(
+                    'maxlength' => '4',
+                    )));
+        
+        $estados = array(''=>'-----');
+        $estados = array_merge(Application_Entity_Ubigeo::getEstados(),$estados) ;
+        if(empty($estados)){
+            $estados = array();
+        }
+        $this->addElement(new Zend_Form_Element_Select('profileLocationCity',
+                array(
+                    'multioptions' => $estados
+                    )));
+        $ciudades = array(''=>'-----');
+        $ciudades = array_merge(Application_Entity_Ubigeo::getAllCiudades(),$ciudades) ;
+        $this->addElement(new Zend_Form_Element_Select('profilerLocationState',
+                array(
+                    'multiOptions' => $ciudades
+                    )));
+        
+        $this->addElement(new Zend_Form_Element_Text('profileLocationSuite'));
+        $this->addElement(new Zend_Form_Element_Text('profilerLocationZip'));
+        $this->addElement(new Zend_Form_Element_Text('profileLocationLatitud'));
+        $this->addElement(new Zend_Form_Element_Text('profileLocationLongitud'));
     }
     //public function isValid($data) {
      //   parent::isValid($data);
