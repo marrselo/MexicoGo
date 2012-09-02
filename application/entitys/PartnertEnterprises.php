@@ -96,6 +96,7 @@ class Application_Entity_PartnertEnterprises extends Application_Entity_Partnert
             foreach($arrayFile as $index){
                 $data['fil_title'] = $index['title'];
                 $data['fil_source'] = $index['source'];
+                $data['par_id'] = $this->_id;
                 if($fileSource = $modelFilePartert->getFileSource($index['source'])){
                     $modelFilePartert->update($fileSource['fil_id'], $data);
                 }else{

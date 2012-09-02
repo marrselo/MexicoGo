@@ -50,7 +50,7 @@
                             <th class="th4"># Listings</th>
                             <th class="th5"></th>                                            
                         </tr>
-            <? foreach($this->listAgentPublic AS $value):?>
+            <?php foreach($this->listAgentPublic AS $value):?>
             
                         <tr>
                             <td class="td1"><a class="delete-icon" href="">delete</a></td>
@@ -72,7 +72,7 @@
                     </tbody></table>
             </section>
             <hr class="hr-custom">
-            <?  endif; 
+            <?php  endif; 
             if(!empty($this->listAgentUnpublic)):?>
             <section id="draft">
                 <h3><span class="oswald">Draft</span> (These Agent's will not be visible you publish them)</h3>
@@ -84,7 +84,7 @@
                             <th class="th4"># Listings</th>
                             <th class="th5"></th>                                            
                         </tr>
-            <?  foreach($this->listAgentUnpublic as $value): ?>                        
+            <?php  foreach($this->listAgentUnpublic as $value): ?>                        
                         <tr class="grey-line-under">
                             <td class="td1"><a class="delete-icon" href="">delete</a></td>
                             <td class="td2">
@@ -110,7 +110,7 @@
             <?php endforeach; ?>            
                     </tbody></table>
             </section>            
-            <? endif;?>
+            <?php endif;?>
 <!--            <hr class="hr-custom">
             <div class="paginador">
                 <span class="previous"><a href="">&lt;&lt; previous</a></span>

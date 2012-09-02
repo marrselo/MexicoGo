@@ -8,55 +8,36 @@ class Partner_ProfilerController extends CST_Controller_ActionPartner {
     }
 
     public function indexAction() {
-        //$uri ='https://vimeo.com/32060845';
-        //print_r(CST_Utils::validateUrlVimeo($uri));
-        
         $partner = new Application_Entity_PartnertEnterprises();
         $partner->identifiquePartner($this->_identityPartner->par_id);
         $this->view->dataProfiler = $dataProfiler = $partner->getProfiler();
         $this->view->dataVideo  = $partner->getVideoProfiler();
         $this->view->file  = $partner->getProfilerFile();
-        
         if ($this->_request->isPost()) {
             $form = new Application_Form_Profiler();
+            $ft = new Zend_File_Transfer();
+            $fileTranferInfo = $ft->getFileInfo();
+            $keysFileTranfer = array_keys($fileTranferInfo);
+            $array_elemet=array(
+                'fileProfiler1',
+                'fileProfiler2',
+                'fileProfiler3');
+            foreach($array_elemet as $index){
+                if(!in_array($index,$keysFileTranfer)){
+                    $form->removeElement($index);
+                }
+            }
             if ($form->isValid($this->_request->getParams())) {
-                $array =$form->fileProfiler1->getFileName();
-                if (!empty($array)) {
-                    $extn = pathinfo($form->fileProfiler1->getFileName(), PATHINFO_EXTENSION);
-                    $name = pathinfo($form->fileProfiler1->getFileName(), PATHINFO_FILENAME);
-                    $nameFile = 'fileProfiler1_'.$this->_identityPartner->par_id . '.' . $extn;
-                    $rutaFileAbs = $form->fileProfiler1->getDestination() . '/' . $nameFile;
-                    $form->fileProfiler1->addFilter('Rename', array('target' => $rutaFileAbs, 'overwrite' => true));
-                    if ($form->fileProfiler1->receive()) {
-                        $arrayFile[0]['title']= $name;
-                        $arrayFile[0]['source']= $nameFile;
-                    }
-                }
-                $array =$form->fileProfiler2->getFileName();
-                if (!empty($array)) {
-
-                    $extn = pathinfo($form->fileProfiler2->getFileName(), PATHINFO_EXTENSION);
-                    $name = pathinfo($form->fileProfiler2->getFileName(), PATHINFO_FILENAME);
-                    $nameFile = 'fileProfiler2_'.$this->_identityPartner->par_id . '.' . $extn;
-                    $rutaFileAbs = $form->fileProfiler2->getDestination() . '/' . $nameFile;
-                    $form->fileProfiler2->addFilter('Rename', array('target' => $rutaFileAbs, 'overwrite' => true));
-                    if ($form->fileProfiler2->receive()) {
-                        $arrayFile[1]['title']= $name;
-                        $arrayFile[1]['source']= $nameFile;
-                    }
-                }
-                
-                $array =$form->fileProfiler3->getFileName();
-                if (!empty($array)) {
-
-                    $extn = pathinfo($name=$form->fileProfiler3->getFileName(), PATHINFO_EXTENSION);
-                    $name = pathinfo($form->fileProfiler2->getFileName(), PATHINFO_FILENAME);
-                    $nameFile = 'fileProfiler3_'.$this->_identityPartner->par_id . '.' . $extn;
-                    $rutaFileAbs = $form->fileProfiler3->getDestination() . '/' . $nameFile;
-                    $form->fileProfiler3->addFilter('Rename', array('target' => $rutaFileAbs, 'overwrite' => true));
-                    if ($form->fileProfiler3->receive()) {
-                        $arrayFile[2]['title']= $name;
-                        $arrayFile[2]['source']= $nameFile;
+                foreach($fileTranferInfo as $file => $info){
+                    $extn = pathinfo($form->{$file}->getFileName(), PATHINFO_EXTENSION);
+                    $name = pathinfo($form->{$file}->getFileName(), PATHINFO_FILENAME);
+                    $nameFile = $file.'_'.$this->_identityPartner->par_id . '.' . $extn;
+                    $rutaFileAbs = $form->{$file}->getDestination() . '/' . $nameFile;
+                    $form->{$file}->addFilter('Rename', array('target' => $rutaFileAbs, 'overwrite' => true));
+                    if ($form->{$file}->receive()) {
+                        $arrayFile[]=array(
+                            'title'=>$name,
+                            'source'=>$nameFile);
                     }
                 }
                 $input['company'] = $form->getElement('profileCompany')->getValue();
@@ -83,10 +64,11 @@ class Partner_ProfilerController extends CST_Controller_ActionPartner {
                 );
                 $partner->addVideoProfiler($videosInput);
                 $partner->addFileProfiler($arrayFile);
-                print_r($arrayFile);
-               // $this->_redirect('/partner/profiler');
+                
+                $this->_redirect('/partner/profiler');
             } else {
-                print_r($form->getMessages());
+//                print_r($form->getErrorMessages());
+//                print_r($this->_request->getParams());
             }
         }
     }
