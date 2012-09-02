@@ -19,9 +19,11 @@ class Partner_AgentController extends CST_Controller_ActionPartner
     {        
         if($this->_request->isPost())
         {            
+            
             //$values = $this->_request->getParams();       
             $form = new Application_Form_AgentForm();
-            $values = $form->getValues(); 
+           if($form->isValid($this->_request->getParams())){
+           $values = $form->getValues(); 
             $data = array();
             $data['_ageFirstName']=$values['firstName'];
             $data['_ageLastName'] = $values['lastName'];
@@ -36,7 +38,10 @@ class Partner_AgentController extends CST_Controller_ActionPartner
                 $values['phone2'].'-'.$values['postPhone2'];            
             $this->modelAgent->setProperties($data);
             $this->modelAgent->createAgents();             
-            $this->_redirect('/partner/agent/');           
+            $this->_redirect('/partner/agent/');
+           }else{
+               print_r($form->getMessages());
+           }
         }
     }
     public function editAction()
