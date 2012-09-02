@@ -20,104 +20,56 @@ class Application_Form_AgentForm extends CST_Form {
                     'required' => true,
                     'validators' => array(new Zend_Validate_Alnum(true)),
                     'maxlength' => '200',
-                    'size' => '40'
-                    )));
+                    'size' => '40'                    
+                    )));       
 
-        $validatorsEmail = array(
-            new Zend_Validate_Db_NoRecordExists(array(
-                'table'=>'core_usuarios',
-                'field'=>'usu_correo')),
-            new Zend_Validate_EmailAddress(),
-            new Zend_Validate_Identical()
-        );
-
-        $this->addElement(new Zend_Form_Element_Text('mail',
+        $this->addElement(new Zend_Form_Element_Text('nameEmail',
                 array(
                     'label' => 'Email * ',
                     'required' => true,
-                    'validators' => $validatorsEmail
-                    )));
-
-        $this->addElement(new Zend_Form_Element_Text('confirmMail',
+                    'validators'=>array(new Zend_Validate_EmailAddress())
+                    )));  
+        
+        $this->addElement(new Zend_Form_Element_Text('profileWebsite'),
+            array('label'=>'Web Site'));
+        
+        $this->addElement(new Zend_Form_Element_Text('profileBrokerage',
                 array(
-                    'label' => 'Confirm Email * ',
-                    'required' => true,
-                    'validators' => $validatorsEmail
+                    'label' => 'Profile Brokerage ',
+                    'maxlength' => '150'                    
                     )));
-
-        $this->addElement(new Zend_Form_Element_Password('password',
-                array(
-                    'required' => true,
-                    'label' => 'Password '
-                    )));
-
-        $this->addElement(new Zend_Form_Element_Password('confirmPassword',
-                array(
-                    'required' => true,
-                    'label' => 'Confirm Password ',
-                    'validators' => array(new Zend_Validate_Identical())
-                    )));
-
-        $this->addElement(new Zend_Form_Element_Text('promoCode',
-                array(
-                    'label' => 'Promo code ',
-                    'maxlength' => '200',
-                    'size' => '40'
-                    )));
-
-        $this->addElement(new Zend_Form_Element_Text('firstNameSalesRepresentative',
-                array('label' => 'First Name ',
-                    'validators' => array(new Zend_Validate_Alnum(true)),
-                    'maxlength' => '200',
-                    'size' => '40'
-                    )));
-
-        $this->addElement(new Zend_Form_Element_Text('lastNameSalesRepresentative',
-                array('label' => 'Last Name ',
-                    'validators' => array(new Zend_Validate_Alnum(true)),
-                    'maxlength' => '200',
-                    'size' => '40'
-                    )));
-
+        $this->addElement(new Zend_Form_Element_Textarea('agentDsc'),
+            array('maxlength'=>300,
+            'label'=>'Description Agent'));
         
-        $arrayTypePartner = Application_Entity_Partnert::listingsPartnersAcountType();
-        $multioption = new Zend_Form_Element_Radio('accountType',array('required'=>true));
-        $multioption->addMultiOptions($arrayTypePartner);
-        $multioption->setLabel('Acount type');
-        $this->addElement($multioption);
+        $this->addElement(new Zend_Form_Elemen_Text('prePhone'),
+            array(
+                'label'=>'Phone-1',
+                'maxlength'=>'5'));
+        $this->addElement(new Zend_Form_Elemen_Text('phone'),
+            array(
+                'label'=>'Phone',
+                'maxlength'=>'15'));
+        $this->addElement(new Zend_Form_Elemen_Text('postPhone'),
+            array(
+                'label'=>'postPhone',
+                'maxlength'=>'5'));
+        
+        $this->addElement(new Zend_Form_Elemen_Text('prePhone2'),
+            array(
+                'label'=>'Phone-2',
+                'maxlength'=>'5'));
+        $this->addElement(new Zend_Form_Elemen_Text('phone'),
+            array(
+                'label'=>'Phone',
+                'maxlength'=>'15'));
+        $this->addElement(new Zend_Form_Elemen_Text('postPhone'),
+            array(
+                'label'=>'postPhone',
+                'maxlength'=>'5'));
         
         
-        $arrayOtherTypePartner = Application_Entity_Partnert::listingsOtherAccountType();
-        $multioption = new Zend_Form_Element_Select('otherAccountType',
-                array('attribs' => array(
-                    'disabled' => 'disabled',
-                    'class' => 'displayNone'
-                    )));
-        $multioption->addMultiOptions($arrayOtherTypePartner);
-        $this->addElement($multioption);
-        
-        $this->addElement(new Zend_Form_Element_Submit('Create Account',
-                array('attribs' => array(
-                    'class' => 'submit-button'
-                    ))));
-        
-    }
-
-    public function isValid($data) {
-
-        $passwordConfirm = $this->getElement('confirmPassword');
-
-        $validator = $passwordConfirm->getValidator('Identical')
-                ->setToken($data['password']);
-
-        $mailConfirm = $this->getElement('confirmMail');
-
-        $validator = $mailConfirm->getValidator('Identical')
-                ->setToken($data['mail']);
-
-        return parent::isValid($data);
     }
 
 }
 
-?>

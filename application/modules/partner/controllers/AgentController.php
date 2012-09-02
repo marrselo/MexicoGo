@@ -17,12 +17,11 @@ class Partner_AgentController extends CST_Controller_ActionPartner
     }
     public function createAction()
     {        
-        if($this->_request->isPost());
-        {
-            echo "POST"; exit;
-            $values = $this->_request->getParams();       
-            //print_r($values); exit;             
-            //$values = $form->getValues(); 
+        if($this->_request->isPost())
+        {            
+            //$values = $this->_request->getParams();       
+            $form = new Application_Form_AgentForm();
+            $values = $form->getValues(); 
             $data = array();
             $data['_ageFirstName']=$values['firstName'];
             $data['_ageLastName'] = $values['lastName'];
@@ -66,6 +65,15 @@ class Partner_AgentController extends CST_Controller_ActionPartner
         $this->modelAgent->publish($id,0);
         $this->_redirect('partner/agent');
     }
-   
+    
+    public function deleteAgentAction()
+    {
+        $id = $this->getRequest()->getParam('id',0);
+        if(!isset($this->_identityPartner->par_id) || empty($id)){
+            $this->_redirect("/");
+        }
+        $this->modelAgent->deleteAgent($id);        
+        $this->_redirect('partner/agent');
+    }
 }
 

@@ -1,15 +1,4 @@
 <?php
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of Contactenos
- *
- * @author Laptop
- */
 class Application_Form_CreateAccount extends CST_Form {
 
     //put your code here
@@ -131,5 +120,3 @@ class Application_Form_CreateAccount extends CST_Form {
     }
 
 }
-
-?>
