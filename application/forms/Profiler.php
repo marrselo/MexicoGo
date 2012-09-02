@@ -82,6 +82,9 @@ class Application_Form_Profiler extends CST_Form {
                     'maxlength' => '4',
                     )));
         
+        $this->addElement(new Zend_Form_Element_Text('profileDescription',
+                array(
+                    )));
         $this->addElement(new Zend_Form_Element_Text('profileVideo1',
                 array(
                     )));

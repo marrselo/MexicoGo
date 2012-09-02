@@ -22,8 +22,8 @@ class Application_Entity_PartnertEnterprises extends Application_Entity_Partnert
         $data['prof_phone3'] = $input['phome31'] . '-' . $input['phome32'] . '-' . $input['phome33'];
         $data['prof_dsc'] = $input['descripcion'];
         $data['prof_phone_desc1'] = $input['phoneDes1'];
-        $data['prof_phone_desc2'] = $input['phoneDes1'];
-        $data['prof_phone_desc3'] = $input['phoneDes1'];
+        $data['prof_phone_desc2'] = $input['phoneDes2'];
+        $data['prof_phone_desc3'] = $input['phoneDes2'];
         $modelProfiler = new Application_Model_PartnerProfile();
         if ($modelProfiler->getProfiler($this->_id) != false) {
             $this->updateProfiler($data);

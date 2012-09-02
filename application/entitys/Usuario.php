@@ -110,7 +110,7 @@ class Application_Entity_Usuario extends CST_Entity {
                                 'usu_contrasena');
                 break;
             case 2://para otro tipo de usuario
-                
+
                 $adapter = new Zend_Auth_Adapter_DbTable(Zend_Registry::get('db'),
                                 'view_core_usuarios_partner',
                                 'usu_nick',
@@ -147,6 +147,21 @@ class Application_Entity_Usuario extends CST_Entity {
             $data['core_set_info_abaut_id'] = $idInfoAbaut;
             $data['usu_id'] = $this->_id;
             $this->_modelSetInfoAbaut->insertInfoAbautUsuario($data);
+        }
+    }
+
+    protected function resetPassword($currentPassword, $newPassword, $verifiPassword) {
+        if (hash('md5', $currentPassword) ==
+                $this->setPassword($this->getPassword($this->_login))) {
+            if ($newPassword == $verifiPassword) {
+                $this->_password = $this->encriptaPassword($newPassword);
+                $this->editUser();
+                return TRUE;
+            } else {
+                return FALSE;
+            }
+        } else {
+            return FALSE;
         }
     }
 

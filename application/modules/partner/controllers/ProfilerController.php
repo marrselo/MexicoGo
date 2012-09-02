@@ -60,7 +60,7 @@ class Partner_ProfilerController extends CST_Controller_ActionPartner {
                 $input['phome31'] = $form->getElement('profilePhone31')->getValue();
                 $input['phome32'] = $form->getElement('profilePhone32')->getValue();
                 $input['phome33'] = $form->getElement('profilePhone33')->getValue();
-                $input['descripcion'] = $form->getElement('profileCompany')->getValue();
+                $input['descripcion'] = $form->getElement('profileDescription')->getValue();
                 $input['phoneDes1'] = $form->getElement('profilePhoneDescription1')->getValue();
                 $input['phoneDes2'] = $form->getElement('profilePhoneDescription2')->getValue();
                 $input['phoneDes3'] = $form->getElement('profilePhoneDescription3')->getValue();
