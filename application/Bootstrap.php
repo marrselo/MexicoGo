@@ -19,6 +19,13 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
                 ->setHeader('Pragma', 'no-cache', true);
         $response->sendResponse();        
     }
+    
+    public function _initRouter() {
+        $frontController = Zend_Controller_Front::getInstance();
+        $config = new Zend_Config_Ini(APPLICATION_PATH . '/configs/route.ini');
+        $router = $frontController->getRouter();
+        $router->addConfig($config, 'routes');
+    }
 
 }
 
