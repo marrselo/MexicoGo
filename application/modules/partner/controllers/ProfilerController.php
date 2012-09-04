@@ -19,6 +19,10 @@ class Partner_ProfilerController extends CST_Controller_ActionPartner {
         $this->view->dataVideo = $partner->getVideoProfiler();
         $this->view->file = $partner->getProfilerFile();
         $this->view->location = $partner->getLocationProfiler();
+        $this->view->listingSubCategoria = $partner->listingsOtherAccountType();
+        $this->view->listingSubcategoriaRel = $partner->getSubCategoriePartnerRel();
+        $this->view->listingCategoriaRel = $partner->getCategoriePartnerRel();
+        $this->view->listingCategoria = $partner->listingsCategories();
         if ($this->_request->isPost()) {
             $form = new Application_Form_Profiler();
             $ft = new Zend_File_Transfer();
@@ -82,10 +86,12 @@ class Partner_ProfilerController extends CST_Controller_ActionPartner {
                 $inputLocation['latitud'] = $form->getElement('profileLocationLatitud')->getValue();
                 $inputLocation['longitud'] = $form->getElement('profileLocationLongitud')->getValue();
                 $partner->registerLocationProfiler($inputLocation);
+                $partner->addSubCategorieProfilerRel($form->getElement('profileSubCategoria')->getValue());
+                $partner->addCategorieProfilerRel($form->getElement('profileCategoria')->getValue());
                 $this->_redirect('/partner/profiler');
             } else {
-//                print_r($form->getErrorMessages());
-//                print_r($this->_request->getParams());
+                print_r($form->getErrorMessages());
+                print_r($this->_request->getParams());
             }
         }
     }

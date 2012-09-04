@@ -148,6 +148,14 @@ class Application_Form_Profiler extends CST_Form {
         $this->addElement(new Zend_Form_Element_Text('profilerLocationZip'));
         $this->addElement(new Zend_Form_Element_Text('profileLocationLatitud'));
         $this->addElement(new Zend_Form_Element_Text('profileLocationLongitud'));
+        $this->addElement( new Zend_Form_Element_MultiCheckbox('profileSubCategoria',
+                array('multiOptions' => 
+                    Application_Entity_Partnert::listingsOtherAccountType())));
+        
+        $this->addElement( new Zend_Form_Element_MultiCheckbox('profileCategoria',
+                array('multiOptions' => 
+                    Application_Entity_PartnertEnterprises::listingsCategories())));
+        
     }
     //public function isValid($data) {
      //   parent::isValid($data);

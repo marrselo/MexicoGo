@@ -173,10 +173,10 @@ class Application_Entity_PartnertEnterprises extends Application_Entity_Partnert
         $data['par_id'] = $this->_id;
         $modelPartnerLocation = new Application_Model_PartnerLocation();
         echo 'asdad';
-        if($modelPartnerLocation->getProfilerPartner($this->_id) == FALSE){
+        if ($modelPartnerLocation->getProfilerPartner($this->_id) == FALSE) {
             return $modelPartnerLocation->insert($data);
-        }else{
-            return $modelPartnerLocation->update($data,$this->_id);
+        } else {
+            return $modelPartnerLocation->update($data, $this->_id);
         }
     }
 
@@ -202,12 +202,71 @@ class Application_Entity_PartnertEnterprises extends Application_Entity_Partnert
         return $input;
     }
 
-    function registerCategorieProfiler($data) {
-        
-    }
+    
 
-    function registerSubCategorieProfiler($data) {
+  
+    
+
+    function getSubCategoriePartnerRel(){
+        $otherAccount = new Application_Model_PartnerOtherTypeAccount();
+        return CST_Utils::fetchPairs($otherAccount->getPartnersSubcategoriesRel($this->_id));
+    }
+    static function listingsCategories(){
+        $partCat = new Application_Model_PartnerCategories();
+        return CST_Utils::fetchPairs($partCat->getCategories());
+    }
+    function getCategoriePartnerRel(){
+        $partCat = new Application_Model_PartnerCategories();
+        return CST_Utils::fetchPairs($partCat->getCategoriesRel($this->_id));
+    }
+    
+    function addCategorieProfilerRel($arrayData) {
+        $parCat = new Application_Model_PartnerCategories();
+        $categorieParternRel = $this->getCategoriePartnerRel();
+         
+        if (is_array($arrayData)) {
+            foreach ($arrayData as $index) {
+                unset($categorieParternRel[$index]);
+                if ($parCat->getCategoriesRel($this->_id, $index) == FALSE){
+                    $data['par_id'] = $this->_id;
+                    $data['cat_id'] = $index;
+                    $parCat->insertCategoriesRel($data);
+                }
+            }
+            if(!empty($categorieParternRel)){
+                foreach($categorieParternRel as $index=>$value){
+                    $parCat->deleteCategoriesRel($index, $this->_id);
+                }
+            }
+            return true;
+        }else {
+            return false;
+        }
+    }
+    
+    function addSubCategorieProfilerRel($arrayData) {
+        $otherAccount = new Application_Model_PartnerOtherTypeAccount();
+        $subcategorieParternRel = $this->getSubCategoriePartnerRel();
         
+        if (is_array($arrayData)) {
+            foreach ($arrayData as $index) {
+                unset($subcategorieParternRel[$index]);
+                if ($otherAccount->getPartnersSubcategoriesRel($this->_id, $index) == FALSE){
+                    $data['par_id'] = $this->_id;
+                $data['par_other_type_account_id'] = $index;
+                $otherAccount->insertPartnersSubcategoriesRel($data);
+                }
+            }
+            if(!empty($subcategorieParternRel)){
+                foreach($subcategorieParternRel as $index=>$value){
+                    $otherAccount->deletePartnersSubcategoriesRel($this->_id, $index);
+                }
+                
+            }
+            return true;
+        }else {
+            return false;
+        }
     }
 
 }

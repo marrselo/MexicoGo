@@ -159,16 +159,66 @@
             <div>mapa</div>
             <fieldset id="pick-categories"><legend class="oswald">PICK THE CATEGORIES WHERE YOUR PAGE WILL APPEAR</legend>
                 <p>(Two sections max.)</p>
-                <input id="checkRealState" type="checkbox"><label for="checkRealState" class="label-check">Real estate</label>
-                <input id="checkTravel" type="checkbox"><label for="checkTravel" class="label-check">Travel</label>
+                <?php foreach($this->listingCategoria as $index=>$value): ?>
+                <?php if(isset($this->listingCategoriaRel[$index])) {
+                        $checked = 'checked="checked"';
+                    } else{
+                        $checked='';
+                    } ?>
+                     
+                <input <?php echo $checked ?> value="<?php echo $index; ?>" id="checkCategories<?php echo $index; ?>" type="checkbox" name="profileCategoria[]">
+                <label for="checkCategories<?php echo $index; ?>" class="label-check"><?php echo $value; ?></label>
+                <?php endforeach; ?>
+                
+<!--                <input id="checkTravel" type="checkbox"><label for="checkTravel" class="label-check">Travel</label>
                 <input id="checkRetirement" type="checkbox"><label for="checkRetirement" class="label-check">Retirement</label>
                 <input id="checkLiving" type="checkbox"><label for="checkLiving" class="label-check">Living</label>
-                <input id="checkPartners" type="checkbox"><label for="checkPartners" class="label-check">Parteners</label>
+                <input id="checkPartners" type="checkbox"><label for="checkPartners" class="label-check">Parteners</label>-->
             </fieldset>
             <fieldset id="pick-subcategories"><legend class="oswald">SELECT A SUBCATEGORY</legend>
+                <?php 
+                $cantSubCat = count($this->listingSubCategoria);
+                $cantColumn = (int)($cantSubCat/3);
+                $residuo = (int)($cantSubCat%3);
+                $output1 = array_slice($this->listingSubCategoria, 0,($cantColumn),true);      // returns "c", "d", and "e"
+                $output2 = array_slice($this->listingSubCategoria, $cantColumn, $cantColumn,true);  // returns "d"
+                $output3 = array_slice($this->listingSubCategoria, 2*$cantColumn, $cantColumn+$residuo,true);   // returns "a", "b", and "c"
+                ?>
                 <div class="pick-izq">
-                    <input id="checkAccounting" type="checkbox"><label for="checkRealState" class="label-check2">Accounting</label>
-                    <input id="checkAirline" type="checkbox"><label for="checkAirline" class="label-check2">Airline</label>
+                <?php
+                foreach($output1 as $index=>$value): ?>
+                    <?php if(isset($this->listingSubcategoriaRel[$index])) {
+                        $checked = 'checked="checked"';
+                    } else{
+                        $checked='';
+                    } ?>
+                    <input <?php echo $checked ?>  value="<?php echo $index ?>" name="profileSubCategoria[]" id="check<?php echo $index ?>" type="checkbox"><label for="check<?php echo $index ?>" class="label-check2"><?php echo $value ?></label>
+                <?php endforeach; ?>
+                </div>        
+                <div class="pick-izq">
+                <?php
+                foreach($output2 as $index=>$value): ?>
+                    <?php if(isset($this->listingSubcategoriaRel[$index])) {
+                        $checked = 'checked="checked"';
+                    } else{
+                        $checked='';
+                    } ?>
+                    <input <?php echo $checked ?>  value="<?php echo $index ?>" name="profileSubCategoria[]" id="check<?php echo $index ?>" type="checkbox"><label for="check<?php echo $index ?>" class="label-check2"><?php echo $value ?></label>
+                <?php endforeach; ?>
+                </div>        
+                <div class="pick-izq">
+                <?php
+                foreach($output3 as $index=>$value): ?>
+                    <?php if(isset($this->listingSubcategoriaRel[$index])) {
+                        $checked = 'checked="checked"';
+                    } else{
+                        $checked='';
+                    } ?>
+                    <input <?php echo $checked ?>  value="<?php echo $index ?>" name="profileSubCategoria[]" id="check<?php echo $index ?>" type="checkbox"><label for="check<?php echo $index ?>" class="label-check2"><?php echo $value ?></label>
+                <?php endforeach; ?>
+                </div>        
+                
+<!--                    <input id="checkAirline" type="checkbox"><label for="checkAirline" class="label-check2">Airline</label>
                     <input id="checkAll-inclusive" type="checkbox"><label for="checkAll-inclusive" class="label-check2">All-inclusive resorts</label>
                     <input id="checkArtist" type="checkbox"><label for="checkArtist" class="label-check2">Artist and entertainer</label>
                     <input id="checkBanking" type="checkbox"><label for="checkBanking" class="label-check2">Banking</label>
@@ -179,9 +229,9 @@
                     <input id="checkBanking" type="checkbox"><label for="checkBanking" class="label-check2">Cosmetic surgery</label>
                     <input id="checkAccounting" type="checkbox"><label for="checkRealState" class="label-check2">Dentist</label>
                     <input id="checkAirline" type="checkbox"><label for="checkAirline" class="label-check2">Doctor</label>
-                    <input id="checkAll-inclusive" type="checkbox"><label for="checkAll-inclusive" class="label-check2">Education</label>
-                </div>
-                <div class="pick-med">
+                    <input id="checkAll-inclusive" type="checkbox"><label for="checkAll-inclusive" class="label-check2">Education</label>-->
+                
+<!--                <div class="pick-med">
                     <input id="checkAccounting" type="checkbox"><label for="checkRealState" class="label-check2">Fashion and retail</label>
                     <input id="checkAirline" type="checkbox"><label for="checkAirline" class="label-check2">Fishing charters</label>
                     <input id="checkAll-inclusive" type="checkbox"><label for="checkAll-inclusive" class="label-check2">Golfing</label>
@@ -210,7 +260,7 @@
                     <input id="checkVeterinarian" type="checkbox"><label for="checkVeterinarian" class="label-check2">Veterinarian</label>
                     <input id="checkWedding" type="checkbox"><label for="checkWedding" class="label-check2">Wedding planner</label>
                     <input id="checkYoga" type="checkbox"><label for="checkYoga" class="label-check2">Yoga</label>
-                </div>
+                </div>-->
 
             </fieldset>
             <input class="boton-yellow-1 oswald" type="submit" value="SAVE &gt;&gt;">
