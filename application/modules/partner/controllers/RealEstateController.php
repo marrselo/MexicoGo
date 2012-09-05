@@ -18,7 +18,7 @@ class Partner_RealEstateController extends CST_Controller_ActionPartner {
     }
 
     public function listingsAction() {
-        // action body
+        // ody
     }
     
     public function locationAction() {
