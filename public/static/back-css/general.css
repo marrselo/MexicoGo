@@ -1,7 +1,7 @@
 body{font-family: Helvetica, Arial, sans-serif;}
 bold{font-weight: bold}
-footer{background:url('../images/barra-footer.jpg') repeat-x left top}
-header{background:url('../images/barra-header.png') repeat-x left 144px}
+footer.footer-back{background:url('../images/barra-footer.jpg') repeat-x left top}
+header#header-front-wrapper{background:url('../images/barra-header.png') repeat-x left 144px}
 h1,h2,h3,h4,h5,h6{font-weight:normal !important}
 fieldset{border:none !important;margin:0px;padding:0px}
 .bg-white{background-color:#fff}
@@ -14,6 +14,9 @@ fieldset{border:none !important;margin:0px;padding:0px}
 .inline-block{display:inline-block !important}
 .clear-none{clear:none !important}
 .hand{cursor:pointer}
+.line-height-15{line-height:15px !important}
+.boton-tamano-fuente-1{font-size: 16px !important;}
+.text-shadow-black-yellow{text-shadow: 1px 1px 2px #;}
 .float-right{float:right}
 .margin-top-5{margin-top:5px}
 a, a:hover, a:active,a:focus,a:visited{text-decoration: none !important;color:#000}
@@ -79,8 +82,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#edbb38', end
    height: 26px;
    border:none !important
 }
-.select-chico-1{
-   width: 70px !important;
+.flecha-combo-chico-1 select,.flecha-combo-chico-1-variante select{    background:transparent;   -webkit-appearance: none;   font-size: 16px;   height: 26px;   border:none !important}
+.flecha-combo-variante select{
+   background:transparent;
+   -webkit-appearance: none;
+   width: 200px;
+   font-size: 16px;
+   height: 26px;
+   border:none !important
+}
+.select-chico-1,.select-chico-1-variante{
+   width: 73px !important;
 }
 .flecha-combo{
    width: 190px;
@@ -92,6 +104,53 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#edbb38', end
    background: url(../images/combo-flecha.png) no-repeat 180px center #fff;
    display:inline-block
 }
+.flecha-combo-inter{
+   width: 112px;
+   height: 26px;
+   overflow: hidden;
+   border: 1px solid #a1a0a0;
+   -webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;
+   margin-bottom: 5px;
+   background: url(../images/combo-flecha.png) no-repeat 102px center #fff;
+   display:inline-block
+}
+.flecha-combo-inter select{
+background: none repeat scroll 0 0 transparent;
+border: medium none !important;
+font-size: 16px;
+height: 26px;
+width: 130px !important;
+}
+.flecha-combo-variante{
+   width: 180px;
+   height: 26px;
+   overflow: hidden;
+   border: 1px solid #a1a0a0;
+   -webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;
+   margin-bottom: 5px;
+   background: url(../images/combo-flecha-variante.png) no-repeat 170px center #fff;
+   display:inline-block
+}
+.flecha-combo-variante-medio{width: 110px;   height: 26px;   overflow: hidden;   border: 1px solid #a1a0a0;   -webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;   margin-bottom: 5px;   background: url(../images/combo-flecha-variante.png) no-repeat 100px center #fff;   display:inline-block}
+.flecha-combo-variante-medio select{    background:transparent;   -webkit-appearance: none;   width: 130px;   font-size: 16px;   height: 26px;   border:none !important}
+.flecha-combo-variante-largo select{
+    background:transparent;
+   -webkit-appearance: none;
+   width: 260px;
+   font-size: 16px;
+   height: 26px;
+   border:none !important
+}
+.flecha-combo-variante-largo{
+     width: 240px;
+   height: 26px;
+   overflow: hidden;
+   border: 1px solid #a1a0a0;
+   -webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;
+   margin-bottom: 5px;
+   background: url(../images/combo-flecha-variante.png) no-repeat 230px center #fff;
+   display:inline-block
+}
 .flecha-combo-chico-1{
    width: 55px;
    height: 26px;
@@ -100,6 +159,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#edbb38', end
    -webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;
    margin-bottom: 5px;
    background: url(../images/combo-flecha.png) no-repeat 43px center #fff;
+   display:inline-block
+}
+.frmt-label-combo{line-height:25px;display: inline-block;    font-size: 14px; }
+.flecha-combo-chico-1-variante{
+   width: 55px;
+   height: 26px;
+   overflow: hidden;
+   border: 1px solid #a1a0a0;
+   -webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;
+   margin-bottom: 5px;
+   background: url(../images/combo-flecha-variante.png) no-repeat 43px center #fff;
    display:inline-block
 }
 .flecha-combo select option{/*width:190px !important*/}
@@ -131,10 +201,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#edbb38', end
 #upload-gallery-images span{background-color:#FFCD00;padding:3px }
 .round-border-gris{border: 1px solid #a1a0a0;   -webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;}
 .round-border-yellow{border: 1px solid #FFCD00;   -webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;}
-#number-published{color:#fff;width:705px;height:43px;line-height:43px;margin:0 auto;background-color:#4c4c4c;text-align:left;padding-left:35px}
-#number-published span{font-size:18px;/*font-weight: bold*/}
+#number-published{ font-size: 15px;color:#fff;width:705px;height:43px;line-height:43px;margin:0 auto;background-color:#4c4c4c;text-align:left;padding-left:35px}
+#number-published span:first-child{font-size:18px;}
+#number-published span:last-child{font-size:15px;}
 #tabla-agentes{width:720px;margin:0 auto}
-#tabla-agentes th{height:50px;font-size:12px }
+#tabla-agentes th{height:40px;font-size:12px }
 #tabla-agentes #th1{width:225px;text-align:left;font-size:16px}
 #tabla-agentes #th2{width:155px}
 #tabla-agentes #th3{width:75px}
@@ -250,15 +321,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eaeaea', end
 .round-corner-10{-webkit-border-radius: 10px;-moz-border-radius: 10px;border-radius: 10px;}
 .round-corner-5{-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;}
 .round-corner-3{-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;}
-.boton-css-formato{font-size: 16px ;border:none;height:27px;line-height:27px;display: inline-block;padding-left:20px;padding-right:20px ;text-align:center;-webkit-box-shadow: 0px 1px 4px 1px #a1a0a0;box-shadow: 0px 1px 4px 1px #a1a0a0; }
+.boton-css-formato{font-size: 12px ;border:none;height:27px;line-height:27px;display: inline-block;padding-left:20px;padding-right:20px ;text-align:center;-webkit-box-shadow: 0px 1px 4px 1px #a1a0a0;box-shadow: 0px 1px 4px 1px #a1a0a0; }
 #listings-about{margin: 25px auto;  padding: 0 10px;  width: 720px;}
 .listings-about-header-1{width:600px;height:25px;margin:0 auto;background-color:#FFCD00;color:#6d6d6d;text-align:left;margin-top:20px;margin-bottom:10px;line-height:25px}
 .listings-about-header-2{width:600px;height:25px;margin:0 auto;background-color:#FFCD00;color:#6d6d6d;text-align:center;margin-top:20px;margin-bottom:10px;line-height:25px}
 .listings-about-header-3{width:600px;height:25px;margin:0 auto;background-color:#FFCD00;color:#fff;text-align:center;margin-top:20px;margin-bottom:10px;line-height:25px}
 .listings-about-header-1 span{padding-left:15px}
 #listings-about-form legend{padding-left:30px}
-#listings-about-form label{line-height: 25px;display: inline-block;    font-size: 14px;    text-align: right;    width: 160px;}
-#listings-about-form .combo-fix{height:30px;}
+#listings-about-form label,.input-default-format label{line-height: 25px;display: inline-block;    font-size: 14px;    text-align: right;    width: 160px;}
+#listings-about-form .combo-fix, .adv-search .combo-fix{height:30px;}
 #listings-about-form .combo-fix .special-margen-right{margin-right:6px}
 #listings-about-form .label-special-width{width:92px !important}
 #listings-about-form  .margin-bottom-special{margin-bottom:6px;height:26px}
@@ -272,9 +343,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eaeaea', end
 }
 /*input[type="checkbox"] + label */
 .check-special{
-  background: url(../images/check_02.png) 180px 0px no-repeat !important;
+  background: url(../images/check_02.png) 165px 0px no-repeat !important;
   height: 16px !important;
-  width:175px !important;
+  width:160px !important;
   text-indent: -1000em !important;
 }
 .label-check-rojo{
@@ -295,7 +366,7 @@ line-height: 25px !important;
 }
 /*#listings-about input[type=checkbox]:checked*/
 .label-activo{
-  background: url(../images/check_02.png) 180px -16px no-repeat !important;
+  background: url(../images/check_02.png) 165px -16px no-repeat !important;
 }
 .label-activo-radio{background: url(../images/radio-bg.png) right -15px no-repeat !important;}
 /*input[type=checkbox] {display: none;}
@@ -468,3 +539,13 @@ p#sales-representative{text-align:right;margin-right:125px}
 .sing-up-icon-and-box .yellow-box{text-align:left !important}
 .sing-up-icon-and-box{height:135px}
 .registro-rsa-signin #cont-sign{margin:35px 0px 45px 0px}
+/* IE8 */
+#form-account-setting LABEL{
+    width: 128px\0/; !important;
+}
+#payment-details-setting #profile label{
+    width: 128px\0/; !important;
+}
+#tabla-agentes-listings-not-added tr td a img{
+    border: none;
+}

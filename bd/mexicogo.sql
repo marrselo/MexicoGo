@@ -53,8 +53,7 @@ CREATE TABLE `agent_profile_page` (
   `pro_phone1` varchar(45) DEFAULT NULL,
   `pro_dsc` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`pro_id`),
-  KEY `fk_mexi_agent_profile_page_mexi_agents1_idx` (`age_id`),
-  CONSTRAINT `fk_mexi_agent_profile_page_mexi_agents1` FOREIGN KEY (`age_id`) REFERENCES `agents` (`age_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `fk_mexi_agent_profile_page_mexi_agents1_idx` (`age_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `agent_profile_page` */
@@ -70,19 +69,21 @@ DROP TABLE IF EXISTS `agents`;
 CREATE TABLE `agents` (
   `age_id` int(11) NOT NULL AUTO_INCREMENT,
   `par_id` int(11) DEFAULT NULL,
-  `age_photo` varchar(45) DEFAULT NULL,
-  `age_first_name` varchar(45) DEFAULT NULL,
-  `age_last_name` varchar(45) DEFAULT NULL,
-  `age_email` varchar(45) DEFAULT NULL,
-  `age_website` varchar(45) DEFAULT NULL,
-  `age_brokerage` varchar(45) DEFAULT NULL,
-  `age_profile_dsc` varchar(450) DEFAULT NULL,
-  `age_phone` varchar(45) DEFAULT NULL,
-  `age_mobile_phone` varchar(45) DEFAULT NULL,
+  `age_photo` varchar(45) CHARACTER SET latin1 DEFAULT NULL,
+  `age_first_name` varchar(45) CHARACTER SET latin1 DEFAULT NULL,
+  `age_last_name` varchar(45) CHARACTER SET latin1 DEFAULT NULL,
+  `age_email` varchar(45) CHARACTER SET latin1 DEFAULT NULL,
+  `age_website` varchar(45) CHARACTER SET latin1 DEFAULT NULL,
+  `age_brokerage` varchar(45) CHARACTER SET latin1 DEFAULT NULL,
+  `age_profile_dsc` varchar(450) CHARACTER SET latin1 DEFAULT NULL,
+  `age_phone` varchar(45) CHARACTER SET latin1 DEFAULT NULL,
+  `age_mobile_phone` varchar(45) CHARACTER SET latin1 DEFAULT NULL,
+  `age_state` tinyint(1) DEFAULT '1' COMMENT '0 delete  1 activo',
+  `age_public` tinyint(1) DEFAULT '0' COMMENT '0 unpublic   1 publicado',
   PRIMARY KEY (`age_id`),
   KEY `fk_agents_partners1_idx` (`par_id`),
   CONSTRAINT `fk_agents_partners1` FOREIGN KEY (`par_id`) REFERENCES `partners` (`par_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `agents` */
 
@@ -412,7 +413,7 @@ CREATE TABLE `core_session` (
 
 LOCK TABLES `core_session` WRITE;
 
-insert  into `core_session`(`ses_id`,`ses_modified`,`ses_lifetime`,`ses_data`) values ('88r7blfat88pt1iau9j9m4gha1',1345774496,1440,'Zend_Auth|a:1:{s:7:\"storage\";O:8:\"stdClass\":20:{s:6:\"usu_id\";s:2:\"14\";s:6:\"rol_id\";s:1:\"2\";s:10:\"usu_nombre\";s:8:\"asdasdas\";s:13:\"usu_apellidos\";s:6:\"asdasd\";s:8:\"usu_nick\";s:18:\"nazartj@1aaoms.com\";s:11:\"usu_celular\";N;s:12:\"usu_telefono\";N;s:10:\"usu_correo\";s:18:\"nazartj@1aaoms.com\";s:16:\"usu_creacion_fec\";s:19:\"2012-08-24 04:03:47\";s:7:\"usu_img\";N;s:13:\"usu_id_estado\";N;s:6:\"par_id\";s:2:\"11\";s:12:\"par_nickname\";s:18:\"nazartj@1aaoms.com\";s:9:\"par_email\";s:18:\"nazartj@1aaoms.com\";s:13:\"par_full_name\";N;s:9:\"par_chief\";N;s:18:\"par_acount_type_id\";s:1:\"1\";s:28:\"par_flag_partner_real_estate\";N;s:25:\"par_other_type_account_id\";N;s:9:\"par_state\";N;}}'),('btfrb69hl46s7itu3f0helklk7',1345782500,1440,'Zend_Auth|a:1:{s:7:\"storage\";O:8:\"stdClass\":20:{s:6:\"usu_id\";s:2:\"15\";s:6:\"rol_id\";s:1:\"2\";s:10:\"usu_nombre\";s:8:\"asdasdsd\";s:13:\"usu_apellidos\";s:6:\"asdasd\";s:8:\"usu_nick\";s:19:\"nazartj@123aoms.com\";s:11:\"usu_celular\";N;s:12:\"usu_telefono\";N;s:10:\"usu_correo\";s:19:\"nazartj@123aoms.com\";s:16:\"usu_creacion_fec\";s:19:\"2012-08-24 06:20:32\";s:7:\"usu_img\";N;s:13:\"usu_id_estado\";N;s:6:\"par_id\";s:2:\"12\";s:12:\"par_nickname\";s:19:\"nazartj@123aoms.com\";s:9:\"par_email\";s:19:\"nazartj@123aoms.com\";s:13:\"par_full_name\";N;s:9:\"par_chief\";N;s:18:\"par_acount_type_id\";s:1:\"1\";s:28:\"par_flag_partner_real_estate\";N;s:25:\"par_other_type_account_id\";N;s:9:\"par_state\";N;}}'),('t7jh5d9ncjl8alkalt778p1p55',1345847194,1440,'Zend_Auth|a:1:{s:7:\"storage\";O:8:\"stdClass\":20:{s:6:\"usu_id\";s:2:\"18\";s:6:\"rol_id\";s:1:\"2\";s:10:\"usu_nombre\";s:5:\"carlo\";s:13:\"usu_apellidos\";s:8:\"fernando\";s:8:\"usu_nick\";s:18:\"carlofenad@asd.com\";s:11:\"usu_celular\";N;s:12:\"usu_telefono\";N;s:10:\"usu_correo\";s:18:\"carlofenad@asd.com\";s:16:\"usu_creacion_fec\";s:19:\"2012-08-25 00:09:51\";s:7:\"usu_img\";N;s:13:\"usu_id_estado\";N;s:6:\"par_id\";s:2:\"15\";s:12:\"par_nickname\";s:18:\"carlofenad@asd.com\";s:9:\"par_email\";s:18:\"carlofenad@asd.com\";s:13:\"par_full_name\";N;s:9:\"par_chief\";N;s:18:\"par_acount_type_id\";s:1:\"1\";s:28:\"par_flag_partner_real_estate\";N;s:25:\"par_other_type_account_id\";N;s:9:\"par_state\";N;}}sessionPartner|a:1:{s:11:\"singleAgent\";a:3:{s:11:\"plansSelect\";a:5:{s:21:\"checkSingleAgentPlans\";s:1:\"2\";s:23:\"selectSingleAgentMonths\";s:2:\"12\";s:24:\"selectSingleAgentFeature\";s:1:\"3\";s:23:\"checkSingleAgentFeature\";s:1:\"1\";s:26:\"checkSingleAgentFeatureAll\";s:1:\"1\";}s:13:\"paymentDetail\";a:14:{s:9:\"firstName\";s:8:\"asdasdsd\";s:8:\"lastName\";s:9:\"asdasdsad\";s:6:\"phone1\";s:2:\"12\";s:6:\"phone2\";s:3:\"123\";s:6:\"phone3\";s:3:\"321\";s:11:\"companyName\";s:0:\"\";s:3:\"rfc\";s:0:\"\";s:4:\"mail\";s:0:\"\";s:10:\"siteUpUnit\";s:0:\"\";s:4:\"city\";N;s:5:\"state\";N;s:3:\"zip\";s:0:\"\";s:18:\"addressProfilePage\";N;s:14:\"paymentOptions\";N;}s:12:\"priceFeature\";s:1:\"5\";}}'),('294qhfsohqbijcbh61g04magp0',1345873825,1440,'Zend_Auth|a:1:{s:7:\"storage\";O:8:\"stdClass\":20:{s:6:\"usu_id\";s:2:\"19\";s:6:\"rol_id\";s:1:\"2\";s:10:\"usu_nombre\";s:9:\"dsfsdfsaf\";s:13:\"usu_apellidos\";s:10:\"sdfgsfgdfg\";s:8:\"usu_nick\";s:19:\"nazartj@344aoms.com\";s:11:\"usu_celular\";N;s:12:\"usu_telefono\";N;s:10:\"usu_correo\";s:19:\"nazartj@344aoms.com\";s:16:\"usu_creacion_fec\";s:19:\"2012-08-25 07:42:24\";s:7:\"usu_img\";N;s:13:\"usu_id_estado\";N;s:6:\"par_id\";s:2:\"16\";s:12:\"par_nickname\";s:19:\"nazartj@344aoms.com\";s:9:\"par_email\";s:19:\"nazartj@344aoms.com\";s:13:\"par_full_name\";N;s:9:\"par_chief\";N;s:18:\"par_acount_type_id\";s:1:\"1\";s:28:\"par_flag_partner_real_estate\";N;s:25:\"par_other_type_account_id\";N;s:9:\"par_state\";N;}}sessionPartner|a:1:{s:11:\"singleAgent\";a:3:{s:11:\"plansSelect\";a:5:{s:21:\"checkSingleAgentPlans\";s:1:\"2\";s:23:\"selectSingleAgentMonths\";s:1:\"6\";s:24:\"selectSingleAgentFeature\";s:1:\"1\";s:23:\"checkSingleAgentFeature\";s:1:\"1\";s:26:\"checkSingleAgentFeatureAll\";s:1:\"1\";}s:12:\"priceFeature\";s:1:\"5\";s:13:\"paymentDetail\";a:14:{s:9:\"firstName\";s:17:\"asdfadsf asdasdad\";s:8:\"lastName\";s:8:\"asdfasdf\";s:6:\"phone1\";s:4:\"asdf\";s:6:\"phone2\";s:4:\"asdf\";s:6:\"phone3\";s:4:\"asdf\";s:11:\"companyName\";s:0:\"\";s:3:\"rfc\";s:0:\"\";s:4:\"mail\";s:0:\"\";s:10:\"siteUpUnit\";s:0:\"\";s:4:\"city\";N;s:5:\"state\";N;s:3:\"zip\";s:0:\"\";s:18:\"addressProfilePage\";s:1:\"1\";s:14:\"paymentOptions\";s:1:\"3\";}}}'),('euqlft4iarp3ori4ocpvbcsdd6',1346136023,1440,''),('l6ko90cvruatei17m73h2egte7',1346228279,1440,''),('0dqlpcmqclp83mpoi84dkn6582',1346299183,1440,'');
+insert  into `core_session`(`ses_id`,`ses_modified`,`ses_lifetime`,`ses_data`) values ('lfmc9nuh37p0088cihllmqpv80',1346462866,1440,''),('k3cgmhtoo8sei28pgvcipmh9o6',1346477507,1440,'Zend_Auth|a:1:{s:7:\"storage\";O:8:\"stdClass\":22:{s:6:\"usu_id\";s:2:\"34\";s:6:\"rol_id\";s:1:\"2\";s:10:\"usu_nombre\";s:6:\"nazart\";s:13:\"usu_apellidos\";s:12:\" jara huaman\";s:8:\"usu_nick\";s:26:\"nazartjarahuaman@gmail.com\";s:11:\"usu_celular\";N;s:12:\"usu_telefono\";N;s:10:\"usu_correo\";s:26:\"nazartjarahuaman@gmail.com\";s:16:\"usu_creacion_fec\";s:19:\"2012-08-31 10:21:23\";s:7:\"usu_img\";N;s:13:\"usu_id_estado\";N;s:13:\"grupo_usuario\";s:7:\"partner\";s:6:\"par_id\";s:2:\"31\";s:12:\"par_nickname\";s:26:\"nazartjarahuaman@gmail.com\";s:9:\"par_email\";s:26:\"nazartjarahuaman@gmail.com\";s:13:\"par_full_name\";N;s:9:\"par_chief\";N;s:17:\"par_flag_customer\";s:1:\"1\";s:18:\"par_acount_type_id\";s:1:\"2\";s:25:\"par_flag_partner_profiler\";N;s:25:\"par_other_type_account_id\";N;s:9:\"par_state\";N;}}sessionPartner|a:1:{s:9:\"navigator\";a:5:{i:0;a:5:{s:5:\"label\";s:16:\"ACCOUNT SETTINGS\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:16:\"account-settings\";s:5:\"order\";i:1;}i:1;a:5:{s:5:\"label\";s:11:\"Manage your\";s:2:\"id\";s:21:\"account-settings-menu\";s:3:\"uri\";s:1:\"#\";s:5:\"order\";i:2;s:5:\"pages\";a:3:{i:0;a:5:{s:5:\"label\";s:8:\"PROFILER\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:8:\"profiler\";s:5:\"order\";i:1;}i:1;a:5:{s:5:\"label\";s:5:\"AGENT\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:5:\"agent\";s:5:\"order\";i:2;}i:2;a:5:{s:5:\"label\";s:20:\"REAL ESTATE LISTINGS\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:11:\"real-estate\";s:5:\"order\";i:3;}}}i:2;a:6:{s:5:\"label\";s:17:\"EMAIL PREFERENCES\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:10:\"my-account\";s:6:\"action\";s:17:\"email-preferences\";s:5:\"order\";i:3;}i:3;a:6:{s:5:\"label\";s:16:\"ACCOUNT PASSWORD\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:10:\"my-account\";s:6:\"action\";s:16:\"account-password\";s:5:\"order\";i:4;}i:4;a:6:{s:5:\"label\";s:8:\"SIGN OUT\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:10:\"my-account\";s:6:\"action\";s:8:\"sign-out\";s:5:\"order\";i:5;}}}'),('3mc28jlos7fvdnkrt1tune7hm7',1346565576,1440,'Zend_Auth|a:1:{s:7:\"storage\";O:8:\"stdClass\":22:{s:6:\"usu_id\";s:2:\"34\";s:6:\"rol_id\";s:1:\"2\";s:10:\"usu_nombre\";s:6:\"nazart\";s:13:\"usu_apellidos\";s:12:\" jara huaman\";s:8:\"usu_nick\";s:26:\"nazartjarahuaman@gmail.com\";s:11:\"usu_celular\";N;s:12:\"usu_telefono\";N;s:10:\"usu_correo\";s:26:\"nazartjarahuaman@gmail.com\";s:16:\"usu_creacion_fec\";s:19:\"2012-08-31 10:21:23\";s:7:\"usu_img\";N;s:13:\"usu_id_estado\";N;s:13:\"grupo_usuario\";s:7:\"partner\";s:6:\"par_id\";s:2:\"31\";s:12:\"par_nickname\";s:26:\"nazartjarahuaman@gmail.com\";s:9:\"par_email\";s:26:\"nazartjarahuaman@gmail.com\";s:13:\"par_full_name\";N;s:9:\"par_chief\";N;s:17:\"par_flag_customer\";s:1:\"1\";s:18:\"par_acount_type_id\";s:1:\"2\";s:25:\"par_flag_partner_profiler\";N;s:25:\"par_other_type_account_id\";N;s:9:\"par_state\";N;}}sessionPartner|a:1:{s:9:\"navigator\";a:5:{i:0;a:5:{s:5:\"label\";s:16:\"ACCOUNT SETTINGS\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:16:\"account-settings\";s:5:\"order\";i:1;}i:1;a:5:{s:5:\"label\";s:11:\"Manage your\";s:2:\"id\";s:21:\"account-settings-menu\";s:3:\"uri\";s:1:\"#\";s:5:\"order\";i:2;s:5:\"pages\";a:3:{i:0;a:5:{s:5:\"label\";s:8:\"PROFILER\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:8:\"profiler\";s:5:\"order\";i:1;}i:1;a:5:{s:5:\"label\";s:5:\"AGENT\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:5:\"agent\";s:5:\"order\";i:2;}i:2;a:5:{s:5:\"label\";s:20:\"REAL ESTATE LISTINGS\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:11:\"real-estate\";s:5:\"order\";i:3;}}}i:2;a:6:{s:5:\"label\";s:17:\"EMAIL PREFERENCES\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:10:\"my-account\";s:6:\"action\";s:17:\"email-preferences\";s:5:\"order\";i:3;}i:3;a:6:{s:5:\"label\";s:16:\"ACCOUNT PASSWORD\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:10:\"my-account\";s:6:\"action\";s:16:\"account-password\";s:5:\"order\";i:4;}i:4;a:6:{s:5:\"label\";s:8:\"SIGN OUT\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:10:\"my-account\";s:6:\"action\";s:8:\"sign-out\";s:5:\"order\";i:5;}}}'),('v2vtac1cu3bpkccgc9srcei946',1346406277,1440,'Zend_Auth|a:1:{s:7:\"storage\";O:8:\"stdClass\":22:{s:6:\"usu_id\";s:2:\"34\";s:6:\"rol_id\";s:1:\"2\";s:10:\"usu_nombre\";s:6:\"nazart\";s:13:\"usu_apellidos\";s:12:\" jara huaman\";s:8:\"usu_nick\";s:26:\"nazartjarahuaman@gmail.com\";s:11:\"usu_celular\";N;s:12:\"usu_telefono\";N;s:10:\"usu_correo\";s:26:\"nazartjarahuaman@gmail.com\";s:16:\"usu_creacion_fec\";s:19:\"2012-08-31 10:21:23\";s:7:\"usu_img\";N;s:13:\"usu_id_estado\";N;s:13:\"grupo_usuario\";s:7:\"partner\";s:6:\"par_id\";s:2:\"31\";s:12:\"par_nickname\";s:26:\"nazartjarahuaman@gmail.com\";s:9:\"par_email\";s:26:\"nazartjarahuaman@gmail.com\";s:13:\"par_full_name\";N;s:9:\"par_chief\";N;s:17:\"par_flag_customer\";s:1:\"1\";s:18:\"par_acount_type_id\";s:1:\"2\";s:25:\"par_flag_partner_profiler\";N;s:25:\"par_other_type_account_id\";N;s:9:\"par_state\";N;}}sessionPartner|a:1:{s:9:\"navigator\";a:5:{i:0;a:5:{s:5:\"label\";s:16:\"ACCOUNT SETTINGS\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:16:\"account-settings\";s:5:\"order\";i:1;}i:1;a:5:{s:5:\"label\";s:11:\"Manage your\";s:2:\"id\";s:21:\"account-settings-menu\";s:3:\"uri\";s:1:\"#\";s:5:\"order\";i:2;s:5:\"pages\";a:3:{i:0;a:5:{s:5:\"label\";s:8:\"PROFILER\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:8:\"profiler\";s:5:\"order\";i:1;}i:1;a:5:{s:5:\"label\";s:5:\"AGENT\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:5:\"agent\";s:5:\"order\";i:2;}i:2;a:5:{s:5:\"label\";s:20:\"REAL ESTATE LISTINGS\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:11:\"real-estate\";s:5:\"order\";i:3;}}}i:2;a:6:{s:5:\"label\";s:17:\"EMAIL PREFERENCES\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:10:\"my-account\";s:6:\"action\";s:17:\"email-preferences\";s:5:\"order\";i:3;}i:3;a:6:{s:5:\"label\";s:16:\"ACCOUNT PASSWORD\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:10:\"my-account\";s:6:\"action\";s:16:\"account-password\";s:5:\"order\";i:4;}i:4;a:6:{s:5:\"label\";s:8:\"SIGN OUT\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:10:\"my-account\";s:6:\"action\";s:8:\"sign-out\";s:5:\"order\";i:5;}}}');
 
 UNLOCK TABLES;
 
@@ -505,13 +506,13 @@ CREATE TABLE `core_usuarios` (
   UNIQUE KEY `usu_nick` (`usu_correo`),
   UNIQUE KEY `usu_nick_2` (`usu_correo`),
   UNIQUE KEY `usu_correo` (`usu_correo`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `core_usuarios` */
 
 LOCK TABLES `core_usuarios` WRITE;
 
-insert  into `core_usuarios`(`usu_id`,`rol_id`,`usu_nombre`,`usu_apellidos`,`usu_nick`,`usu_contrasena`,`usu_celular`,`usu_telefono`,`usu_correo`,`usu_creacion_fec`,`usu_img`,`usu_id_estado`,`usu_recibe_ofertas`) values (31,2,'nazart','jara huaaman','nazartj@gmail.com','645$$82$$4297f44b13955235245b2497399d7a93',NULL,NULL,'nazartj@gmail.com','2012-08-29 22:50:09',NULL,NULL,NULL);
+insert  into `core_usuarios`(`usu_id`,`rol_id`,`usu_nombre`,`usu_apellidos`,`usu_nick`,`usu_contrasena`,`usu_celular`,`usu_telefono`,`usu_correo`,`usu_creacion_fec`,`usu_img`,`usu_id_estado`,`usu_recibe_ofertas`) values (31,2,'nazart','jara huaaman','nazartj@gmail.com','645$$82$$4297f44b13955235245b2497399d7a93',NULL,NULL,'nazartj@gmail.com','2012-08-29 22:50:09',NULL,NULL,NULL),(32,2,'nazart jara huaman','jara','nazartj@12aoms.com','215$$443$$4297f44b13955235245b2497399d7a93',NULL,NULL,'nazartj@12aoms.com','2012-08-30 08:02:36',NULL,NULL,NULL),(33,2,'asdfasf','asfdasf','nazartj@aoms.com','461$$591$$4297f44b13955235245b2497399d7a93',NULL,NULL,'nazartj@aoms.com','2012-08-30 08:04:38',NULL,NULL,NULL),(34,2,'nazart',' jara huaman','nazartjarahuaman@gmail.com','213$$843$$4297f44b13955235245b2497399d7a93',NULL,NULL,'nazartjarahuaman@gmail.com','2012-08-31 10:21:23',NULL,NULL,NULL);
 
 UNLOCK TABLES;
 
@@ -687,18 +688,20 @@ DROP TABLE IF EXISTS `partner_files`;
 
 CREATE TABLE `partner_files` (
   `fil_id` int(11) NOT NULL AUTO_INCREMENT,
-  `fil_title` varchar(45) DEFAULT NULL,
-  `fil_source` varchar(45) DEFAULT NULL,
+  `fil_title` char(200) DEFAULT NULL,
+  `fil_source` char(100) DEFAULT NULL,
   `fil_order` int(11) DEFAULT NULL,
   `par_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`fil_id`),
   KEY `fk_partner_files_partners1_idx` (`par_id`),
   CONSTRAINT `fk_partner_files_partners1` FOREIGN KEY (`par_id`) REFERENCES `partners` (`par_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 /*Data for the table `partner_files` */
 
 LOCK TABLES `partner_files` WRITE;
+
+insert  into `partner_files`(`fil_id`,`fil_title`,`fil_source`,`fil_order`,`par_id`) values (7,'NAZAR001','fileProfiler1_31.pdf',NULL,31);
 
 UNLOCK TABLES;
 
@@ -759,6 +762,7 @@ DROP TABLE IF EXISTS `partner_other_type_account`;
 CREATE TABLE `partner_other_type_account` (
   `par_other_type_account_id` int(11) NOT NULL AUTO_INCREMENT,
   `par_other_type_account_name` char(100) DEFAULT NULL,
+  `par_profiler_default` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`par_other_type_account_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
@@ -766,7 +770,7 @@ CREATE TABLE `partner_other_type_account` (
 
 LOCK TABLES `partner_other_type_account` WRITE;
 
-insert  into `partner_other_type_account`(`par_other_type_account_id`,`par_other_type_account_name`) values (1,'Banking'),(2,'Beauty Salons'),(3,'Airline');
+insert  into `partner_other_type_account`(`par_other_type_account_id`,`par_other_type_account_name`,`par_profiler_default`) values (1,'Banking',NULL),(2,'Beauty Salons',NULL),(3,'Airline',NULL);
 
 UNLOCK TABLES;
 
@@ -829,11 +833,13 @@ CREATE TABLE `partner_payment` (
   PRIMARY KEY (`par_pay_id`),
   KEY `fk_partner_payment_partners1_idx` (`par_id`),
   CONSTRAINT `fk_partner_payment_partners1` FOREIGN KEY (`par_id`) REFERENCES `partners` (`par_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Data for the table `partner_payment` */
 
 LOCK TABLES `partner_payment` WRITE;
+
+insert  into `partner_payment`(`par_pay_id`,`par_pay_first_name`,`par_pay_last_name`,`par_pay_phone`,`par_pay_company_name`,`par_pay_rfc`,`par_pay_mail`,`par_pay_suite_ap_uni`,`par_pay_state_id`,`par_pay_zip`,`par_id`,`par_date_create`) values (1,'adssdd','asdasd','123-123-123','','','','',NULL,'',31,NULL);
 
 UNLOCK TABLES;
 
@@ -844,21 +850,27 @@ DROP TABLE IF EXISTS `partner_profile`;
 CREATE TABLE `partner_profile` (
   `prof_id` int(11) NOT NULL AUTO_INCREMENT,
   `par_id` int(11) DEFAULT NULL,
-  `prof_logo` varchar(100) DEFAULT NULL,
-  `prof_company` varchar(45) DEFAULT NULL,
-  `prof_email` varchar(45) DEFAULT NULL,
-  `prof_website` varchar(45) DEFAULT NULL,
-  `prof_phone2` varchar(45) DEFAULT NULL,
-  `prof_phone1` varchar(45) DEFAULT NULL,
-  `prof_dsc` varchar(45) DEFAULT NULL,
+  `prof_logo` char(100) DEFAULT NULL,
+  `prof_company` char(150) DEFAULT NULL,
+  `prof_email` char(150) DEFAULT NULL,
+  `prof_website` char(200) DEFAULT NULL,
+  `prof_phone2` char(20) DEFAULT NULL,
+  `prof_phone1` char(20) DEFAULT NULL,
+  `prof_dsc` text,
+  `prof_phone_desc1` char(40) DEFAULT NULL,
+  `prof_phone_desc2` char(40) DEFAULT NULL,
+  `prof_phone3` char(20) DEFAULT NULL,
+  `prof_phone_desc3` char(40) DEFAULT NULL,
   PRIMARY KEY (`prof_id`),
   KEY `fk_partner_profile_partners1_idx` (`par_id`),
   CONSTRAINT `fk_partner_profile_partners1` FOREIGN KEY (`par_id`) REFERENCES `partners` (`par_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Data for the table `partner_profile` */
 
 LOCK TABLES `partner_profile` WRITE;
+
+insert  into `partner_profile`(`prof_id`,`par_id`,`prof_logo`,`prof_company`,`prof_email`,`prof_website`,`prof_phone2`,`prof_phone1`,`prof_dsc`,`prof_phone_desc1`,`prof_phone_desc2`,`prof_phone3`,`prof_phone_desc3`) values (1,31,NULL,'nazart jara huaman','nazartjb@gsmil.com','www.google.com','123-123-123','123-123-123','nazart jara huaman ','Phone description','Phone description','123-66-5','Phone description');
 
 UNLOCK TABLES;
 
@@ -868,18 +880,21 @@ DROP TABLE IF EXISTS `partner_videos`;
 
 CREATE TABLE `partner_videos` (
   `vid_id` int(11) NOT NULL AUTO_INCREMENT,
-  `vid_title` varchar(45) DEFAULT NULL,
-  `vid_source` varchar(45) DEFAULT NULL,
+  `vid_title` char(200) DEFAULT NULL,
+  `vid_type` char(50) DEFAULT NULL,
   `vid_order` int(11) DEFAULT NULL,
   `par_id` int(11) DEFAULT NULL,
+  `vid_uri` text,
   PRIMARY KEY (`vid_id`),
   KEY `fk_partner_videos_partners1_idx` (`par_id`),
   CONSTRAINT `fk_partner_videos_partners1` FOREIGN KEY (`par_id`) REFERENCES `partners` (`par_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=latin1;
 
 /*Data for the table `partner_videos` */
 
 LOCK TABLES `partner_videos` WRITE;
+
+insert  into `partner_videos`(`vid_id`,`vid_title`,`vid_type`,`vid_order`,`par_id`,`vid_uri`) values (76,NULL,'Youtube',NULL,31,'http://www.youtube.com/watch?v=iOrCQ7vVmP8&feature=g-all-esi'),(77,NULL,'Youtube',NULL,31,'http://www.youtube.com/watch?v=TtAUr2-DBLk&feature=fvwrel');
 
 UNLOCK TABLES;
 
@@ -895,7 +910,7 @@ CREATE TABLE `partners` (
   `par_full_name` varchar(45) DEFAULT NULL,
   `par_chief` int(11) DEFAULT NULL,
   `par_acount_type_id` int(11) NOT NULL,
-  `par_flag_partner_real_estate` tinyint(1) DEFAULT NULL COMMENT 'si es que es un partner de tipo real estate o es uno de tipo publicitario.',
+  `par_flag_partner_profiler` tinyint(1) DEFAULT NULL COMMENT 'si es que es un partner de tipo real estate o es uno de tipo publicitario.',
   `par_other_type_account_id` int(11) DEFAULT NULL,
   `par_state` tinyint(4) DEFAULT NULL,
   `par_flag_customer` tinyint(1) DEFAULT '0',
@@ -904,17 +919,17 @@ CREATE TABLE `partners` (
   KEY `fk_partner_chief_idx` (`par_chief`),
   KEY `fk_partners_partners_acount_type1_idx` (`par_acount_type_id`),
   KEY `fk_partners_partner_other_type_account1_idx` (`par_other_type_account_id`),
-  CONSTRAINT `fk_partner_chief` FOREIGN KEY (`par_chief`) REFERENCES `partners` (`par_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_partners_core_usuarios1` FOREIGN KEY (`usu_id`) REFERENCES `core_usuarios` (`usu_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_partners_partners_acount_type1` FOREIGN KEY (`par_acount_type_id`) REFERENCES `partners_acount_type` (`part_acount_type_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_partners_partner_other_type_account1` FOREIGN KEY (`par_other_type_account_id`) REFERENCES `partner_other_type_account` (`par_other_type_account_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
+  CONSTRAINT `fk_partners_partner_other_type_account1` FOREIGN KEY (`par_other_type_account_id`) REFERENCES `partner_other_type_account` (`par_other_type_account_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_partner_chief` FOREIGN KEY (`par_chief`) REFERENCES `partners` (`par_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
 
 /*Data for the table `partners` */
 
 LOCK TABLES `partners` WRITE;
 
-insert  into `partners`(`par_id`,`usu_id`,`par_nickname`,`par_email`,`par_full_name`,`par_chief`,`par_acount_type_id`,`par_flag_partner_real_estate`,`par_other_type_account_id`,`par_state`,`par_flag_customer`) values (28,31,'nazartj@gmail.com','nazartj@gmail.com',NULL,NULL,2,NULL,NULL,NULL,0);
+insert  into `partners`(`par_id`,`usu_id`,`par_nickname`,`par_email`,`par_full_name`,`par_chief`,`par_acount_type_id`,`par_flag_partner_profiler`,`par_other_type_account_id`,`par_state`,`par_flag_customer`) values (28,31,'nazartj@gmail.com','nazartj@gmail.com',NULL,NULL,2,NULL,NULL,NULL,0),(29,32,'nazartj@12aoms.com','nazartj@12aoms.com',NULL,NULL,2,NULL,NULL,NULL,0),(30,33,'nazartj@aoms.com','nazartj@aoms.com',NULL,NULL,2,NULL,NULL,NULL,0),(31,34,'nazartjarahuaman@gmail.com','nazartjarahuaman@gmail.com',NULL,NULL,2,NULL,NULL,NULL,1);
 
 UNLOCK TABLES;
 
@@ -927,13 +942,13 @@ CREATE TABLE `partners_acount_type` (
   `part_acount_type_nom` varchar(45) DEFAULT NULL,
   `part_acuount_type_descripcion` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`part_acount_type_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 COMMENT='Pueden ser:\n	1. Single Real Estate Agent\n	2. Brokerage Account\n	3. Real Estate Development\n	4. Other';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COMMENT='Pueden ser:\n	1. Single Real Estate Agent\n	2. Brokerage Account\n	3. Real Estate Development\n	4. Other';
 
 /*Data for the table `partners_acount_type` */
 
 LOCK TABLES `partners_acount_type` WRITE;
 
-insert  into `partners_acount_type`(`part_acount_type_id`,`part_acount_type_nom`,`part_acuount_type_descripcion`) values (1,'Single Real Estate Agent','Single Real Estate Agent'),(2,'Brokerage Account','Brokerage Account'),(3,'Real Estate Development','Real Estate Development'),(4,'Other','Other');
+insert  into `partners_acount_type`(`part_acount_type_id`,`part_acount_type_nom`,`part_acuount_type_descripcion`) values (1,'Single Real Estate Agent','Single Real Estate Agent'),(2,'Brokerage Account','Brokerage Account'),(3,'Real Estate Development','Real Estate Development');
 
 UNLOCK TABLES;
 
@@ -1032,7 +1047,6 @@ CREATE TABLE `properties` (
   KEY `fk_properties_cities1_idx` (`cit_id`),
   KEY `fk_properties_agents1_idx` (`age_id`),
   KEY `fk_properties_partners1_idx` (`par_id`),
-  CONSTRAINT `fk_properties_agents1` FOREIGN KEY (`age_id`) REFERENCES `agents` (`age_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_properties_cities1` FOREIGN KEY (`cit_id`) REFERENCES `cities` (`cit_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_properties_partners1` FOREIGN KEY (`par_id`) REFERENCES `partners` (`par_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_properties_regions1` FOREIGN KEY (`reg_id`) REFERENCES `regions` (`reg_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -1317,7 +1331,7 @@ DROP TABLE IF EXISTS `view_core_usuarios_partner`;
   `par_chief` int(11) DEFAULT NULL,
   `par_flag_customer` tinyint(1) DEFAULT NULL,
   `par_acount_type_id` int(11) NOT NULL,
-  `par_flag_partner_real_estate` tinyint(1) DEFAULT NULL COMMENT 'si es que es un partner de tipo real estate o es uno de tipo publicitario.',
+  `par_flag_partner_profiler` tinyint(1) DEFAULT NULL COMMENT 'si es que es un partner de tipo real estate o es uno de tipo publicitario.',
   `par_other_type_account_id` int(11) DEFAULT NULL,
   `par_state` tinyint(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 */;
@@ -1327,7 +1341,7 @@ DROP TABLE IF EXISTS `view_core_usuarios_partner`;
 /*!50001 DROP TABLE IF EXISTS `view_core_usuarios_partner` */;
 /*!50001 DROP VIEW IF EXISTS `view_core_usuarios_partner` */;
 
-/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_core_usuarios_partner` AS (select `core_usuarios`.`usu_id` AS `usu_id`,`core_usuarios`.`rol_id` AS `rol_id`,`core_usuarios`.`usu_nombre` AS `usu_nombre`,`core_usuarios`.`usu_apellidos` AS `usu_apellidos`,`core_usuarios`.`usu_nick` AS `usu_nick`,`core_usuarios`.`usu_contrasena` AS `usu_contrasena`,`core_usuarios`.`usu_celular` AS `usu_celular`,`core_usuarios`.`usu_telefono` AS `usu_telefono`,`core_usuarios`.`usu_correo` AS `usu_correo`,`core_usuarios`.`usu_creacion_fec` AS `usu_creacion_fec`,`core_usuarios`.`usu_img` AS `usu_img`,`core_usuarios`.`usu_id_estado` AS `usu_id_estado`,'partner' AS `grupo_usuario`,`partners`.`par_id` AS `par_id`,`partners`.`par_nickname` AS `par_nickname`,`partners`.`par_email` AS `par_email`,`partners`.`par_full_name` AS `par_full_name`,`partners`.`par_chief` AS `par_chief`,`partners`.`par_flag_customer` AS `par_flag_customer`,`partners`.`par_acount_type_id` AS `par_acount_type_id`,`partners`.`par_flag_partner_real_estate` AS `par_flag_partner_real_estate`,`partners`.`par_other_type_account_id` AS `par_other_type_account_id`,`partners`.`par_state` AS `par_state` from (`partners` join `core_usuarios` on((`partners`.`usu_id` = `core_usuarios`.`usu_id`)))) */;
+/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_core_usuarios_partner` AS (select `core_usuarios`.`usu_id` AS `usu_id`,`core_usuarios`.`rol_id` AS `rol_id`,`core_usuarios`.`usu_nombre` AS `usu_nombre`,`core_usuarios`.`usu_apellidos` AS `usu_apellidos`,`core_usuarios`.`usu_nick` AS `usu_nick`,`core_usuarios`.`usu_contrasena` AS `usu_contrasena`,`core_usuarios`.`usu_celular` AS `usu_celular`,`core_usuarios`.`usu_telefono` AS `usu_telefono`,`core_usuarios`.`usu_correo` AS `usu_correo`,`core_usuarios`.`usu_creacion_fec` AS `usu_creacion_fec`,`core_usuarios`.`usu_img` AS `usu_img`,`core_usuarios`.`usu_id_estado` AS `usu_id_estado`,'partner' AS `grupo_usuario`,`partners`.`par_id` AS `par_id`,`partners`.`par_nickname` AS `par_nickname`,`partners`.`par_email` AS `par_email`,`partners`.`par_full_name` AS `par_full_name`,`partners`.`par_chief` AS `par_chief`,`partners`.`par_flag_customer` AS `par_flag_customer`,`partners`.`par_acount_type_id` AS `par_acount_type_id`,`partners`.`par_flag_partner_profiler` AS `par_flag_partner_profiler`,`partners`.`par_other_type_account_id` AS `par_other_type_account_id`,`partners`.`par_state` AS `par_state` from (`partners` join `core_usuarios` on((`partners`.`usu_id` = `core_usuarios`.`usu_id`)))) */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

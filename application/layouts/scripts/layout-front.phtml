@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link id="page_favicon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAA/klEQVQ4je2RsU7DMBRFMzFmyEbsIU5MnyATv4DEwB+gTnwB38MPgBSPlJmRCbEgYsEQ2+3YGCgbSy+DmyqRKLAwIHGlJz1ZV0f3XUfRv35PpBy6vW4EvvJuBFBloY2ANj8EtEyujVRZLMYlPJPQvQQtLzbDPJdoeYAsxmUA9N48y5eeyyHAJ0k8i3kyi3nSjPZhVtMHeC4x382X870Cz2WGzv8QRVshVhrI9TTDqHIg5XB9eozXcMLb403o4clypBMfoCw/GyZhUtfTDNoIbJ+/3JGy66jaCFzeH92SckgnHi0rTj7tQDfiqmucqgHgnZQ9IOWwc9EcfvMXf00fb8CbTqdooMMAAAAASUVORK5CYII=" rel="icon" type="image/x-icon">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <?php echo $this->headTitle() ?>
+        <?php echo $this->headMeta() ?>
+        <?php echo $this->headStyle() ?>
+        <?php echo $this->headScript() ?>        
+        <?php echo $this->headLink() ?>
+        <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="/front/css/reset.css" />
+        <!-- empieza backend scripts -->
+        <link rel="stylesheet" type="text/css" href="/static/back-css/header.css" />
+        <link rel="stylesheet" type="text/css" href="/static/back-css/footer.css" />
+        <link rel="stylesheet" type="text/css" href="/static/back-css/general.css" />
+        <link rel="stylesheet" type="text/css" href="/static/back-css/estilos.css" />
+        <link rel="stylesheet" type="text/css" href="/front/css/superfish.css" media="screen"/>
+        <script type="text/javascript" src="/front/js/superfish.js"></script>
+        <script type="text/javascript" src="/front/js/downdrop.js"></script>
+        <script type="text/javascript" src="/static/js/general.js"></script>
+        <!--<script type="text/javascript" src="/front/js/jquery.tipsy.js"></script>!-->
+
+        <!-- termina backend scripts -->
+        <link rel="stylesheet" type="text/css" href="/front/css/estilos-mexigo.css" />
+
+        <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        <link rel="stylesheet" type="text/css" href="/front/css/slide-joaco.css"/>
+        <script type="text/javascript" src="/front/js/slide-joaco.js"></script>
+        <script type="text/javascript" src="/front/js/slide-video-joaco.js"></script>
+
+
+        <!--<script type="text/javascript" src="js/prefixfree.js"></script>!-->
+        <link href="/front/galeria/css/styles.css" type="text/css" media="all" rel="stylesheet" />
+        <link href="/front/galeria/css/skitter.styles.css" type="text/css" media="all" rel="stylesheet" />
+        <link href="/front/galeria/css/highlight.black.css" type="text/css" media="all" rel="stylesheet" />
+        <link href="/front/galeria/css/sexy-bookmarks-style.css" type="text/css" media="all" rel="stylesheet" />
+
+<!--<script type="text/javascript" src="js/jquery.js"></script>-->
+        <script src="/front/galeria/js/jquery.easing.1.3.js"></script>
+        <script src="/front/galeria/js/jquery.animate-colors-min.js"></script>
+        <script src="/front/galeria/js/jquery.skitter.js"></script>
+        <script src="/front/galeria/js/highlight.js"></script>
+        <script src="/front/galeria/js/sexy-bookmarks-public.js"></script>
+
+
+        <script type="text/javascript" src="/front/js/script.js"></script>
+        <link href="/front/css/new-estilos.css" type="text/css" media="all" rel="stylesheet" />
+    </head>
+    <body>
+        <?php include 'layout/banner-top-home.php'; ?>
+        <!--<div id="header-shadow-left" class="header-shadow" ></div>
+        <div id="header-shadow-center" class="header-shadow" ></div>
+        <div id="header-shadow-right" class="header-shadow" ></div>-->
+        <div id="wrapper-back">
+            <header id="header-front-wrapper">
+                <div id="header-up" class="header-front-up">
+                    <div id="header-up-left" ><img src="/front/images/logo-front.png"/><h1>Connecting M&eacute;xico to Canadians</h1></div>
+                    <div id="header-up-right" >
+                        <p id="welcome-mexigo" >WELCOME TO MEXI-GO!</p>
+                        <a id="front-header-subscribe" href="" class="boton-css-formato boton-css-gradient-yellow oswald round-corner-5">SUBSCRIBE</a>
+                        <nav id="sub-menu-front">
+                            <ul>
+                                <li class="gri">
+                                    <a href="" >About us</a>
+                                </li>
+                                <li class="gri">
+                                    <a href="" >Blog</a>
+                                </li>
+                                <li class="gri">
+                                    <a href="/contact.html" >Contact</a>
+                                </li>
+                                <li class="gri">
+                                    <a href="/magazine.html" >Magazine</a>
+                                </li>
+                                <li>
+                                    <a href="/" class="linkAmarillo">Sign in</a>
+                                </li>
+                            </ul>
+                        </nav>
+
+                    </div>
+                </div>
+                <div id="header-down" class="header-front">                                         
+                    <ul id="nav">
+                        <li class="realstateli">
+                            <a class="realstate" href="#">REAL STATE</a>
+
+                            <ul>
+                                <li class="header"></li>
+                                <li><a href="">SEARCH LISTINGS</a></li>
+                                <li><a href="">FIND AN AGENT</a></li>
+                                <li><a href="">PARTNERS</a></li>
+                                <li><a href="">DEVELOPMENTS</a></li>
+                                <li><a href="">REGIONS</a></li>
+                                <li><a href="">BUYING</a></li>
+                                <li><a href="">SELLING</a></li>
+                            </ul>
+                        </li>
+                        <li class="trevel_menuli">
+                            <a class="trevel_menu"  href="#">TRAVEL</a>
+                            <ul>
+                                <li class="header"></li>
+                                <li><a href="">PARTNERS</a></li>
+                                <li><a href="">DESTINATIONS</a></li>
+                                <li><a href="">RENTAL LISTINGS</a></li>
+                                <li><a href="">TRAVEL/BLOG ARTICLES</a></li>
+                            </ul>
+                        </li>
+                        <li class="retirement_menuli">
+                            <a class="retirement_menu" href="#">RETIRAMENT</a>
+                            <ul>
+                                <li class="header"></li>
+                                <li><a href="">PARTNERS</a></li>
+                                <li><a href="">*HEALTHCARE</a></li>
+                                <li><a href="">*IMMIGRATION</a></li>
+                                <li><a href="">*FINANCIAL</a></li>
+                                <li><a href="">EXTENDED CARE</a></li>
+                            </ul>
+                        </li>
+                        <li class="living_menuli">
+                            <a class="living_menu" href="#">LIVING</a>
+                            <ul>
+                                <li class="header"></li>
+                                <li><a href="">PARTNERS</a></li>
+                                <li><a href="">*LIFE IN MEXICO</a></li>
+                                <li><a href="">*EDUCATION</a></li>
+                                <li><a href="">*LANGUAGE</a></li>
+                                <li><a href="">*NATURE</a></li>
+                                <li><a href="">*PETS</a></li>
+                                <li><a href="">*SAFETY</a></li>
+                            </ul>
+                        </li>
+                        <li class="parteners_menuli">
+                            <a class="parteners_menu" href="#">PARTENERS</a>
+                            <ul>
+
+                            </ul>
+                        </li>
+                        <li class="contact_menuli"> 
+                            <a class="contact_menu" href="#">CONTACT</a>
+                            <ul>
+
+                            </ul>
+                        </li>
+                    </ul>
+                    <nav id="social-links" >
+                        <ul>
+                            <li><a href="" id="saved-header"><span class="oswald">Saved homes</span></a></li>
+                            <li><a href="" class="social-icons facebook-icon">follow us facebook</a></li>
+                            <li><a href="" class="social-icons twitter-icon" >follow us twitter</a></li>
+                            <li><a href="" class="social-icons linked-in-icon" >follow us linked in</a></li>
+                            <li><a href="" class="social-icons tumblr-icon" >follow us tumblr</a></li>
+                            <li><a href="" class="social-icons pinterest-icon" >follow us pinterest</a></li>
+                        </ul>
+                    </nav>
+
+
+
+
+                </div>
+            </header>
+
+            <?php echo $this->layout()->content ?> 
+            <footer class="footer-front clear-both">
+
+                <div id="footer-front-left">
+                    <div id="real-estate-menu-footer" class="title-menu-footer">
+                        <div id="footer-title-real-estate" class="acual-format"><span  class="oswald">REAL ESTATE</span></div>
+                        <nav>
+                            <ul>
+                                <li><a href="">SEARCH LISTINGS</a></li>
+                                <li><a href="">FIND AN AGENT</a></li>
+                                <li><a href="">PARTNERS</a></li>
+                                <li><a href="">DEVELOPERS</a></li>
+                                <li><a href="">REGIONS</a></li>
+                                <li><a href="">BUYING</a></li>
+                                <li><a href="">SELLING</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div id="travel-menu-footer" class="title-menu-footer">
+                        <div id="footer-title-travel" ><span  class="oswald">TRAVEL</span></div>
+                        <nav>
+                            <ul>
+                                <li><a href="">PARTNERS</a></li>
+                                <li><a href="">DESTINATIONS</a></li>
+                                <li><a href="">RENTAL LISTINGS</a></li>
+                                <li><a href="">*RECOMENDATIONS</a></li>
+                                <li><a href="">*TRAVEL TIPS</a></li>
+                                <li><a href="">MEDICAL TOURISM</a></li>
+                                <li><a href="">PROMOTIONS</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div id="retirement-menu-footer" class="title-menu-footer">
+                        <div id="footer-title-retirement" class="acual-format"><span  class="oswald">RETIREMENT</span></div>
+                        <nav>
+                            <ul>
+                                <li><a href="">PARTNERS</a></li>
+                                <li><a href="">*HEALTHCARE</a></li>
+                                <li><a href="">*IMMIGRATION</a></li>
+                                <li><a href="">*FINANCIAL</a></li>
+                                <li><a href="">*EXTENDED CARE</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div id="living-menu-footer" class="title-menu-footer">
+                        <div id="footer-title-living" ><span class="oswald">LIVING</span></div>
+                        <nav>
+                            <ul>
+                                <li><a href="">PARTNERS</a></li>
+                                <li><a href="">*LIFE IN MEXICO</a></li>
+                                <li><a href="">*EDUCATION</a></li>
+                                <li><a href="">*LANGUAGE</a></li>
+                                <li><a href="">*NATURE</a></li>
+                                <li><a href="">*PETS</a></li>
+                                <li><a href="">*SAFETY</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div id="banner-mexigo-footer">
+                        <div id="cuadro-ama" class="round-corner-3 ">
+                            <p class="fst oswald" >LOOKING FOR EXPERT ADVICE<br/><span>CONTACT ONE OF OUR LOCAL AREA SPECIALISTS</span></p>
+                            <P class="snd oswald" >CANADA & USA<br/><span>604 757-3835</span></P>
+                            <p class="trd oswald" >MEXICO<br/><span>329 298-1639</span></p>
+                        </div>
+                    </div>                   
+
+                </div>
+                <div id="footer-front-right">
+                    <div id="partners-menu-footer">
+                        <div id="footer-title-partners" class="acual-format"><span class="oswald">PARTNERS</span></div>
+                        <div class="barra-footer-dash"></div>
+                        <div class="align-center">
+                            <a id="go-for-parts" class="boton-css-formato boton-css-gradient-yellow oswald round-corner-5" href="" id="">Mexi-Go! for PARTNERS</a>
+                        </div>
+                        <div class="barra-footer-dash"></div>
+                        <div id="contacto-footer-blok">
+                            <span>Contact</span>
+                            <nav>
+                                <ul>
+                                    <li><a href="">MEXI-GO! MARKETING</a></li>
+                                    <li><a href="">MEXI-GO MAGAZINE</a></li>
+                                    <li><a href="">CONNECTING WITH CANADIANS</a></li>
+                                    <li><a href="">MEXI-GO TEAM</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div id="partners-menu-footer">
+
+                    </div>
+                    <div id="contact-menu-footer">
+
+                    </div>
+
+                </div>
+                <div id="div-abajo-footer">
+                    <p class="fst oswald" >PRIVACY POLICY<br/>SITE MAP</p>
+                    <p class="snd oswald" >&copy;2012 Mexi-GoProperties.com - Mexican Real Estate for Canadian Buyers</p>
+                    <div class="trd oswald" >
+                        <nav id="footer-social-links" class="nav-right">
+                            <ul >
+                                <li><span>SOCIAL MEDIA:</span> </li>
+                                <li><a href="" class="social-icons facebook-icon">follow us facebook</a></li>
+                                <li><a href="" class="social-icons twitter-icon" >follow us twitter</a></li>
+                                <li><a href="" class="social-icons linked-in-icon" >follow us linked in</a></li>
+                                <li><a href="" class="social-icons tumblr-icon" >follow us tumblr</a></li>
+                                <li><a href="" class="social-icons pinterest-icon" >follow us pinterest</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </footer>
+            <section id="footer-front-bottom-banner">
+                <div id=""><img src="/front/images//banner-footer.jpg"/></div>
+            </section>
+        </div>    
+    </body>
+</html>

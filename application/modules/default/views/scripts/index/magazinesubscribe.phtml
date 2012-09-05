@@ -1,0 +1,58 @@
+<div id="central-content" class="magazine-subscribe">
+    <section id="left-content">
+        <h3 class="h3-cms oswald no-margin">Magazine</h3>
+        <div id="box-magazine-subscribe-form">
+            <hr class="hr-gris-style2">
+            <p class="black-bar font-18 text-white oswald">SUBSCRIBE / ENTER YOUR INFORMATION BELOW:</p>
+            <div class="separator-10"></div>
+            <p class="yellow-bar font-23 oswald">MEXI-GO! MAGAZINE</p>
+            <div class="separator-10"></div>
+            <p class="align-center font-14">To: <span class="text-gris-claro">subscribe@mexi-go.ca</span></p>
+            <div class="separator-10"></div>
+            <form id="form-account-setting" class="form-account-setting">
+                <fieldset id="profile">
+                    <label for="accountUserName">*Full Name:</label>
+                    <input type="text" id="accountUserName" name="accountUserName" /><br/>
+                    <label for="accountEmail">*Mailing Address:</label>
+                    <input type="text" id="accountEmail" name="accountEmail" /><br/>
+                    <label for="accountFullName">*Suite/Apt/Unit:</label>
+                    <input type="text" id="accountFullName" name="accountFullName" /><br/>
+                    <div class="combo-fix">
+                        <label for="accountCity">City:</label>
+                        <div class="flecha-combo"><select type="text" id="accountCity" name="accountCity" ><option>Montevideo</option><option>Maldonado</option></select></div>
+                    </div><br/>
+                    <div class="combo-fix">
+                        <label for="accountCountry">Country:</label>
+                        <div class="flecha-combo"><select type="text" id="accountCountry" name="accountCountry" ><option>Uruguay</option><option>Brasil</option></select></div>
+                    </div><br/>
+                    <div class="combo-fix">
+                        <label for="accountState">State/Province:</label>
+                        <div class="flecha-combo"><select type="text" id="accountState" name="accountState" ><option>Montevideo</option><option>Maldonado</option></select></div>
+                    </div><br/>
+                    <label for="accountRfc">Zip/Postal Code:</label>
+                    <input type="text" id="accountZip" name="accountZip" /><br/>
+                    <label for="accountPhonePre">Phone:</label>
+                    <input type="text" id="accountPhonePre" name="accountPhonePre" class="campo-chico-3"/> -
+                    <input type="text" id="accountPhone1" name="accountPhone1" class="campo-chico-3" /> -
+                    <input type="text" id="accountPhone2" name="accountPhone2" class="campo-chico-3" /><br/>
+                    <label for="accountUserName">*Email Address:</label>
+                    <input type="text" id="accountUserName" name="accountUserName" /><br/>
+                    <div class="div-center-submit-payment">
+                        <label for="accountUserName" class="bold">Payment Information:</label>
+                        <input type="checkbox" id="check_01" name="check_01">
+                        <label for="check_01" style="float: left; margin-left: 5px;"><img src="/front/images/paypal-logo.png" style="float: left; margin-left: 25px;"></label>
+                    </div>
+                </fieldset>
+                <p class="align-center font-14 bold">Subscription Term: 4 issues Available to Canadian addresses only.</p> 
+                <p class="align-center font-14 text-gris-claro no-margin">Payments made via Paypal Inc. to Mexi-Go! Properties Inc.</p>
+                <p style="margin-top: 10px ! important; padding: 0px 132px;" class="align-center font-14 text-gris-claro no-margin">May we send you email notifications regardingyour transactions and special offers?</p>
+                <div class="separator-20"></div>
+                <p class="font-14 text-gris-claro">YES<input type="radio" name="subscribe-magazine"> NO<input type="radio" name="subscribe-magazine"></p>
+                <input id="save-account-form" class="boton-yellow-1  oswald" type="submit" value="SAVE >>"/>
+            </form>
+        </div>
+    </section>
+    <div class="news-box col col_5">
+        <? echo $this->MenuLateral('busqueda-lateral'); ?>
+    </div>
+</div>
