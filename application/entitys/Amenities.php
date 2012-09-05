@@ -31,7 +31,8 @@ class Application_Entity_Amenities extends CST_Entity
     
     static function listAmenities()
     {
-        return $this->_modelAmenities->listing();
+        $model = new Application_Model_Amenities();
+        return $model->listing();
     }
     
     public function editAmenities($data)

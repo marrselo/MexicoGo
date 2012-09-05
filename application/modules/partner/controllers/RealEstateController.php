@@ -108,7 +108,11 @@ class Partner_RealEstateController extends CST_Controller_ActionPartner {
     }
 
     public function featuresAction() {
-        //$this->view->listFeatures = Application_Entity_
+        $this->view->listFeatures = Application_Entity_Feature::listFeatures();        
+        $this->view->listBuildings = Application_Entity_Building::listBuildings();        
+        $this->view->listAmenities = Application_Entity_Amenities::listAmenities();        
+        $this->view->listApplianve = Application_Entity_Appliance::listAppliances();
+        print_r($this->view->listApplianve);exit;
             
     }
 

@@ -35,7 +35,7 @@ class Application_Model_Features extends CST_Model {
     public function listing()
     {    	
         return $this->_modelFeatures->select()               
-               ->order('fea_ids DESC')
+               ->order('fea_id DESC')
                ->query()
                ->fetchAll();
     }

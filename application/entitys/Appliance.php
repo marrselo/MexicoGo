@@ -31,7 +31,8 @@ class Application_Entity_Appliance extends CST_Entity
     
     static function listAppliances()
     {
-        return $this->_modelAppliances->listing();
+        $model = new Application_Model_Appliances();
+        return $model->listing();
     }
     
     public function editAppliances($data)

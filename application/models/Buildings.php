@@ -35,7 +35,7 @@ class Application_Model_Buildings extends CST_Model {
     public function listing()
     {    	
         return $this->_modelBuildings->select()               
-               ->order('bui_ids DESC')
+               ->order('bui_id DESC')
                ->query()
                ->fetchAll();
     }

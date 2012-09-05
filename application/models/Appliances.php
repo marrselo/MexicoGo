@@ -35,7 +35,7 @@ class Application_Model_Appliances extends CST_Model {
     public function listing()
     {    	
         return $this->_modelAppliances->select()
-               ->order('app_ids DESC')
+               ->order('app_id DESC')
                ->query()
                ->fetchAll();
     }

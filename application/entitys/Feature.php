@@ -31,7 +31,8 @@ class Application_Entity_Feature extends CST_Entity
     
     static function listFeatures()
     {
-        return $this->_modelFeatures->listing();
+        $model = new Application_Model_Features();
+        return $model->listing();
     }
     
     public function editFeatures($data)

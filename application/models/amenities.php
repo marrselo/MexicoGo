@@ -35,7 +35,7 @@ class Application_Model_Amenities extends CST_Model {
     public function listing()
     {    	
         return $this->_modelAmenities->select()               
-               ->order('ame_ids DESC')
+               ->order('ame_id DESC')
                ->query()
                ->fetchAll();
     }
