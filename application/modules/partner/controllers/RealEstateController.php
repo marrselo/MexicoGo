@@ -108,7 +108,8 @@ class Partner_RealEstateController extends CST_Controller_ActionPartner {
     }
 
     public function featuresAction() {
-        // action body
+        //$this->view->listFeatures = Application_Entity_
+            
     }
 
     public function agentAssignAction() {
