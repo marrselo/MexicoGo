@@ -4,18 +4,18 @@
  *
  * @author marrselo
  */
-class Application_Model_Amenities extends CST_Model {
+class Application_Model_Buildings extends CST_Model {
     
-    protected $_modelAmenities;
+    protected $_modelBuildings;
 
     function __construct() {
-        $this->_modelAmenities = new Application_Model_TableBase_Amenities();
+        $this->_modelBuildings = new Application_Model_TableBase_Buildings();
     }
 
     function insert($data)
     {
-        if ($this->_modelAmenities->insert($data)) {
-            return $this->_modelAmenities
+        if ($this->_modelBuildings->insert($data)) {
+            return $this->_modelBuildings
                             ->getAdapter()
                             ->lastInsertId();
         } else {
@@ -23,19 +23,19 @@ class Application_Model_Amenities extends CST_Model {
         }
     }
 
-    function getAgents($id) 
+    function getBuildings($id) 
     {
-        return $this->_modelAmenities
+        return $this->_modelBuildings
                         ->select()
-                        ->where('ame_id = ?', $id)
+                        ->where('bui_id = ?', $id)
                         ->query()
                         ->fetch();
     }
     
     public function listing()
     {    	
-        return $this->_modelAmenities->select()               
-               ->order('ame_id DESC')
+        return $this->_modelBuildings->select()               
+               ->order('bui_id DESC')
                ->query()
                ->fetchAll();
     }
@@ -43,9 +43,9 @@ class Application_Model_Amenities extends CST_Model {
     function update($id, $data)
     {
         if ($id != '' && $data != '') {
-            $where = $this->_modelAmenities->getAdapter()
-                ->quoteInto('ame_id = ?', $id);
-            $this->_modelAmenities->update($data, $where);
+            $where = $this->_modelBuildings->getAdapter()
+                ->quoteInto('bui_id = ?', $id);
+            $this->_modelBuildings->update($data, $where);
         }else{
             return false;
         }
