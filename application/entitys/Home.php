@@ -1,10 +1,12 @@
 <?php
+
 /**
  * Description of Home
  *
  * @author marrselo
  */
-class Application_Entity_Home extends CST_Entity{
+class Application_Entity_Home extends CST_Entity {
+
     //put your code here
     public $_id;
     public $_idPartner;
@@ -24,20 +26,22 @@ class Application_Entity_Home extends CST_Entity{
     public $_idListingStatus;
     public $_idPropertyType;
     public $_price;
-    public $_houseMetros;
-    public $_LandMetros;
-    public $_Bedroon;
+    public $_houseDetail;
+    public $_landDetail;
+    public $_bedroon;
     public $_idStyle;
-    public $_Garage;
+    public $_garage;
     public $_idView;
-    public $_RecreationalAreas;
-    public $_Bathrooms;
+    public $_recreationalAreas;
+    public $_bathrooms;
     public $_keywords;
     public $_size;
     public $_addressFeature;
-    
-    
-    function setArrayData(){
+    public $_featureFeature;
+    public $_featureBuilding;
+    public $_featureAppliances;
+
+    function setArrayData() {
         $param['title'] = $this->_title;
         $param['description'] = $this->_description;
         $param['address'] = $this->_addres;
@@ -48,85 +52,105 @@ class Application_Entity_Home extends CST_Entity{
         $param['latitud'] = $this->_latitud;
         $param['longitud'] = $this->_longitud;
         $param['pro_status'] = $this->_status;
-        $param['bathrooms'] = $this->_Bathrooms;
-        $param['bedroon'] = $this->_Bedroon;
-        $param['garage'] = $this->_Garage;
+        $param['bathrooms'] = $this->_bathrooms;
+        $param['bedroom'] = $this->_bedroon;
+        $param['garage'] = $this->_garage;
         $param['listing_status_id'] = $this->_idListingStatus;
         $param['property_type_id'] = $this->_idPropertyType;
-        $param['recreational_areas'] = $this->_RecreationalAreas;
+        $param['recreational_areas'] = $this->_recreationalAreas;
         $param['property_style_id'] = $this->_idStyle;
         $param['property_view_id'] = $this->_idView;
         $param['par_id'] = $this->_idPartner;
         $param['pro_price'] = $this->_price;
-        $param['details_house_id'] = $this->_houseMetros;
-        $param['details_land_id'] = $this->_LandMetros;
+        $param['pro_house_details'] = $this->_houseDetail;
+        $param['pro_house_details'] = $this->_landDetail;
         $param['keyword'] = $this->_keywords;
         $param['size'] = $this->_size;
         $param['address_feature'] = $this->_addressFeature;
-        foreach($param as $index=>$value){
-            if($value==''){
+        foreach ($param as $index => $value) {
+            if ($value == '') {
                 unset($param[$index]);
             }
         }
         return $param;
     }
-    
-    function identifiqueHome($idProperty){
-        if($idProperty==''){
-         return false;   
+
+    function identifiqueHome($idProperty, $idPartern) {
+        $modelProperties = new Application_Model_Properties();
+        if ($idProperty == '' || $idPartern == '') {
+            return false;
         }
         $modelProperties = new Application_Model_Properties();
-        $param = $modelProperties->getPropertyId($idProperty);
-        if($param!=FALSE){
-        $this->_title = $param['title'];
-        $this->_description = $param['description'];
-        $this->_addres = $param['address'];
-        $this->_suitApaUnit = $param['suit_apa_unit'];
-        $this->_city = $param['cd_id'];
-        $this->_state = $param['est_id'];
-        $this->_zip = $param['zip'];
-        $this->_latitud = $param['latitud'];
-        $this->_longitud = $param['longitud'];
-        $this->_status = $param['pro_status'];
-        $this->_Bathrooms = $param['bathrooms'];
-        $this->_Bedroon = $param['bedroon'];
-        $this->_Garage = $param['garage'];
-        $this->_idListingStatus = $param['listing_status_id'];
-        $this->_idPropertyType = $param['property_type_id'];
-        $this->_RecreationalAreas = $param['recreational_areas'];
-        $this->_idStyle = $param['property_style_id'];
-        $this->_idView = $param['property_view_id'];
-        $this->_idPartner = $param['par_id'];
-        $this->_price = $param['pro_price'];
-        $this->_houseMetros = $param['details_house_id'];
-        $this->_LandMetros = $param['details_land_id'];
-        $this->_keywords = $param['keyword'];
-        $this->_size = $param['size'];
-        $this->_addressFeature = $param['address_feature'];
-        return true;
-        }else{
+        $param = $modelProperties->getPropertyId($idProperty, $idPartern);
+        if ($param != FALSE) {
+            $this->_title = $param['title'];
+            $this->_id = $param['pro_id'];
+            $this->_description = $param['description'];
+            $this->_addres = $param['address'];
+            $this->_suitApaUnit = $param['suit_apa_unit'];
+            $this->_city = $param['cd_id'];
+            $this->_state = $param['est_id'];
+            $this->_zip = $param['zip'];
+            $this->_latitud = $param['latitud'];
+            $this->_longitud = $param['longitud'];
+            $this->_status = $param['pro_status'];
+            $this->_bathrooms = $param['bathrooms'];
+            $this->_bedroon = $param['bedroom'];
+            $this->_garage = $param['garage'];
+            $this->_idListingStatus = $param['listing_status_id'];
+            $this->_idPropertyType = $param['property_type_id'];
+            $this->_recreationalAreas = $param['recreational_areas'];
+            $this->_idStyle = $param['property_style_id'];
+            $this->_idView = $param['property_view_id'];
+            $this->_idPartner = $param['par_id'];
+            $this->_price = $param['pro_price'];
+            $this->_houseDetail = $param['pro_house_details'];
+            $this->_landDetail = $param['pro_house_details'];
+            $this->_keywords = $param['keyword'];
+            $this->_size = $param['size'];
+            $this->_addressFeature = $param['address_feature'];
+            $this->_featureAppliances = $this->getAppliance();
+            $this->_featureBuilding = $this->getBuilding();
+            $this->_featureFeature = $this->getFeature();
+            return true;
+        } else {
             return false;
         }
     }
-    
-    function insertHome(){
+
+    function insertHome() {
         $modelProperties = new Application_Model_Properties();
         $data = $this->setArrayData();
         $this->_id = $modelProperties->insert($data);
+        $this->addAppliance();
+        $this->addFeature();
+        $this->addBuilding();
     }
-    function updateHome(){
+
+    function updateHome() {
         $modelProperties = new Application_Model_Properties();
-        $data = $this->setArrayData();
-        return $modelProperties->edit($this->_id,$data);
+        if ($modelProperties->isHomePartner($this->_id, $this->_idPartner) != FALSE) {
+            $data = $this->setArrayData();
+            if($modelProperties->update($this->_id, $data)){
+                $this->addAppliance();
+                $this->addFeature();
+                $this->addBuilding();
+                return true;
+            }
+        } else {
+            return FALSE;
+        }
     }
-    function addFile(){
+
+    function addFile() {
         $modelProperties = new Application_Model_Properties();
         if (is_array($this->_files)) {
             foreach ($this->_files as $index) {
                 $data['fil_title'] = $index['title'];
                 $data['fil_source'] = $index['source'];
                 $data['pro_id'] = $this->_id;
-                if ($fileSource = $modelProperties->getFileSource($index['source'])) {
+                $fileSource = $modelProperties->getFileSource($index['source'], $this->_id);
+                if ($fileSource != FALSE) {
                     $modelProperties->updatePropertyesFile($fileSource['fil_id'], $data);
                 } else {
                     $modelProperties->insertPropertyesFile($data);
@@ -134,17 +158,21 @@ class Application_Entity_Home extends CST_Entity{
             }
         }
     }
-    function listingsFile(){
-         $modelProperties = new Application_Model_Properties();
-         return $modelProperties->listingPropertyFile($this->_id);
+
+    function listingsFile() {
+        $modelProperties = new Application_Model_Properties();
+        return $modelProperties->listingPropertyFile($this->_id);
     }
-    function listingVideo(){
-        if($this->_id=='')
+
+    function listingVideo() {
+        if ($this->_id == '')
             return false;
         $modelPropVid = new Application_Model_Properties();
         return $modelPropVid->listingVideo($this->_id);
     }
+
     function validateVideo($uri) {
+        return 'youtube';
         $result = CST_Utils::validateUrlYoutube($uri);
         if ($result['validate'] != FALSE) {
             return $result['type'];
@@ -157,6 +185,7 @@ class Application_Entity_Home extends CST_Entity{
             }
         }
     }
+
     function addVideo() {
         $videosInput = $this->_videos;
         $modelPropVid = new Application_Model_Properties();
@@ -164,7 +193,7 @@ class Application_Entity_Home extends CST_Entity{
         $delete = FALSE;
         if (is_array($videosInput) && !empty($videosInput)) {
             foreach ($videosInput as $index) {
-                if ($type = $this->validateVideo($index)) {
+                if ($index != '' && $type = $this->validateVideo($index)) {
                     $data['pro_id'] = $this->_id;
                     $data['vid_uri'] = $index;
                     $data['vid_type'] = $type;
@@ -174,7 +203,7 @@ class Application_Entity_Home extends CST_Entity{
             }
         } else {
             if (is_string($videosInput) && !$videosInput != '') {
-                if ($type = $this->validateVideo($videosInput)) {
+                if ($videosInput != '' && $type = $this->validateVideo($videosInput)) {
                     $data['par_id'] = $this->_id;
                     $data['vid_uri'] = $videosInput;
                     $data['vid_type'] = $type;
@@ -189,8 +218,86 @@ class Application_Entity_Home extends CST_Entity{
             }
         }
     }
-    
-    
+
+    function getFeature() {
+        $model = new Application_Model_Properties();
+        return CST_Utils::fetchPairs($model->getFeatureRel($this->_id));
+    }
+
+    function getAppliance() {
+        $model = new Application_Model_Properties();
+        return CST_Utils::fetchPairs($model->getApplianceRel($this->_id));
+    }
+
+    function getBuilding() {
+        $model = new Application_Model_Properties();
+        return CST_Utils::fetchPairs($model->getBuildingRel($this->_id));
+    }
+
+    function addFeature() {
+        $arrayData = $this->_featureFeature;
+        $model = new Application_Model_Properties();
+        $arrayRel = $this->getFeature();
+        if (is_array($arrayData) and !empty($arrayData)) {
+            foreach ($arrayData as $index) {
+                unset($arrayRel[$index]);
+                if ($model->getFeatureRel($this->_id, $index) == FALSE) {
+                    $data['par_id'] = $this->_id;
+                    $data['fea_id'] = $index;
+                    $model->insertFeatureRel($data);
+                }
+            }
+            if (!empty($arrayRel)) {
+                foreach ($arrayRel as $index => $value) {
+                    $model->deleteFeatureRel($index, $this->_id);
+                }
+            }
+        }
+    }
+
+    function addAppliance() {
+        $arrayData = $this->_featureAppliances;
+        $model = new Application_Model_Properties();
+        $arrayRel = $this->getAppliance();
+        print_r($arrayData);
+        if (is_array($arrayData) and !empty($arrayData)) {
+            foreach ($arrayData as $index) {
+                unset($arrayRel[$index]);
+                if ($model->getApplianceRel($this->_id, $index) == FALSE) {
+                    $data['par_id'] = $this->_id;
+                    $data['app_id'] = $index;
+                    $model->insertApplianceRel($data);
+                }
+            }
+            if (!empty($arrayRel)) {
+                foreach ($arrayRel as $index => $value) {
+                    $model->deleteApplianceRel($index, $this->_id);
+                }
+            }
+        }
+    }
+
+    function addBuilding() {
+        $arrayData = $this->_featureBuilding;
+        $model = new Application_Model_Properties();
+        $arrayRel = $this->getAppliance();
+        if (is_array($arrayData) and !empty($arrayData)) {
+            foreach ($arrayData as $index) {
+                unset($arrayRel[$index]);
+                if ($model->getBuildingRel($this->_id, $index) == FALSE) {
+                    $data['par_id'] = $this->_id;
+                    $data['bui_id'] = $index;
+                    $model->insertBuildingRel($data);
+                }
+            }
+            if (!empty($arrayRel)) {
+                foreach ($arrayRel as $index => $value) {
+                    $model->deleteBuildingRel($index, $this->_id);
+                }
+            }
+        }
+    }
+
 }
 
 ?>

@@ -26,7 +26,9 @@ class CST_Utils {
         return $arrayResponse;
     }
 
-    static function fetchPairs($array) {
+    static function fetchPairs($array = array()) {
+        if(!is_array($array))
+            return array();
         $arrayResponse = array();
         foreach ($array as $index => $datos) {
             $keys = array_keys($datos);

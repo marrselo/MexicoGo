@@ -11,35 +11,73 @@
     </aside>
     <section id="block-right">
         <form id="real-state-listing-page" class="form-account-setting" method="post" action="" enctype="multipart/form-data">
+            <input name="home" id="home" type="hidden" value="<?php echo $this->idHome; ?>" >
             <hr class="hr-gris">
             <fieldset id="about-this-home"><legend class="oswald">ABOUT THIS HOME</legend>
                 <br>
-                <input type="text" id="profileWebsite" value="Title" name="locationTitle"><span class="text-gris-claro desc-titulo">Describe this home in less than 25 characters</span><br>
-                <textarea id="homeDescription" name="locationDescription">Write a short description that will appear on your profile page</textarea>
+                <input type="text" id="profileWebsite" value="<?php echo $this->data['_title']; ?>" name="locationTitle"><span class="text-gris-claro desc-titulo">Describe this home in less than 25 characters</span><br>
+                <textarea id="homeDescription" name="locationDescription"><?php echo $this->data['_description']; ?></textarea>
             </fieldset>
             <fieldset id="upload-pdf"><legend class="oswald">FEATURE THIS HOME <input type="radio" value=""></legend>
 
             </fieldset>
             <hr class="hr-gris">
             <fieldset id="upload-pdf"><legend class="oswald">ATTACHABLE DOCUMENTS</legend>
-                <div class="upload-button">
-                    <fieldset class="upload-file-fieldset">PDF</fieldset>
-                    <img id="img-upload-file" src="<?php echo CST_Server_ServerStatic::getUrl(); ?>/images/upload-button.png">
-                    <input class="ruta-input-file" type="text">
-                    <input type="file" value="" name="fileLocation1">
-                    
-                    <script>
-                        $(function(){
-                            $("#img-upload-file").click(function(){
-                                $(".upload-button input:file").click();
-                            });
-                            $(".upload-button input:file").change(function(){
-                                $(".ruta-input-file").val($(this).val());
-                            });
-                        });
-                    </script>
 
-                </div>
+                <div class="clear-both" ></div>
+                <?php
+                if (count($this->dataFile) > 0) {
+                    foreach ($this->dataFile as $index => $value) {
+                        ?>
+
+                        <div class="upload-button">
+                            <fieldset class="upload-file-fieldset">
+                                <a rel="_target" href="<?php echo CST_Server_ServerDinamic::getUrl(); ?>/partner/real-estate/file/<?php echo $value['fil_source'] ?>"> <?php echo $value['fil_title'] ?> </a>
+                            </fieldset>
+                            <div>
+                                <img id="img-upload-file<?php echo ($index + 1); ?>" src="<?php echo CST_Server_ServerStatic::getUrl(); ?>/images/upload-button.png">
+                                <input class="ruta-input-file" type="text" id="textFileLocation<?php echo ($index + 1); ?>">
+                                <input type="file" value="" name="fileLocation<?php echo ($index + 1); ?>" id="fileLocation<?php echo ($index + 1); ?>">
+                            </div>
+                            <script>
+                                $(function(){
+                                    $("#img-upload-file<?php echo ($index + 1); ?>").click(function(){
+                                        $("#fileLocation<?php echo ($index + 1); ?>").click();
+                                    });
+                                    $("#fileLocation<?php echo ($index + 1); ?>").change(function(){
+                                        $("#textFileLocation<?php echo ($index + 1); ?>").val($(this).val());
+                                        
+                                    });
+                                });
+                            </script>
+                        </div>
+                <div class="clear-both"></div>
+                        <?php
+                    }
+                } else {
+                    ?>
+                    <div class="upload-button">
+                        <fieldset class="upload-file-fieldset">PDF</fieldset>
+                        <div>
+                            <img id="img-upload-file1" src="<?php echo CST_Server_ServerStatic::getUrl(); ?>/images/upload-button.png">
+                            <input class="ruta-input-file" type="text" id="textFileLocation1">
+                            <input type="file" value="" name="fileLocation1" id="fileLocation1">
+                        </div>
+                        <script>
+                            $(function(){
+                                $("#img-upload-file1").click(function(){
+                                    $("#fileLocation1").click();
+                                });
+                                $("#fileLocation1").change(function(){
+                                    $("#textFileLocation1").val($(this).val());
+                                });
+                            });
+                        </script>
+                    </div>
+                    <?php
+                }
+                ?>
+
                 <a href="" class="boton-gris-basico button-shadow oswald upload-file-right-button">ADD ANOTHER &gt;&gt;</a>
             </fieldset>
             <hr class="hr-gris">
@@ -52,51 +90,78 @@
             </fieldset>
             <hr class="hr-gris">
             <fieldset id="upload-videos"><legend class="oswald">VIDEO GALLERY</legend>
-                <input type="text" id="profileVideo1" name="video1"><span class="text-gris-claro desc-subida-video">Insert your video link (vimeo or youtube)</span><br>
-                <input type="text" id="profileVideo2" name="video2"><span class="text-gris-claro desc-subida-video">Insert your video link (vimeo or youtube)</span><br>
+                <?php if (!empty($this->dataVideo)) { ?>
+                    <?php foreach ($this->dataVideo as $index => $value): ?>
+                        <input type="text" 
+                               id="video<?php echo $index + 1 ?>" 
+                               name="video<?php echo $index + 1 ?>"
+                               value="<?php echo $value['vid_uri'] ?>"
+                               />
+                        <span class="text-gris-claro desc-subida-video">Insert your video link (vimeo or youtube)</span><br>
+                        <?php
+                    endforeach;
+                    if (count($this->dataVideo) == 1) {
+                        ?>
+                        <input type="text" id="video2" name="video2" /><span class="text-gris-claro desc-subida-video">Insert your video link (vimeo or youtube)</span><br>                                
+                        <?php
+                    }
+                    ?>
+                <?php } else { ?>
+                    <input type="text" id="video1" name="video1" /><span class="text-gris-claro desc-subida-video">Insert your video link (vimeo or youtube)</span><br>                
+                    <input type="text" id="video2" name="video2" /><span class="text-gris-claro desc-subida-video">Insert your video link (vimeo or youtube)</span><br>                
+                <?php } ?>
                 <a href="" class="no-margen-left boton-gris-1 oswald">ADD MORE VIDEOS &gt;&gt;</a>                                
             </fieldset>
             <hr class="hr-gris">
             <fieldset id="loaction"><legend class="oswald">LOCATION</legend>
                 <div style="width:370px;float:left">
                     <label for="locationAddress">Address:</label>
-                    <input type="text" name="locationAddress" id="locationAddress">
+                    <input type="text" name="locationAddress" value="<?php echo $this->data['_addres']; ?>" id="locationAddress">
 
                     <br>
                     <label for="locationSuite">*Suite/Apt./Unit:</label>
-                    <input type="text" name="locationSuite" id="locationSuite">
+                    <input type="text" name="locationSuite" value="<?php echo $this->data['_suitApaUnit']; ?>" id="locationSuite">
                     <br>
+                    <div class="combo-fix">
+                        <label for="locationState">State:</label>
+                        <div class="flecha-combo">
+                            <select name="locationState" id="locationState" type="text">
+                                <option value="" >-------</option>
+                                <?php
+                                foreach ($this->estados as $index => $value):
+                                    $selected = $this->data['_state'] == $index ? 'Selected="Selected"' : '';
+                                    ?>
+                                    <option <?php echo $selected; ?>  value="<?php echo $index ?>" ><?php echo $value ?></option>
+<?php endforeach; ?>
+                            </select>
+                        </div>
+                    </div><br>
                     <div class="combo-fix">
                         <label for="locationCity">City:</label>
                         <div class="flecha-combo">
                             <select name="locationCity" id="locationCity" type="text">
                                 <option value="" >-------</option>
-                        <?php foreach($this->estados as $index=>$value):
-                            //$selected = $this->location['city']==$index?'Selected="Selected"':'';
-                            ?>
-                        <option <?php // echo $selected; ?>  value="<?php echo $index?>" ><?php echo $value?></option>
-                        <?php endforeach;?>
-                            </select>
-                        </div>
-                    </div><br>
-                    <div class="combo-fix">
-                        <label for="locationState">State:</label>
-                        <div class="flecha-combo">
-                            <select name="locationState" id="locationState" type="text">
-                                
+                                <?php
+                                foreach ($this->ciudades as $index => $value):
+                                    $selected = $this->data['_city'] == $index ? 'Selected="Selected"' : '';
+                                    ?>
+                                    <option <?php echo $selected; ?>  value="<?php echo $index ?>" ><?php echo $value ?></option>
+<?php endforeach; ?>
                             </select>
                         </div>
                     </div><br>
                     <div class="combo-fix">
                         <label for="locationZip">Zip/Postal Code:</label>
-                        <div class="flecha-combo"><select name="locationZip" id="locationZip" type="text"><option>12000</option><option>Maldonado</option></select></div>
+                        <div class="flecha-combo">
+                            <input type="text" name="locationZip" value="<?php echo $this->data['_zip']; ?>" id="locationZip"/>
+                        </div>
                     </div><br>
                 </div>
                 <div style="width:370px;float:left">
                     <label for="locationLatitud">Latitude:</label>
-                    <input type="text" name="locationLatitud" id="locationLatitud"><br>
+                    <input type="text" name="locationLatitud" value="<?php echo $this->data['_latitud']; ?>" id="locationLatitud"><br>
                     <label for="locationLongitud">Longitud:</label>
-                    <input type="text" name="locationLongitud" id="locationLongitud"><br>
+                    <input type="text" name="locationLongitud" value="<?php echo $this->data['_longitud']; ?>" id="locationLongitud"><br>
                     <p class="align-right"><a href="">How to do it &gt;&gt;</a><br><a href="">How to do find it &gt;&gt;</a></p>
                 </div>
 

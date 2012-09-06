@@ -129,7 +129,7 @@ class Application_Form_Profiler extends CST_Form {
                     )));
         
         $estados = array(''=>'-----');
-        $estados = array_merge(Application_Entity_Ubigeo::getEstados(),$estados) ;
+        $estados = (Application_Entity_Ubigeo::getEstados()+$estados) ;
         if(empty($estados)){
             $estados = array();
         }
@@ -138,7 +138,7 @@ class Application_Form_Profiler extends CST_Form {
                     'multioptions' => $estados
                     )));
         $ciudades = array(''=>'-----');
-        $ciudades = array_merge(Application_Entity_Ubigeo::getAllCiudades(),$ciudades) ;
+        $ciudades = (Application_Entity_Ubigeo::getAllCiudades()+$ciudades) ;
         $this->addElement(new Zend_Form_Element_Select('profilerLocationState',
                 array(
                     'multiOptions' => $ciudades

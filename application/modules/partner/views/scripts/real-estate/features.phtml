@@ -30,21 +30,40 @@
         <p id="number-published"><span>Home / Features</span></p>
 
         <div id="listings-about">
-            <form id="listings-about-form">
+            <form id="listings-about-form" method="post" action="">
                 <fieldset><legend class="oswald">ABOUT THIS HOME</legend>
                     <p class="listings-about-header-1 oswald"><span>STATUS</span></p>
                     <div class="combo-fix">
                         <label for="available">Available</label>
-                        <div class="flecha-combo"><select name="available" id="available" type="text"><option>Any</option><option>Yes</option><option>No</option></select></div>
+                        <div class="flecha-combo">
+                            <select name="available" id="available" type="text">
+                                <?php foreach($this->listAvailable as $index=>$value): ?>
+                                <option value='<?php echo $index;?>'><?php echo $value;?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
                     </div><br>
                     <p class="listings-about-header-1 oswald"><span>SELECT PROPERTY TYPE</span></p>
                     <div class="combo-fix float-left inline-block clear-none">
                         <label for="listingStatus">Listing Status</label>
-                        <div class="flecha-combo"><select name="listingStatus" id="listingStatus" type="text"><option>Any</option><option>Yes</option><option>No</option></select></div>
+                        <div class="flecha-combo">
+                            <select name="listingStatus" id="listingStatus" type="text">
+                                <?php foreach($this->listPropertyStatus as $index=>$value):?>
+                                <option value="<?php echo $index; ?>"><?php echo $value; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
                     </div>
                     <div class="combo-fix float-left inline-block clear-none">
                         <label class="label-special-width" for="propertyType">Property Type</label>
-                        <div class="flecha-combo"><select name="propertyType" id="propertyType" type="text"><option>Any</option><option>Yes</option><option>No</option></select></div>
+                        <div class="flecha-combo">
+                            <select name="propertyType" id="propertyType" type="text">
+                                <?php foreach($this->listPropertyType as $index=>$value):?>
+                                <option value="<?php echo $index; ?>"><?php echo $value; ?></option>
+                                <?php endforeach; ?>
+
+                            </select>
+                        </div>
                     </div><br>
                     <p class="listings-about-header-1 oswald"><span>PRICE</span></p>
                     <div class="combo-fix">
@@ -67,17 +86,36 @@
                     <div class="margin-bottom-special">
                         <div class="combo-fix float-left inline-block clear-none">
                             <label for="bedroom">Bedroom</label>
-                            <div class="flecha-combo"><select name="bedroom" id="bedroom" type="text"><option>Any</option><option>1</option><option>2</option></select></div>
+                            <div class="flecha-combo">
+                                <select name="bedroom" id="bedroom" type="text">
+                                    <?php foreach($this->listBedroom as $index=>$value): ?>
+                                <option value='<?php echo $index;?>'><?php echo $value;?></option>
+                                <?php endforeach; ?>
+                                </select>
+                            </div>
                         </div>
                         <div class="combo-fix float-left inline-block clear-none">
                             <label class="label-special-width" for="bathrooms">Bathrooms</label>
-                            <div class="flecha-combo"><select name="bathrooms" id="bathrooms" type="text"><option>Any</option><option>1</option><option>2</option></select></div>
+                            <div class="flecha-combo">
+                                <select name="bathrooms" id="bathrooms" type="text">
+                                    <?php foreach($this->listBathrooms as $index=>$value): ?>
+                                <option value='<?php echo $index;?>'><?php echo $value;?></option>
+                                <?php endforeach; ?>
+                                </select>
+                            </div>
                         </div>
                     </div>
                     <div class="margin-bottom-special">
                         <div class="combo-fix float-left inline-block clear-none">
                             <label for="style">Style</label>
-                            <div class="flecha-combo"><select name="style" id="style" type="text"><option>Any</option><option>1</option><option>2</option></select></div>
+                            <div class="flecha-combo">
+                                <select name="style" id="style" type="text">
+                                <?php foreach($this->listPropertyStyle as $index=>$value):?>
+                                <option value="<?php echo $index; ?>"><?php echo $value; ?></option>
+                                <?php endforeach; ?>
+
+                                </select>
+                            </div>
                         </div>
                         <div class="combo-fix float-left inline-block clear-none">
                             <label class="label-special-width" for="keyword">Keyword</label>
@@ -87,7 +125,13 @@
                     <div class="margin-bottom-special">
                         <div class="combo-fix float-left inline-block clear-none">
                             <label for="garage">Garage</label>
-                            <div class="flecha-combo"><select name="garage" id="garage" type="text"><option>Any</option><option>1</option><option>2</option></select></div>
+                            <div class="flecha-combo">
+                                <select name="garage" id="garage" type="text">
+                                <?php foreach($this->listGarage as $index=>$value): ?>
+                                <option value='<?php echo $index;?>'><?php echo $value;?></option>
+                                <?php endforeach; ?>
+                                </select>
+                            </div>
                         </div>
                         <div class="combo-fix float-left inline-block clear-none">
                             <label class="label-special-width" for="address">Address</label>
@@ -97,7 +141,14 @@
                     <div class="margin-bottom-special">
                         <div class="combo-fix float-left inline-block clear-none">
                             <label for="view">View</label>
-                            <div class="flecha-combo"><select name="view" id="view" type="text"><option>Any</option><option>1</option><option>2</option></select></div>
+                            <div class="flecha-combo">
+                                <select name="view" id="view" type="text">
+                                <?php foreach($this->listPropertyView as $index=>$value):?>
+                                <option value="<?php echo $index; ?>"><?php echo $value; ?></option>
+                                <?php endforeach; ?>
+
+                                </select>
+                            </div>
                         </div>
                         <div class="combo-fix float-left inline-block clear-none">
                             <label class="label-special-width" for="size">Size (sq.ft.)</label>
@@ -106,7 +157,14 @@
                     </div>
                     <div class="combo-fix">
                         <label for="recreation">Recreational Areas</label>
-                        <div class="flecha-combo"><select name="recreation" id="recreation" type="text"><option>Any</option><option>1</option><option>2</option></select></div>
+                        <div class="flecha-combo">
+                            <select name="recreation" id="recreation" type="text">
+                                <?php foreach($this->listRecreation as $index=>$value): ?>
+                                <option value='<?php echo $index;?>'><?php echo $value;?></option>
+                                <?php endforeach; ?>
+
+                            </select>
+                        </div>
                     </div>
                     <p class="listings-about-header-2 oswald"><span>FEATURES</span></p>
                     <div class="contenedor-picks-1">
@@ -143,7 +201,7 @@
 //                                                                        }
                                     ?>
         <!--                                                                        <input <?php echo $checked ?>  value="<?php echo $index ?>" name="profileSubCategoria[]" id="check<?php echo $index ?>" type="checkbox"><label for="check<?php echo $index ?>" class="label-check2"><?php echo $value ?></label>-->
-                                    <label class="label-check3 check-special" id="label-checkBBQ" for="checkFeature<?php echo $index ?>"><?php echo $value ?></label><input type="checkbox" name="featureFeature[]" id="checkFeature<?php echo $index ?>">
+                                    <label class="label-check3 check-special" id="label-checkFeature<?php echo $index ?>" for="checkFeature<?php echo $index ?>"><?php echo $value ?></label><input type="checkbox" value="<?php echo $index ?>" name="featureFeature[]" id="checkFeature<?php echo $index ?>">
                                 <?php endforeach; ?>
                             </div>
                         <?php endforeach; ?>
@@ -183,7 +241,7 @@
 //                                                                            $checked='';
 //                                                                        }
                                     ?>
-                                    <label class="label-check3 check-special" id="label-checkBulinding<?php echo $index ?>" for="checkBulinding<?php echo $index ?>"><?php echo $value ?></label><input type="checkbox" name="featureBulinding[]" id="checkBulinding<?php echo $index ?>"/>
+                                    <label class="label-check3 check-special" id="label-checkBulinding<?php echo $index ?>" for="checkBulinding<?php echo $index ?>"><?php echo $value ?></label><input type="checkbox" value="<?php echo $index ?>" name="featureBulinding[]" id="checkBulinding<?php echo $index ?>"/>
                                 <?php endforeach; ?>
                             </div>
                         <?php endforeach; ?>
@@ -223,7 +281,7 @@
 //                                                                            $checked='';
 //                                                                        }
                                     ?>
-                                    <label class="label-check3 check-special" id="label-checkAppliances<?php echo $index ?>" for="checkAppliances<?php echo $index ?>"><?php echo $value ?></label><input type="checkbox" name="featureAppliances[]" id="checkAppliances<?php echo $index ?>"/>
+                                    <label class="label-check3 check-special" id="label-checkAppliances<?php echo $index ?>" for="checkAppliances<?php echo $index ?>"><?php echo $value ?></label><input value="<?php echo $index ?>" type="checkbox" name="featureAppliances[]" id="checkAppliances<?php echo $index ?>"/>
                                 <?php endforeach; ?>
                             </div>
                         <?php endforeach; ?>
