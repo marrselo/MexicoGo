@@ -53,7 +53,9 @@
             <?php foreach($this->listAgentPublic AS $value):?>
             
                         <tr>
-                            <td class="td1"><a class="delete-icon" href="">delete</a></td>
+                            <td class="td1"><a class="delete-icon" href="
+                                /partner/agent/delete-agent/id/<?php echo $value['age_id']?>">
+                                    delete</a></td>
                             <td class="td2">
                                 <?php echo $value['age_first_name'].' '.$value['age_last_name']?>
                             </td>
@@ -86,7 +88,9 @@
                         </tr>
             <?php  foreach($this->listAgentUnpublic as $value): ?>                        
                         <tr class="grey-line-under">
-                            <td class="td1"><a class="delete-icon" href="">delete</a></td>
+                            <td class="td1"><a class="delete-icon" 
+                                href="/partner/agent/delete-agent/id/<?php echo $value['age_id']?>">
+                                    delete</a></td>
                             <td class="td2">
                                 <?php echo $value['age_first_name'].' '.$value['age_last_name']?>
                             </td>

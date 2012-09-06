@@ -15,10 +15,20 @@ class Partner_RealEstateController extends CST_Controller_ActionPartner {
     public function init() {
         parent::init();
         /* Initialize action controller here */
+        $this->_Partner = new Application_Entity_Partnert();
+        
     }
 
-    public function listingsAction() {
-        // ody
+    public function listingAction() {
+        $params = $this->_getAllParams();         
+        $this->view->listPropertiesAgent = $this->_Partner
+            ->listPropertiesAgent($this->_identityPartner->par_id,$params['id']);
+        
+        $col = $this->view->listPropertiesNotAgent = $this->_Partner
+            ->listPropertiesNotAgent($this->_identityPartner->par_id,$params['id']);;
+        print_r($col); exit;
+        $this->view->tituloH1 = 'Agents';
+        $this->view->tituloH2 = 'Agent/Listings';
     }
 
     public function locationAction() {

@@ -26,8 +26,13 @@
     </div>
 </aside>
                     <section id="block-right">
-                            <h2 class="h2-cms oswald">Real estate listings</h2>
-                            <p id="number-published"><span>Your current Listings:</span> You have <span>1 of 100</span> Listings Published</p>
+                            <h2 class="h2-cms oswald">
+                                <?php echo isset($this->tituloH1)?$this->tituloH1 :
+                                    'Real estate listings' ?></h2>
+                            <p id="number-published">
+                                <?php echo isset($this->tituloH2)? $this->tituloH2:
+                                "<span>Your current Listings:</span> You have 
+                                    <span>1 of 100</span> Listings Published</p>";?></p>
                             <div class="wrapper-agent-listings-2">
                             <!--<div class="">-->
                             <table id="tabla-agentes">
@@ -47,7 +52,12 @@
                                 </tr>
                             </tbody></table>
                                 <div id="registros-agentes">
-                                    <p class="align-right"><a class="add-agents oswald" href="">Add Agents</a></p>
+                                    <p class="align-right">
+                                        <a class="add-agents oswald" 
+                                           href="/partner/agent/create">
+                                            Add Agents
+                                        </a>
+                                    </p>
                                 <div class="paginador">
                                     <span class="previous"><a href="">&lt;&lt; previous</a></span>
                                     <span class="number"><a href="">1</a></span>
@@ -58,7 +68,12 @@
                                 </div>
                                 <hr class="hr-custom">
                             <!--</div>-->
-                            <h3><span class="oswald">Published</span> (These homes arre currently visible in your profile)</h3>
+                            <h3>
+                                <span class="oswald">Published</span>
+                                (These homes arre currently visible in your profile)
+                            </h3>
+                            <?php  if(count($this->listPropertiesAgent)>0):?>
+                            
                             <table id="tabla-agentes-listings">
                                 <tbody><tr>
                                     <th class="th1"></th>
@@ -67,18 +82,30 @@
                                     <th class="th4">Featured</th>
                                     <th class="th5"></th>
                                 </tr>
+                                <?php foreach($this->listPropertiesAgent AS $value):?>
                                 <tr>
-                                    <td class="td1 oswald"><a href=""><img src="images/ticked-icon.png"></a></td>
-                                    <td class="td2 house-thumb"><img src="images/house-thumbs/demo-thumb.png">These home are currently visible in your profile</td>
+                                    <td class="td1 oswald">
+                                        <a href="">
+                                            <img src="/../../static/images/ticked-icon.png">
+                                        </a>
+                                    </td>
+                                    <td class="td2 house-thumb"><img src="/../../dinamic/partner/real-estate/img/<?php echo $value['img_source']?>">
+                                        These home are currently visible in your profile</td>
                                     <td class="td3"><p>
                                             <span class="house-title oswald">Oportunity Knocks!</span><br>
-                                            <span class="house-geo">Stunning villa</span><br>
-                                            <span class="house-price ">USD $ 1,350,000</span>
+                                            <span class="house-geo"><?php echo $value['img_title']?></span><br>
+                                            <span class="house-price ">USD $ <?php echo $value['pro_price']?></span>
                                         </p><p></p></td>
-                                    <td class="td4"><img src="images/black-star.png"></td>
+                                    <td class="td4">
+                                        <img width="104px" src="/../public/dinamic/partner/real-estate/img/<?php echo $value['img_source']?>"
+                                                         style="width: 104px; height: 74px;" />
+                                    </td>
                                     <td class="td5 oswald"><a class="boton-yellow-1" href="">EDIT &gt;&gt;</a><a></a><a class="boton-yellow-1" href="">PREVIEW &gt;&gt;</a><a></a><a class="boton-yellow-2" href="">UNPUBLISH &gt;&gt;</a><a></a></td>
                                 </tr>
-                            </tbody></table>
+                            <?php  endforeach;?>
+                                </tbody></table>
+                            <?php endif?>
+                            <?php if(!empty($this->listPropertiesNotAgent)):?>
                             <h3><span class="oswald">Draft</span> (These home will not be visible in your profile until you publish them)</h3>
                             <table id="tabla-agentes-listings-not-added">
                                 <tbody><tr>
@@ -88,28 +115,28 @@
                                     <th class="th4">Featured</th>
                                     <th class="th5"></th>
                                 </tr>
+                                <?php foreach($this->listPropertiesNotAgent AS $valor):?>
                                 <tr>
-                                    <td class="td1 oswald"><a href=""><img src="images/plus-icon.png"></a></td>
+                                    <td class="td1 oswald">
+                                        <a href="">                                            
+                                            <img src="/../public/dinamic/partner/real-estate/img/<?php echo $valor['img_source']?>" 
+                                            title="<?php echo $valor['img_title']?>">">
+                                        </a>
+                                    </td>
                                     <td class="td2 no-house-thumb"></td>
                                     <td class="td3 oswald"><p>No info available</p><p></p></td>
-                                    <td class="td4"><img src="images/black-star.png"></td>
-                                    <td class="td5 oswald"><a class="boton-yellow-1" href="">EDIT &gt;&gt;</a><a></a><a class="boton-yellow-1" href="">PREVIEW &gt;&gt;</a><a></a><a class="boton-yellow-2" href="">PUBLISH &gt;&gt;</a><a></a></td>
+                                    <td class="td4"><img src="/../public/static/images/black-star.png"></td>
+                                    <td class="td5 oswald"><a class="boton-yellow-1" href="">EDIT &gt;&gt;</a>
+                                        <a></a>
+                                        <a class="boton-yellow-1" href="">PREVIEW &gt;&gt;</a>
+                                        <a></a>
+                                        <a class="boton-yellow-2" href="">PUBLISH &gt;&gt;</a>
+                                        <a></a>
+                                    </td>
                                 </tr>
-                                <tr>
-                                    <td class="td1 oswald"><a href=""><img src="images/plus-icon.png"></a></td>
-                                    <td class="td2 no-house-thumb"></td>
-                                    <td class="td3 oswald"><p>No info available</p><p></p></td>
-                                    <td class="td4"><img src="images/black-star.png"></td>
-                                    <td class="td5 oswald"><a class="boton-yellow-1" href="">EDIT &gt;&gt;</a><a></a><a class="boton-yellow-1" href="">PREVIEW &gt;&gt;</a><a></a><a class="boton-yellow-2" href="">PUBLISH &gt;&gt;</a><a></a></td>
-                                </tr>
-                                <tr>
-                                    <td class="td1 oswald"><a href=""><img src="images/plus-icon.png"></a></td>
-                                    <td class="td2 no-house-thumb"></td>
-                                    <td class="td3 oswald"><p>No info available</p><p></p></td>
-                                    <td class="td4"><img src="images/black-star.png"></td>
-                                    <td class="td5 oswald"><a class="boton-yellow-1" href="">EDIT &gt;&gt;</a><a></a><a class="boton-yellow-1" href="">PREVIEW &gt;&gt;</a><a></a><a class="boton-yellow-2" href="">PUBLISH &gt;&gt;</a><a></a></td>
-                                </tr>
+                               <?php endforeach;?>
                             </tbody></table>
+                            <?php endif;?>
                             <hr class="hr-custom">
                             <div class="paginador">
                                     <span class="previous"><a href="">&lt;&lt; previous</a></span>

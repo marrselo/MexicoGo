@@ -46,7 +46,7 @@ class Application_Entity_Agent extends CST_Entity
     {
         $data = $this->setArrayBd();
         $data['par_id'] = $this->_idPartner;
-        $this->_modelAgents->insert($data);
+        return $this->_modelAgents->insert($data);
     }
     
     public function listAgents()

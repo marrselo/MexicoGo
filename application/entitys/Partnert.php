@@ -30,7 +30,7 @@ class Application_Entity_Partnert extends CST_Entity {
         if ($dataUsuario != null) {
             parent::init($dataUsuario);
         }
-        $this->_modelPartner = new Application_Model_Partners();
+        $this->_modelPartner = new Application_Model_Partners();        
     }
 
     function setProperties($dataPartnert, Application_Entity_Usuario $usuario) {
@@ -162,6 +162,19 @@ class Application_Entity_Partnert extends CST_Entity {
         return $modelOtherTypeAccount->fetchPairs(
                         $modelOtherTypeAccount->listingsPartnersAcountType()
         );
+    }
+    
+    public function listProperties($id)
+    {        
+        return $this->_modelPartner->listProperties($id);
+    }
+    public function listPropertiesAgent($idPartner,$idAgent)
+    {
+        return $this->_modelPartner->listPropertiesAgent($idPartner, $idAgent);
+    }
+    public function listPropertiesNotAgent($idPartner,$idAgent)
+    {
+        return $this->_modelPartner->listPropertiesNotAgent($idPartner,$idAgent);
     }
 
 }

@@ -51,7 +51,8 @@ class Application_Model_Agents extends CST_Model {
         {
             $where = $this->_modelAgents->getAdapter()
                 ->quoteInto('par_id =?',$idAgent);
-            $this->_modelAgents->update('age_state = 0',$where);
+            $data = array('age_state'=>'0');
+            $this->_modelAgents->update($data,$where);
         }else{
             return false;
         }
