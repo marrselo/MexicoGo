@@ -21,7 +21,7 @@ DROP TABLE IF EXISTS `agent_location`;
 
 CREATE TABLE `agent_location` (
   `age_id` int(11) DEFAULT NULL,
-  `age_country` varchar(45) DEFAULT NULL COMMENT '	',
+  `age_country` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL COMMENT '	',
   `reg_id` int(11) DEFAULT NULL,
   `cit_id` int(11) DEFAULT NULL,
   KEY `fk_mexi_agent_location_mexi_agents1_idx` (`age_id`),
@@ -30,7 +30,7 @@ CREATE TABLE `agent_location` (
   CONSTRAINT `fk_agent_location_agents10` FOREIGN KEY (`age_id`) REFERENCES `agents` (`age_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_agent_location_cities10` FOREIGN KEY (`cit_id`) REFERENCES `cities` (`cit_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_agent_location_regions20` FOREIGN KEY (`reg_id`) REFERENCES `regions` (`reg_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `agent_location` */
 
@@ -45,16 +45,16 @@ DROP TABLE IF EXISTS `agent_profile_page`;
 CREATE TABLE `agent_profile_page` (
   `pro_id` int(11) NOT NULL AUTO_INCREMENT,
   `age_id` int(11) DEFAULT NULL,
-  `pro_logo` varchar(100) DEFAULT NULL,
-  `pro_company` varchar(45) DEFAULT NULL,
-  `pro_email` varchar(45) DEFAULT NULL,
-  `pro_website` varchar(45) DEFAULT NULL,
-  `pro_phone2` varchar(45) DEFAULT NULL,
-  `pro_phone1` varchar(45) DEFAULT NULL,
-  `pro_dsc` varchar(45) DEFAULT NULL,
+  `pro_logo` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `pro_company` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `pro_email` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `pro_website` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `pro_phone2` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `pro_phone1` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `pro_dsc` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`pro_id`),
   KEY `fk_mexi_agent_profile_page_mexi_agents1_idx` (`age_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `agent_profile_page` */
 
@@ -69,21 +69,21 @@ DROP TABLE IF EXISTS `agents`;
 CREATE TABLE `agents` (
   `age_id` int(11) NOT NULL AUTO_INCREMENT,
   `par_id` int(11) DEFAULT NULL,
-  `age_photo` varchar(45) CHARACTER SET latin1 DEFAULT NULL,
-  `age_first_name` varchar(45) CHARACTER SET latin1 DEFAULT NULL,
-  `age_last_name` varchar(45) CHARACTER SET latin1 DEFAULT NULL,
-  `age_email` varchar(45) CHARACTER SET latin1 DEFAULT NULL,
-  `age_website` varchar(45) CHARACTER SET latin1 DEFAULT NULL,
-  `age_brokerage` varchar(45) CHARACTER SET latin1 DEFAULT NULL,
-  `age_profile_dsc` varchar(450) CHARACTER SET latin1 DEFAULT NULL,
-  `age_phone` varchar(45) CHARACTER SET latin1 DEFAULT NULL,
-  `age_mobile_phone` varchar(45) CHARACTER SET latin1 DEFAULT NULL,
+  `age_photo` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `age_first_name` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `age_last_name` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `age_email` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `age_website` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `age_brokerage` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `age_profile_dsc` varchar(450) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `age_phone` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `age_mobile_phone` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
   `age_state` tinyint(1) DEFAULT '1' COMMENT '0 delete  1 activo',
   `age_public` tinyint(1) DEFAULT '0' COMMENT '0 unpublic   1 publicado',
   PRIMARY KEY (`age_id`),
   KEY `fk_agents_partners1_idx` (`par_id`),
   CONSTRAINT `fk_agents_partners1` FOREIGN KEY (`par_id`) REFERENCES `partners` (`par_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `agents` */
 
@@ -97,10 +97,10 @@ DROP TABLE IF EXISTS `amenities`;
 
 CREATE TABLE `amenities` (
   `ame_id` int(11) NOT NULL AUTO_INCREMENT,
-  `ame_name` varchar(45) DEFAULT NULL,
+  `ame_name` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
   `state` tinyint(1) unsigned DEFAULT '1',
   PRIMARY KEY (`ame_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `amenities` */
 
@@ -114,10 +114,10 @@ DROP TABLE IF EXISTS `appliances`;
 
 CREATE TABLE `appliances` (
   `app_id` int(11) NOT NULL,
-  `app_name` varchar(45) DEFAULT NULL,
+  `app_name` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
   `state` tinyint(1) unsigned DEFAULT '1',
   PRIMARY KEY (`app_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `appliances` */
 
@@ -131,10 +131,10 @@ DROP TABLE IF EXISTS `buildings`;
 
 CREATE TABLE `buildings` (
   `bui_id` int(11) NOT NULL,
-  `bui_name` varchar(45) DEFAULT NULL,
+  `bui_name` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
   `state` tinyint(1) unsigned DEFAULT '1',
   PRIMARY KEY (`bui_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `buildings` */
 
@@ -149,16 +149,16 @@ DROP TABLE IF EXISTS `cities`;
 CREATE TABLE `cities` (
   `cit_id` int(11) NOT NULL,
   `reg_id` int(11) DEFAULT NULL,
-  `cit_name` varchar(45) DEFAULT NULL,
-  `cit_title` varchar(45) DEFAULT NULL,
-  `cit_body` varchar(45) DEFAULT NULL,
-  `cit_img` varchar(45) DEFAULT NULL,
-  `cit_lat` varchar(45) DEFAULT NULL,
-  `cit_lon` varchar(45) DEFAULT NULL,
+  `cit_name` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `cit_title` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `cit_body` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `cit_img` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `cit_lat` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `cit_lon` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`cit_id`),
   KEY `fk_mexi_cities_mexi_regions1_idx` (`reg_id`),
   CONSTRAINT `fk_cities_regions1` FOREIGN KEY (`reg_id`) REFERENCES `regions` (`reg_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `cities` */
 
@@ -195,12 +195,12 @@ DROP TABLE IF EXISTS `core_ciudades`;
 
 CREATE TABLE `core_ciudades` (
   `cd_id` int(11) NOT NULL AUTO_INCREMENT,
-  `cd_nombre` varchar(50) NOT NULL,
+  `cd_nombre` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `est_id` int(11) NOT NULL,
   PRIMARY KEY (`cd_id`),
   KEY `fk_core_ciudades_core_estados1_idx` (`est_id`),
   CONSTRAINT `fk_core_ciudades_core_estados1` FOREIGN KEY (`est_id`) REFERENCES `core_estados` (`est_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=634 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=634 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `core_ciudades` */
 
@@ -216,16 +216,16 @@ DROP TABLE IF EXISTS `core_estados`;
 
 CREATE TABLE `core_estados` (
   `est_id` int(11) NOT NULL AUTO_INCREMENT,
-  `est_nombre` varchar(30) NOT NULL,
-  `est_codigo` varchar(5) NOT NULL,
+  `est_nombre` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `est_codigo` varchar(5) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`est_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `core_estados` */
 
 LOCK TABLES `core_estados` WRITE;
 
-insert  into `core_estados`(`est_id`,`est_nombre`,`est_codigo`) values (1,'Aguascalientes',''),(2,'Baja California',''),(3,'Baja California Sur',''),(4,'Campeche',''),(5,'Coahuila',''),(6,'Colima',''),(7,'Chiapas',''),(8,'Chihuahua',''),(9,'Distrito Federal',''),(10,'Durango',''),(11,'Guanajuato',''),(12,'Guerrero',''),(13,'Hidalgo',''),(14,'Jalisco',''),(15,'México',''),(16,'Michoacán',''),(17,'Morelos',''),(18,'Nayarit',''),(19,'Nuevo León',''),(20,'Oaxaca',''),(21,'Puebla',''),(22,'Querétaro',''),(23,'Quintana Roo',''),(24,'San Luis Potosí',''),(25,'Sinaloa',''),(26,'Sonora',''),(27,'Tabasco',''),(28,'Tamaulipas',''),(29,'Tlaxcala',''),(30,'Veracruz',''),(31,'Yucatán',''),(32,'Zacatecas','');
+insert  into `core_estados`(`est_id`,`est_nombre`,`est_codigo`) values (1,'Aguascalientes',''),(2,'Baja California',''),(3,'Baja California Sur',''),(4,'Campeche',''),(5,'Coahuila',''),(6,'Colima',''),(7,'Chiapas',''),(8,'Chihuahua',''),(9,'Distrito Federal',''),(10,'Durango',''),(11,'Guanajuato',''),(12,'Guerrero',''),(13,'Hidalgo',''),(14,'Jalisco',''),(15,'M�xico',''),(16,'Michoac�n',''),(17,'Morelos',''),(18,'Nayarit',''),(19,'Nuevo Le�n',''),(20,'Oaxaca',''),(21,'Puebla',''),(22,'Quer�taro',''),(23,'Quintana Roo',''),(24,'San Luis Potos�',''),(25,'Sinaloa',''),(26,'Sonora',''),(27,'Tabasco',''),(28,'Tamaulipas',''),(29,'Tlaxcala',''),(30,'Veracruz',''),(31,'Yucat�n',''),(32,'Zacatecas','');
 
 UNLOCK TABLES;
 
@@ -277,14 +277,14 @@ DROP TABLE IF EXISTS `core_menus`;
 CREATE TABLE `core_menus` (
   `men_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `men_padre` int(10) unsigned NOT NULL,
-  `men_nombre` varchar(45) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `men_url` varchar(255) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
-  `men_modulo` varchar(45) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
-  `men_parametros` varchar(45) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
+  `men_nombre` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `men_url` varchar(255) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `men_modulo` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `men_parametros` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
   `men_visible` tinyint(3) unsigned DEFAULT '1',
   `men_orden` tinyint(4) DEFAULT '0',
   PRIMARY KEY (`men_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `core_menus` */
 
@@ -371,8 +371,6 @@ CREATE TABLE `core_roles_acl_cat` (
 
 LOCK TABLES `core_roles_acl_cat` WRITE;
 
-insert  into `core_roles_acl_cat`(`rol_id`,`rol_dsc`) values (2,'Brokerage Account'),(4,'Other Partner'),(3,'Real Estate Development'),(1,'Single Real Estate Agent');
-
 UNLOCK TABLES;
 
 /*Table structure for table `core_roles_recursos_privilegios_rel` */
@@ -416,8 +414,6 @@ CREATE TABLE `core_session` (
 
 LOCK TABLES `core_session` WRITE;
 
-insert  into `core_session`(`ses_id`,`ses_modified`,`ses_lifetime`,`ses_data`) values ('lfmc9nuh37p0088cihllmqpv80',1346462866,1440,''),('k3cgmhtoo8sei28pgvcipmh9o6',1346477507,1440,'Zend_Auth|a:1:{s:7:\"storage\";O:8:\"stdClass\":22:{s:6:\"usu_id\";s:2:\"34\";s:6:\"rol_id\";s:1:\"2\";s:10:\"usu_nombre\";s:6:\"nazart\";s:13:\"usu_apellidos\";s:12:\" jara huaman\";s:8:\"usu_nick\";s:26:\"nazartjarahuaman@gmail.com\";s:11:\"usu_celular\";N;s:12:\"usu_telefono\";N;s:10:\"usu_correo\";s:26:\"nazartjarahuaman@gmail.com\";s:16:\"usu_creacion_fec\";s:19:\"2012-08-31 10:21:23\";s:7:\"usu_img\";N;s:13:\"usu_id_estado\";N;s:13:\"grupo_usuario\";s:7:\"partner\";s:6:\"par_id\";s:2:\"31\";s:12:\"par_nickname\";s:26:\"nazartjarahuaman@gmail.com\";s:9:\"par_email\";s:26:\"nazartjarahuaman@gmail.com\";s:13:\"par_full_name\";N;s:9:\"par_chief\";N;s:17:\"par_flag_customer\";s:1:\"1\";s:18:\"par_acount_type_id\";s:1:\"2\";s:25:\"par_flag_partner_profiler\";N;s:25:\"par_other_type_account_id\";N;s:9:\"par_state\";N;}}sessionPartner|a:1:{s:9:\"navigator\";a:5:{i:0;a:5:{s:5:\"label\";s:16:\"ACCOUNT SETTINGS\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:16:\"account-settings\";s:5:\"order\";i:1;}i:1;a:5:{s:5:\"label\";s:11:\"Manage your\";s:2:\"id\";s:21:\"account-settings-menu\";s:3:\"uri\";s:1:\"#\";s:5:\"order\";i:2;s:5:\"pages\";a:3:{i:0;a:5:{s:5:\"label\";s:8:\"PROFILER\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:8:\"profiler\";s:5:\"order\";i:1;}i:1;a:5:{s:5:\"label\";s:5:\"AGENT\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:5:\"agent\";s:5:\"order\";i:2;}i:2;a:5:{s:5:\"label\";s:20:\"REAL ESTATE LISTINGS\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:11:\"real-estate\";s:5:\"order\";i:3;}}}i:2;a:6:{s:5:\"label\";s:17:\"EMAIL PREFERENCES\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:10:\"my-account\";s:6:\"action\";s:17:\"email-preferences\";s:5:\"order\";i:3;}i:3;a:6:{s:5:\"label\";s:16:\"ACCOUNT PASSWORD\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:10:\"my-account\";s:6:\"action\";s:16:\"account-password\";s:5:\"order\";i:4;}i:4;a:6:{s:5:\"label\";s:8:\"SIGN OUT\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:10:\"my-account\";s:6:\"action\";s:8:\"sign-out\";s:5:\"order\";i:5;}}}'),('3mc28jlos7fvdnkrt1tune7hm7',1346572572,1440,'sessionPartner|a:1:{s:9:\"navigator\";a:5:{i:0;a:5:{s:5:\"label\";s:16:\"ACCOUNT SETTINGS\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:16:\"account-settings\";s:5:\"order\";i:1;}i:1;a:5:{s:5:\"label\";s:11:\"Manage your\";s:2:\"id\";s:21:\"account-settings-menu\";s:3:\"uri\";s:1:\"#\";s:5:\"order\";i:2;s:5:\"pages\";a:3:{i:0;a:5:{s:5:\"label\";s:8:\"PROFILER\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:8:\"profiler\";s:5:\"order\";i:1;}i:1;a:5:{s:5:\"label\";s:5:\"AGENT\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:5:\"agent\";s:5:\"order\";i:2;}i:2;a:5:{s:5:\"label\";s:20:\"REAL ESTATE LISTINGS\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:11:\"real-estate\";s:5:\"order\";i:3;}}}i:2;a:6:{s:5:\"label\";s:17:\"EMAIL PREFERENCES\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:10:\"my-account\";s:6:\"action\";s:17:\"email-preferences\";s:5:\"order\";i:3;}i:3;a:6:{s:5:\"label\";s:16:\"ACCOUNT PASSWORD\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:10:\"my-account\";s:6:\"action\";s:16:\"account-password\";s:5:\"order\";i:4;}i:4;a:6:{s:5:\"label\";s:8:\"SIGN OUT\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:10:\"my-account\";s:6:\"action\";s:8:\"sign-out\";s:5:\"order\";i:5;}}}Zend_Auth|a:1:{s:7:\"storage\";O:8:\"stdClass\":22:{s:6:\"usu_id\";s:2:\"34\";s:6:\"rol_id\";s:1:\"2\";s:10:\"usu_nombre\";s:6:\"nazart\";s:13:\"usu_apellidos\";s:12:\" jara huaman\";s:8:\"usu_nick\";s:26:\"nazartjarahuaman@gmail.com\";s:11:\"usu_celular\";N;s:12:\"usu_telefono\";N;s:10:\"usu_correo\";s:26:\"nazartjarahuaman@gmail.com\";s:16:\"usu_creacion_fec\";s:19:\"2012-08-31 10:21:23\";s:7:\"usu_img\";N;s:13:\"usu_id_estado\";N;s:13:\"grupo_usuario\";s:7:\"partner\";s:6:\"par_id\";s:2:\"31\";s:12:\"par_nickname\";s:26:\"nazartjarahuaman@gmail.com\";s:9:\"par_email\";s:26:\"nazartjarahuaman@gmail.com\";s:13:\"par_full_name\";N;s:9:\"par_chief\";N;s:17:\"par_flag_customer\";s:1:\"1\";s:18:\"par_acount_type_id\";s:1:\"2\";s:25:\"par_flag_partner_profiler\";N;s:25:\"par_other_type_account_id\";N;s:9:\"par_state\";N;}}'),('7vit9ih7p20703ql8pbh7rp2s2',1346719761,1440,'Zend_Auth|a:1:{s:7:\"storage\";O:8:\"stdClass\":22:{s:6:\"usu_id\";s:2:\"34\";s:6:\"rol_id\";s:1:\"2\";s:10:\"usu_nombre\";s:6:\"nazart\";s:13:\"usu_apellidos\";s:12:\" jara huaman\";s:8:\"usu_nick\";s:26:\"nazartjarahuaman@gmail.com\";s:11:\"usu_celular\";N;s:12:\"usu_telefono\";N;s:10:\"usu_correo\";s:26:\"nazartjarahuaman@gmail.com\";s:16:\"usu_creacion_fec\";s:19:\"2012-08-31 10:21:23\";s:7:\"usu_img\";N;s:13:\"usu_id_estado\";N;s:13:\"grupo_usuario\";s:7:\"partner\";s:6:\"par_id\";s:2:\"31\";s:12:\"par_nickname\";s:26:\"nazartjarahuaman@gmail.com\";s:9:\"par_email\";s:26:\"nazartjarahuaman@gmail.com\";s:13:\"par_full_name\";N;s:9:\"par_chief\";N;s:17:\"par_flag_customer\";s:1:\"1\";s:18:\"par_acount_type_id\";s:1:\"2\";s:25:\"par_flag_partner_profiler\";N;s:25:\"par_other_type_account_id\";N;s:9:\"par_state\";N;}}sessionPartner|a:1:{s:9:\"navigator\";a:5:{i:0;a:5:{s:5:\"label\";s:16:\"ACCOUNT SETTINGS\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:16:\"account-settings\";s:5:\"order\";i:1;}i:1;a:5:{s:5:\"label\";s:11:\"Manage your\";s:2:\"id\";s:21:\"account-settings-menu\";s:3:\"uri\";s:1:\"#\";s:5:\"order\";i:2;s:5:\"pages\";a:3:{i:0;a:5:{s:5:\"label\";s:8:\"PROFILER\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:8:\"profiler\";s:5:\"order\";i:1;}i:1;a:5:{s:5:\"label\";s:5:\"AGENT\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:5:\"agent\";s:5:\"order\";i:2;}i:2;a:5:{s:5:\"label\";s:20:\"REAL ESTATE LISTINGS\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:11:\"real-estate\";s:5:\"order\";i:3;}}}i:2;a:6:{s:5:\"label\";s:17:\"EMAIL PREFERENCES\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:10:\"my-account\";s:6:\"action\";s:17:\"email-preferences\";s:5:\"order\";i:3;}i:3;a:6:{s:5:\"label\";s:16:\"ACCOUNT PASSWORD\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:10:\"my-account\";s:6:\"action\";s:16:\"account-password\";s:5:\"order\";i:4;}i:4;a:6:{s:5:\"label\";s:8:\"SIGN OUT\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:10:\"my-account\";s:6:\"action\";s:8:\"sign-out\";s:5:\"order\";i:5;}}}'),('v2vtac1cu3bpkccgc9srcei946',1346406277,1440,'Zend_Auth|a:1:{s:7:\"storage\";O:8:\"stdClass\":22:{s:6:\"usu_id\";s:2:\"34\";s:6:\"rol_id\";s:1:\"2\";s:10:\"usu_nombre\";s:6:\"nazart\";s:13:\"usu_apellidos\";s:12:\" jara huaman\";s:8:\"usu_nick\";s:26:\"nazartjarahuaman@gmail.com\";s:11:\"usu_celular\";N;s:12:\"usu_telefono\";N;s:10:\"usu_correo\";s:26:\"nazartjarahuaman@gmail.com\";s:16:\"usu_creacion_fec\";s:19:\"2012-08-31 10:21:23\";s:7:\"usu_img\";N;s:13:\"usu_id_estado\";N;s:13:\"grupo_usuario\";s:7:\"partner\";s:6:\"par_id\";s:2:\"31\";s:12:\"par_nickname\";s:26:\"nazartjarahuaman@gmail.com\";s:9:\"par_email\";s:26:\"nazartjarahuaman@gmail.com\";s:13:\"par_full_name\";N;s:9:\"par_chief\";N;s:17:\"par_flag_customer\";s:1:\"1\";s:18:\"par_acount_type_id\";s:1:\"2\";s:25:\"par_flag_partner_profiler\";N;s:25:\"par_other_type_account_id\";N;s:9:\"par_state\";N;}}sessionPartner|a:1:{s:9:\"navigator\";a:5:{i:0;a:5:{s:5:\"label\";s:16:\"ACCOUNT SETTINGS\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:16:\"account-settings\";s:5:\"order\";i:1;}i:1;a:5:{s:5:\"label\";s:11:\"Manage your\";s:2:\"id\";s:21:\"account-settings-menu\";s:3:\"uri\";s:1:\"#\";s:5:\"order\";i:2;s:5:\"pages\";a:3:{i:0;a:5:{s:5:\"label\";s:8:\"PROFILER\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:8:\"profiler\";s:5:\"order\";i:1;}i:1;a:5:{s:5:\"label\";s:5:\"AGENT\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:5:\"agent\";s:5:\"order\";i:2;}i:2;a:5:{s:5:\"label\";s:20:\"REAL ESTATE LISTINGS\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:11:\"real-estate\";s:5:\"order\";i:3;}}}i:2;a:6:{s:5:\"label\";s:17:\"EMAIL PREFERENCES\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:10:\"my-account\";s:6:\"action\";s:17:\"email-preferences\";s:5:\"order\";i:3;}i:3;a:6:{s:5:\"label\";s:16:\"ACCOUNT PASSWORD\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:10:\"my-account\";s:6:\"action\";s:16:\"account-password\";s:5:\"order\";i:4;}i:4;a:6:{s:5:\"label\";s:8:\"SIGN OUT\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:10:\"my-account\";s:6:\"action\";s:8:\"sign-out\";s:5:\"order\";i:5;}}}'),('t1ea2djnle42ot2d06frfr6pk0',1346829425,1440,'');
-
 UNLOCK TABLES;
 
 /*Table structure for table `core_set_info_abaut` */
@@ -426,9 +422,9 @@ DROP TABLE IF EXISTS `core_set_info_abaut`;
 
 CREATE TABLE `core_set_info_abaut` (
   `core_set_info_abaut_id` int(11) NOT NULL AUTO_INCREMENT,
-  `core_set_info_abaut_nombre` char(100) DEFAULT NULL,
+  `core_set_info_abaut_nombre` char(100) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`core_set_info_abaut_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `core_set_info_abaut` */
 
@@ -451,7 +447,7 @@ CREATE TABLE `core_set_info_abaut_usuario` (
   KEY `fk_core_set_info_abaut_usuario_core_usuarios1_idx` (`usu_id`),
   CONSTRAINT `fk_core_set_info_abaut_usuario_core_set_info_abaut1` FOREIGN KEY (`core_set_info_abaut_id`) REFERENCES `core_set_info_abaut` (`core_set_info_abaut_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_core_set_info_abaut_usuario_core_usuarios1` FOREIGN KEY (`usu_id`) REFERENCES `core_usuarios` (`usu_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `core_set_info_abaut_usuario` */
 
@@ -525,10 +521,10 @@ DROP TABLE IF EXISTS `features`;
 
 CREATE TABLE `features` (
   `fea_id` int(11) NOT NULL,
-  `fea_name` varchar(45) DEFAULT NULL,
+  `fea_name` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
   `state` tinyint(1) unsigned DEFAULT '1',
   PRIMARY KEY (`fea_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `features` */
 
@@ -544,14 +540,14 @@ CREATE TABLE `mexi_banners` (
   `mexi_banners_id` int(11) NOT NULL AUTO_INCREMENT,
   `mexi_banners_price` float DEFAULT NULL,
   `mexi_banners_type_id` int(11) NOT NULL,
-  `mexi_banners_nombre` char(100) DEFAULT NULL,
+  `mexi_banners_nombre` char(100) COLLATE utf8_spanish_ci DEFAULT NULL,
   `mexi_banners_position_id` int(11) NOT NULL,
   PRIMARY KEY (`mexi_banners_id`),
   KEY `fk_mexi_banners_mexi_banners_type1_idx` (`mexi_banners_type_id`),
   KEY `fk_mexi_banners_mexi_banners_position1_idx` (`mexi_banners_position_id`),
   CONSTRAINT `fk_mexi_banners_mexi_banners_position1` FOREIGN KEY (`mexi_banners_position_id`) REFERENCES `mexi_banners_position` (`mexi_banners_position_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_mexi_banners_mexi_banners_type1` FOREIGN KEY (`mexi_banners_type_id`) REFERENCES `mexi_banners_type` (`mexi_banners_type_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `mexi_banners` */
 
@@ -566,7 +562,7 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `mexi_banners_partners`;
 
 CREATE TABLE `mexi_banners_partners` (
-  `ban_fec_ini` varchar(45) DEFAULT NULL,
+  `ban_fec_ini` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
   `ban_fec_end` timestamp NULL DEFAULT NULL,
   `ban_id` int(11) NOT NULL,
   `par_id` int(11) NOT NULL,
@@ -575,7 +571,7 @@ CREATE TABLE `mexi_banners_partners` (
   KEY `fk_mexi_banners_partners_mexi_banners1_idx` (`ban_id`),
   CONSTRAINT `fk_mexi_banners_partners_mexi_banners1` FOREIGN KEY (`ban_id`) REFERENCES `mexi_banners` (`mexi_banners_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_mexi_banners_partners_partners1` FOREIGN KEY (`par_id`) REFERENCES `partners` (`par_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `mexi_banners_partners` */
 
@@ -589,16 +585,14 @@ DROP TABLE IF EXISTS `mexi_banners_position`;
 
 CREATE TABLE `mexi_banners_position` (
   `mexi_banners_position_id` int(11) NOT NULL AUTO_INCREMENT,
-  `mexi_banners_position_name` char(100) NOT NULL,
+  `mexi_banners_position_name` char(100) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`mexi_banners_position_id`),
   UNIQUE KEY `mexi_banners_position_name_UNIQUE` (`mexi_banners_position_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `mexi_banners_position` */
 
 LOCK TABLES `mexi_banners_position` WRITE;
-
-insert  into `mexi_banners_position`(`mexi_banners_position_id`,`mexi_banners_position_name`) values (1,'Half Banner'),(2,'Leaderboard'),(3,'Medium Rectangle'),(4,'Slideshow Banner');
 
 UNLOCK TABLES;
 
@@ -608,9 +602,9 @@ DROP TABLE IF EXISTS `mexi_banners_type`;
 
 CREATE TABLE `mexi_banners_type` (
   `mexi_banners_type_id` int(11) NOT NULL AUTO_INCREMENT,
-  `mexi_banners_type_nombre` char(100) DEFAULT NULL,
+  `mexi_banners_type_nombre` char(100) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`mexi_banners_type_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `mexi_banners_type` */
 
@@ -626,12 +620,12 @@ DROP TABLE IF EXISTS `mexi_informative_pages`;
 
 CREATE TABLE `mexi_informative_pages` (
   `pag_id` int(11) NOT NULL AUTO_INCREMENT,
-  `pag_title` varchar(100) DEFAULT NULL,
-  `pag_body` varchar(450) DEFAULT NULL,
-  `pag_img` varchar(45) DEFAULT NULL,
-  `pag_menu` varchar(45) DEFAULT NULL,
+  `pag_title` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `pag_body` varchar(450) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `pag_img` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `pag_menu` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`pag_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `mexi_informative_pages` */
 
@@ -645,13 +639,13 @@ DROP TABLE IF EXISTS `mexi_partners_packages_cat`;
 
 CREATE TABLE `mexi_partners_packages_cat` (
   `pac_id` int(11) NOT NULL,
-  `pac_dsc` varchar(45) DEFAULT NULL,
-  `pac_name` varchar(45) DEFAULT NULL,
-  `pac_type` varchar(45) DEFAULT NULL,
+  `pac_dsc` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `pac_name` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `pac_type` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
   `pac_listings` int(11) DEFAULT NULL,
   `pac_agents` int(11) DEFAULT NULL,
   PRIMARY KEY (`pac_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `mexi_partners_packages_cat` */
 
@@ -666,19 +660,19 @@ DROP TABLE IF EXISTS `partner_billing`;
 CREATE TABLE `partner_billing` (
   `bil_id` int(11) NOT NULL AUTO_INCREMENT,
   `par_id` int(11) DEFAULT NULL,
-  `bil_company_name` varchar(45) DEFAULT NULL,
-  `bil_rfc` varchar(45) DEFAULT NULL,
-  `bil_mail` varchar(45) DEFAULT NULL,
-  `bil_suit_apt_unit` varchar(45) DEFAULT NULL,
-  `bil_city` varchar(45) DEFAULT NULL,
-  `bil_country` varchar(45) DEFAULT NULL,
-  `bil_state_province` varchar(45) DEFAULT NULL,
-  `bil_zip_postal_code` varchar(45) DEFAULT NULL,
-  `bil_phone` varchar(45) DEFAULT NULL,
+  `bil_company_name` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `bil_rfc` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `bil_mail` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `bil_suit_apt_unit` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `bil_city` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `bil_country` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `bil_state_province` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `bil_zip_postal_code` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `bil_phone` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`bil_id`),
   KEY `fk_partner_billing_partners1_idx` (`par_id`),
   CONSTRAINT `fk_partner_billing_partners1` FOREIGN KEY (`par_id`) REFERENCES `partners` (`par_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `partner_billing` */
 
@@ -692,14 +686,14 @@ DROP TABLE IF EXISTS `partner_files`;
 
 CREATE TABLE `partner_files` (
   `fil_id` int(11) NOT NULL AUTO_INCREMENT,
-  `fil_title` char(200) DEFAULT NULL,
-  `fil_source` char(100) DEFAULT NULL,
+  `fil_title` char(200) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `fil_source` char(100) COLLATE utf8_spanish_ci DEFAULT NULL,
   `fil_order` int(11) DEFAULT NULL,
   `par_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`fil_id`),
   KEY `fk_partner_files_partners1_idx` (`par_id`),
   CONSTRAINT `fk_partner_files_partners1` FOREIGN KEY (`par_id`) REFERENCES `partners` (`par_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `partner_files` */
 
@@ -715,14 +709,14 @@ DROP TABLE IF EXISTS `partner_imgs`;
 
 CREATE TABLE `partner_imgs` (
   `img_id` int(11) NOT NULL AUTO_INCREMENT,
-  `img_title` varchar(45) DEFAULT NULL,
-  `img_source` varchar(45) DEFAULT NULL,
+  `img_title` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `img_source` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
   `img_order` int(11) DEFAULT NULL,
   `par_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`img_id`),
   KEY `fk_partner_imgs_partners1_idx` (`par_id`),
   CONSTRAINT `fk_partner_imgs_partners1` FOREIGN KEY (`par_id`) REFERENCES `partners` (`par_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `partner_imgs` */
 
@@ -737,21 +731,21 @@ DROP TABLE IF EXISTS `partner_location`;
 CREATE TABLE `partner_location` (
   `loc_id` int(11) NOT NULL AUTO_INCREMENT,
   `par_id` int(11) DEFAULT NULL,
-  `loc_address` varchar(45) DEFAULT NULL,
-  `loc_sute_apt_unit` varchar(45) DEFAULT NULL,
-  `loc_country` varchar(45) DEFAULT NULL,
-  `loc_state` varchar(45) DEFAULT NULL,
+  `loc_address` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `loc_sute_apt_unit` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `loc_country` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `loc_state` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
   `cit_id` int(11) DEFAULT NULL COMMENT '	',
   `reg_id` int(11) DEFAULT NULL,
-  `loc_zip_posta_code` varchar(45) DEFAULT NULL,
-  `loc_lat` varchar(45) DEFAULT NULL,
-  `loc_lon` varchar(45) DEFAULT NULL,
+  `loc_zip_posta_code` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `loc_lat` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `loc_lon` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`loc_id`),
   KEY `fk_mexi_partner_location_mexi_regions1_idx` (`reg_id`),
   KEY `fk_mexi_partner_location_mexi_cities1_idx` (`cit_id`),
   KEY `fk_partner_location_partners1_idx` (`par_id`),
   CONSTRAINT `fk_partner_location_partners1` FOREIGN KEY (`par_id`) REFERENCES `partners` (`par_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `partner_location` */
 
@@ -767,10 +761,10 @@ DROP TABLE IF EXISTS `partner_other_type_account`;
 
 CREATE TABLE `partner_other_type_account` (
   `par_other_type_account_id` int(11) NOT NULL AUTO_INCREMENT,
-  `par_other_type_account_name` char(100) DEFAULT NULL,
+  `par_other_type_account_name` char(100) COLLATE utf8_spanish_ci DEFAULT NULL,
   `par_profiler_default` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`par_other_type_account_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `partner_other_type_account` */
 
@@ -786,11 +780,11 @@ DROP TABLE IF EXISTS `partner_package_available`;
 
 CREATE TABLE `partner_package_available` (
   `par_id` int(11) NOT NULL,
-  `pac_id` varchar(45) DEFAULT NULL,
-  `disponibles` varchar(45) DEFAULT NULL,
-  `usados` varchar(45) DEFAULT NULL,
+  `pac_id` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `disponibles` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `usados` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`par_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `partner_package_available` */
 
@@ -804,12 +798,12 @@ DROP TABLE IF EXISTS `partner_packages_informative`;
 
 CREATE TABLE `partner_packages_informative` (
   `part_pack_infor_id` int(11) NOT NULL AUTO_INCREMENT,
-  `part_pack_infor_name` char(30) DEFAULT NULL,
-  `part_pack_infor_descripcion` text,
-  `part_pack_infor_details` text,
-  `part_pack_infor_type` char(30) DEFAULT NULL,
+  `part_pack_infor_name` char(30) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `part_pack_infor_descripcion` text COLLATE utf8_spanish_ci,
+  `part_pack_infor_details` text COLLATE utf8_spanish_ci,
+  `part_pack_infor_type` char(30) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`part_pack_infor_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `partner_packages_informative` */
 
@@ -825,21 +819,21 @@ DROP TABLE IF EXISTS `partner_payment`;
 
 CREATE TABLE `partner_payment` (
   `par_pay_id` int(11) NOT NULL AUTO_INCREMENT,
-  `par_pay_first_name` char(100) NOT NULL,
-  `par_pay_last_name` char(100) DEFAULT NULL,
-  `par_pay_phone` char(15) DEFAULT NULL,
-  `par_pay_company_name` char(100) DEFAULT NULL,
-  `par_pay_rfc` char(50) DEFAULT NULL,
-  `par_pay_mail` char(100) DEFAULT NULL,
-  `par_pay_suite_ap_uni` char(100) DEFAULT NULL,
+  `par_pay_first_name` char(100) COLLATE utf8_spanish_ci NOT NULL,
+  `par_pay_last_name` char(100) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `par_pay_phone` char(15) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `par_pay_company_name` char(100) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `par_pay_rfc` char(50) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `par_pay_mail` char(100) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `par_pay_suite_ap_uni` char(100) COLLATE utf8_spanish_ci DEFAULT NULL,
   `par_pay_state_id` int(11) DEFAULT NULL,
-  `par_pay_zip` char(20) DEFAULT NULL,
+  `par_pay_zip` char(20) COLLATE utf8_spanish_ci DEFAULT NULL,
   `par_id` int(11) NOT NULL,
   `par_date_create` datetime DEFAULT NULL,
   PRIMARY KEY (`par_pay_id`),
   KEY `fk_partner_payment_partners1_idx` (`par_id`),
   CONSTRAINT `fk_partner_payment_partners1` FOREIGN KEY (`par_id`) REFERENCES `partners` (`par_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `partner_payment` */
 
@@ -856,21 +850,21 @@ DROP TABLE IF EXISTS `partner_profile`;
 CREATE TABLE `partner_profile` (
   `prof_id` int(11) NOT NULL AUTO_INCREMENT,
   `par_id` int(11) DEFAULT NULL,
-  `prof_logo` char(100) DEFAULT NULL,
-  `prof_company` char(150) DEFAULT NULL,
-  `prof_email` char(150) DEFAULT NULL,
-  `prof_website` char(200) DEFAULT NULL,
-  `prof_phone2` char(20) DEFAULT NULL,
-  `prof_phone1` char(20) DEFAULT NULL,
-  `prof_dsc` text,
-  `prof_phone_desc1` char(40) DEFAULT NULL,
-  `prof_phone_desc2` char(40) DEFAULT NULL,
-  `prof_phone3` char(20) DEFAULT NULL,
-  `prof_phone_desc3` char(40) DEFAULT NULL,
+  `prof_logo` char(100) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `prof_company` char(150) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `prof_email` char(150) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `prof_website` char(200) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `prof_phone2` char(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `prof_phone1` char(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `prof_dsc` text COLLATE utf8_spanish_ci,
+  `prof_phone_desc1` char(40) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `prof_phone_desc2` char(40) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `prof_phone3` char(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `prof_phone_desc3` char(40) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`prof_id`),
   KEY `fk_partner_profile_partners1_idx` (`par_id`),
   CONSTRAINT `fk_partner_profile_partners1` FOREIGN KEY (`par_id`) REFERENCES `partners` (`par_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `partner_profile` */
 
@@ -886,15 +880,15 @@ DROP TABLE IF EXISTS `partner_videos`;
 
 CREATE TABLE `partner_videos` (
   `vid_id` int(11) NOT NULL AUTO_INCREMENT,
-  `vid_title` char(200) DEFAULT NULL,
-  `vid_type` char(50) DEFAULT NULL,
+  `vid_title` char(200) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `vid_type` char(50) COLLATE utf8_spanish_ci DEFAULT NULL,
   `vid_order` int(11) DEFAULT NULL,
   `par_id` int(11) DEFAULT NULL,
-  `vid_uri` text,
+  `vid_uri` text COLLATE utf8_spanish_ci,
   PRIMARY KEY (`vid_id`),
   KEY `fk_partner_videos_partners1_idx` (`par_id`),
   CONSTRAINT `fk_partner_videos_partners1` FOREIGN KEY (`par_id`) REFERENCES `partners` (`par_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=167 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=167 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `partner_videos` */
 
@@ -911,9 +905,9 @@ DROP TABLE IF EXISTS `partners`;
 CREATE TABLE `partners` (
   `par_id` int(11) NOT NULL AUTO_INCREMENT,
   `usu_id` int(11) DEFAULT NULL,
-  `par_nickname` varchar(45) NOT NULL,
-  `par_email` varchar(45) NOT NULL,
-  `par_full_name` varchar(45) DEFAULT NULL,
+  `par_nickname` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `par_email` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `par_full_name` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
   `par_chief` int(11) DEFAULT NULL,
   `par_acount_type_id` int(11) NOT NULL,
   `par_flag_partner_profiler` tinyint(1) DEFAULT NULL COMMENT 'si es que es un partner de tipo real estate o es uno de tipo publicitario.',
@@ -929,7 +923,7 @@ CREATE TABLE `partners` (
   CONSTRAINT `fk_partners_partners_acount_type1` FOREIGN KEY (`par_acount_type_id`) REFERENCES `partners_acount_type` (`part_acount_type_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_partners_partner_other_type_account1` FOREIGN KEY (`par_other_type_account_id`) REFERENCES `partner_other_type_account` (`par_other_type_account_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_partner_chief` FOREIGN KEY (`par_chief`) REFERENCES `partners` (`par_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `partners` */
 
@@ -945,10 +939,10 @@ DROP TABLE IF EXISTS `partners_acount_type`;
 
 CREATE TABLE `partners_acount_type` (
   `part_acount_type_id` int(11) NOT NULL AUTO_INCREMENT,
-  `part_acount_type_nom` varchar(45) DEFAULT NULL,
-  `part_acuount_type_descripcion` varchar(100) DEFAULT NULL,
+  `part_acount_type_nom` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `part_acuount_type_descripcion` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`part_acount_type_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COMMENT='Pueden ser:\n	1. Single Real Estate Agent\n	2. Brokerage Account\n	3. Real Estate Development\n	4. Other';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci COMMENT='Pueden ser:\n	1. Single Real Estate Agent\n	2. Brokerage Account\n	3. Real Estate Development\n	4. Other';
 
 /*Data for the table `partners_acount_type` */
 
@@ -964,10 +958,10 @@ DROP TABLE IF EXISTS `partners_categories`;
 
 CREATE TABLE `partners_categories` (
   `cat_id` int(11) NOT NULL,
-  `cat_name` varchar(45) DEFAULT NULL,
-  `cat_dsc` varchar(45) DEFAULT NULL,
+  `cat_name` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `cat_dsc` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`cat_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `partners_categories` */
 
@@ -990,7 +984,7 @@ CREATE TABLE `partners_categories_rel` (
   KEY `fk_partners_categories_rel_partners_categories1_idx` (`cat_id`),
   CONSTRAINT `fk_partners_categories_rel_partners1` FOREIGN KEY (`par_id`) REFERENCES `partners` (`par_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_partners_categories_rel_partners_categories1` FOREIGN KEY (`cat_id`) REFERENCES `partners_categories` (`cat_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `partners_categories_rel` */
 
@@ -1006,37 +1000,14 @@ DROP TABLE IF EXISTS `partners_subcategories`;
 
 CREATE TABLE `partners_subcategories` (
   `sub_id` int(11) NOT NULL,
-  `sub_name` varchar(45) DEFAULT NULL,
-  `sub_dsc` varchar(45) DEFAULT NULL,
+  `sub_name` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `sub_dsc` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`sub_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `partners_subcategories` */
 
 LOCK TABLES `partners_subcategories` WRITE;
-
-UNLOCK TABLES;
-
-/*Table structure for table `partners_subcategories_rel` */
-
-DROP TABLE IF EXISTS `partners_subcategories_rel`;
-
-CREATE TABLE `partners_subcategories_rel` (
-  `par_id` int(11) NOT NULL,
-  `partners_subcategories_rel_id` int(11) NOT NULL AUTO_INCREMENT,
-  `par_other_type_account_id` int(11) NOT NULL,
-  PRIMARY KEY (`partners_subcategories_rel_id`),
-  KEY `fk_mexi_partners_subcategories_rel_mexi_partners1_idx` (`par_id`),
-  KEY `fk_partners_subcategories_rel_partner_other_type_account1_idx` (`par_other_type_account_id`),
-  CONSTRAINT `fk_partners_subcategories_rel_partners1` FOREIGN KEY (`par_id`) REFERENCES `partners` (`par_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_partners_subcategories_rel_partner_other_type_account1` FOREIGN KEY (`par_other_type_account_id`) REFERENCES `partner_other_type_account` (`par_other_type_account_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
-
-/*Data for the table `partners_subcategories_rel` */
-
-LOCK TABLES `partners_subcategories_rel` WRITE;
-
-insert  into `partners_subcategories_rel`(`par_id`,`partners_subcategories_rel_id`,`par_other_type_account_id`) values (31,10,3),(31,11,1);
 
 UNLOCK TABLES;
 
@@ -1046,36 +1017,56 @@ DROP TABLE IF EXISTS `properties`;
 
 CREATE TABLE `properties` (
   `pro_id` int(11) NOT NULL AUTO_INCREMENT,
-  `pro_status` enum('ANY','YES','NO') DEFAULT 'ANY' COMMENT '0 no avaible  1 avaible',
-  `pro_listing_status` enum('ANY','YES','NO') DEFAULT 'ANY',
-  `pro_type` enum('ANY','YES','NO') DEFAULT 'ANY',
+  `pro_status` char(20) COLLATE utf8_spanish_ci DEFAULT 'ANY' COMMENT '0 no avaible  1 avaible',
   `pro_price` decimal(10,2) DEFAULT NULL COMMENT '1 = yes ',
   `pro_house_details` decimal(10,2) DEFAULT NULL,
   `pro_land_details` decimal(10,2) unsigned DEFAULT NULL,
   `reg_id` int(11) DEFAULT NULL,
-  `cit_id` int(11) DEFAULT NULL,
   `age_id` int(11) DEFAULT NULL,
   `par_id` int(11) DEFAULT NULL,
   `details_house_id` tinyint(4) DEFAULT NULL,
   `details_land_id` tinyint(4) DEFAULT NULL,
-  `bedroom` char(25) DEFAULT NULL,
-  `style` char(25) DEFAULT NULL,
-  `garage` char(25) DEFAULT NULL,
-  `view` char(25) DEFAULT NULL,
-  `recreational_areas` char(25) DEFAULT NULL,
-  `bathrooms` char(25) DEFAULT NULL,
-  `keyword` char(25) DEFAULT NULL,
-  `address` text,
-  `size` varchar(45) DEFAULT NULL,
+  `bedroom` char(25) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `style` char(25) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `garage` char(25) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `view` char(25) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `recreational_areas` char(25) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `bathrooms` char(25) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `keyword` char(25) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `address` text COLLATE utf8_spanish_ci,
+  `size` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `property_type_id` int(11) DEFAULT NULL,
+  `est_id` int(11) DEFAULT NULL,
+  `cd_id` int(11) DEFAULT NULL,
+  `title` char(200) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `description` text COLLATE utf8_spanish_ci,
+  `zip` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `latitud` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `longitud` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `suit_apa_unit` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `listing_status_id` int(11) NOT NULL,
+  `property_style_id` int(11) NOT NULL,
+  `property_view_id` int(11) NOT NULL,
   PRIMARY KEY (`pro_id`),
+  UNIQUE KEY `size_UNIQUE` (`size`),
   KEY `fk_properties_regions1_idx` (`reg_id`),
-  KEY `fk_properties_cities1_idx` (`cit_id`),
   KEY `fk_properties_agents1_idx` (`age_id`),
   KEY `fk_properties_partners1_idx` (`par_id`),
-  CONSTRAINT `fk_properties_cities1` FOREIGN KEY (`cit_id`) REFERENCES `cities` (`cit_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  KEY `fk_properties_property_type1_idx` (`property_type_id`),
+  KEY `fk_properties_core_estados1_idx` (`est_id`),
+  KEY `fk_properties_core_ciudades1_idx` (`cd_id`),
+  KEY `fk_properties_property_listing_status1_idx` (`listing_status_id`),
+  KEY `fk_properties_property_style1_idx` (`property_style_id`),
+  KEY `fk_properties_property_view1_idx` (`property_view_id`),
+  CONSTRAINT `fk_properties_regions1` FOREIGN KEY (`reg_id`) REFERENCES `regions` (`reg_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_properties_core_estados1` FOREIGN KEY (`est_id`) REFERENCES `core_estados` (`est_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_properties_core_ciudades1` FOREIGN KEY (`cd_id`) REFERENCES `core_ciudades` (`cd_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_properties_property_style1` FOREIGN KEY (`property_style_id`) REFERENCES `property_style` (`property_style_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_properties_property_view1` FOREIGN KEY (`property_view_id`) REFERENCES `property_view` (`property_view_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_properties_partners1` FOREIGN KEY (`par_id`) REFERENCES `partners` (`par_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_properties_regions1` FOREIGN KEY (`reg_id`) REFERENCES `regions` (`reg_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  CONSTRAINT `fk_properties_property_listing_status1` FOREIGN KEY (`listing_status_id`) REFERENCES `property_listing_status` (`property_listing_status_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_properties_property_type1` FOREIGN KEY (`property_type_id`) REFERENCES `property_type` (`property_type_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `properties` */
 
@@ -1090,12 +1081,13 @@ DROP TABLE IF EXISTS `properties_amenities_rel`;
 CREATE TABLE `properties_amenities_rel` (
   `ame_id` int(11) NOT NULL,
   `pro_id` int(11) NOT NULL,
-  PRIMARY KEY (`ame_id`,`pro_id`),
+  `properties_amenities_rel_id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`properties_amenities_rel_id`),
   KEY `fk_properties_amenities_rel_amenities1_idx` (`ame_id`),
   KEY `fk_properties_amenities_rel_properties1_idx` (`pro_id`),
   CONSTRAINT `fk_properties_amenities_rel_amenities1` FOREIGN KEY (`ame_id`) REFERENCES `amenities` (`ame_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_properties_amenities_rel_properties2` FOREIGN KEY (`pro_id`) REFERENCES `properties` (`pro_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `properties_amenities_rel` */
 
@@ -1108,13 +1100,15 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `properties_appliances_rel`;
 
 CREATE TABLE `properties_appliances_rel` (
-  `pro_id` int(11) NOT NULL,
   `app_id` int(11) NOT NULL,
-  PRIMARY KEY (`app_id`,`pro_id`),
-  KEY `fk_mexi_properties_appliances_rel_mexi_properties1_idx` (`pro_id`),
+  `pro_id` int(11) NOT NULL,
+  `properties_appliances_rel_id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`properties_appliances_rel_id`),
   KEY `fk_mexi_properties_appliances_rel_mexi_appliances1_idx` (`app_id`),
-  CONSTRAINT `fk_properties_appliances_rel_appliances` FOREIGN KEY (`app_id`) REFERENCES `appliances` (`app_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  KEY `fk_properties_appliances_rel_properties1_idx` (`pro_id`),
+  CONSTRAINT `fk_properties_appliances_rel_appliances` FOREIGN KEY (`app_id`) REFERENCES `appliances` (`app_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_properties_appliances_rel_properties1` FOREIGN KEY (`pro_id`) REFERENCES `properties` (`pro_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `properties_appliances_rel` */
 
@@ -1127,13 +1121,15 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `properties_buildings_rel`;
 
 CREATE TABLE `properties_buildings_rel` (
-  `pro_id` int(11) NOT NULL,
+  `properties_buildings_rel_id` int(11) NOT NULL AUTO_INCREMENT,
   `bui_id` int(11) NOT NULL,
-  PRIMARY KEY (`bui_id`,`pro_id`),
-  KEY `fk_mexi_properties_buildings_rel_mexi_buildings1_idx` (`bui_id`),
-  KEY `fk_mexi_properties_buildings_rel_mexi_properties1_idx` (`pro_id`),
-  CONSTRAINT `fk_properties_buildings_rel_buildings1` FOREIGN KEY (`bui_id`) REFERENCES `buildings` (`bui_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `pro_id` int(11) NOT NULL,
+  PRIMARY KEY (`properties_buildings_rel_id`),
+  KEY `fk_properties_buildings_rel_buildings1_idx` (`bui_id`),
+  KEY `fk_properties_buildings_rel_properties1_idx` (`pro_id`),
+  CONSTRAINT `fk_properties_buildings_rel_buildings1` FOREIGN KEY (`bui_id`) REFERENCES `buildings` (`bui_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_properties_buildings_rel_properties1` FOREIGN KEY (`pro_id`) REFERENCES `properties` (`pro_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `properties_buildings_rel` */
 
@@ -1154,7 +1150,7 @@ CREATE TABLE `properties_favorites` (
   KEY `fk_properties_favorites_core_usuarios1_idx` (`usu_id`),
   CONSTRAINT `fk_properties_favorites_core_usuarios1` FOREIGN KEY (`usu_id`) REFERENCES `core_usuarios` (`usu_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_properties_favorites_properties2` FOREIGN KEY (`pro_id`) REFERENCES `properties` (`pro_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `properties_favorites` */
 
@@ -1167,13 +1163,15 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `properties_features_rel`;
 
 CREATE TABLE `properties_features_rel` (
-  `pro_id` int(11) NOT NULL,
   `fea_id` int(11) NOT NULL,
-  PRIMARY KEY (`fea_id`,`pro_id`),
+  `pro_id` int(11) NOT NULL,
+  `properties_features_rel_id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`properties_features_rel_id`),
   KEY `fk_mexi_properties_features_rel_mexi_features1_idx` (`fea_id`),
-  KEY `fk_mexi_properties_features_rel_mexi_properties1_idx` (`pro_id`),
-  CONSTRAINT `fk_properties_features_rel_features` FOREIGN KEY (`fea_id`) REFERENCES `features` (`fea_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  KEY `fk_properties_features_rel_properties1_idx` (`pro_id`),
+  CONSTRAINT `fk_properties_features_rel_features` FOREIGN KEY (`fea_id`) REFERENCES `features` (`fea_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_properties_features_rel_properties1` FOREIGN KEY (`pro_id`) REFERENCES `properties` (`pro_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `properties_features_rel` */
 
@@ -1188,13 +1186,13 @@ DROP TABLE IF EXISTS `property_files`;
 CREATE TABLE `property_files` (
   `fil_id` int(11) NOT NULL AUTO_INCREMENT,
   `pro_id` int(11) DEFAULT NULL,
-  `fil_title` varchar(45) DEFAULT NULL,
-  `fil_source` varchar(45) DEFAULT NULL,
+  `fil_title` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `fil_source` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
   `fil_order` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`fil_id`),
   KEY `fk_property_files_properties1_idx` (`pro_id`),
   CONSTRAINT `fk_property_files_properties2` FOREIGN KEY (`pro_id`) REFERENCES `properties` (`pro_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `property_files` */
 
@@ -1209,17 +1207,65 @@ DROP TABLE IF EXISTS `property_imgs`;
 CREATE TABLE `property_imgs` (
   `img_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '	',
   `pro_id` int(11) DEFAULT NULL,
-  `img_title` varchar(45) DEFAULT NULL,
-  `img_source` varchar(45) DEFAULT NULL,
+  `img_title` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `img_source` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
   `img_order` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`img_id`),
   KEY `fk_mexi_property_media_mexi_properties1_idx` (`pro_id`),
   CONSTRAINT `fk_property_imgs_properties1` FOREIGN KEY (`pro_id`) REFERENCES `properties` (`pro_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `property_imgs` */
 
 LOCK TABLES `property_imgs` WRITE;
+
+UNLOCK TABLES;
+
+/*Table structure for table `property_listing_status` */
+
+DROP TABLE IF EXISTS `property_listing_status`;
+
+CREATE TABLE `property_listing_status` (
+  `property_listing_status_id` int(11) NOT NULL AUTO_INCREMENT,
+  `property_listing_status_name` char(200) DEFAULT NULL,
+  PRIMARY KEY (`property_listing_status_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `property_listing_status` */
+
+LOCK TABLES `property_listing_status` WRITE;
+
+UNLOCK TABLES;
+
+/*Table structure for table `property_style` */
+
+DROP TABLE IF EXISTS `property_style`;
+
+CREATE TABLE `property_style` (
+  `property_style_id` int(11) NOT NULL AUTO_INCREMENT,
+  `property_style_name` char(150) DEFAULT NULL,
+  PRIMARY KEY (`property_style_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `property_style` */
+
+LOCK TABLES `property_style` WRITE;
+
+UNLOCK TABLES;
+
+/*Table structure for table `property_type` */
+
+DROP TABLE IF EXISTS `property_type`;
+
+CREATE TABLE `property_type` (
+  `property_type_id` int(11) NOT NULL AUTO_INCREMENT,
+  `property_type_name` char(200) COLLATE utf8_spanish_ci DEFAULT NULL,
+  PRIMARY KEY (`property_type_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+/*Data for the table `property_type` */
+
+LOCK TABLES `property_type` WRITE;
 
 UNLOCK TABLES;
 
@@ -1230,17 +1276,33 @@ DROP TABLE IF EXISTS `property_videos`;
 CREATE TABLE `property_videos` (
   `vid_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '	',
   `pro_id` int(11) DEFAULT NULL,
-  `vid_title` varchar(45) DEFAULT NULL,
-  `vid_source` varchar(45) DEFAULT NULL,
+  `vid_title` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `vid_source` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
   `vid_order` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`vid_id`),
   KEY `fk_mexi_property_media_mexi_properties1_idx` (`pro_id`),
   CONSTRAINT `fk_property_videos_properties2` FOREIGN KEY (`pro_id`) REFERENCES `properties` (`pro_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `property_videos` */
 
 LOCK TABLES `property_videos` WRITE;
+
+UNLOCK TABLES;
+
+/*Table structure for table `property_view` */
+
+DROP TABLE IF EXISTS `property_view`;
+
+CREATE TABLE `property_view` (
+  `property_view_id` int(11) NOT NULL AUTO_INCREMENT,
+  `property_view_name` char(150) DEFAULT NULL,
+  PRIMARY KEY (`property_view_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `property_view` */
+
+LOCK TABLES `property_view` WRITE;
 
 UNLOCK TABLES;
 
@@ -1270,12 +1332,12 @@ DROP TABLE IF EXISTS `single_agent_packages`;
 
 CREATE TABLE `single_agent_packages` (
   `single_agent_packages_id` int(11) NOT NULL AUTO_INCREMENT,
-  `single_agent_packages_name` char(150) DEFAULT NULL,
+  `single_agent_packages_name` char(150) COLLATE utf8_spanish_ci DEFAULT NULL,
   `single_agent_packages_listing` tinyint(4) DEFAULT NULL,
   `single_agent_packages_permonth` tinyint(4) DEFAULT NULL,
   `single_agent_packages_each` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`single_agent_packages_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `single_agent_packages` */
 
@@ -1302,7 +1364,7 @@ CREATE TABLE `single_agent_packages_partner` (
   KEY `fk_single_agent_packages_partner_partners1_idx` (`par_id`),
   CONSTRAINT `fk_single_agent_packages_partner_partners1` FOREIGN KEY (`par_id`) REFERENCES `partners` (`par_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_single_agent_packages_partner_single_agent_packages1` FOREIGN KEY (`single_agent_packages_id`) REFERENCES `single_agent_packages` (`single_agent_packages_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `single_agent_packages_partner` */
 
@@ -1316,9 +1378,9 @@ DROP TABLE IF EXISTS `type_region`;
 
 CREATE TABLE `type_region` (
   `type_region_id` int(11) NOT NULL AUTO_INCREMENT,
-  `type_region_name` varchar(45) DEFAULT NULL,
+  `type_region_name` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`type_region_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `type_region` */
 
@@ -1350,9 +1412,9 @@ DROP TABLE IF EXISTS `view_core_usuarios_partner`;
   `usu_id_estado` tinyint(4) DEFAULT NULL,
   `grupo_usuario` varchar(7) CHARACTER SET utf8 NOT NULL DEFAULT '',
   `par_id` int(11) NOT NULL DEFAULT '0',
-  `par_nickname` varchar(45) NOT NULL,
-  `par_email` varchar(45) NOT NULL,
-  `par_full_name` varchar(45) DEFAULT NULL,
+  `par_nickname` varchar(45) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `par_email` varchar(45) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `par_full_name` varchar(45) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
   `par_chief` int(11) DEFAULT NULL,
   `par_flag_customer` tinyint(1) DEFAULT NULL,
   `par_acount_type_id` int(11) NOT NULL,
