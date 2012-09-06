@@ -20,6 +20,7 @@ class Application_Model_Partners extends CST_Model {
         $this->_modelPartners = new Application_Model_TableBase_Partners();
         $this->_modelPartnerPayment = new Application_Model_TableBase_PartnerPayment();
         $this->_modelPackageInformative = new Application_Model_TableBase_PartnerpartnerPackagesInformative();
+        $this->_modelProperties = new Application_Model_TableBase_Properties();
     }
 
     function insert($data) {
@@ -103,8 +104,61 @@ class Application_Model_Partners extends CST_Model {
                 ->fetch();
     }
 
+    public function listProperties($idPartner)
+    {   
+        
+        return $this->_modelProperties->getAdapter()->select()
+                ->from(array('P'=>$this->_modelProperties->getName()),
+                    array('pro_price','listing_status_id')
+                    )
+                ->join(array('Part'=>$this->_modelPartners->getName()),
+                    'Part.par_id = P.par_id'
+                    )
+                ->where('Part.par_id = ?',$idPartner)
+                ->query()->fetchAll();
+    }
     
-
+    public function listPropertiesAgent($idPartner,$idAgent)
+    {   
+       $modelPropImg = new Application_Model_TableBase_PropertyImgs();
+       
+        return $this->_modelProperties->getAdapter()->select()
+                ->from(array('P'=>$this->_modelProperties->getName()),
+                    array('pro_price','listing_status_id')
+                    )
+                ->join(array('Part'=>$this->_modelPartners->getName()),
+                    'Part.par_id = P.par_id'
+                    )
+                ->joinLeft(array('Img'=>$modelPropImg->getName()),
+                        'Img.pro_id = P.pro_id',
+                        array('img_order','img_title','img_source')
+                        )
+                ->where('Part.par_id = ?',$idPartner)
+                ->where('P.age_id = ?',$idAgent)
+                ->where('Img.img_order = ?','1')
+                ->query()->fetchAll();
+    }
+    
+    public function listPropertiesNotAgent($idPartner,$idAgent)
+    {
+         $modelPropImg = new Application_Model_TableBase_PropertyImgs();
+        return $this->_modelProperties->getAdapter()->select()
+                ->from(array('P'=>$this->_modelProperties->getName()),
+                    array('pro_price','listing_status_id')
+                    )
+                ->join(array('Part'=>$this->_modelPartners->getName()),
+                    'Part.par_id = P.par_id'
+                    )                
+                 ->joinLeft(array('Img'=>$modelPropImg->getName()),
+                        'Img.pro_id = P.pro_id',
+                        array('img_order','img_title','img_source')
+                        )
+                ->where('Part.par_id = ?',$idPartner)
+                ->where('P.age_id != ?',$idAgent)
+               // ->where('Img.img_order = ?','1');
+                ->query()->fetchAll();
+    }
+    
 }
 
 ?>

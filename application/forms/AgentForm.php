@@ -30,7 +30,7 @@ class Application_Form_AgentForm extends CST_Form {
                     'validators'=>array(new Zend_Validate_EmailAddress())
                     )));  
         
-        $this->addElement(new Zend_Form_Element_Text('profileWebsite2',array('label'=>'Web Site'))
+        $this->addElement(new Zend_Form_Element_Text('profileWebsite',array('label'=>'Web Site'))
             );
         $this->addElement(new Zend_Form_Element_Text('profileBrokerage',
                 array(
@@ -69,16 +69,25 @@ class Application_Form_AgentForm extends CST_Form {
             array(
                 'label'=>'Phone-2',
                 'maxlength'=>'5')));
-        $this->addElement(new Zend_Form_Element_Text('phone',
+        $this->addElement(new Zend_Form_Element_Text('phone2',
             array(
-                'label'=>'Phone',
+                'label'=>'Phone2',
                 'maxlength'=>'15')));
         
-        $this->addElement(new Zend_Form_Element_Text('postPhone',
+        $this->addElement(new Zend_Form_Element_Text('postPhone2',
             array(
                 'label'=>'postPhone',
                 'maxlength'=>'5')));
+        
+//        $element = new Zend_Form_Element_File('image');
+//        $element->setLabel('Upload an image:')
+//                ->setDestination(APPLICATION_PATH.
+//                        '/../public/dinamic/partner/profiler/file/');
+//        $element->addValidator('Count', false, 1);
+//        $element->addValidator('Size', false, 102400);
+//        $element->addValidator('Extension', false, 'pdf');
+//        $this->addElement($element);
     }
-
+    
 }
 

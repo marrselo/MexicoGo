@@ -28,7 +28,7 @@ class Partner_AgentController extends CST_Controller_ActionPartner
             $data['_ageFirstName']=$values['firstName'];
             $data['_ageLastName'] = $values['lastName'];
             $data['_ageEmail']= $values['nameEmail'];
-            $data['_agePhoto']=$values['image'];
+            $data['_agePhoto']=isset($values['image'])?$values['image'] : '';
             $data['_ageWebsite']= $values['profileWebsite'];
             $data['_ageBrokerage'] = $values['profileBrokerage'];
             $data['_ageProfileDsc'] = $values['agentDsc'];
@@ -37,8 +37,16 @@ class Partner_AgentController extends CST_Controller_ActionPartner
             $data['_ageMobilePhone'] = $values['prePhone2'].'-'.
                 $values['phone2'].'-'.$values['postPhone2'];            
             $this->modelAgent->setProperties($data);
-            $this->modelAgent->createAgents();             
-            $this->_redirect('/partner/agent/');
+            $idAgent = $this->modelAgent->createAgents();               
+            $partner = new Application_Entity_Partnert();
+            $col = $partner->listProperties($this->_identityPartner->par_id);
+                        
+            if(empty($col)){
+                $this->_redirect('/partner/agent/');
+            }else{        
+                $this->_redirect('/partner/real-estate/listing/id/'.$idAgent);
+                //$this->_forward('listing','real-estate','partner',array('idAge'=>$idAgent));
+            }
            }else{
                print_r($form->getMessages());
            }
@@ -77,7 +85,7 @@ class Partner_AgentController extends CST_Controller_ActionPartner
         if(!isset($this->_identityPartner->par_id) || empty($id)){
             $this->_redirect("/");
         }
-        $this->modelAgent->deleteAgent($id);        
+        $this->modelAgent->deleteAgents($id);        
         $this->_redirect('partner/agent');
     }
 }
