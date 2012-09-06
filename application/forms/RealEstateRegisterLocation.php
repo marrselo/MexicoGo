@@ -75,10 +75,10 @@ class Application_Form_RealEstateRegisterLocation extends CST_Form {
                     'multiOptions' => $ciudades
                     )));
         
-        $this->addElement(new Zend_Form_Element_Text('profileLocationSuite'));
-        $this->addElement(new Zend_Form_Element_Text('profilerLocationZip'));
-        $this->addElement(new Zend_Form_Element_Text('profileLocationLatitud'));
-        $this->addElement(new Zend_Form_Element_Text('profileLocationLongitud'));
+        $this->addElement(new Zend_Form_Element_Text('locationSuite'));
+        $this->addElement(new Zend_Form_Element_Text('locationZip'));
+        $this->addElement(new Zend_Form_Element_Text('locationLatitud'));
+        $this->addElement(new Zend_Form_Element_Text('locationLongitud'));
         
         
     }

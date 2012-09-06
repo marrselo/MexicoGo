@@ -138,11 +138,6 @@
                             </select>
                         </div>
                     </div><br>
-<!--                    <div class="combo-fix">
-                        <label for="accountLocationRegion">Region:</label>
-                        <div class="flecha-combo"><select type="text" id="accountLocationRegion" name="accountLocationRegion"><option>South America</option><option>Maldonado</option></select></div>
-                    </div><br>-->
-                    
                         <label for="profilerLocationZip">Zip/Postal Code:</label>
                         <input type="text" id="profilerLocationZip" name="profilerLocationZip" value="<?php echo $this->location['zip']?>" />
                     <br>
@@ -169,11 +164,6 @@
                 <input <?php echo $checked ?> value="<?php echo $index; ?>" id="checkCategories<?php echo $index; ?>" type="checkbox" name="profileCategoria[]">
                 <label for="checkCategories<?php echo $index; ?>" class="label-check"><?php echo $value; ?></label>
                 <?php endforeach; ?>
-                
-<!--                <input id="checkTravel" type="checkbox"><label for="checkTravel" class="label-check">Travel</label>
-                <input id="checkRetirement" type="checkbox"><label for="checkRetirement" class="label-check">Retirement</label>
-                <input id="checkLiving" type="checkbox"><label for="checkLiving" class="label-check">Living</label>
-                <input id="checkPartners" type="checkbox"><label for="checkPartners" class="label-check">Parteners</label>-->
             </fieldset>
             <fieldset id="pick-subcategories"><legend class="oswald">SELECT A SUBCATEGORY</legend>
                 <?php 
@@ -217,51 +207,6 @@
                     <input <?php echo $checked ?>  value="<?php echo $index ?>" name="profileSubCategoria[]" id="check<?php echo $index ?>" type="checkbox"><label for="check<?php echo $index ?>" class="label-check2"><?php echo $value ?></label>
                 <?php endforeach; ?>
                 </div>        
-                
-<!--                    <input id="checkAirline" type="checkbox"><label for="checkAirline" class="label-check2">Airline</label>
-                    <input id="checkAll-inclusive" type="checkbox"><label for="checkAll-inclusive" class="label-check2">All-inclusive resorts</label>
-                    <input id="checkArtist" type="checkbox"><label for="checkArtist" class="label-check2">Artist and entertainer</label>
-                    <input id="checkBanking" type="checkbox"><label for="checkBanking" class="label-check2">Banking</label>
-                    <input id="checkAccounting" type="checkbox"><label for="checkRealState" class="label-check2">Beauty salons</label>
-                    <input id="checkAirline" type="checkbox"><label for="checkAirline" class="label-check2">Bed and breakfast</label>
-                    <input id="checkAll-inclusive" type="checkbox"><label for="checkAll-inclusive" class="label-check2">Car rental</label>
-                    <input id="checkArtist" type="checkbox"><label for="checkArtist" class="label-check2">Construccion / renoval</label>
-                    <input id="checkBanking" type="checkbox"><label for="checkBanking" class="label-check2">Cosmetic surgery</label>
-                    <input id="checkAccounting" type="checkbox"><label for="checkRealState" class="label-check2">Dentist</label>
-                    <input id="checkAirline" type="checkbox"><label for="checkAirline" class="label-check2">Doctor</label>
-                    <input id="checkAll-inclusive" type="checkbox"><label for="checkAll-inclusive" class="label-check2">Education</label>-->
-                
-<!--                <div class="pick-med">
-                    <input id="checkAccounting" type="checkbox"><label for="checkRealState" class="label-check2">Fashion and retail</label>
-                    <input id="checkAirline" type="checkbox"><label for="checkAirline" class="label-check2">Fishing charters</label>
-                    <input id="checkAll-inclusive" type="checkbox"><label for="checkAll-inclusive" class="label-check2">Golfing</label>
-                    <input id="checkArtist" type="checkbox"><label for="checkArtist" class="label-check2">Government</label>
-                    <input id="checkBanking" type="checkbox"><label for="checkBanking" class="label-check2">Hotel</label>
-                    <input id="checkAccounting" type="checkbox"><label for="checkRealState" class="label-check2">Insurance</label>
-                    <input id="checkAirline" type="checkbox"><label for="checkAirline" class="label-check2">Lawyer</label>
-                    <input id="checkAll-inclusive" type="checkbox"><label for="checkAll-inclusive" class="label-check2">Long-term care</label>
-                    <input id="checkArtist" type="checkbox"><label for="checkArtist" class="label-check2">Notary public</label>
-                    <input id="checkBanking" type="checkbox"><label for="checkBanking" class="label-check2">Property management</label>
-                    <input id="checkAccounting" type="checkbox"><label for="checkRealState" class="label-check2">REal estate agent</label>
-                    <input id="checkAirline" type="checkbox"><label for="checkAirline" class="label-check2">Real estate brokerage</label>
-                    <input id="checkAll-inclusive" type="checkbox"><label for="checkAll-inclusive" class="label-check2">Real estate development</label>
-                </div>
-                <div class="pick-der">
-                    <input id="checkAccounting" type="checkbox"><label for="checkRealState" class="label-check2">Restaurant and bars</label>
-                    <input id="checkAirline" type="checkbox"><label for="checkAirline" class="label-check2">Retirement specialist</label>
-                    <input id="checkAll-inclusive" type="checkbox"><label for="checkAll-inclusive" class="label-check2">Retreats</label>
-                    <input id="checkArtist" type="checkbox"><label for="checkArtist" class="label-check2">Scuba diving and snorkeling</label>
-                    <input id="checkBanking" type="checkbox"><label for="checkBanking" class="label-check2">Shipping and warehousing</label>
-                    <input id="checkAccounting" type="checkbox"><label for="checkRealState" class="label-check2">Spas</label>
-                    <input id="checkAirline" type="checkbox"><label for="checkAirline" class="label-check2">Surgical care</label>
-                    <input id="checkAll-inclusive" type="checkbox"><label for="checkAll-inclusive" class="label-check2">Surfing</label>
-                    <input id="checkTour" type="checkbox"><label for="checkTour" class="label-check2">Tour Company</label>
-                    <input id="checkTravelAgent" type="checkbox"><label for="checkTravelAgent" class="label-check2">Travel agent</label>
-                    <input id="checkVeterinarian" type="checkbox"><label for="checkVeterinarian" class="label-check2">Veterinarian</label>
-                    <input id="checkWedding" type="checkbox"><label for="checkWedding" class="label-check2">Wedding planner</label>
-                    <input id="checkYoga" type="checkbox"><label for="checkYoga" class="label-check2">Yoga</label>
-                </div>-->
-
             </fieldset>
             <input class="boton-yellow-1 oswald" type="submit" value="SAVE &gt;&gt;">
         </form>

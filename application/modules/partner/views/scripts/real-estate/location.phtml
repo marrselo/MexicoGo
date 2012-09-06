@@ -14,8 +14,8 @@
             <hr class="hr-gris">
             <fieldset id="about-this-home"><legend class="oswald">ABOUT THIS HOME</legend>
                 <br>
-                <input type="text" id="profileWebsite" value="Title" name="profileWebsite"><span class="text-gris-claro desc-titulo">Describe this home in less than 25 characters</span><br>
-                <textarea id="homeDescription" name="homeDescription">Write a short description that will appear on your profile page</textarea>
+                <input type="text" id="profileWebsite" value="Title" name="locationTitle"><span class="text-gris-claro desc-titulo">Describe this home in less than 25 characters</span><br>
+                <textarea id="homeDescription" name="locationDescription">Write a short description that will appear on your profile page</textarea>
             </fieldset>
             <fieldset id="upload-pdf"><legend class="oswald">FEATURE THIS HOME <input type="radio" value=""></legend>
 
@@ -26,7 +26,8 @@
                     <fieldset class="upload-file-fieldset">PDF</fieldset>
                     <img id="img-upload-file" src="<?php echo CST_Server_ServerStatic::getUrl(); ?>/images/upload-button.png">
                     <input class="ruta-input-file" type="text">
-                    <input type="file" value="">
+                    <input type="file" value="" name="fileLocation1">
+                    
                     <script>
                         $(function(){
                             $("#img-upload-file").click(function(){
@@ -58,39 +59,31 @@
             <hr class="hr-gris">
             <fieldset id="loaction"><legend class="oswald">LOCATION</legend>
                 <div style="width:370px;float:left">
-                    <label for="profileLocationAddress">Address:</label>
-                    <input type="text" name="profileLocationAddress" id="profileLocationAddress">
+                    <label for="locationAddress">Address:</label>
+                    <input type="text" name="locationAddress" id="locationAddress">
 
                     <br>
-                    <label for="profileLocationSuite">*Suite/Apt./Unit:</label>
-                    <input type="text" name="profileLocationSuite" id="profileLocationSuite">
+                    <label for="locationSuite">*Suite/Apt./Unit:</label>
+                    <input type="text" name="locationSuite" id="locationSuite">
                     <br>
                     <div class="combo-fix">
-                        <label for="accountLocationCity">City:</label>
-                        <div class="flecha-combo"><select name="accountLocationCity" id="accountlocationCity" type="text"><option>Montevideo</option><option>Maldonado</option></select></div>
+                        <label for="locationCity">City:</label>
+                        <div class="flecha-combo"><select name="locationCity" id="locationCity" type="text"><option>Montevideo</option><option>Maldonado</option></select></div>
                     </div><br>
                     <div class="combo-fix">
-                        <label for="accountLocationCountry">Country:</label>
-                        <div class="flecha-combo"><select name="accountLocationCountry" id="accountLocationCountry" type="text"><option>Uruguay</option><option>Maldonado</option></select></div>
+                        <label for="locationState">State:</label>
+                        <div class="flecha-combo"><select name="locationState" id="locationState" type="text"><option>Montevideo</option><option>Maldonado</option></select></div>
                     </div><br>
                     <div class="combo-fix">
-                        <label for="accountLocationState">State:</label>
-                        <div class="flecha-combo"><select name="accountLocationState" id="accountLocationState" type="text"><option>Montevideo</option><option>Maldonado</option></select></div>
-                    </div><br>
-                    <div class="combo-fix">
-                        <label for="accountLocationRegion">Region:</label>
-                        <div class="flecha-combo"><select name="accountLocationRegion" id="accountLocationRegion" type="text"><option>South America</option><option>Maldonado</option></select></div>
-                    </div><br>
-                    <div class="combo-fix">
-                        <label for="accountLocationZip">Zip/Postal Code:</label>
-                        <div class="flecha-combo"><select name="accountLocationZip" id="accountLocationZip" type="text"><option>12000</option><option>Maldonado</option></select></div>
+                        <label for="locationZip">Zip/Postal Code:</label>
+                        <div class="flecha-combo"><select name="locationZip" id="locationZip" type="text"><option>12000</option><option>Maldonado</option></select></div>
                     </div><br>
                 </div>
                 <div style="width:370px;float:left">
-                    <label for="profileLocationLatitud">Latitude:</label>
-                    <input type="text" name="profileLocationLatitud" id="profileLocationLatitud"><br>
-                    <label for="profileLocationLongitud">Longitud:</label>
-                    <input type="text" name="profileLocationLongitud" id="profileLocationLongitud"><br>
+                    <label for="locationLatitud">Latitude:</label>
+                    <input type="text" name="locationLatitud" id="locationLatitud"><br>
+                    <label for="locationLongitud">Longitud:</label>
+                    <input type="text" name="locationLongitud" id="locationLongitud"><br>
                     <p class="align-right"><a href="">How to do it &gt;&gt;</a><br><a href="">How to do find it &gt;&gt;</a></p>
                 </div>
 
