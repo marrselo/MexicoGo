@@ -59,7 +59,7 @@ class Application_Model_Properties extends CST_Model {
         if ($id != '' && $data != '') {
             $where = $this->_modelProperties->getAdapter()
                     ->quoteInto('pro_id = ?', $id);
-            $this->_modelProperties->update($data, $where);
+            return $this->_modelProperties->update($data, $where);
         } else {
             return false;
         }
@@ -157,9 +157,9 @@ class Application_Model_Properties extends CST_Model {
     function deleteFeatureRel($idFeature, $idProperty) {
         if ($idFeature != '' && $idProperty != '') {
             $where[] = $this->_modelPropertiesFeartureRel->getAdapter()
-                    ->quoteInto('fea_id', $idFeature);
+                    ->quoteInto('fea_id =?', $idFeature);
             $where[] = $this->_modelPropertiesFeartureRel->getAdapter()
-                    ->quoteInto('pro_id', $idProperty);
+                    ->quoteInto('pro_id =?', $idProperty);
             $this->_modelPropertiesFeartureRel->delete($where);
         } else {
             return FALSE;
@@ -196,9 +196,9 @@ class Application_Model_Properties extends CST_Model {
     function deleteApplianceRel($idAppliance, $idProperty) {
         if ($idAppliance != '' && $idProperty != '') {
             $where[] = $this->_modelPropertiesApplianceRel->getAdapter()
-                    ->quoteInto('app_id', $idAppliance);
+                    ->quoteInto('app_id =?', $idAppliance);
             $where[] = $this->_modelPropertiesApplianceRel->getAdapter()
-                    ->quoteInto('pro_id', $idProperty);
+                    ->quoteInto('pro_id=?', $idProperty);
             $this->_modelPropertiesApplianceRel->delete($where);
         } else {
             return FALSE;
@@ -233,9 +233,9 @@ class Application_Model_Properties extends CST_Model {
     function deleteBuildingRel($idBuilding, $idProperty) {
         if ($idBuilding != '' && $idProperty != '') {
             $where[] = $this->_modelPropertiesBuildingsRel->getAdapter()
-                    ->quoteInto('bui_id', $idBuilding);
+                    ->quoteInto('bui_id =?', $idBuilding);
             $where[] = $this->_modelPropertiesBuildingsRel->getAdapter()
-                    ->quoteInto('pro_id', $idProperty);
+                    ->quoteInto('pro_id =?', $idProperty);
             $this->_modelPropertiesBuildingsRel->delete($where);
         } else {
             return FALSE;

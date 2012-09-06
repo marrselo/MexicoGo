@@ -37,8 +37,15 @@
                         <label for="available">Available</label>
                         <div class="flecha-combo">
                             <select name="available" id="available" type="text">
-                                <?php foreach($this->listAvailable as $index=>$value): ?>
-                                <option value='<?php echo $index;?>'><?php echo $value;?></option>
+                                <?php foreach ($this->listAvailable as $index => $value): ?>
+                                    <?php
+                                    if ($this->dataHome['_status'] == $index) {
+                                        $selected = 'selected="selected"';
+                                    } else {
+                                        $selected = '';
+                                    }
+                                    ?>
+                                    <option <?php echo $selected; ?> value='<?php echo $index; ?>'><?php echo $value; ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -48,8 +55,16 @@
                         <label for="listingStatus">Listing Status</label>
                         <div class="flecha-combo">
                             <select name="listingStatus" id="listingStatus" type="text">
-                                <?php foreach($this->listPropertyStatus as $index=>$value):?>
-                                <option value="<?php echo $index; ?>"><?php echo $value; ?></option>
+                                <?php foreach ($this->listPropertyStatus as $index => $value): ?>
+                                 <?php
+                                 $selected='';
+                                    if ($this->dataHome['_idListingStatus'] == $index) {
+                                        $selected = 'selected="selected"';
+                                    } else {
+                                        $selected = '';
+                                    }
+                                    ?>
+                                    <option <?php echo $selected; ?> value="<?php echo $index; ?>"><?php echo $value; ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -58,8 +73,16 @@
                         <label class="label-special-width" for="propertyType">Property Type</label>
                         <div class="flecha-combo">
                             <select name="propertyType" id="propertyType" type="text">
-                                <?php foreach($this->listPropertyType as $index=>$value):?>
-                                <option value="<?php echo $index; ?>"><?php echo $value; ?></option>
+                                <?php foreach ($this->listPropertyType as $index => $value): ?>
+                                <?php
+                                 $selected='';
+                                    if ($this->dataHome['_idPropertyType'] == $index) {
+                                        $selected = 'selected="selected"';
+                                    } else {
+                                        $selected = '';
+                                    }
+                                    ?>
+                                <option <?php echo $selected; ?> value="<?php echo $index; ?>"><?php echo $value; ?></option>
                                 <?php endforeach; ?>
 
                             </select>
@@ -88,9 +111,17 @@
                             <label for="bedroom">Bedroom</label>
                             <div class="flecha-combo">
                                 <select name="bedroom" id="bedroom" type="text">
-                                    <?php foreach($this->listBedroom as $index=>$value): ?>
-                                <option value='<?php echo $index;?>'><?php echo $value;?></option>
-                                <?php endforeach; ?>
+                                    <?php foreach ($this->listBedroom as $index => $value): ?>
+                                    <?php
+                                 $selected='';
+                                    if ($this->dataHome['_bedroon'] == $index) {
+                                        $selected = 'selected="selected"';
+                                    } else {
+                                        $selected = '';
+                                    }
+                                    ?>
+                                <option <?php echo $selected; ?> value='<?php echo $index; ?>'><?php echo $value; ?></option>
+                                    <?php endforeach; ?>
                                 </select>
                             </div>
                         </div>
@@ -98,9 +129,17 @@
                             <label class="label-special-width" for="bathrooms">Bathrooms</label>
                             <div class="flecha-combo">
                                 <select name="bathrooms" id="bathrooms" type="text">
-                                    <?php foreach($this->listBathrooms as $index=>$value): ?>
-                                <option value='<?php echo $index;?>'><?php echo $value;?></option>
-                                <?php endforeach; ?>
+                                    <?php foreach ($this->listBathrooms as $index => $value): ?>
+                                    <?php
+                                 $selected='';
+                                    if ($this->dataHome['_bathrooms'] == $index) {
+                                        $selected = 'selected="selected"';
+                                    } else {
+                                        $selected = '';
+                                    }
+                                    ?>
+                                <option <?php echo $selected; ?> value='<?php echo $index; ?>'><?php echo $value; ?></option>
+                                    <?php endforeach; ?>
                                 </select>
                             </div>
                         </div>
@@ -110,9 +149,17 @@
                             <label for="style">Style</label>
                             <div class="flecha-combo">
                                 <select name="style" id="style" type="text">
-                                <?php foreach($this->listPropertyStyle as $index=>$value):?>
-                                <option value="<?php echo $index; ?>"><?php echo $value; ?></option>
-                                <?php endforeach; ?>
+                                    <?php foreach ($this->listPropertyStyle as $index => $value): ?>
+                                    <?php
+                                 $selected='';
+                                    if ($this->dataHome['_idStyle'] == $index) {
+                                        $selected = 'selected="selected"';
+                                    } else {
+                                        $selected = '';
+                                    }
+                                    ?>
+                                <option <?php echo $selected; ?> value="<?php echo $index; ?>"><?php echo $value; ?></option>
+                                    <?php endforeach; ?>
 
                                 </select>
                             </div>
@@ -127,9 +174,17 @@
                             <label for="garage">Garage</label>
                             <div class="flecha-combo">
                                 <select name="garage" id="garage" type="text">
-                                <?php foreach($this->listGarage as $index=>$value): ?>
-                                <option value='<?php echo $index;?>'><?php echo $value;?></option>
-                                <?php endforeach; ?>
+                                    <?php foreach ($this->listGarage as $index => $value): ?>
+                                    <?php
+                                 $selected='';
+                                    if ($this->dataHome['_garage'] == $index) {
+                                        $selected = 'selected="selected"';
+                                    } else {
+                                        $selected = '';
+                                    }
+                                    ?>
+                                <option <?php echo $selected; ?> value='<?php echo $index; ?>'><?php echo $value; ?></option>
+<?php endforeach; ?>
                                 </select>
                             </div>
                         </div>
@@ -143,9 +198,17 @@
                             <label for="view">View</label>
                             <div class="flecha-combo">
                                 <select name="view" id="view" type="text">
-                                <?php foreach($this->listPropertyView as $index=>$value):?>
-                                <option value="<?php echo $index; ?>"><?php echo $value; ?></option>
-                                <?php endforeach; ?>
+                                    <?php foreach ($this->listPropertyView as $index => $value): ?>
+                                    <?php
+                                 $selected='';
+                                    if ($this->dataHome['_idView'] == $index) {
+                                        $selected = 'selected="selected"';
+                                    } else {
+                                        $selected = '';
+                                    }
+                                    ?>
+                                <option <?php echo $selected; ?> value="<?php echo $index; ?>"><?php echo $value; ?></option>
+<?php endforeach; ?>
 
                                 </select>
                             </div>
@@ -159,9 +222,17 @@
                         <label for="recreation">Recreational Areas</label>
                         <div class="flecha-combo">
                             <select name="recreation" id="recreation" type="text">
-                                <?php foreach($this->listRecreation as $index=>$value): ?>
-                                <option value='<?php echo $index;?>'><?php echo $value;?></option>
-                                <?php endforeach; ?>
+                                <?php foreach ($this->listRecreation as $index => $value): ?>
+                                <?php
+                                 $selected='';
+                                    if ($this->dataHome['_recreationalAreas'] == $index) {
+                                        $selected = 'selected="selected"';
+                                    } else {
+                                        $selected = '';
+                                    }
+                                    ?>
+                                <option <?php echo $selected; ?> value='<?php echo $index; ?>'><?php echo $value; ?></option>
+<?php endforeach; ?>
 
                             </select>
                         </div>
@@ -194,22 +265,23 @@
                             <div class="<?php echo $class; ?>">
                                 <?php foreach ($valueFeature as $index => $value): ?>
                                     <?php
-//                                                                        if(isset($this->listingSubcategoriaRel[$index])) {
-//                                                                            $checked = 'checked="checked"';
-//                                                                        } else{
-//                                                                            $checked='';
-//                                                                        }
+                                    if(isset($this->dataHome['_featureFeature'][$index])) {
+                                        $checked = 'checked="checked"';
+                                        $classAddSelect = ' label-activo ';
+                                    } else{
+                                        $checked='';
+                                        $classAddSelect='';
+                                    }
                                     ?>
-        <!--                                                                        <input <?php echo $checked ?>  value="<?php echo $index ?>" name="profileSubCategoria[]" id="check<?php echo $index ?>" type="checkbox"><label for="check<?php echo $index ?>" class="label-check2"><?php echo $value ?></label>-->
-                                    <label class="label-check3 check-special" id="label-checkFeature<?php echo $index ?>" for="checkFeature<?php echo $index ?>"><?php echo $value ?></label><input type="checkbox" value="<?php echo $index ?>" name="featureFeature[]" id="checkFeature<?php echo $index ?>">
-                                <?php endforeach; ?>
+                                <label class="label-check3 check-special <?php echo $classAddSelect; ?>" id="label-checkFeature<?php echo $index ?>" for="checkFeature<?php echo $index ?>"><?php echo $value ?></label><input <?php echo $checked; ?> type="checkbox" value="<?php echo $index ?>" name="featureFeature[]" id="checkFeature<?php echo $index ?>">
+                            <?php endforeach; ?>
                             </div>
-                        <?php endforeach; ?>
+<?php endforeach; ?>
                     </div>
 
                     <p class="listings-about-header-3 oswald"><span>OUT BUILDINGS</span></p>
                     <div class="contenedor-picks-2">
-<?php
+                        <?php
                         $cantSubCat = count($this->listBuildings);
                         $cantColumn = (int) ($cantSubCat / 3);
                         $residuo = (int) ($cantSubCat % 3);
@@ -235,21 +307,23 @@
                             <div class="<?php echo $class; ?>">
                                 <?php foreach ($valueFeature as $index => $value): ?>
                                     <?php
-//                                                                        if(isset($this->listingSubcategoriaRel[$index])) {
-//                                                                            $checked = 'checked="checked"';
-//                                                                        } else{
-//                                                                            $checked='';
-//                                                                        }
+                                    if(isset($this->dataHome['_featureBuilding'][$index])) {
+                                        $checked = 'checked="checked"';
+                                        $classAddSelect = ' label-activo ';
+                                    } else{
+                                        $checked='';
+                                        $classAddSelect='';
+                                    }
                                     ?>
-                                    <label class="label-check3 check-special" id="label-checkBulinding<?php echo $index ?>" for="checkBulinding<?php echo $index ?>"><?php echo $value ?></label><input type="checkbox" value="<?php echo $index ?>" name="featureBulinding[]" id="checkBulinding<?php echo $index ?>"/>
-                                <?php endforeach; ?>
+                                    <label class="label-check3 check-special <?php echo $classAddSelect; ?>" id="label-checkBulinding<?php echo $index ?>" for="checkBulinding<?php echo $index ?>"><?php echo $value ?></label><input type="checkbox" <?php echo $checked ?> value="<?php echo $index ?>" name="featureBulinding[]" id="checkBulinding<?php echo $index ?>"/>
+                            <?php endforeach; ?>
                             </div>
-                        <?php endforeach; ?>
+<?php endforeach; ?>
                     </div>
 
                     <p class="listings-about-header-3 oswald"><span>APPLIANCES</span></p>
                     <div class="contenedor-picks-3">
-<?php
+                        <?php
                         $cantSubCat = count($this->listAppliances);
                         $cantColumn = (int) ($cantSubCat / 3);
                         $residuo = (int) ($cantSubCat % 3);
@@ -275,17 +349,19 @@
                             <div class="<?php echo $class; ?>">
                                 <?php foreach ($valueFeature as $index => $value): ?>
                                     <?php
-//                                                                        if(isset($this->listingSubcategoriaRel[$index])) {
-//                                                                            $checked = 'checked="checked"';
-//                                                                        } else{
-//                                                                            $checked='';
-//                                                                        }
+                                    if(isset($this->dataHome['_featureAppliances'][$index])) {
+                                        $checked = 'checked="checked"';
+                                        $classAddSelect = ' label-activo ';
+                                    } else{
+                                        $checked='';
+                                        $classAddSelect='';
+                                    }
                                     ?>
-                                    <label class="label-check3 check-special" id="label-checkAppliances<?php echo $index ?>" for="checkAppliances<?php echo $index ?>"><?php echo $value ?></label><input value="<?php echo $index ?>" type="checkbox" name="featureAppliances[]" id="checkAppliances<?php echo $index ?>"/>
-                                <?php endforeach; ?>
+                                    <label class="label-check3 check-special <?php echo $classAddSelect; ?>" id="label-checkAppliances<?php echo $index ?>" for="checkAppliances<?php echo $index ?>"><?php echo $value ?></label><input <?php echo $checked; ?> value="<?php echo $index ?>" type="checkbox" name="featureAppliances[]" id="checkAppliances<?php echo $index ?>"/>
+                            <?php endforeach; ?>
                             </div>
-                        <?php endforeach; ?>
-                        
+<?php endforeach; ?>
+
                     </div>
                     <div class="hr-gris-div"></div>
                     <p class="oswald" id="botonera">

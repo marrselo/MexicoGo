@@ -133,7 +133,6 @@ class Partner_RealEstateController extends CST_Controller_ActionPartner {
         $this->view->dataHome = $home->getProperties();
         
         if ($this->_request->isPost()) {
-            
             if ($form->isValid($this->_request->getParams())) {
                 $input['_idPartner'] = $this->_identityPartner->par_id;
                 $input['_status'] = $form->getElement('available')->getValue();
@@ -156,10 +155,10 @@ class Partner_RealEstateController extends CST_Controller_ActionPartner {
                 $input['_featureAppliances'] = $form->getElement('featureAppliances')->getValue();
                 $home->setProperties($input);
                 $home->updateHome();
-                
+                $this->_redirect('/partner/real-estate/features/home/'.$home->_id);
             }else{
-                print_r($form->getMessages());
-                echo 'no gravo';
+//                print_r($form->getMessages());
+  //              echo 'no gravo';
             }
         }
     }

@@ -131,12 +131,12 @@ class Application_Entity_Home extends CST_Entity {
         $modelProperties = new Application_Model_Properties();
         if ($modelProperties->isHomePartner($this->_id, $this->_idPartner) != FALSE) {
             $data = $this->setArrayData();
-            if($modelProperties->update($this->_id, $data)){
-                $this->addAppliance();
-                $this->addFeature();
-                $this->addBuilding();
+            $modelProperties->update($this->_id, $data);
+            $this->addAppliance();
+            $this->addFeature();
+            $this->addBuilding();
                 return true;
-            }
+            
         } else {
             return FALSE;
         }
@@ -242,7 +242,7 @@ class Application_Entity_Home extends CST_Entity {
             foreach ($arrayData as $index) {
                 unset($arrayRel[$index]);
                 if ($model->getFeatureRel($this->_id, $index) == FALSE) {
-                    $data['par_id'] = $this->_id;
+                    $data['pro_id'] = $this->_id;
                     $data['fea_id'] = $index;
                     $model->insertFeatureRel($data);
                 }
@@ -259,12 +259,12 @@ class Application_Entity_Home extends CST_Entity {
         $arrayData = $this->_featureAppliances;
         $model = new Application_Model_Properties();
         $arrayRel = $this->getAppliance();
-        print_r($arrayData);
+        
         if (is_array($arrayData) and !empty($arrayData)) {
             foreach ($arrayData as $index) {
                 unset($arrayRel[$index]);
                 if ($model->getApplianceRel($this->_id, $index) == FALSE) {
-                    $data['par_id'] = $this->_id;
+                    $data['pro_id'] = $this->_id;
                     $data['app_id'] = $index;
                     $model->insertApplianceRel($data);
                 }
@@ -281,15 +281,17 @@ class Application_Entity_Home extends CST_Entity {
         $arrayData = $this->_featureBuilding;
         $model = new Application_Model_Properties();
         $arrayRel = $this->getAppliance();
+        
         if (is_array($arrayData) and !empty($arrayData)) {
             foreach ($arrayData as $index) {
                 unset($arrayRel[$index]);
                 if ($model->getBuildingRel($this->_id, $index) == FALSE) {
-                    $data['par_id'] = $this->_id;
+                    $data['pro_id'] = $this->_id;
                     $data['bui_id'] = $index;
                     $model->insertBuildingRel($data);
                 }
             }
+            
             if (!empty($arrayRel)) {
                 foreach ($arrayRel as $index => $value) {
                     $model->deleteBuildingRel($index, $this->_id);
