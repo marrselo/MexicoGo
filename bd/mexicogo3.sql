@@ -414,6 +414,8 @@ CREATE TABLE `core_session` (
 
 LOCK TABLES `core_session` WRITE;
 
+insert  into `core_session`(`ses_id`,`ses_modified`,`ses_lifetime`,`ses_data`) values ('ccf8hgmmoordkkar9asu3k5t16',1346901887,1440,'Zend_Auth|a:1:{s:7:\"storage\";O:8:\"stdClass\":22:{s:6:\"usu_id\";s:2:\"34\";s:6:\"rol_id\";s:1:\"2\";s:10:\"usu_nombre\";s:6:\"nazart\";s:13:\"usu_apellidos\";s:12:\" jara huaman\";s:8:\"usu_nick\";s:26:\"nazartjarahuaman@gmail.com\";s:11:\"usu_celular\";N;s:12:\"usu_telefono\";N;s:10:\"usu_correo\";s:26:\"nazartjarahuaman@gmail.com\";s:16:\"usu_creacion_fec\";s:19:\"2012-08-31 10:21:23\";s:7:\"usu_img\";N;s:13:\"usu_id_estado\";N;s:13:\"grupo_usuario\";s:7:\"partner\";s:6:\"par_id\";s:2:\"31\";s:12:\"par_nickname\";s:26:\"nazartjarahuaman@gmail.com\";s:9:\"par_email\";s:26:\"nazartjarahuaman@gmail.com\";s:13:\"par_full_name\";N;s:9:\"par_chief\";N;s:17:\"par_flag_customer\";s:1:\"1\";s:18:\"par_acount_type_id\";s:1:\"2\";s:25:\"par_flag_partner_profiler\";N;s:25:\"par_other_type_account_id\";N;s:9:\"par_state\";N;}}sessionPartner|a:2:{s:9:\"navigator\";a:5:{i:0;a:5:{s:5:\"label\";s:16:\"ACCOUNT SETTINGS\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:16:\"account-settings\";s:5:\"order\";i:1;}i:1;a:5:{s:5:\"label\";s:11:\"Manage your\";s:2:\"id\";s:21:\"account-settings-menu\";s:3:\"uri\";s:1:\"#\";s:5:\"order\";i:2;s:5:\"pages\";a:3:{i:0;a:5:{s:5:\"label\";s:8:\"PROFILER\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:8:\"profiler\";s:5:\"order\";i:1;}i:1;a:5:{s:5:\"label\";s:5:\"AGENT\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:5:\"agent\";s:5:\"order\";i:2;}i:2;a:5:{s:5:\"label\";s:20:\"REAL ESTATE LISTINGS\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:11:\"real-estate\";s:5:\"order\";i:3;}}}i:2;a:6:{s:5:\"label\";s:17:\"EMAIL PREFERENCES\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:10:\"my-account\";s:6:\"action\";s:17:\"email-preferences\";s:5:\"order\";i:3;}i:3;a:6:{s:5:\"label\";s:16:\"ACCOUNT PASSWORD\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:10:\"my-account\";s:6:\"action\";s:16:\"account-password\";s:5:\"order\";i:4;}i:4;a:6:{s:5:\"label\";s:8:\"SIGN OUT\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:10:\"my-account\";s:6:\"action\";s:8:\"sign-out\";s:5:\"order\";i:5;}}s:6:\"idHome\";s:1:\"3\";}');
+
 UNLOCK TABLES;
 
 /*Table structure for table `core_set_info_abaut` */
@@ -1044,9 +1046,10 @@ CREATE TABLE `properties` (
   `latitud` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
   `longitud` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
   `suit_apa_unit` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `listing_status_id` int(11) NOT NULL,
-  `property_style_id` int(11) NOT NULL,
-  `property_view_id` int(11) NOT NULL,
+  `listing_status_id` int(11) DEFAULT NULL,
+  `property_style_id` int(11) DEFAULT NULL,
+  `property_view_id` int(11) DEFAULT NULL,
+  `address_feature` char(200) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`pro_id`),
   UNIQUE KEY `size_UNIQUE` (`size`),
   KEY `fk_properties_regions1_idx` (`reg_id`),
@@ -1061,16 +1064,18 @@ CREATE TABLE `properties` (
   CONSTRAINT `fk_properties_regions1` FOREIGN KEY (`reg_id`) REFERENCES `regions` (`reg_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_properties_core_estados1` FOREIGN KEY (`est_id`) REFERENCES `core_estados` (`est_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_properties_core_ciudades1` FOREIGN KEY (`cd_id`) REFERENCES `core_ciudades` (`cd_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_properties_property_listing_status1` FOREIGN KEY (`listing_status_id`) REFERENCES `property_listing_status` (`property_listing_status_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_properties_property_style1` FOREIGN KEY (`property_style_id`) REFERENCES `property_style` (`property_style_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_properties_property_view1` FOREIGN KEY (`property_view_id`) REFERENCES `property_view` (`property_view_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_properties_partners1` FOREIGN KEY (`par_id`) REFERENCES `partners` (`par_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_properties_property_listing_status1` FOREIGN KEY (`listing_status_id`) REFERENCES `property_listing_status` (`property_listing_status_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_properties_property_type1` FOREIGN KEY (`property_type_id`) REFERENCES `property_type` (`property_type_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `properties` */
 
 LOCK TABLES `properties` WRITE;
+
+insert  into `properties`(`pro_id`,`pro_status`,`pro_price`,`pro_house_details`,`pro_land_details`,`reg_id`,`age_id`,`par_id`,`details_house_id`,`details_land_id`,`bedroom`,`style`,`garage`,`view`,`recreational_areas`,`bathrooms`,`keyword`,`address`,`size`,`property_type_id`,`est_id`,`cd_id`,`title`,`description`,`zip`,`latitud`,`longitud`,`suit_apa_unit`,`listing_status_id`,`property_style_id`,`property_view_id`,`address_feature`) values (3,'ANY',NULL,NULL,NULL,NULL,NULL,31,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'asdasd',NULL,NULL,NULL,2,'Title','Write a short description that will appear on your profile page','Maldonado','asdasd','asdas','asdasd',NULL,NULL,NULL,NULL);
 
 UNLOCK TABLES;
 

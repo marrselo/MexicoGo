@@ -32,7 +32,7 @@ class Application_Entity_Building extends CST_Entity
     static function listBuildings()
     {
         $model = new Application_Model_Buildings();
-        return $model->listing();
+        return CST_Utils::fetchPairs($model->listing());
     }
     
     public function editBuildings($data)

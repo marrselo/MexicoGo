@@ -10,7 +10,7 @@
         </div>
     </aside>
     <section id="block-right">
-        <form id="real-state-listing-page" class="form-account-setting">
+        <form id="real-state-listing-page" class="form-account-setting" method="post" action="" enctype="multipart/form-data">
             <hr class="hr-gris">
             <fieldset id="about-this-home"><legend class="oswald">ABOUT THIS HOME</legend>
                 <br>
@@ -52,8 +52,8 @@
             </fieldset>
             <hr class="hr-gris">
             <fieldset id="upload-videos"><legend class="oswald">VIDEO GALLERY</legend>
-                <input type="text" id="profileVideo1" name="profileVideo1"><span class="text-gris-claro desc-subida-video">Insert your video link (vimeo or youtube)</span><br>
-                <input type="text" id="profileVideo2" name="profileVideo2"><span class="text-gris-claro desc-subida-video">Insert your video link (vimeo or youtube)</span><br>
+                <input type="text" id="profileVideo1" name="video1"><span class="text-gris-claro desc-subida-video">Insert your video link (vimeo or youtube)</span><br>
+                <input type="text" id="profileVideo2" name="video2"><span class="text-gris-claro desc-subida-video">Insert your video link (vimeo or youtube)</span><br>
                 <a href="" class="no-margen-left boton-gris-1 oswald">ADD MORE VIDEOS &gt;&gt;</a>                                
             </fieldset>
             <hr class="hr-gris">
@@ -68,11 +68,24 @@
                     <br>
                     <div class="combo-fix">
                         <label for="locationCity">City:</label>
-                        <div class="flecha-combo"><select name="locationCity" id="locationCity" type="text"><option>Montevideo</option><option>Maldonado</option></select></div>
+                        <div class="flecha-combo">
+                            <select name="locationCity" id="locationCity" type="text">
+                                <option value="" >-------</option>
+                        <?php foreach($this->estados as $index=>$value):
+                            //$selected = $this->location['city']==$index?'Selected="Selected"':'';
+                            ?>
+                        <option <?php // echo $selected; ?>  value="<?php echo $index?>" ><?php echo $value?></option>
+                        <?php endforeach;?>
+                            </select>
+                        </div>
                     </div><br>
                     <div class="combo-fix">
                         <label for="locationState">State:</label>
-                        <div class="flecha-combo"><select name="locationState" id="locationState" type="text"><option>Montevideo</option><option>Maldonado</option></select></div>
+                        <div class="flecha-combo">
+                            <select name="locationState" id="locationState" type="text">
+                                
+                            </select>
+                        </div>
                     </div><br>
                     <div class="combo-fix">
                         <label for="locationZip">Zip/Postal Code:</label>
@@ -95,9 +108,9 @@
             <div class="agent-data-buttons">
                 <p class="draft-save">
                     <span class="oswald">DRAFT</span>
-                    <input type="button" value="SAVE &gt;&gt;" class="generals-buttons" id="">
+                    <input type="submit" value="SAVE &gt;&gt;" class="generals-buttons" id="">
                 </p>
-                <input type="button" value="NEXT &gt;&gt;" class="generals-buttons" id="">
+                <input type="submit" value="NEXT &gt;&gt;" class="generals-buttons" id="">
             </div>
         </form>
     </section>

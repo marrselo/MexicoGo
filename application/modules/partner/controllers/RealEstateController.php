@@ -23,6 +23,7 @@ class Partner_RealEstateController extends CST_Controller_ActionPartner {
 
     public function locationAction() {
         $home = new Application_Entity_Home();
+        unset($this->_sessionPartner->idHome);
         $home->identifiqueHome($this->_sessionPartner->idHome);
         $ubigeo = new Application_Entity_Ubigeo();
         $estados = $ubigeo->getEstados();
@@ -58,19 +59,20 @@ class Partner_RealEstateController extends CST_Controller_ActionPartner {
                         }
                     }
                 }
+                $input['_idPartner'] = $this->_identityPartner->par_id;
                 $input['_title'] = $form->getElement('locationTitle')->getValue();
                 $input['_description'] = $form->getElement('locationDescription')->getValue();
                 $input['_addres'] = $form->getElement('locationAddress')->getValue();
                 $input['_city'] = $form->getElement('locationCity')->getValue();
                 $input['_state'] = $form->getElement('locationState')->getValue();
-                $input['_suitApaUnit'] = $form->getElement('profileLocationSuite')->getValue();
-                $input['_zip'] = $form->getElement('profilerLocationZip')->getValue();
-                $input['_latitud'] = $form->getElement('profileLocationLatitud')->getValue();
-                $input['_longitud'] = $form->getElement('profileLocationLongitud')->getValue();
+                $input['_suitApaUnit'] = $form->getElement('locationSuite')->getValue();
+                $input['_zip'] = $form->getElement('locationZip')->getValue();
+                $input['_latitud'] = $form->getElement('locationLatitud')->getValue();
+                $input['_longitud'] = $form->getElement('locationLongitud')->getValue();
                 $input['_videos'] = array(
-                    $form->getElement('profileVideo1')->getValue(),
-                    $form->getElement('profileVideo2')->getValue(),
-                    $form->getElement('profileVideo3')->getValue()
+                    $form->getElement('video1')->getValue(),
+                    $form->getElement('video2')->getValue(),
+                    $form->getElement('video3')->getValue()
                 );
                 $input['_files'] = $arrayFile;
                 $home->setProperties($input);
@@ -93,9 +95,9 @@ class Partner_RealEstateController extends CST_Controller_ActionPartner {
     public function featuresAction() {
         $this->view->listFeatures = Application_Entity_Feature::listFeatures();        
         $this->view->listBuildings = Application_Entity_Building::listBuildings();        
-        $this->view->listAmenities = Application_Entity_Amenities::listAmenities();        
-        $this->view->listApplianve = Application_Entity_Appliance::listAppliances();
-        print_r($this->view->listApplianve);exit;
+      //  $this->view->listAmenities = Application_Entity_Amenities::listAmenities();        
+        $this->view->listAppliances = Application_Entity_Appliance::listAppliances();
+        
     }
 
     public function agentAssignAction() {

@@ -38,8 +38,8 @@ class Application_Entity_Home extends CST_Entity{
     
     
     function setArrayData(){
-        $param['pro_title'] = $this->_title;
-        $param['pro_description'] = $this->_description;
+        $param['title'] = $this->_title;
+        $param['description'] = $this->_description;
         $param['address'] = $this->_addres;
         $param['suit_apa_unit'] = $this->_suitApaUnit;
         $param['cd_id'] = $this->_city;
@@ -72,14 +72,14 @@ class Application_Entity_Home extends CST_Entity{
     }
     
     function identifiqueHome($idProperty){
-        if($idProperty!=''){
+        if($idProperty==''){
          return false;   
         }
         $modelProperties = new Application_Model_Properties();
         $param = $modelProperties->getPropertyId($idProperty);
         if($param!=FALSE){
-        $this->_title = $param['pro_title'];
-        $this->_description = $param['pro_description'];
+        $this->_title = $param['title'];
+        $this->_description = $param['description'];
         $this->_addres = $param['address'];
         $this->_suitApaUnit = $param['suit_apa_unit'];
         $this->_city = $param['cd_id'];
@@ -139,6 +139,8 @@ class Application_Entity_Home extends CST_Entity{
          return $modelProperties->listingPropertyFile($this->_id);
     }
     function listingVideo(){
+        if($this->_id=='')
+            return false;
         $modelPropVid = new Application_Model_Properties();
         return $modelPropVid->listingVideo($this->_id);
     }
@@ -163,7 +165,7 @@ class Application_Entity_Home extends CST_Entity{
         if (is_array($videosInput) && !empty($videosInput)) {
             foreach ($videosInput as $index) {
                 if ($type = $this->validateVideo($index)) {
-                    $data['par_id'] = $this->_id;
+                    $data['pro_id'] = $this->_id;
                     $data['vid_uri'] = $index;
                     $data['vid_type'] = $type;
                     $modelPropVid->insertVideo($data);
