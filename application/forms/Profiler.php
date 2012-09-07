@@ -143,6 +143,7 @@ class Application_Form_Profiler extends CST_Form {
                 array(
                     'multiOptions' => $ciudades
                     )));
+        print_r($ciudades);
         
         $this->addElement(new Zend_Form_Element_Text('profileLocationSuite'));
         $this->addElement(new Zend_Form_Element_Text('profilerLocationZip'));

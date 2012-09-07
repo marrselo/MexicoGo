@@ -17,7 +17,9 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
                 ->setHeader('Expires', 'max-age=' . 20, true)
                 ->setHeader('Cache-Control', 'private', 'must-revalidate')
                 ->setHeader('Pragma', 'no-cache', true);
-        $response->sendResponse();        
+        $response->sendResponse(); 
+        
+        require_once APPLICATION_PATH . '/../library/phpthumbs/ThumbLib.inc.php';
     }
     
     public function _initRouter() {
@@ -51,6 +53,49 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
           'module' => 'default'
           ));
         $router->addRoute('magazinesubs', $route);
+        //Advance Search
+        $route = new Zend_Controller_Router_Route_Regex('advance-search.html',
+          array(
+          'action' => 'advancesearch',
+          'controller' => 'Index',
+          'module' => 'default'
+          ));
+        $router->addRoute('advancesearch', $route);
+        //Map Search
+        $route = new Zend_Controller_Router_Route_Regex('map-search.html',
+          array(
+          'action' => 'searchmap',
+          'controller' => 'Index',
+          'module' => 'default'
+          ));
+        $router->addRoute('mapsearch', $route);
+        //Partners
+        $route = new Zend_Controller_Router_Route_Regex('partners([A-Za-z\-\.]*)',
+          array(
+          'action' => 'partners',
+          'controller' => 'Index',
+          'module' => 'default'
+          ),
+            array(
+                1 => 'cat'
+            ));
+        $router->addRoute('partners', $route);
+        //Find Agents
+        $route = new Zend_Controller_Router_Route_Regex('find-agents.html',
+          array(
+          'action' => 'agentsearch',
+          'controller' => 'Index',
+          'module' => 'default'
+          ));
+        $router->addRoute('findagents', $route);
+        //Agent Results
+        $route = new Zend_Controller_Router_Route_Regex('agent-results.html',
+          array(
+          'action' => 'agentsearch2',
+          'controller' => 'Index',
+          'module' => 'default'
+          ));
+        $router->addRoute('agentsearch2', $route);
         //------------Url Amigables------------------------------------//
         //Contact
        /* $route = new Zend_Controller_Router_Route_Regex('news.html',

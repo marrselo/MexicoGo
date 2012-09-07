@@ -160,8 +160,7 @@ class Partner_ProfilerController extends CST_Controller_ActionPartner {
                 $partner->addCategorieProfilerRel($form->getElement('profileCategoria')->getValue());
                 $this->_redirect('/partner/profiler');
             } else {
-                print_r($form->getErrorMessages());
-                print_r($this->_request->getParams());
+              //  print_r($form->getErrorMessages());
             }
         }
     }
