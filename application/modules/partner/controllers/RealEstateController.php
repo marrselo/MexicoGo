@@ -41,7 +41,8 @@ class Partner_RealEstateController extends CST_Controller_ActionPartner {
         $estados = $ubigeo->getEstados();
         $this->view->data = $home->getProperties();
         $this->view->estados = Application_Entity_Ubigeo::getEstados();
-        $this->view->ciudades = Application_Entity_Ubigeo::getCiudades($this->view->data['_state']);
+        if($this->view->data['_state']!=''){
+        $this->view->ciudades = Application_Entity_Ubigeo::getCiudades($this->view->data['_state']);}
 
         $this->view->dataVideo = $home->listingVideo();
         $this->view->dataFile = $home->listingsFile();

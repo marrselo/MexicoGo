@@ -113,15 +113,17 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `appliances`;
 
 CREATE TABLE `appliances` (
-  `app_id` int(11) NOT NULL,
+  `app_id` int(11) NOT NULL AUTO_INCREMENT,
   `app_name` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
   `state` tinyint(1) unsigned DEFAULT '1',
   PRIMARY KEY (`app_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `appliances` */
 
 LOCK TABLES `appliances` WRITE;
+
+insert  into `appliances`(`app_id`,`app_name`,`state`) values (1,'Air Conditioning',1),(2,'Ceiling Fans',1),(3,'Central Vac',1),(4,'Clothes Dryer',1),(5,'Clothes washer',1),(6,'Compactor Vac',1),(7,'Dishwasher',1),(8,'Disposal',1),(9,'Freezer',1),(10,'Ice Maker',1),(11,'Microwave',1);
 
 UNLOCK TABLES;
 
@@ -130,15 +132,17 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `buildings`;
 
 CREATE TABLE `buildings` (
-  `bui_id` int(11) NOT NULL,
+  `bui_id` int(11) NOT NULL AUTO_INCREMENT,
   `bui_name` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
   `state` tinyint(1) unsigned DEFAULT '1',
   PRIMARY KEY (`bui_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `buildings` */
 
 LOCK TABLES `buildings` WRITE;
+
+insert  into `buildings`(`bui_id`,`bui_name`,`state`) values (1,'Barn / Stable',1),(2,'Boatlift',1),(3,'Car Port',1),(4,'Casita',1),(5,'Dock / Pier',1),(6,'Gazebo',1),(7,'Maids Quarters',1),(8,'Pergola',1),(9,'Pool House',1),(10,'Studio',1);
 
 UNLOCK TABLES;
 
@@ -365,7 +369,7 @@ CREATE TABLE `core_roles_acl_cat` (
   `rol_dsc` varchar(64) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`rol_id`),
   UNIQUE KEY `rol_desc` (`rol_dsc`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `core_roles_acl_cat` */
 
@@ -414,7 +418,7 @@ CREATE TABLE `core_session` (
 
 LOCK TABLES `core_session` WRITE;
 
-insert  into `core_session`(`ses_id`,`ses_modified`,`ses_lifetime`,`ses_data`) values ('ccf8hgmmoordkkar9asu3k5t16',1346901887,1440,'Zend_Auth|a:1:{s:7:\"storage\";O:8:\"stdClass\":22:{s:6:\"usu_id\";s:2:\"34\";s:6:\"rol_id\";s:1:\"2\";s:10:\"usu_nombre\";s:6:\"nazart\";s:13:\"usu_apellidos\";s:12:\" jara huaman\";s:8:\"usu_nick\";s:26:\"nazartjarahuaman@gmail.com\";s:11:\"usu_celular\";N;s:12:\"usu_telefono\";N;s:10:\"usu_correo\";s:26:\"nazartjarahuaman@gmail.com\";s:16:\"usu_creacion_fec\";s:19:\"2012-08-31 10:21:23\";s:7:\"usu_img\";N;s:13:\"usu_id_estado\";N;s:13:\"grupo_usuario\";s:7:\"partner\";s:6:\"par_id\";s:2:\"31\";s:12:\"par_nickname\";s:26:\"nazartjarahuaman@gmail.com\";s:9:\"par_email\";s:26:\"nazartjarahuaman@gmail.com\";s:13:\"par_full_name\";N;s:9:\"par_chief\";N;s:17:\"par_flag_customer\";s:1:\"1\";s:18:\"par_acount_type_id\";s:1:\"2\";s:25:\"par_flag_partner_profiler\";N;s:25:\"par_other_type_account_id\";N;s:9:\"par_state\";N;}}sessionPartner|a:2:{s:9:\"navigator\";a:5:{i:0;a:5:{s:5:\"label\";s:16:\"ACCOUNT SETTINGS\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:16:\"account-settings\";s:5:\"order\";i:1;}i:1;a:5:{s:5:\"label\";s:11:\"Manage your\";s:2:\"id\";s:21:\"account-settings-menu\";s:3:\"uri\";s:1:\"#\";s:5:\"order\";i:2;s:5:\"pages\";a:3:{i:0;a:5:{s:5:\"label\";s:8:\"PROFILER\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:8:\"profiler\";s:5:\"order\";i:1;}i:1;a:5:{s:5:\"label\";s:5:\"AGENT\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:5:\"agent\";s:5:\"order\";i:2;}i:2;a:5:{s:5:\"label\";s:20:\"REAL ESTATE LISTINGS\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:11:\"real-estate\";s:5:\"order\";i:3;}}}i:2;a:6:{s:5:\"label\";s:17:\"EMAIL PREFERENCES\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:10:\"my-account\";s:6:\"action\";s:17:\"email-preferences\";s:5:\"order\";i:3;}i:3;a:6:{s:5:\"label\";s:16:\"ACCOUNT PASSWORD\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:10:\"my-account\";s:6:\"action\";s:16:\"account-password\";s:5:\"order\";i:4;}i:4;a:6:{s:5:\"label\";s:8:\"SIGN OUT\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:10:\"my-account\";s:6:\"action\";s:8:\"sign-out\";s:5:\"order\";i:5;}}s:6:\"idHome\";s:1:\"3\";}');
+insert  into `core_session`(`ses_id`,`ses_modified`,`ses_lifetime`,`ses_data`) values ('ccf8hgmmoordkkar9asu3k5t16',1346906782,1440,'sessionPartner|a:2:{s:9:\"navigator\";a:5:{i:0;a:5:{s:5:\"label\";s:16:\"ACCOUNT SETTINGS\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:16:\"account-settings\";s:5:\"order\";i:1;}i:1;a:5:{s:5:\"label\";s:11:\"Manage your\";s:2:\"id\";s:21:\"account-settings-menu\";s:3:\"uri\";s:1:\"#\";s:5:\"order\";i:2;s:5:\"pages\";a:3:{i:0;a:5:{s:5:\"label\";s:8:\"PROFILER\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:8:\"profiler\";s:5:\"order\";i:1;}i:1;a:5:{s:5:\"label\";s:5:\"AGENT\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:5:\"agent\";s:5:\"order\";i:2;}i:2;a:5:{s:5:\"label\";s:20:\"REAL ESTATE LISTINGS\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:11:\"real-estate\";s:5:\"order\";i:3;}}}i:2;a:6:{s:5:\"label\";s:17:\"EMAIL PREFERENCES\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:10:\"my-account\";s:6:\"action\";s:17:\"email-preferences\";s:5:\"order\";i:3;}i:3;a:6:{s:5:\"label\";s:16:\"ACCOUNT PASSWORD\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:10:\"my-account\";s:6:\"action\";s:16:\"account-password\";s:5:\"order\";i:4;}i:4;a:6:{s:5:\"label\";s:8:\"SIGN OUT\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:10:\"my-account\";s:6:\"action\";s:8:\"sign-out\";s:5:\"order\";i:5;}}s:6:\"idHome\";s:1:\"5\";}Zend_Auth|a:1:{s:7:\"storage\";O:8:\"stdClass\":22:{s:6:\"usu_id\";s:2:\"34\";s:6:\"rol_id\";s:1:\"2\";s:10:\"usu_nombre\";s:6:\"nazart\";s:13:\"usu_apellidos\";s:12:\" jara huaman\";s:8:\"usu_nick\";s:26:\"nazartjarahuaman@gmail.com\";s:11:\"usu_celular\";N;s:12:\"usu_telefono\";N;s:10:\"usu_correo\";s:26:\"nazartjarahuaman@gmail.com\";s:16:\"usu_creacion_fec\";s:19:\"2012-08-31 10:21:23\";s:7:\"usu_img\";N;s:13:\"usu_id_estado\";N;s:13:\"grupo_usuario\";s:7:\"partner\";s:6:\"par_id\";s:2:\"31\";s:12:\"par_nickname\";s:26:\"nazartjarahuaman@gmail.com\";s:9:\"par_email\";s:26:\"nazartjarahuaman@gmail.com\";s:13:\"par_full_name\";N;s:9:\"par_chief\";N;s:17:\"par_flag_customer\";s:1:\"1\";s:18:\"par_acount_type_id\";s:1:\"2\";s:25:\"par_flag_partner_profiler\";N;s:25:\"par_other_type_account_id\";N;s:9:\"par_state\";N;}}'),('sn5mrej0u6fl3n83t19kua9qb6',1346996932,1440,'sessionPartner|a:1:{s:9:\"navigator\";a:5:{i:0;a:5:{s:5:\"label\";s:16:\"ACCOUNT SETTINGS\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:16:\"account-settings\";s:5:\"order\";i:1;}i:1;a:5:{s:5:\"label\";s:11:\"Manage your\";s:2:\"id\";s:21:\"account-settings-menu\";s:3:\"uri\";s:1:\"#\";s:5:\"order\";i:2;s:5:\"pages\";a:3:{i:0;a:5:{s:5:\"label\";s:8:\"PROFILER\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:8:\"profiler\";s:5:\"order\";i:1;}i:1;a:5:{s:5:\"label\";s:5:\"AGENT\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:5:\"agent\";s:5:\"order\";i:2;}i:2;a:5:{s:5:\"label\";s:20:\"REAL ESTATE LISTINGS\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:11:\"real-estate\";s:5:\"order\";i:3;}}}i:2;a:6:{s:5:\"label\";s:17:\"EMAIL PREFERENCES\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:10:\"my-account\";s:6:\"action\";s:17:\"email-preferences\";s:5:\"order\";i:3;}i:3;a:6:{s:5:\"label\";s:16:\"ACCOUNT PASSWORD\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:10:\"my-account\";s:6:\"action\";s:16:\"account-password\";s:5:\"order\";i:4;}i:4;a:6:{s:5:\"label\";s:8:\"SIGN OUT\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:10:\"my-account\";s:6:\"action\";s:8:\"sign-out\";s:5:\"order\";i:5;}}}Zend_Auth|a:1:{s:7:\"storage\";O:8:\"stdClass\":22:{s:6:\"usu_id\";s:2:\"34\";s:6:\"rol_id\";s:1:\"2\";s:10:\"usu_nombre\";s:6:\"nazart\";s:13:\"usu_apellidos\";s:12:\" jara huaman\";s:8:\"usu_nick\";s:26:\"nazartjarahuaman@gmail.com\";s:11:\"usu_celular\";N;s:12:\"usu_telefono\";N;s:10:\"usu_correo\";s:26:\"nazartjarahuaman@gmail.com\";s:16:\"usu_creacion_fec\";s:19:\"2012-08-31 10:21:23\";s:7:\"usu_img\";N;s:13:\"usu_id_estado\";N;s:13:\"grupo_usuario\";s:7:\"partner\";s:6:\"par_id\";s:2:\"31\";s:12:\"par_nickname\";s:26:\"nazartjarahuaman@gmail.com\";s:9:\"par_email\";s:26:\"nazartjarahuaman@gmail.com\";s:13:\"par_full_name\";N;s:9:\"par_chief\";N;s:17:\"par_flag_customer\";s:1:\"1\";s:18:\"par_acount_type_id\";s:1:\"2\";s:25:\"par_flag_partner_profiler\";N;s:25:\"par_other_type_account_id\";N;s:9:\"par_state\";N;}}'),('ga4aoriol98oa3sosh5tqc3nt3',1346975239,1440,'Zend_Auth|a:1:{s:7:\"storage\";O:8:\"stdClass\":22:{s:6:\"usu_id\";s:2:\"34\";s:6:\"rol_id\";s:1:\"2\";s:10:\"usu_nombre\";s:6:\"nazart\";s:13:\"usu_apellidos\";s:12:\" jara huaman\";s:8:\"usu_nick\";s:26:\"nazartjarahuaman@gmail.com\";s:11:\"usu_celular\";N;s:12:\"usu_telefono\";N;s:10:\"usu_correo\";s:26:\"nazartjarahuaman@gmail.com\";s:16:\"usu_creacion_fec\";s:19:\"2012-08-31 10:21:23\";s:7:\"usu_img\";N;s:13:\"usu_id_estado\";N;s:13:\"grupo_usuario\";s:7:\"partner\";s:6:\"par_id\";s:2:\"31\";s:12:\"par_nickname\";s:26:\"nazartjarahuaman@gmail.com\";s:9:\"par_email\";s:26:\"nazartjarahuaman@gmail.com\";s:13:\"par_full_name\";N;s:9:\"par_chief\";N;s:17:\"par_flag_customer\";s:1:\"1\";s:18:\"par_acount_type_id\";s:1:\"2\";s:25:\"par_flag_partner_profiler\";N;s:25:\"par_other_type_account_id\";N;s:9:\"par_state\";N;}}sessionPartner|a:1:{s:9:\"navigator\";a:5:{i:0;a:5:{s:5:\"label\";s:16:\"ACCOUNT SETTINGS\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:16:\"account-settings\";s:5:\"order\";i:1;}i:1;a:5:{s:5:\"label\";s:11:\"Manage your\";s:2:\"id\";s:21:\"account-settings-menu\";s:3:\"uri\";s:1:\"#\";s:5:\"order\";i:2;s:5:\"pages\";a:3:{i:0;a:5:{s:5:\"label\";s:8:\"PROFILER\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:8:\"profiler\";s:5:\"order\";i:1;}i:1;a:5:{s:5:\"label\";s:5:\"AGENT\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:5:\"agent\";s:5:\"order\";i:2;}i:2;a:5:{s:5:\"label\";s:20:\"REAL ESTATE LISTINGS\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:11:\"real-estate\";s:5:\"order\";i:3;}}}i:2;a:6:{s:5:\"label\";s:17:\"EMAIL PREFERENCES\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:10:\"my-account\";s:6:\"action\";s:17:\"email-preferences\";s:5:\"order\";i:3;}i:3;a:6:{s:5:\"label\";s:16:\"ACCOUNT PASSWORD\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:10:\"my-account\";s:6:\"action\";s:16:\"account-password\";s:5:\"order\";i:4;}i:4;a:6:{s:5:\"label\";s:8:\"SIGN OUT\";s:2:\"id\";s:21:\"account-settings-menu\";s:6:\"module\";s:7:\"partner\";s:10:\"controller\";s:10:\"my-account\";s:6:\"action\";s:8:\"sign-out\";s:5:\"order\";i:5;}}}');
 
 UNLOCK TABLES;
 
@@ -449,13 +453,13 @@ CREATE TABLE `core_set_info_abaut_usuario` (
   KEY `fk_core_set_info_abaut_usuario_core_usuarios1_idx` (`usu_id`),
   CONSTRAINT `fk_core_set_info_abaut_usuario_core_set_info_abaut1` FOREIGN KEY (`core_set_info_abaut_id`) REFERENCES `core_set_info_abaut` (`core_set_info_abaut_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_core_set_info_abaut_usuario_core_usuarios1` FOREIGN KEY (`usu_id`) REFERENCES `core_usuarios` (`usu_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `core_set_info_abaut_usuario` */
 
 LOCK TABLES `core_set_info_abaut_usuario` WRITE;
 
-insert  into `core_set_info_abaut_usuario`(`core_set_info_abaut_usuario_id`,`core_set_info_abaut_id`,`usu_id`) values (1,1,31),(2,2,31),(3,3,31),(4,4,31);
+insert  into `core_set_info_abaut_usuario`(`core_set_info_abaut_usuario_id`,`core_set_info_abaut_id`,`usu_id`) values (28,1,31),(29,2,31),(30,3,31),(31,4,31),(32,5,31),(33,6,31),(34,7,31);
 
 UNLOCK TABLES;
 
@@ -507,13 +511,13 @@ CREATE TABLE `core_usuarios` (
   UNIQUE KEY `usu_nick` (`usu_correo`),
   UNIQUE KEY `usu_nick_2` (`usu_correo`),
   UNIQUE KEY `usu_correo` (`usu_correo`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `core_usuarios` */
 
 LOCK TABLES `core_usuarios` WRITE;
 
-insert  into `core_usuarios`(`usu_id`,`rol_id`,`usu_nombre`,`usu_apellidos`,`usu_nick`,`usu_contrasena`,`usu_celular`,`usu_telefono`,`usu_correo`,`usu_creacion_fec`,`usu_img`,`usu_id_estado`,`usu_recibe_ofertas`) values (31,2,'nazart','jara huaaman','nazartj@gmail.com','645$$82$$4297f44b13955235245b2497399d7a93',NULL,NULL,'nazartj@gmail.com','2012-08-29 22:50:09',NULL,NULL,NULL),(32,2,'nazart jara huaman','jara','nazartj@12aoms.com','215$$443$$4297f44b13955235245b2497399d7a93',NULL,NULL,'nazartj@12aoms.com','2012-08-30 08:02:36',NULL,NULL,NULL),(33,2,'asdfasf','asfdasf','nazartj@aoms.com','461$$591$$4297f44b13955235245b2497399d7a93',NULL,NULL,'nazartj@aoms.com','2012-08-30 08:04:38',NULL,NULL,NULL),(34,2,'nazart',' jara huaman','nazartjarahuaman@gmail.com','213$$843$$4297f44b13955235245b2497399d7a93',NULL,NULL,'nazartjarahuaman@gmail.com','2012-08-31 10:21:23',NULL,NULL,NULL);
+insert  into `core_usuarios`(`usu_id`,`rol_id`,`usu_nombre`,`usu_apellidos`,`usu_nick`,`usu_contrasena`,`usu_celular`,`usu_telefono`,`usu_correo`,`usu_creacion_fec`,`usu_img`,`usu_id_estado`,`usu_recibe_ofertas`) values (31,2,'nazart','jara huaaman','nazartj@gmail.com','210$$87$$ed2b1f468c5f915f3f1cf75d7068baae',NULL,NULL,'nazartj@gmail.com','2012-08-29 22:50:09',NULL,NULL,NULL),(32,2,'nazart jara huaman','jara','nazartj@12aoms.com','215$$443$$4297f44b13955235245b2497399d7a93',NULL,NULL,'nazartj@12aoms.com','2012-08-30 08:02:36',NULL,NULL,NULL),(33,2,'asdfasf','asfdasf','nazartj@aoms.com','461$$591$$4297f44b13955235245b2497399d7a93',NULL,NULL,'nazartj@aoms.com','2012-08-30 08:04:38',NULL,NULL,NULL),(34,2,'nazart',' jara huaman','nazartjarahuaman@gmail.com','270$$594$$ed2b1f468c5f915f3f1cf75d7068baae',NULL,NULL,'nazartjarahuaman@gmail.com','2012-08-31 10:21:23',NULL,NULL,NULL),(35,2,'nazart 2','jara huaman','jarahuaman@gmail.com','96$$780$$4297f44b13955235245b2497399d7a93',NULL,NULL,'jarahuaman@gmail.com','2012-09-06 06:21:21',NULL,NULL,NULL);
 
 UNLOCK TABLES;
 
@@ -522,15 +526,17 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `features`;
 
 CREATE TABLE `features` (
-  `fea_id` int(11) NOT NULL,
+  `fea_id` int(11) NOT NULL AUTO_INCREMENT,
   `fea_name` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
   `state` tinyint(1) unsigned DEFAULT '1',
   PRIMARY KEY (`fea_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `features` */
 
 LOCK TABLES `features` WRITE;
+
+insert  into `features`(`fea_id`,`fea_name`,`state`) values (1,'BBQ Area',1),(2,'Beach Club',1),(3,'Beamed Ceilings',1),(4,'Breakfast Nook',1),(5,'Cable Television',1),(6,'Cathedral Ceilings',1),(7,'Deck',1),(8,'Fence / Wall',1),(9,'Fireplace',1),(10,'Second Kitchen',1),(11,'High Speed Internet',1);
 
 UNLOCK TABLES;
 
@@ -590,7 +596,7 @@ CREATE TABLE `mexi_banners_position` (
   `mexi_banners_position_name` char(100) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`mexi_banners_position_id`),
   UNIQUE KEY `mexi_banners_position_name_UNIQUE` (`mexi_banners_position_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `mexi_banners_position` */
 
@@ -695,7 +701,7 @@ CREATE TABLE `partner_files` (
   PRIMARY KEY (`fil_id`),
   KEY `fk_partner_files_partners1_idx` (`par_id`),
   CONSTRAINT `fk_partner_files_partners1` FOREIGN KEY (`par_id`) REFERENCES `partners` (`par_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `partner_files` */
 
@@ -925,13 +931,13 @@ CREATE TABLE `partners` (
   CONSTRAINT `fk_partners_partners_acount_type1` FOREIGN KEY (`par_acount_type_id`) REFERENCES `partners_acount_type` (`part_acount_type_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_partners_partner_other_type_account1` FOREIGN KEY (`par_other_type_account_id`) REFERENCES `partner_other_type_account` (`par_other_type_account_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_partner_chief` FOREIGN KEY (`par_chief`) REFERENCES `partners` (`par_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `partners` */
 
 LOCK TABLES `partners` WRITE;
 
-insert  into `partners`(`par_id`,`usu_id`,`par_nickname`,`par_email`,`par_full_name`,`par_chief`,`par_acount_type_id`,`par_flag_partner_profiler`,`par_other_type_account_id`,`par_state`,`par_flag_customer`) values (28,31,'nazartj@gmail.com','nazartj@gmail.com',NULL,NULL,2,NULL,NULL,NULL,0),(29,32,'nazartj@12aoms.com','nazartj@12aoms.com',NULL,NULL,2,NULL,NULL,NULL,0),(30,33,'nazartj@aoms.com','nazartj@aoms.com',NULL,NULL,2,NULL,NULL,NULL,0),(31,34,'nazartjarahuaman@gmail.com','nazartjarahuaman@gmail.com',NULL,NULL,2,NULL,NULL,NULL,1);
+insert  into `partners`(`par_id`,`usu_id`,`par_nickname`,`par_email`,`par_full_name`,`par_chief`,`par_acount_type_id`,`par_flag_partner_profiler`,`par_other_type_account_id`,`par_state`,`par_flag_customer`) values (28,31,'nazartj@gmail.com','nazartj@gmail.com',NULL,NULL,2,NULL,NULL,NULL,0),(29,32,'nazartj@12aoms.com','nazartj@12aoms.com',NULL,NULL,2,NULL,NULL,NULL,0),(30,33,'nazartj@aoms.com','nazartj@aoms.com',NULL,NULL,2,NULL,NULL,NULL,0),(31,34,'nazartjarahuaman@gmail.com','nazartjarahuaman@gmail.com',NULL,NULL,2,NULL,NULL,NULL,1),(32,35,'jarahuaman@gmail.com','jarahuaman@gmail.com',NULL,NULL,2,NULL,NULL,NULL,0);
 
 UNLOCK TABLES;
 
@@ -1013,6 +1019,29 @@ LOCK TABLES `partners_subcategories` WRITE;
 
 UNLOCK TABLES;
 
+/*Table structure for table `partners_subcategories_rel` */
+
+DROP TABLE IF EXISTS `partners_subcategories_rel`;
+
+CREATE TABLE `partners_subcategories_rel` (
+  `par_id` int(11) NOT NULL,
+  `partners_subcategories_rel_id` int(11) NOT NULL AUTO_INCREMENT,
+  `par_other_type_account_id` int(11) NOT NULL,
+  PRIMARY KEY (`partners_subcategories_rel_id`),
+  KEY `fk_mexi_partners_subcategories_rel_mexi_partners1_idx` (`par_id`),
+  KEY `fk_partners_subcategories_rel_partner_other_type_account1_idx` (`par_other_type_account_id`),
+  CONSTRAINT `fk_partners_subcategories_rel_partners1` FOREIGN KEY (`par_id`) REFERENCES `partners` (`par_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_partners_subcategories_rel_partner_other_type_account1` FOREIGN KEY (`par_other_type_account_id`) REFERENCES `partner_other_type_account` (`par_other_type_account_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+
+/*Data for the table `partners_subcategories_rel` */
+
+LOCK TABLES `partners_subcategories_rel` WRITE;
+
+insert  into `partners_subcategories_rel`(`par_id`,`partners_subcategories_rel_id`,`par_other_type_account_id`) values (31,10,3),(31,11,1);
+
+UNLOCK TABLES;
+
 /*Table structure for table `properties` */
 
 DROP TABLE IF EXISTS `properties`;
@@ -1061,21 +1090,21 @@ CREATE TABLE `properties` (
   KEY `fk_properties_property_listing_status1_idx` (`listing_status_id`),
   KEY `fk_properties_property_style1_idx` (`property_style_id`),
   KEY `fk_properties_property_view1_idx` (`property_view_id`),
-  CONSTRAINT `fk_properties_regions1` FOREIGN KEY (`reg_id`) REFERENCES `regions` (`reg_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_properties_core_estados1` FOREIGN KEY (`est_id`) REFERENCES `core_estados` (`est_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_properties_core_ciudades1` FOREIGN KEY (`cd_id`) REFERENCES `core_ciudades` (`cd_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_properties_core_estados1` FOREIGN KEY (`est_id`) REFERENCES `core_estados` (`est_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_properties_partners1` FOREIGN KEY (`par_id`) REFERENCES `partners` (`par_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_properties_property_listing_status1` FOREIGN KEY (`listing_status_id`) REFERENCES `property_listing_status` (`property_listing_status_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_properties_property_style1` FOREIGN KEY (`property_style_id`) REFERENCES `property_style` (`property_style_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_properties_property_type1` FOREIGN KEY (`property_type_id`) REFERENCES `property_type` (`property_type_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_properties_property_view1` FOREIGN KEY (`property_view_id`) REFERENCES `property_view` (`property_view_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_properties_partners1` FOREIGN KEY (`par_id`) REFERENCES `partners` (`par_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_properties_property_type1` FOREIGN KEY (`property_type_id`) REFERENCES `property_type` (`property_type_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  CONSTRAINT `fk_properties_regions1` FOREIGN KEY (`reg_id`) REFERENCES `regions` (`reg_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `properties` */
 
 LOCK TABLES `properties` WRITE;
 
-insert  into `properties`(`pro_id`,`pro_status`,`pro_price`,`pro_house_details`,`pro_land_details`,`reg_id`,`age_id`,`par_id`,`details_house_id`,`details_land_id`,`bedroom`,`style`,`garage`,`view`,`recreational_areas`,`bathrooms`,`keyword`,`address`,`size`,`property_type_id`,`est_id`,`cd_id`,`title`,`description`,`zip`,`latitud`,`longitud`,`suit_apa_unit`,`listing_status_id`,`property_style_id`,`property_view_id`,`address_feature`) values (3,'ANY',NULL,NULL,NULL,NULL,NULL,31,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'asdasd',NULL,NULL,NULL,2,'Title','Write a short description that will appear on your profile page','Maldonado','asdasd','asdas','asdasd',NULL,NULL,NULL,NULL);
+insert  into `properties`(`pro_id`,`pro_status`,`pro_price`,`pro_house_details`,`pro_land_details`,`reg_id`,`age_id`,`par_id`,`details_house_id`,`details_land_id`,`bedroom`,`style`,`garage`,`view`,`recreational_areas`,`bathrooms`,`keyword`,`address`,`size`,`property_type_id`,`est_id`,`cd_id`,`title`,`description`,`zip`,`latitud`,`longitud`,`suit_apa_unit`,`listing_status_id`,`property_style_id`,`property_view_id`,`address_feature`) values (5,'Yes','234.00','234.00',NULL,NULL,NULL,31,NULL,NULL,'2',NULL,'7',NULL,'6','3','asdasd','asdasdasd','adsdasd',2,13,9,'titulo nazart','Write a short description that will appear on your profile page asdasdadasdasdas\r\n\r\nasdasdasd\r\nas\r\nd\r\nasd\r\nas\r\ndas\r\ndasdasdasdasdasd','12000','12333','12333','adasdasd',3,1,2,'asdasdasd');
 
 UNLOCK TABLES;
 
@@ -1113,11 +1142,13 @@ CREATE TABLE `properties_appliances_rel` (
   KEY `fk_properties_appliances_rel_properties1_idx` (`pro_id`),
   CONSTRAINT `fk_properties_appliances_rel_appliances` FOREIGN KEY (`app_id`) REFERENCES `appliances` (`app_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_properties_appliances_rel_properties1` FOREIGN KEY (`pro_id`) REFERENCES `properties` (`pro_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `properties_appliances_rel` */
 
 LOCK TABLES `properties_appliances_rel` WRITE;
+
+insert  into `properties_appliances_rel`(`app_id`,`pro_id`,`properties_appliances_rel_id`) values (8,5,25),(7,5,26),(6,5,27),(11,5,28),(9,5,29);
 
 UNLOCK TABLES;
 
@@ -1134,11 +1165,13 @@ CREATE TABLE `properties_buildings_rel` (
   KEY `fk_properties_buildings_rel_properties1_idx` (`pro_id`),
   CONSTRAINT `fk_properties_buildings_rel_buildings1` FOREIGN KEY (`bui_id`) REFERENCES `buildings` (`bui_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_properties_buildings_rel_properties1` FOREIGN KEY (`pro_id`) REFERENCES `properties` (`pro_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `properties_buildings_rel` */
 
 LOCK TABLES `properties_buildings_rel` WRITE;
+
+insert  into `properties_buildings_rel`(`properties_buildings_rel_id`,`bui_id`,`pro_id`) values (25,10,5),(27,8,5),(28,4,5),(29,3,5),(30,2,5),(31,1,5);
 
 UNLOCK TABLES;
 
@@ -1176,11 +1209,13 @@ CREATE TABLE `properties_features_rel` (
   KEY `fk_properties_features_rel_properties1_idx` (`pro_id`),
   CONSTRAINT `fk_properties_features_rel_features` FOREIGN KEY (`fea_id`) REFERENCES `features` (`fea_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_properties_features_rel_properties1` FOREIGN KEY (`pro_id`) REFERENCES `properties` (`pro_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `properties_features_rel` */
 
 LOCK TABLES `properties_features_rel` WRITE;
+
+insert  into `properties_features_rel`(`fea_id`,`pro_id`,`properties_features_rel_id`) values (11,5,1),(10,5,2),(9,5,3),(8,5,4),(7,5,5),(6,5,6),(4,5,8),(1,5,11);
 
 UNLOCK TABLES;
 
@@ -1197,11 +1232,13 @@ CREATE TABLE `property_files` (
   PRIMARY KEY (`fil_id`),
   KEY `fk_property_files_properties1_idx` (`pro_id`),
   CONSTRAINT `fk_property_files_properties2` FOREIGN KEY (`pro_id`) REFERENCES `properties` (`pro_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `property_files` */
 
 LOCK TABLES `property_files` WRITE;
+
+insert  into `property_files`(`fil_id`,`pro_id`,`fil_title`,`fil_source`,`fil_order`) values (16,5,'CV Nazart','fileLocation1_315.pdf',NULL);
 
 UNLOCK TABLES;
 
@@ -1234,11 +1271,13 @@ CREATE TABLE `property_listing_status` (
   `property_listing_status_id` int(11) NOT NULL AUTO_INCREMENT,
   `property_listing_status_name` char(200) DEFAULT NULL,
   PRIMARY KEY (`property_listing_status_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 /*Data for the table `property_listing_status` */
 
 LOCK TABLES `property_listing_status` WRITE;
+
+insert  into `property_listing_status`(`property_listing_status_id`,`property_listing_status_name`) values (1,'status1'),(2,'status2'),(3,'status3');
 
 UNLOCK TABLES;
 
@@ -1250,11 +1289,13 @@ CREATE TABLE `property_style` (
   `property_style_id` int(11) NOT NULL AUTO_INCREMENT,
   `property_style_name` char(150) DEFAULT NULL,
   PRIMARY KEY (`property_style_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 /*Data for the table `property_style` */
 
 LOCK TABLES `property_style` WRITE;
+
+insert  into `property_style`(`property_style_id`,`property_style_name`) values (1,'style1'),(2,'style2'),(3,'style3');
 
 UNLOCK TABLES;
 
@@ -1266,11 +1307,13 @@ CREATE TABLE `property_type` (
   `property_type_id` int(11) NOT NULL AUTO_INCREMENT,
   `property_type_name` char(200) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`property_type_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `property_type` */
 
 LOCK TABLES `property_type` WRITE;
+
+insert  into `property_type`(`property_type_id`,`property_type_name`) values (1,'type1'),(2,'type2'),(3,'type4');
 
 UNLOCK TABLES;
 
@@ -1281,17 +1324,19 @@ DROP TABLE IF EXISTS `property_videos`;
 CREATE TABLE `property_videos` (
   `vid_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '	',
   `pro_id` int(11) DEFAULT NULL,
-  `vid_title` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `vid_source` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `vid_uri` text COLLATE utf8_spanish_ci,
+  `vid_type` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
   `vid_order` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`vid_id`),
   KEY `fk_mexi_property_media_mexi_properties1_idx` (`pro_id`),
   CONSTRAINT `fk_property_videos_properties2` FOREIGN KEY (`pro_id`) REFERENCES `properties` (`pro_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `property_videos` */
 
 LOCK TABLES `property_videos` WRITE;
+
+insert  into `property_videos`(`vid_id`,`pro_id`,`vid_uri`,`vid_type`,`vid_order`) values (64,5,'http://www.youtube.com/watch?v=SGsCXP1HwwY&feature=g-vrec','youtube',NULL),(65,5,'http://www.youtube.com/watch?v=SGsCXP1HwwY&feature=g-vrec','youtube',NULL);
 
 UNLOCK TABLES;
 
@@ -1303,11 +1348,13 @@ CREATE TABLE `property_view` (
   `property_view_id` int(11) NOT NULL AUTO_INCREMENT,
   `property_view_name` char(150) DEFAULT NULL,
   PRIMARY KEY (`property_view_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 /*Data for the table `property_view` */
 
 LOCK TABLES `property_view` WRITE;
+
+insert  into `property_view`(`property_view_id`,`property_view_name`) values (1,'view1'),(2,'view2'),(3,'view3');
 
 UNLOCK TABLES;
 
