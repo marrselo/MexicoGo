@@ -15,20 +15,37 @@ class Partner_RealEstateController extends CST_Controller_ActionPartner {
     public function init() {
         parent::init();
         /* Initialize action controller here */
-        $this->_Partner = new Application_Entity_Partnert();
-        
+        $this->_Partner = new Application_Entity_Partnert();    
     }
 
     public function listingAction() {
-        $params = $this->_getAllParams();         
+        $params = $this->_getAllParams();    
+        $this->view->age_id = $params['id'];
+        //$this->_Partner->listProperties($this->_identityPartner->par_id);
          $this->view->listPropertiesAgent = $this->_Partner
             ->listPropertiesAgent($this->_identityPartner->par_id,$params['id']);
         //print_r($col); exit;
-        $col = $this->view->listPropertiesNotAgent = $this->_Partner
+         $this->view->listPropertiesNotAgent = $this->_Partner
             ->listPropertiesNotAgent($this->_identityPartner->par_id,$params['id']);;
         //print_r($col); exit;
         $this->view->tituloH1 = 'Agents';
         $this->view->tituloH2 = 'Agent/Listings';
+    }
+    
+    public function indexAction()
+    {
+        $params = $this->_getAllParams();    
+             
+         $this->view->listPropertiesAgent = 
+             Application_Entity_Partnert::listHousePublish($this->_identityPartner->par_id);
+        
+         $this->view->listPropertiesNotAgent =
+             Application_Entity_Partnert::listHouseUnPublish($this->_identityPartner->par_id);
+        
+        $this->view->tituloH1 = 'Real estate listings';
+        $this->view->tituloH2 = 'Your current listings ' ;
+        
+        
     }
 
     public function locationAction() {
@@ -165,8 +182,33 @@ class Partner_RealEstateController extends CST_Controller_ActionPartner {
     }
 
     public function agentAssignAction() {
-        // action body
+        $params = $this->_getAllParams();
+        if(!empty($params['ida']) && !empty($params['idh']))
+        {
+            $modelAgent = new Application_Entity_Agent($this->_identityPartner->par_id);
+            $modelAgent->AssignAgentHouse($params['ida'],$params['idh']);
+            $this->_redirect('/partner/real-estate/listing/id/'.$params['ida']);
+            
+        }else{
+            $this->_redirect('/');
+        }
+        
     }
+    
+    public function deleteHouseAction()
+    {
+        $params = $this->_getAllParams();
+        if(!empty($params['ida']) && !empty($params['idh']))
+        {
+            $modelAgent = new Application_Entity_Agent($this->_identityPartner->par_id);
+            $modelAgent->DessasigHouse($params['idh']);            
+            $this->_redirect('/partner/real-estate/listing/id/'.$params['ida']);
+            
+        }else{
+            $this->_redirect('/');
+        }
+    }
+    
     public function previewAction() {
         // action body
     }

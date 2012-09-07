@@ -109,53 +109,56 @@ class Application_Model_Partners extends CST_Model {
         
         return $this->_modelProperties->getAdapter()->select()
                 ->from(array('P'=>$this->_modelProperties->getName()),
-                    array('pro_price','listing_status_id')
+                    array('pro_price',
+                        'listing_status_id',
+                        'img_source'=>'source_img',
+                        'img_title'=>'title_img'
+                        )
                     )
                 ->join(array('Part'=>$this->_modelPartners->getName()),
                     'Part.par_id = P.par_id'
                     )
                 ->where('Part.par_id = ?',$idPartner)
+                ->order('P.par_id DESC')
                 ->query()->fetchAll();
     }
     
     public function listPropertiesAgent($idPartner,$idAgent)
     {   
-       $modelPropImg = new Application_Model_TableBase_PropertyImgs();
        
         return $this->_modelProperties->getAdapter()->select()
                 ->from(array('P'=>$this->_modelProperties->getName()),
-                    array('pro_price','listing_status_id')
+                    array('pro_price',
+                        'pro_id',
+                        'listing_status_id',
+                        'img_source'=>'source_img',
+                        'img_title'=>'title_img'
+                        )
                     )
                 ->join(array('Part'=>$this->_modelPartners->getName()),
                     'Part.par_id = P.par_id'
-                    )
-                ->joinLeft(array('Img'=>$modelPropImg->getName()),
-                        'Img.pro_id = P.pro_id',
-                        array('img_order','img_title','img_source')
-                        )
+                    )                
                 ->where('Part.par_id = ?',$idPartner)
-                ->where('P.age_id = ?',$idAgent)
-                ->where('Img.img_order = ?','1')
+                ->where('P.age_id = ?',$idAgent)                
                 ->query()->fetchAll();
     }
     
     public function listPropertiesNotAgent($idPartner,$idAgent)
     {
-         $modelPropImg = new Application_Model_TableBase_PropertyImgs();
-        return $this->_modelProperties->getAdapter()->select()
+        return  $this->_modelProperties->getAdapter()->select()
                 ->from(array('P'=>$this->_modelProperties->getName()),
-                    array('pro_price','listing_status_id')
+                    array('pro_price',
+                        'pro_id',
+                        'listing_status_id',
+                        'img_source'=>'source_img',
+                        'img_title'=>'title_img'
+                        )
                     )
                 ->join(array('Part'=>$this->_modelPartners->getName()),
                     'Part.par_id = P.par_id'
                     )                
-                 ->joinLeft(array('Img'=>$modelPropImg->getName()),
-                        'Img.pro_id = P.pro_id',
-                        array('img_order','img_title','img_source')
-                        )
                 ->where('Part.par_id = ?',$idPartner)
-                ->where('P.age_id != ?',$idAgent)
-               // ->where('Img.img_order = ?','1');
+                ->where("P.age_id ='' OR P.age_id IS NULL")
                 ->query()->fetchAll();
     }
     function getSearchPartners($filter,$inner = null) {
@@ -184,7 +187,44 @@ class Application_Model_Partners extends CST_Model {
 
         return $data;
     }
+    public function listPropertiesPublish($idPartner)
+    {   
+       
+       return  $this->_modelProperties->getAdapter()->select()
+                ->from(array('P'=>$this->_modelProperties->getName()),
+                    array('pro_price',
+                        'pro_id',
+                        'listing_status_id',
+                        'img_source'=>'source_img',
+                        'img_title'=>'title_img'
+                        )
+                    )
+                ->join(array('Part'=>$this->_modelPartners->getName()),
+                    'Part.par_id = P.par_id'
+                    )                
+                ->where('Part.par_id = ?',$idPartner)
+                ->where('P.publish= ?',1)
+                ->query()->fetchAll();
+    }
     
+    public function listPropertiesUnPublish($idPartner)
+    {
+        return  $this->_modelProperties->getAdapter()->select()
+                ->from(array('P'=>$this->_modelProperties->getName()),
+                    array('pro_price',
+                        'pro_id',
+                        'listing_status_id',
+                        'img_source'=>'source_img',
+                        'img_title'=>'title_img'
+                        )
+                    )
+                ->join(array('Part'=>$this->_modelPartners->getName()),
+                    'Part.par_id = P.par_id'
+                    )                
+                ->where('Part.par_id = ?',$idPartner)
+                ->where('P.publish= ?',0)
+                ->query()->fetchAll();
+    }
 }
 
 ?>

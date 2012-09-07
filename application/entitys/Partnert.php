@@ -225,7 +225,16 @@ class Application_Entity_Partnert extends CST_Entity {
         $modelPartners = new Application_Model_Partners();
         return $modelPartners->getSearchPartners($consulta,$inner);
     }
-
+    static function listHousePublish($idPartner)
+    {
+        $modelPartner = New Application_Model_Partners();        
+        return $modelPartner->listPropertiesPublish($idPartner);
+    }
+    static function listHouseUnPublish($idPartner)
+    {
+        $modelPartner = New Application_Model_Partners();
+        return $modelPartner->listPropertiesUnPublish($idPartner);        
+    }
 }
 
 ?>

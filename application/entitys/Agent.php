@@ -72,4 +72,17 @@ class Application_Entity_Agent extends CST_Entity
     {
         $this->_modelAgents->publishAgent($id,$flag);
     }
+    
+     public function AssignAgentHouse($idAgent,$idHouse)
+     {
+         $modelHouse = new Application_Model_Properties();
+         $data = array('age_id'=>$idAgent );
+         $modelHouse->update($idHouse,$data);
+     }
+     public function DessasigHouse($idHouse)
+     {
+         $modelHouse = new Application_Model_Properties();
+         $data = array('age_id'=>'');
+         $modelHouse->update($idHouse,$data);
+     }
 }
