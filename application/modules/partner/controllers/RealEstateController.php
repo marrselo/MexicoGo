@@ -21,12 +21,12 @@ class Partner_RealEstateController extends CST_Controller_ActionPartner {
 
     public function listingAction() {
         $params = $this->_getAllParams();         
-        $this->view->listPropertiesAgent = $this->_Partner
+         $this->view->listPropertiesAgent = $this->_Partner
             ->listPropertiesAgent($this->_identityPartner->par_id,$params['id']);
-        
+        //print_r($col); exit;
         $col = $this->view->listPropertiesNotAgent = $this->_Partner
             ->listPropertiesNotAgent($this->_identityPartner->par_id,$params['id']);;
-        print_r($col); exit;
+        //print_r($col); exit;
         $this->view->tituloH1 = 'Agents';
         $this->view->tituloH2 = 'Agent/Listings';
     }
