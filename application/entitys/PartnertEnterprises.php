@@ -12,8 +12,9 @@ class Application_Entity_PartnertEnterprises extends Application_Entity_Partnert
     }
 
     function registerProfiler($input) {
+        //echo '<pre>';print_r($input);die();
         $data['par_id'] = $this->_id;
-        $data['prof_logo'] = $input['logo'];
+        $data['prof_logo'] = $this->ajustarImagen($input['logo']);
         $data['prof_company'] = $input['company'];
         $data['prof_email'] = $input['email'];
         $data['prof_website'] = $input['website'];
@@ -106,9 +107,6 @@ class Application_Entity_PartnertEnterprises extends Application_Entity_Partnert
         }
     }
 
-    function addImageProfiler($name) {
-        
-    }
 
     function validateVideo($uri) {
         $result = CST_Utils::validateUrlYoutube($uri);
@@ -160,6 +158,77 @@ class Application_Entity_PartnertEnterprises extends Application_Entity_Partnert
                 $modelPartVid->deleteVideo($index['vid_id']);
             }
         }
+    }
+
+    function getImageProfiler() {
+        $modelPartImgid = new Application_Model_PartnerImages();
+        return $modelPartImgid->getImage($this->_id);
+    }
+
+    function addImageProfiler($imagesInput = array()) {
+        
+        $modelPartImgid = new Application_Model_PartnerImages();
+
+        if (is_array($imagesInput) && !empty($imagesInput)) {            
+            foreach ($imagesInput as $key=>$index) {
+                
+                
+                if( $index['delete']==1 ){
+                    if( !empty( $index['id']) ){
+                        $modelPartImgid->deleteImage((int)$index['id']);
+                    }
+                    continue;
+                }
+                
+                $name = $this->ajustarImagen($index);                                
+                                
+                $data['par_id'] = $this->_id;
+                $data['img_title'] = $index['title'];
+                $data['img_source'] = $name;
+                $data['img_description'] = $index['description'];                
+                
+                if( !empty($index['id'])){
+                    $modelPartImgid->updateImage($index['id'], $data);
+                }else{                    
+                    $modelPartImgid->insert($data);
+                }
+            }
+        }
+    }    
+    
+    function ajustarImagen($imagen){
+        $thumb = PhpThumbFactory::create($imagen['file']);
+                
+        $name = substr($imagen['file'], strrpos($imagen['file'], '/')+1 );
+
+        if( !empty($imagen['crop'])){
+            $params = array();
+            parse_str($imagen['crop'], $params);
+
+            $dimensions = $thumb->getCurrentDimensions();
+
+            $factor = 1;
+            if($dimensions['width']>$dimensions['height']){
+                $factor = $dimensions['width']/250;  // los 250 son por el tamaño de la imagen en la interfaz que esta escalada
+                $factorD = $dimensions['width']/590;
+            }else{
+                $factor = $dimensions['height']/250;  // los 250 son por el tamaño de la imagen en la interfaz
+                $factorD = $dimensions['height']/332;
+            }
+            $params['x'] *= $factor;
+            $params['y'] *= $factor;
+            $params['x2'] *= $factor;
+            $params['y2'] *= $factor;
+            $params['w'] *= $factor;
+            $params['h'] *= $factor;
+
+            $thumb->crop($params['x'], $params['y'], $params['w'], $params['h'])->adaptiveResize(590,332); //->save(APPLICATION_PATH.'/../public/media/uploads/rest/local/'.$fileclass->name);
+        }else{
+            $thumb->adaptiveResize(590,332);
+        }                
+
+        $thumb->save(APPLICATION_PATH.'/../public/dinamic/partner/profiler/img/'.$name);
+        return $name;
     }
 
     function registerLocationProfiler($input) {
@@ -215,6 +284,12 @@ class Application_Entity_PartnertEnterprises extends Application_Entity_Partnert
         $partCat = new Application_Model_PartnerCategories();
         return CST_Utils::fetchPairs($partCat->getCategories());
     }
+    
+    static function listingsSubCategories(){
+        $partCat = new Application_Model_PartnerCategories();
+        return CST_Utils::fetchPairs($partCat->getSubCategories());
+    }
+    
     function getCategoriePartnerRel(){
         $partCat = new Application_Model_PartnerCategories();
         return CST_Utils::fetchPairs($partCat->getCategoriesRel($this->_id));

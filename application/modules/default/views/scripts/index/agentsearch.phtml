@@ -4,28 +4,34 @@
         <h3 class="no-margin h3-cms oswald oswald-pink font-18"  style="padding-left: 7px;">FIND AGENTS</h3>
         <div id="agent-search">
             <p class="grey-bar-style-2 font-18 oswald">Compliment Us/Make a Suggestion</p>
-            <form id="search-real-state-agents">
+            <form id="search-real-state-agents" method="POST" action="/find-agents.html">
                 <div class="left-column">
-                    <p><label>First Name</label><input type="text"></p>
-                    <p><label>Last Name</label><input type="text"></p>
-                    <p><label>Brokerage</label><input type="text"></p>
-                    <p><label>Keyword</label><input type="text"></p>
+                    <p><label>First Name</label><input type="text" name="first_name" class="validate_msj" title="First Name"></p>
+                    <p><label>Last Name</label><input type="text" name="last_name" class="validate_msj" title="Last Name"></p>
+                    <p><label>Brokerage</label><input type="text" name="brokerage" class="validate_msj" title="Brokerage"></p>
+                    <p><label>Keyword</label><input type="text" name="keyword" class="validate_msj" title="Keyword"></p>
                 </div>
                 <div class="right-column">
                     <div class="combo-fix">
                         <label for="accountCountry">City or Country:</label>
-                        <div class="flecha-combo"><select type="text" id="accountCountry" name="accountCountry" ><option>Uruguay</option><option>Brasil</option></select></div>
+                        <div class="flecha-combo">
+                            <select type="text" id="accountCountry" name="accountCountry" >
+                                <?php foreach($this->ciudades as $kciu => $ciu):?>
+                                <option value="<?php echo $kciu;?>"><?php echo $ciu;?></option>
+                                <?php endforeach;?>
+                            </select>
+                        </div>
                     </div>
                     <div class="combo-fix">
                         <label for="accountCountry">Region:</label>
                         <div class="flecha-combo"><select type="text" id="accountCountry" name="accountCountry" ><option>Uruguay</option><option>Brasil</option></select></div>
                     </div>
-                    <p><label>Address</label><input type="text"></p>
+                    <p><label>Address</label><input type="text" name="address" class="validate_msj" title="Address"></p>
                 </div>
                 <div class="clear-both"></div>
                 <div class="separator-20"></div>
                 <div id="search-agent-submit">
-                    <a class="boton-gris-basico button-light-shadow oswald" href="">SEARCH >></a>
+                    <a class="boton-gris-basico button-light-shadow oswald" href="#" id="button_search">SEARCH >></a>
                 </div>
 
             </form>
@@ -34,6 +40,8 @@
         <div class="separator-20"></div>
         <hr class="hr-gris-black-dashed">
         <div class="separator-10"></div>
+        <!-- SI no tiene ninguna busqueda !-->
+        <?php if(empty($this->resultado)):?>
         <div class="" id="show-agent-listings-div">
             <h3 class="float-left separator-10 font-j1 font-jred oswald">Featured Listing</h3>
             <a class="read-more"><span><<</span>VIEW ALL</a>
@@ -94,7 +102,8 @@
                 </div>
             </div>
         </div>
-
+        <?php endif;?>
+        <!-- Termina si no tiene ninguna busqueda !-->
         <hr class="hr-gris-black-dashed clear-both" style="float: left; margin: 110px 0px;">
         <div class="separator-20"></div>
     </section>

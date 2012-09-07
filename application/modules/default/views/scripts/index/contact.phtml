@@ -4,12 +4,12 @@
         <div id="box-contact-form">
             <hr class="hr-gris-style2">
             <p class="yellow-bar font-23 oswald">Compliment Us/Make a Suggestion</p>
-            <form class="form-account-setting" id="form-contact-page">
+            <form class="form-account-setting" id="form-contact-page" method="POST" action="">
                 <fieldset id="agent-contact-details">
                     <label for="profileFirstName">*Full Name:</label>
-                    <input type="text" name="profileCompany" class="input-large" id="contactFullName">
+                    <input type="text" name="name" class="input-large required" id="contactFullName" title="Full Name">
                     <label for="profileLastName">*Email Address:</label>
-                    <input type="text" name="profileCompany" id="contactEmail">
+                    <input type="text" name="email" id="contactEmail" class="required_email" title="E-mail">
                     <label for="profileLastName">Phone:</label>
                     <input type="text" name="profileCompany" id="contactEmail">
                     <label for="profileLastName">To:</label>
@@ -23,7 +23,7 @@
                                     <label for="profileAgentProfile">Message To:</label>
                                 </td>
                                 <td>
-                                    <textarea name="profileDescription" id="agentDescription">Write a short description that will appear on your profile.</textarea>
+                                    <textarea name="message" class="required" id="agentDescription" title="Message">Write a short description that will appear on your profile.</textarea>
                                 </td>
                             </tr>
                         </tbody>

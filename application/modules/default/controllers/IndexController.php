@@ -1,59 +1,168 @@
 <?php
-class Default_IndexController extends Zend_Controller_Action{
-    
-    public function init(){
+
+class Default_IndexController extends Zend_Controller_Action {
+
+    public function init() {
         $this->_helper->layout()->setLayout('layout-front');
         $this->view->headTitle()->setSeparator(' - ');
         $this->view->headTitle('Mexi-Go!');
-         
     }
 
-    public function indexAction(){
+    public function indexAction() {
         
     }
-    
-    public function contactAction(){
+
+    public function contactAction() {
+        //Si entra por AJAX
+        if($this->_request->isXmlHttpRequest()){    
+            $this->_helper->layout()->disableLayout();
+            if($_POST){
+                $data_ajax = $this->getRequest()->getPost();
+                parse_str($data_ajax['data'], $formData);
+                //Formar el mensaje
+                $formData['message'] = 'Phone:'.$formData['phone'].'<br> Message:'.$formData['message'];                
+                $res = $this->mandarEmail($formData);
+                if($res > 0){
+                    $arr_res['res'] = 'ok';
+                    $arr_res['msj'] = 'Mensaje enviado exitosamente.';
+                }else{
+                    $arr_res['res'] = 'error';
+                    $arr_res['msj'] = 'Error al mandar el Mensaje.';
+                }
+                echo json_encode($arr_res);
+                exit();
+            }
+        }
+        $this->view->headScript()->appendFile('/front/js/plugins/validity/jquery.validity.js');
+        $this->view->headScript()->appendFile('/front/js/contact.js');
+        $this->view->headLink()->prependStylesheet('/front/js/plugins/validity/jquery.validity.css');
         $this->view->headTitle('Contact');
     }
-    
-    public function magazineAction(){
+
+    public function magazineAction() {
         $this->view->headTitle('The Magazine');
     }
-    
-    public function magazinesubscribeAction(){
+
+    public function magazinesubscribeAction() {
         $this->view->headTitle('The Magazine Subscribe');
     }
-    
-    public function partnersAction(){
+
+    public function partnersAction() {
+        //Si entra por AJAX
+        if ($this->_request->isXmlHttpRequest()) {
+            $this->_helper->layout()->disableLayout();
+            if ($_POST) {
+                $data_ajax = $this->getRequest()->getPost();
+                parse_str($data_ajax['data'], $formData);
+                foreach ($formData as $key => $val) {
+                    $formData[$key] = strip_tags($val);
+                }
+                $res = Application_Entity_Partnert::search($formData);
+                echo json_encode($res);
+                exit();
+            }
+        }
+        $this->view->headScript()->appendFile($this->view->baseUrl() . '/front/js/jQuery.clearFields.min.js');
+        $this->view->headScript()->appendFile($this->view->baseUrl() . '/front/js/search.js');
         $this->view->headTitle('Partners');
+        //Obtiene las regiones
+        $regiones = Application_Entity_Ubigeo::getEstados();
+        $this->view->regiones = $regiones;
+        //Obtiene las categorias
+        $categorias = Application_Entity_PartnertEnterprises::listingsSubCategories();
+        echo '<pre>';print_r($categorias);
+        $this->view->categorias = $categorias;
+        $limit = ceil(count($categorias) / 3);
+        $this->view->limite = $limit;
+        //Obtiene la URL
+        $param = str_replace('.html', '', $this->_getParam('cat'));
+        $this->view->categoria = $param;
+        //Valida color de la pagina
+        switch ($param) {
+            case '-real-estate':
+                $this->view->color = 'red';
+                break;
+            case '-travel':
+                $this->view->color = 'orange';
+                break;
+            case '-retirement':
+                $this->view->color = 'green';
+                break;
+            case '-partners':
+                $this->view->color = 'blue';
+                break;
+        }
     }
-    
-    public function searchmapAction(){
+
+    public function searchmapAction() {
         $this->view->headTitle('Search Map');
     }
-    
-    public function advancesearchAction(){
+
+    public function advancesearchAction() {
         $this->view->headTitle('Advance Search');
     }
-    
-    public function agentdetailAction(){
+
+    public function agentdetailAction() {
         $this->view->headTitle('Agent Detail');
     }
-    
-    public function agentsearchAction(){
-        $this->view->headTitle('Agent Search');
+
+    public function agentsearchAction() {
+        if($this->getRequest()->isPost()){
+            $data = array();
+            //LImpia campos de HMTL
+            foreach ($_POST as $key=>$val){
+                $data[$key] = strip_tags($_POST[$key]);
+            }
+            echo '<pre>';print_r($data);
+            $this->view->resultado = $data;
+        }
+        $this->view->headScript()->appendFile('/front/js/plugins/validity/jquery.validity.js');
+        $this->view->headScript()->appendFile('/front/js/agents.js');
+        $this->view->headLink()->prependStylesheet('/front/js/plugins/validity/jquery.validity.css');
+        //Obtiene ciudades
+        $cities = Application_Entity_Ubigeo::getAllCiudades();
+        $this->view->ciudades = $cities;
+        //Obtiene estados
+        //$estados = Application_Entity_Ubigeo::get
+        $this->view->headTitle('Find Agent');
     }
-    
-    public function agentsearch2Action(){
-        $this->view->headTitle('Agent Search');
+
+    public function agentsearch2Action() {
+        $this->view->headTitle('Agent Results');
     }
-    
-    public function propertydetailAction(){
+
+    public function propertydetailAction() {
         $this->view->headTitle('Property Detail');
     }
-    
-    public function errorAction(){
+
+    public function errorAction() {
         $this->view->headTitle('Page No Found');
     }
+
+    //Funcion para madra correo
+    public function mandarEmail($data) {
+        include_once realpath(APPLICATION_PATH . '/../library/phpmailer/class.phpmailer.php');
+        $msj = 'Nombre:' . $data['name'] . '<br>';
+        $msj.= 'Email:' . $data['email'] . '<br>';
+        $msj.= 'Mensaje:' . $data['message'] . '<br>';
+        $mail = new PHPMailer(true);
+        try {
+
+            $mail->Host = "symbol.websitewelcome.com";
+            $mail->From = $data['email'];
+            $mail->FromName = $data['name'];
+            $mail->Subject = "Email from Profile " . $data['name'];
+            $mail->AddAddress("contact@lunchweb.mx");
+            $mail->IsHTML();
+            $mail->Body = $msj;
+            $mail->Send();
+            return 1;
+        } catch (phpmailerException $e) {
+            return $e->errorMessage(); //Pretty error messages from PHPMailer
+        } catch (Exception $e) {
+            return $e->getMessage(); //Boring error messages from anything else!
+        }
+    }
+
 }
 

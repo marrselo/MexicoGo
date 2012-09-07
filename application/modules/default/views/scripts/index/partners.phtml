@@ -2,37 +2,63 @@
     <div class="columnaleft">     <!-- COLUMNA LEFT---------------------- -->
         <div class="general_content">
             <div class="living_header">
-                <h2 class="oswald violet">Parteners</h2>
+                <h2 class="oswald <?php echo (!empty($this->color))? $this->color:'violet';?>">Parteners</h2>
                 <div class="search-field-d oswald">
                     <span>
-                        <form><input type="text" value="   Search"><input type="submit"></form>
+                        <form id="forma"><input type="text" class="clean_field" value="   Search" id="text_search"><input type="submit"></form>
                     </span>
                 </div>                                      
             </div>
+            <input type="hidden" id="categoria_partner" value="<?php echo (!empty($this->categoria))? $this->categoria:'';?>">
             <div class="filter_opt">
                 <div class="living_content_title">
-                    <h2 class="oswald violet">Filters</h2>
+                    <h2 class="oswald <?php echo (!empty($this->color))? $this->color:'violet';?>">Filters</h2>
                 </div>
                 <div class="input_middle" style="margin-left:20px">
-                    <select name="d" class="mydds">
+                    <select name="d" class="mydds" alt="alpha">
                         <option value="0" selected="selected_drop">Alphabetical</option>
-                        <option value="1">Alphabetical one</option>
-                        <option value="2">Alphabetical two</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                        <option value="E">E</option>
+                        <option value="F">F</option>
+                        <option value="G">G</option>
+                        <option value="H">H</option>
+                        <option value="I">I</option>
+                        <option value="J">J</option>
+                        <option value="K">K</option>
+                        <option value="L">L</option>
+                        <option value="M">M</option>
+                        <option value="N">N</option>
+                        <option value="O">O</option>
+                        <option value="P">P</option>
+                        <option value="Q">Q</option>
+                        <option value="R">R</option>
+                        <option value="S">S</option>
+                        <option value="T">T</option>
+                        <option value="U">U</option>
+                        <option value="V">V</option>
+                        <option value="W">W</option>
+                        <option value="X">X</option>
+                        <option value="Y">Y</option>
+                        <option value="Z">Z</option>
                     </select>                   
                 </div>
                 <div class="input_middle">
-                    <select name="d" class="mydds">
-                        <option value="0" selected="selected_drop">Alphabetical</option>
-                        <option value="1">Alphabetical one</option>
-                        <option value="2">Alphabetical two</option>
+                    <select name="d" class="mydds" alt="region">
+                        <option value="0" selected="selected_drop">Region</option>
+                        <?php foreach($this->regiones as $kreg => $reg):?>
+                        <option value="<?php echo $kreg;?>"><?php echo $reg;?></option>
+                        <?php endforeach;?>
                     </select>                   
                 </div>
 
             </div>
-            <!--    CATEGORIES START --> 					
+            <!--    CATEGORIES START 					
             <div class="filter_opt">
                 <div class="living_content_title">
-                    <h2 class="oswald violet_cat2">CATEGORIES</h2>
+                    <h2 class="oswald <?php echo (!empty($this->color))? $this->color:'violet';?>_cat2">CATEGORIES</h2>
                 </div>
                 <div class="input_middle" style="margin-left:0px !important">
                     <select name="d" class="mydds">
@@ -50,93 +76,45 @@
                 </div>
 
             </div>			
-            <!--    CATEGORIES END--> 
+                CATEGORIES END--> 
             <div class="living_content">
                 <div class="living_content_inner">
-
-                    <div class="living_content_table">                         
+                    <div class="living_content_table">     
+                        <input id="txt_subid" alt="subcategy" value="" type="hidden">
                         <table width="600" id="newspaper-a" border="2">
-                            <tbody class="violetr">
-                                <tr class="odd">
-                                    <td>Accounting</td>
-                                    <td>30.5</td>
-                                    <td>23.5</td>
+                            <tbody class="<?php echo (!empty($this->color))? $this->color:'violet';?>">
+                                <?php $tr_val = 1;$td_val = 1;?>     
+                                <?php for($tx=0;$tx<=$this->limite;$tx++):?>
+                                <tr class="<?php echo (($tx%2) == 0)? 'even':'odd';?>">
+                                <?php foreach($this->categorias as $kcat => $cat):?>                                
+                                    <td class="sub_partner" id="sub_<?php echo $kcat;?>"><?php echo $cat;?></td>                                
+                                    <?php 
+                                        unset($this->categorias[$kcat]);
+                                        if($tr_val<=2){
+                                            $tr_val++;
+                                        }else{
+                                            $tr_val = 1;
+                                            break;
+                                        }
+                                    ?>
+                                <?php endforeach;?>
                                 </tr>
-                                <tr class="even">
-                                    <td>50.2</td>
-                                    <td>40.63</td>
-                                    <td>45.23</td>
-                                </tr>
-                                <tr class="odd">
-                                    <td>20.3</td>
-                                    <td>30.5</td>
-                                    <td>23.5</td>
-                                </tr>
-                                <tr class="even">
-                                    <td>50.2</td>
-                                    <td>40.63</td>
-                                    <td>45.23</td>
-                                </tr> 
-                                <tr class="odd">
-                                    <td>20.3</td>
-                                    <td>30.5</td>
-                                    <td>23.5</td>
-                                </tr>
-                                <tr class="even">
-                                    <td>50.2</td>
-                                    <td>40.63</td>
-                                    <td>45.23</td>
-                                </tr> 
-                                <tr class="odd">
-                                    <td>20.3</td>
-                                    <td>30.5</td>
-                                    <td>23.5</td>
-                                </tr>
-                                <tr class="even">
-                                    <td>50.2</td>
-                                    <td>40.63</td>
-                                    <td>45.23</td>
-                                </tr> 
-                                <tr class="odd">
-                                    <td>20.3</td>
-                                    <td>30.5</td>
-                                    <td>23.5</td>
-                                </tr>
-                                <tr class="even">
-                                    <td>50.2</td>
-                                    <td>40.63</td>
-                                    <td>45.23</td>
-                                </tr>
-                                <tr class="odd">
-                                    <td>20.3</td>
-                                    <td>30.5</td>
-                                    <td>23.5</td>
-                                </tr>
-                                <tr class="even">
-                                    <td>50.2</td>
-                                    <td>40.63</td>
-                                    <td>45.23</td>
-                                </tr> 
-                                <tr class="odd">
-                                    <td>20.3</td>
-                                    <td>30.5</td>
-                                    <td>23.5</td>
-                                </tr> 
-
+                                <?php endfor;?>
                             </tbody>
                         </table>                        
                     </div>
-                    <div class="reset_results"></div> 
-                </div> 
-
+                    <a href="#" id="reset_field">
+                        <div class="reset_results"></div> 
+                    </a>
+                </div>
             </div>
 
-            <div class="living_footer violetbac">
+            <div class="living_footer <?php echo (!empty($this->color))? $this->color:'violet';?>bac">
                 <div class="hide_option"></div>                 
             </div>
 
             <div class="result">
-                <h2 class="oswald violet">Accounting</h2>
+                <h2 class="oswald <?php echo (!empty($this->color))? $this->color:'violet';?>">Accounting</h2>
                 <div class="result_content">
                     <ul>
                         <li></li>

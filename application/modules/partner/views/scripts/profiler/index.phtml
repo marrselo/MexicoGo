@@ -16,7 +16,18 @@
             <fieldset id="business-contact"><legend class="oswald">BUSINESS CONTACT DETAILS</legend>
                 <div id="div-drop-image">
                     <div><label>logo:</label></div>
-                    <div class="drop-image"></div>
+                    <div class="drop-image">
+                        <br/>
+                         Drag and drop your logo here
+                        <br/>
+                        or
+                        <br/>                        
+                        <div class="btn-upload-image">
+                            <input class="fileupload" type="file" name="logo" >
+                            <span class="round-border-yellow btn-yellow examinar">click here</span>
+                        </div>
+                        
+                    </div>
                     <div>
                         <p>This is the image we use to<br> represent you on Mexi-Go</p>
                         <p>Your logo is shown at 145 x 145 pixels:</p>
@@ -77,10 +88,16 @@
             </fieldset>
             <hr class="hr-gris">
             <fieldset id="upload-image"><legend class="oswald">IMAGE GALLERY</legend>
+                <div class="preview-galery">
+                    
+                </div>
                 <div id="upload-gallery-images" class="round-border-gris">
                     Drag and drop your photos here<br>
                     or<br>
-                    <span class="round-border-yellow">chose photos to upload</span>
+                    <div class="btn-upload-image">
+                        <input class="fileupload" type="file" name="gallery" multiple>
+                        <span class="round-border-yellow btn-yellow examinar">chose photos to upload</span>
+                    </div>
                 </div>
             </fieldset>
             <hr class="hr-gris">
@@ -212,3 +229,32 @@
         </form>
     </section>
 </div>
+<script>
+    $(document).ready(function($){
+            $("#div-drop-image").uploader({
+                postFileUrl: '/partner/profiler/upload',
+                maxFileSize:  2000, 
+                maxFiles: 1,
+                append: '.drop-image',
+                dimensions: [145, 145],
+                crop: true,
+                name: 'logo',
+                load:  <?php echo $this->json_logo; ?>
+            });
+            
+            $("#upload-image").uploader({
+                postFileUrl: '/partner/profiler/upload',
+                maxFileSize:  2000, 
+                maxFiles: 100,
+                append: '.preview-galery',
+                //dimensions: [295, 166], //real 590 x 332
+                dimensions: [590, 332], //real 590 x 332
+                crop: true,
+                scalePreview: .3, // 200%
+                name: 'gallery',
+                load:  <?php echo $this->json_images; ?>
+            });
+            
+            
+    });
+</script>

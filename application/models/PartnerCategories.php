@@ -14,6 +14,13 @@ class Application_Model_PartnerCategories extends CST_Model {
                 ->query()
                 ->fetchAll();
     }
+    
+    function getSubCategories(){
+        $select = $this->_modelPartnerCategories->select()->setIntegrityCheck(false);
+        $select->from('partners_subcategories');
+        $data = $this->_modelPartnerCategories->fetchAll($select);
+        return $data->toArray();
+    }
     function getCategoriesRel($idPartern, $idCat=''){
          $result = $this->_modelPartnerCategoriesRel
                 ->getAdapter()
