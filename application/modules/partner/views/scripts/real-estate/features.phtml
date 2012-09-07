@@ -75,18 +75,18 @@
                     <p class="listings-about-header-1 oswald"><span>PRICE</span></p>
                     <div class="combo-fix">
                         <label for="priceValue">$ </label>
-                        <input type="text" class="float-left special-margen-right" name="priceValue" id="priceValue">
+                        <input type="text" class="float-left special-margen-right" value="<?php echo $this->dataHome['_price'] ?>" name="priceValue" id="priceValue">
                         <div class="flecha-combo-chico-1"><select class="select-chico-1" name="priceCoin" id="priceCoin" type="text"><option>USD</option><option>AUS</option><option>EUR</option></select></div>
                     </div>
                     <p class="listings-about-header-1 oswald"><span>PROPERTY DETAILS</span></p>
                     <div class="combo-fix">
                         <label for="houseValue">House</label>
-                        <input type="text" class="float-left special-margen-right" name="houseValue" id="houseValue">
+                        <input type="text" class="float-left special-margen-right" value="<?php echo $this->dataHome['_houseDetail'] ?>" name="houseValue" id="houseValue">
                         <div class="flecha-combo-chico-1"><select class="select-chico-1" name="houseMedida" id="houseMedida" type="text"><option>M²</option><option>Yes</option><option>No</option></select></div>
                     </div>
                     <div class="combo-fix">
                         <label for="landValue">Land</label>
-                        <input type="text" class="float-left special-margen-right" name="landValue" id="landValue">
+                        <input type="text" class="float-left special-margen-right" value="<?php echo $this->dataHome['_landDetail'] ?>" name="landValue" id="landValue">
                         <div class="flecha-combo-chico-1"><select class="select-chico-1" name="landMedida" id="landMedida" type="text"><option>Any</option><option>Yes</option><option>No</option></select></div>
                     </div>
                     <p class="listings-about-header-1 oswald"><span>SELECT FEATURES</span></p>
@@ -150,7 +150,7 @@
                         </div>
                         <div class="combo-fix float-left inline-block clear-none">
                             <label class="label-special-width" for="keyword">Keyword</label>
-                            <input type="text" class="float-left" name="keyword" id="keyword">
+                            <input type="text" class="float-left" value="<?php echo $this->dataHome['_keywords'] ?>" name="keyword" id="keyword">
                         </div>
                     </div>
                     <div class="margin-bottom-special">
@@ -174,7 +174,7 @@
                         </div>
                         <div class="combo-fix float-left inline-block clear-none">
                             <label class="label-special-width" for="address">Address</label>
-                            <input type="text" class="float-left" name="address" id="address">
+                            <input type="text" class="float-left" value="<?php echo $this->dataHome['_addressFeature'] ?>" name="address" id="address">
                         </div>
                     </div>
                     <div class="margin-bottom-special">
@@ -199,7 +199,7 @@
                         </div>
                         <div class="combo-fix float-left inline-block clear-none">
                             <label class="label-special-width" for="size">Size (sq.ft.)</label>
-                            <input type="text" class="float-left special-margen-right" name="size" id="size">
+                            <input type="text" class="float-left special-margen-right" value="<?php echo $this->dataHome['_size'] ?>" name="size" id="size">
                         </div>
                     </div>
                     <div class="combo-fix">

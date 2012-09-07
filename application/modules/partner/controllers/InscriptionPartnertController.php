@@ -92,7 +92,7 @@ class Partner_InscriptionPartnertController extends CST_Controller_ActionPartner
 
                 if (is_array($infoAbaut) && !empty($infoAbaut)) {
                     foreach ($infoAbaut as $index) {
-                        $usuario->insetInsertInfoAbaut($index);
+                        $usuario->insertInfoAbaut($index);
                     }
                 }
                 $mail = new CST_Mail();

@@ -43,7 +43,7 @@ class Application_Form_RealEstateRegisterFeature extends CST_Form {
                     )));
          
          
-           $this->addElement(new Zend_Form_Element_Text('price',
+           $this->addElement(new Zend_Form_Element_Text('priceValue',
                 array(
                     
                 )));

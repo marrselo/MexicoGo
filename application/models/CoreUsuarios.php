@@ -30,7 +30,7 @@ class Application_Model_CoreUsuarios extends CST_Model {
     }
 
     function update($id, $data) {
-        if ($id != '' && $data != '') {
+        if ($id != '' && !empty ($data)) {
             $where = $this->_modelCoreUsuarios->getAdapter()->quoteInto('usu_id = ?', $id);
             return $this->_modelCoreUsuarios->update($data, $where);
         } else {
@@ -41,6 +41,7 @@ class Application_Model_CoreUsuarios extends CST_Model {
     function getDataUsuario($id) {
         return $this->_modelCoreUsuarios
                         ->select()
+                        ->where('usu_id =?',$id)
                         ->query()
                         ->fetch();
     }

@@ -9,4 +9,41 @@
         <div id="linea-fondo">
         </div>
     </aside>
+    <section id="block-right">
+        <form id="email-preferences" method="post" action="">
+                            <h2 class="oswald h2-cms">Email Preferences</h2>
+                            <div class="center-checkboxes">
+                                <?php foreach($this->infoAbaut as $index=>$value): ?>
+                                <div class="general-checkbox">
+                                    <?php if(isset($this->data[$index])){ 
+                                        $checked = 'checked="checked"';
+                                    }else{
+                                        $checked='';
+                                    } ?>
+                                    <input type="checkbox" <?php echo $checked; ?> name="infoAbaut[]" 
+                                           value="<?php echo $index ?>" 
+                                           id="check_<?php echo $index ?>" 
+                                           name="check_<?php echo $index ?>">
+                                        <label for="check_<?php echo $index ?>">Opción</label>
+                                        <span class="banner-login-label">
+                                            <?php echo $value ?>
+                                        </span>
+                                </div>
+                                <?php endforeach; ?>
+                            </div>
+                            <div class="clear-both"></div>
+                            <div class="grey-bar">
+                                <div class="center-content">
+                                    <div class="general-checkbox">
+                                        <input type="checkbox" value="1" id="check_unsubscribe" name="unsubscribe">
+                                            <label for="check_unsubscribe">Opción</label>
+                                            <span class="banner-login-label white-label">Unsubscribe me from all Mexi-Go! emails</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="submit" value="send"/>
+                        </form>
+                    </section>
+    
 </div>
+

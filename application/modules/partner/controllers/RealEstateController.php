@@ -138,7 +138,7 @@ class Partner_RealEstateController extends CST_Controller_ActionPartner {
                 $input['_status'] = $form->getElement('available')->getValue();
                 $input['_idListingStatus'] = $form->getElement('listingStatus')->getValue();
                 $input['_idPropertyType'] = $form->getElement('propertyType')->getValue();
-                $input['_price'] = $form->getElement('price')->getValue();
+                $input['_price'] = $form->getElement('priceValue')->getValue();
                 $input['_houseDetail'] = $form->getElement('houseValue')->getValue();
                 $input['_landDetail'] = $form->getElement('landValue')->getValue();
                 $input['_bedroon'] = $form->getElement('bedroom')->getValue();
@@ -155,7 +155,7 @@ class Partner_RealEstateController extends CST_Controller_ActionPartner {
                 $input['_featureAppliances'] = $form->getElement('featureAppliances')->getValue();
                 $home->setProperties($input);
                 $home->updateHome();
-                $this->_redirect('/partner/real-estate/features/home/'.$home->_id);
+                $this->_redirect('/partner/real-estate/preview/home/'.$home->_id);
             }else{
 //                print_r($form->getMessages());
   //              echo 'no gravo';
@@ -164,6 +164,9 @@ class Partner_RealEstateController extends CST_Controller_ActionPartner {
     }
 
     public function agentAssignAction() {
+        // action body
+    }
+    public function previewAction() {
         // action body
     }
 

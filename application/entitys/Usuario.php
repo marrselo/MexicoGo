@@ -142,15 +142,41 @@ class Application_Entity_Usuario extends CST_Entity {
         return $this->_modelUsuario->getpassword($usuario);
     }
 
-    function insetInsertInfoAbaut($idInfoAbaut) {
-        if (!$this->_modelSetInfoAbaut->getInfoAbautUser($this->_id, $idInfoAbaut)) {
-            $data['core_set_info_abaut_id'] = $idInfoAbaut;
-            $data['usu_id'] = $this->_id;
-            $this->_modelSetInfoAbaut->insertInfoAbautUsuario($data);
+    function insertInfoAbaut($idInfoAbaut) {
+        $infoAbautUser = $this->getInfoAbaut();
+        if (is_array($idInfoAbaut)) {
+            if (!empty($idInfoAbaut)) {
+                foreach ($idInfoAbaut as $index) {
+                    unset($infoAbautUser[$index]);
+                    if (!$this->_modelSetInfoAbaut->getInfoAbautUser($this->_id, $index)) {
+                        $data['core_set_info_abaut_id'] = $index;
+                        $data['usu_id'] = $this->_id;
+                        $this->_modelSetInfoAbaut->insertInfoAbautUsuario($data);
+                    }
+                }
+                if (!empty($infoAbautUser)) {
+                    foreach ($infoAbautUser as $index => $value) {
+                        $this->_modelSetInfoAbaut->deleteInfoAbautUsuario($this->_id, $index);
+                    }
+                }
+            }
+        } else {
+            if (!$this->_modelSetInfoAbaut->getInfoAbautUser($this->_id, $idInfoAbaut)) {
+                $data['core_set_info_abaut_id'] = $idInfoAbaut;
+                $data['usu_id'] = $this->_id;
+                $this->_modelSetInfoAbaut->insertInfoAbautUsuario($data);
+            }
         }
     }
 
-    protected function resetPassword($currentPassword, $newPassword, $verifiPassword) {
+    function unsubscribeEmail(){
+        $this->_modelSetInfoAbaut->deleteInfoAbautUsuario($this->_id);
+    }
+    function getInfoAbaut() {
+        return CST_Utils::fetchPairs($this->_modelSetInfoAbaut->getInfoAbautUser($this->_id));
+    }
+
+    function resetPassword($currentPassword, $newPassword, $verifiPassword) {
         if (hash('md5', $currentPassword) ==
                 $this->setPassword($this->getPassword($this->_login))) {
             if ($newPassword == $verifiPassword) {
