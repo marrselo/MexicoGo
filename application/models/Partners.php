@@ -158,6 +158,32 @@ class Application_Model_Partners extends CST_Model {
                // ->where('Img.img_order = ?','1');
                 ->query()->fetchAll();
     }
+    function getSearchPartners($filter,$inner = null) {
+        $data = array();
+        $select = $this->_modelPartners->select()->setIntegrityCheck(false);
+        $select->from('partners',array('par_id'));
+        $select->JoinInner('partner_imgs','partner_imgs.par_id = partners.par_id',array('img_source')); 
+        $select->JoinInner('partners_categories_rel','partners_categories_rel.par_id = partners.par_id',array('cat_id')); 
+        //Si ocupa relacionar otra tabla
+        if(!empty($inner)){
+            $select->JoinInner($inner['tabla'],$inner['union'],$inner['campos']);
+        }
+        //Aigna las condiciones de los parametros
+        foreach ($filter['query'] as $key => $val) {
+            $select->where($val,$filter['fields'][$key]);
+        }
+        $select->group('par_full_name');
+        try {
+            $res = $this->_modelPartners->fetchAll($select);
+            $data['data'] = $res->toArray();
+            $data['status'] = 'ok';
+        } catch (Exception $exc) {
+            $data['msj'] = $exc->getMessage();
+            $data['status'] = 'error'; 
+        }
+
+        return $data;
+    }
     
 }
 

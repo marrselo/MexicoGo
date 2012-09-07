@@ -30,7 +30,7 @@ class Application_Entity_Partnert extends CST_Entity {
         if ($dataUsuario != null) {
             parent::init($dataUsuario);
         }
-        $this->_modelPartner = new Application_Model_Partners();        
+        $this->_modelPartner = new Application_Model_Partners();
     }
 
     function setProperties($dataPartnert, Application_Entity_Usuario $usuario) {
@@ -175,6 +175,55 @@ class Application_Entity_Partnert extends CST_Entity {
     public function listPropertiesNotAgent($idPartner,$idAgent)
     {
         return $this->_modelPartner->listPropertiesNotAgent($idPartner,$idAgent);
+    }
+    
+    static function search($data){
+        $consulta['query'] = array();
+        $consulta['fields'] = array();
+        $inner = null;
+        //Validate Alphanumeric
+        if((string)$data['alpha'] != "0" and !empty($data['alpha'])){
+            $consulta['query'][] ='par_full_name LIKE ?';
+            $consulta['fields'][] = '%'.$data['alpha'].'%';
+        }
+        //Validate Region
+        if($data['region'] > 0 and !empty($data['region'])){
+            $consulta['query'][] ='par_state = ?';
+            $consulta['fields'][] = $data['region'];
+        }
+        //Validate Search
+        if(!empty($data['search']) and $data['search'] != '   Search'){
+            $consulta['query'][] ='par_full_name LIKE ?';
+            $consulta['fields'][] = '%'.$data['search'];
+        }
+        //Validate SUbcategoria
+        if(!empty($data['subcategory'])){
+            $inner['tabla'] = 'partners_subcategories_rel';
+            $inner['union'] = 'partners_subcategories_rel.par_id = partners.par_id';
+            $inner['campos'] = 'partners_subcategories_rel_id';
+            $consulta['query'][] ='partners_subcategories_rel_id  = ?';
+            $consulta['fields'][] = $data['subcategory'];
+        }
+         //Validate SUbcategoria
+        if(!empty($data['category'])){
+            $consulta['query'][] ='partners_categories_rel.cat_id = ?';
+            switch ($data['category']){
+                case '-real-estate':
+                    $consulta['fields'][] = 1;
+                    break;
+                case '-travel':
+                    $consulta['fields'][] = 2;
+                    break;
+                case '-retirement':
+                    $consulta['fields'][] = 3;
+                    break;
+                case '-partners':
+                    $consulta['fields'][] = 4;
+                    break;
+            }
+        }
+        $modelPartners = new Application_Model_Partners();
+        return $modelPartners->getSearchPartners($consulta,$inner);
     }
 
 }
