@@ -4,23 +4,7 @@
         <p class=" bg-white" id="hi-lateral">HI blackswaninteractive</p>
         <div id="color-fondo">
 
-            <p class="lateral-selected " id="account-settings-menu"><a href="account-settings.php">ACCOUNT SETTINGS</a></p>
-            <nav>
-                <div class="menu-lateral-bg-gris-oscuro">
-                    <p class="text-white " id="manage-your-style">Manage your</p>
-                    <ul>
-                        <li class="text-yellow menu-lateral-relative"><a title="go to profile page" href="profile-page.php">PROFILE PAGE</a></li>
-                        <li class="lateral-selected text-yellow "><a title="go to agents" href="agents.php">AGENTS</a></li>
-                        <li class="text-yellow menu-lateral-relative"><a title="go to real estate listings" href="real-estate-listings.php">REAL ESTATE LISTINGS</a></li>
-                    </ul>
-                </div>
-                <ul>
-                    <li class="text-yellow menu-lateral-bg-gris-claro" id="menu-buy"><a href="">BUY</a></li>
-                    <li class="lateral-selected"><a href="">EMAIL PREFERENCES</a></li>
-                    <li><a href="reset-password">ACCOUNT PASSWORD</a></li>
-                    <li><a href="">SIGN OUT</a></li>
-                </ul>
-            </nav>    
+             <?php echo $this->navigation()->menu()->render(); ?>
         </div>
         <div id="linea-fondo">
         </div>

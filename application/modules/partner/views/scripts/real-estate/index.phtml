@@ -3,24 +3,7 @@
                     <aside class="oswald" id="block-left">
     <p class=" bg-white" id="hi-lateral">HI blackswaninteractive</p>
     <div id="color-fondo">
-    
-    <p class="lateral-selected " id="account-settings-menu"><a href="account-settings.php">ACCOUNT SETTINGS</a></p>
-    <nav>
-        <div class="menu-lateral-bg-gris-oscuro">
-        <p class="text-white " id="manage-your-style">Manage your</p>
-        <ul>
-            <li class="text-yellow menu-lateral-relative"><a title="go to profile page" href="profile-page.php">PROFILE PAGE</a></li>
-            <li class="lateral-selected text-yellow "><a title="go to agents" href="agents.php">AGENTS</a></li>
-            <li class="text-yellow menu-lateral-relative"><a title="go to real estate listings" href="real-estate-listings.php">REAL ESTATE LISTINGS</a></li>
-        </ul>
-        </div>
-        <ul>
-            <li class="text-yellow menu-lateral-bg-gris-claro" id="menu-buy"><a href="">BUY</a></li>
-            <li class="lateral-selected"><a href="">EMAIL PREFERENCES</a></li>
-            <li><a href="reset-password">ACCOUNT PASSWORD</a></li>
-            <li><a href="">SIGN OUT</a></li>
-        </ul>
-    </nav>    
+          <?php echo $this->navigation()->menu()->render(); ?>     
     </div>
     <div id="linea-fondo">
     </div>
@@ -54,8 +37,8 @@
                                 <div id="registros-agentes">
                                     <p class="align-right">
                                         <a class="add-agents oswald" 
-                                           href="/partner/agent/create">
-                                            Add Agents
+                                           href="/partner/real-estate/location">
+                                            Add Listings
                                         </a>
                                     </p>
                                 <div class="paginador">
@@ -110,7 +93,8 @@
                                         <img  src="/../static/images/black-star.png" />
                                     </td>
                                     <td class="td5 oswald">
-                                        <a class="boton-yellow-1" href="">EDIT &gt;&gt;</a><a></a><a class="boton-yellow-1" href="">PREVIEW &gt;</a><a></a><a class="boton-yellow-2" href="">UNPUBLISH &gt;&gt;</a><a></a></td>
+                                        <a class="boton-yellow-1" href="/partner/real_estate/location/home/<?php echo $value['pro_id']?>">
+                                            EDIT &gt;&gt;</a><a></a><a class="boton-yellow-1" href="">PREVIEW &gt;</a><a></a><a class="boton-yellow-2" href="">UNPUBLISH &gt;&gt;</a><a></a></td>
                                 </tr>
                             <?php  endforeach;?>
                                 </tbody></table>
@@ -145,7 +129,9 @@
                                     </td>
                                     <td class="td3 oswald"><p>No info available</p><p></p></td>
                                     <td class="td4"><img src="/../static/images/black-star.png"></td>
-                                    <td class="td5 oswald"><a class="boton-yellow-1" href="">EDIT &gt;&gt;</a>
+                                    <td class="td5 oswald">
+                                        <a class="boton-yellow-1" href="/partner/real_estate/location/home/<?php echo $value['pro_id']?>">
+                                            EDIT &gt;&gt;</a>
                                         <a></a>
                                         <a class="boton-yellow-1" href="">PREVIEW &gt;</a>
                                         <a></a>
@@ -165,7 +151,7 @@
                                     <span class="number "><a href="">10</a></span>
                                     <span class="next"><a href="">next &gt;&gt;</a></span>
                                 </div>
-                            <p class="align-center"><input type="submit" value="SAVE AND CONTINUE &gt;&gt;" class="oswald boton-yellow-4 hand"></p>
+                           
                             <hr class="hr-custom">
                                 <p class="auto-renewal">Auto Renewal ON</p>
                                 </div>
