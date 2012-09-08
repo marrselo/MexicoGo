@@ -15,7 +15,8 @@ class Partner_RealEstateController extends CST_Controller_ActionPartner {
     public function init() {
         parent::init();
         /* Initialize action controller here */
-        $this->_Partner = new Application_Entity_Partnert();    
+        $this->_Partner = new Application_Entity_Partnert();   
+        
     }
 
     public function listingAction() {
@@ -216,5 +217,22 @@ class Partner_RealEstateController extends CST_Controller_ActionPartner {
     public function listingPreviewAction() {
         // action body
     }
-
+    public function publishAction()
+    {
+        $id = $this->getRequest()->getParam('id',0);
+        if(!isset($this->_identityPartner->par_id) || empty($id)){                        
+            $this->_redirect("/");
+        }   
+        $this->_Partner->publish($id,1);
+        $this->_redirect('partner/real-estate/');
+    }
+    public function unpublishAction()
+    {
+        $id = $this->getRequest()->getParam('id',0);
+        if(!isset($this->_identityPartner->par_id) || empty($id)){
+            $this->_redirect("/");
+        }
+        $this->_Partner->publish($id,0);
+        $this->_redirect('partner/real-estate/');
+    }
 }

@@ -241,5 +241,15 @@ class Application_Model_Properties extends CST_Model {
             return FALSE;
         }
     }
-
+    public function publish($id,$estatePublish)
+    {        
+        if(!empty($id)){
+            $where[] = $this->_modelProperties->getAdapter()
+                    ->quoteInto('pro_id =?', $id);
+            $data = array('publish'=>$estatePublish);
+            $this->_modelProperties->update($data,$where);
+        }else{            
+            return false;
+        }        
+    }
 }

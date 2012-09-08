@@ -235,6 +235,12 @@ class Application_Entity_Partnert extends CST_Entity {
         $modelPartner = New Application_Model_Partners();
         return $modelPartner->listPropertiesUnPublish($idPartner);        
     }
+    
+    public function publish($id,$estatePublish)
+    {
+        $modelPropertie = new Application_Model_Properties();
+        $modelPropertie->publish($id, $estatePublish);        
+    }
 }
 
 ?>
