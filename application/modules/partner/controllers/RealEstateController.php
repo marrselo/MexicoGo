@@ -169,9 +169,9 @@ class Partner_RealEstateController extends CST_Controller_ActionPartner {
                 $input['_idView'] = $form->getElement('view')->getValue();
                 $input['_size'] = $form->getElement('size')->getValue();
                 $input['_recreationalAreas'] = $form->getElement('recreation')->getValue();
-                $input['_featureFeature'] = $form->getElement('featureFeature')->getValue();
-                $input['_featureBuilding'] = $form->getElement('featureBulinding')->getValue();
-                $input['_featureAppliances'] = $form->getElement('featureAppliances')->getValue();
+                $home->addFeature($form->getElement('featureFeature')->getValue());
+                $home->addBuilding($form->getElement('featureBulinding')->getValue());
+                $home->addAppliance($form->getElement('featureAppliances')->getValue()) ;
                 $home->setProperties($input);
                 $home->updateHome();
                 $this->_redirect('/partner/real-estate/preview/home/'.$home->_id);

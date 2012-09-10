@@ -122,9 +122,6 @@ class Application_Entity_Home extends CST_Entity {
         $modelProperties = new Application_Model_Properties();
         $data = $this->setArrayData();
         $this->_id = $modelProperties->insert($data);
-        $this->addAppliance();
-        $this->addFeature();
-        $this->addBuilding();
     }
 
     function updateHome() {
@@ -132,10 +129,7 @@ class Application_Entity_Home extends CST_Entity {
         if ($modelProperties->isHomePartner($this->_id, $this->_idPartner) != FALSE) {
             $data = $this->setArrayData();
             $modelProperties->update($this->_id, $data);
-            $this->addAppliance();
-            $this->addFeature();
-            $this->addBuilding();
-                return true;
+            return true;
             
         } else {
             return FALSE;
@@ -234,8 +228,7 @@ class Application_Entity_Home extends CST_Entity {
         return CST_Utils::fetchPairs($model->getBuildingRel($this->_id));
     }
 
-    function addFeature() {
-        $arrayData = $this->_featureFeature;
+    function addFeature($arrayData) {
         $model = new Application_Model_Properties();
         $arrayRel = $this->getFeature();
         if (is_array($arrayData) and !empty($arrayData)) {
@@ -255,8 +248,7 @@ class Application_Entity_Home extends CST_Entity {
         }
     }
 
-    function addAppliance() {
-        $arrayData = $this->_featureAppliances;
+    function addAppliance($arrayData) {
         $model = new Application_Model_Properties();
         $arrayRel = $this->getAppliance();
         
@@ -277,10 +269,9 @@ class Application_Entity_Home extends CST_Entity {
         }
     }
 
-    function addBuilding() {
-        $arrayData = $this->_featureBuilding;
+    function addBuilding($arrayData) {
         $model = new Application_Model_Properties();
-        $arrayRel = $this->getAppliance();
+        $arrayRel = $this->getBuilding();
         
         if (is_array($arrayData) and !empty($arrayData)) {
             foreach ($arrayData as $index) {
