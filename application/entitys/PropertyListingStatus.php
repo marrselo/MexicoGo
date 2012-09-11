@@ -12,4 +12,4 @@ class Application_Entity_PropertyListingStatus extends CST_Entity {
         return CST_Utils::fetchPairs($model->listingStatus());
     }
 
-}
+            }

@@ -133,17 +133,19 @@ class Application_Form_Profiler extends CST_Form {
         if(empty($estados)){
             $estados = array();
         }
-        $this->addElement(new Zend_Form_Element_Select('profileLocationCity',
+        $this->addElement(new Zend_Form_Element_Select('profilerLocationState',
                 array(
                     'multioptions' => $estados
                     )));
+        
         $ciudades = array(''=>'-----');
         $ciudades = (Application_Entity_Ubigeo::getAllCiudades()+$ciudades) ;
-        $this->addElement(new Zend_Form_Element_Select('profilerLocationState',
+        $this->addElement(new Zend_Form_Element_Select('profileLocationCity',
                 array(
-                    'multiOptions' => $ciudades
+                    'multiOptions' => $ciudades,
+                    'RegisterInArrayValidator'=>false
                     )));
-        print_r($ciudades);
+       // print_r($ciudades);
         
         $this->addElement(new Zend_Form_Element_Text('profileLocationSuite'));
         $this->addElement(new Zend_Form_Element_Text('profilerLocationZip'));

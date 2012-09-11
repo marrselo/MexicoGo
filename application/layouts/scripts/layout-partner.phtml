@@ -5,12 +5,11 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html>
     <head>
-        <title></title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <?php echo $this->headTitle() ?>
         <?php echo $this->headMeta() ?>
         <?php echo $this->headStyle() ?>
-        <?php echo $this->headScript() ?>        
+        <?php echo $this->headScript() ?>
         <?php echo $this->headLink() ?>
 <!--        <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald">-->
         <link rel="stylesheet" type="text/css" href="<?php echo CST_Server_ServerStatic::getUrl(); ?>/back-css/header.css" />
@@ -18,14 +17,14 @@ and open the template in the editor.
         <link rel="stylesheet" type="text/css" href="<?php echo CST_Server_ServerStatic::getUrl(); ?>/back-css/general.css" />
         <link rel="stylesheet" type="text/css" href="<?php echo CST_Server_ServerStatic::getUrl(); ?>/back-css/estilos.css" />
         <link rel="stylesheet" type="text/css" href="<?php echo CST_Server_ServerStatic::getUrl(); ?>/back-css/plugin-images.css" />
-        
+
         <!--[if lt IE 9]>
             <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
-        
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
         <script type="text/javascript" src="<?php echo CST_Server_ServerStatic::getUrl(); ?>/js/general.js"></script>
-        
+
         <script type="text/javascript" src="<?php echo CST_Server_ServerStatic::getUrl(); ?>/js/fileUpload/js/vendor/jquery.ui.widget.js"></script>
         <script type="text/javascript" src="<?php echo CST_Server_ServerStatic::getUrl(); ?>/js/fileUpload/js/jquery.iframe-transport.js"></script>
         <script type="text/javascript" src="<?php echo CST_Server_ServerStatic::getUrl(); ?>/js/fileUpload/js/jquery.iframe-transport.js"></script>
@@ -33,7 +32,7 @@ and open the template in the editor.
         <script type="text/javascript" src="<?php echo CST_Server_ServerStatic::getUrl(); ?>/js/fileUpload/js/script.js"></script>
         <script type="text/javascript" src="<?php echo CST_Server_ServerStatic::getUrl(); ?>/js/crop/js/jquery.Jcrop.js"></script>
         <script type="text/javascript" src="<?php echo CST_Server_ServerStatic::getUrl(); ?>/js/crop/js/script.js"></script>
-        
+
     </head>
     <body>
         <div id="header-shadow-left" class="header-shadow" ></div>
@@ -42,13 +41,13 @@ and open the template in the editor.
         <div id="wrapper-back">
              <style>
                  .active a{
-                     background: #FFCD00 !important  ; 
+                     background: #FFCD00 !important  ;
                  }
-                 
+
              </style>
             <header>
                 <div id="header-up">
-                    <div id="header-up-left" ><img src="<?php echo CST_Server_ServerStatic::getUrl(); ?>/images/logo-back.png"/></div>
+                    <div id="header-up-left" ><a href="/partners/login.html"><img src="<?php echo CST_Server_ServerStatic::getUrl(); ?>/images/logo-back.png"/></a></div>
                     <div id="header-up-right" >
                         <p id="welcome-mexigo" >WELCOME TO MEXI-GO!</p>
                         <?php if(!empty($this->identityPartner)){ ?>
@@ -59,7 +58,7 @@ and open the template in the editor.
                                 </a>
                             </span>
                             <span id="hi-nombre">
-                                <?php echo $this->identityPartner->usu_nombre; ?>
+                                <a href="/partner/account-settings"><?php echo $this->identityPartner->usu_nombre; ?></a>
                             </span>
                         </p>
                         <?php } ?>
@@ -69,10 +68,10 @@ and open the template in the editor.
                 <div id="header-down">
                     <nav>
                         <ul>
-                            <li class="menu-pri"><a href="">Marketing services</a></li>
-                            <li class="menu-pri"><a href="">The magazine</a></li>
-                            <li  class="menu-pri actual-li"><a href="sign-up-now.php">Sign up now!</a></li>
-                            <li class="menu-pri"><a href="">Mexi-Go! News</a></li>
+                            <li class="menu-pri <?php echo ($_SERVER['REQUEST_URI'] == '/partners/marketing-services.html')? 'actual-li':''?>" id="marketing_services" ><a href="/partners/marketing-services.html">Marketing services</a></li>
+                            <li class="menu-pri <?php echo ($_SERVER['REQUEST_URI'] == '/partners/magazine.html')? 'actual-li':''?>" id="magazine"><a href="/partners/magazine.html">The magazine</a></li>
+                            <li class="menu-pri <?php echo ($_SERVER['REQUEST_URI'] == '/partners/sign-up.html')? 'actual-li':''?>" id="sign_up"><a href="/partners/sign-up.html">Sign up now!</a></li>
+                            <li class="menu-pri <?php echo ($_SERVER['REQUEST_URI'] == '/partners/news.html')? 'actual-li':''?>" id="news"><a href="/partners/news.html">Mexi-Go! News</a></li>
                         </ul>
                     </nav>
 
@@ -88,30 +87,30 @@ and open the template in the editor.
                 </div>
             </header>
             <div class="page-wrap">
-                <?php echo $this->layout()->content ?>            
+                <?php echo $this->layout()->content ?>
             </div>
-            <footer>
+            <footer class="footer-back">
                 <nav class="nav-left">
                     <ul >
                         <li><a href=""><span class="bold">MARKETING SERVICES</span></a> <a href="">MEXI - GO!</a> / <a href="">ADVERTISE IN CANADA!</a> / <a href="">OUR READERS!</a> / <a href="">MEXI - GO.CA</a></li>
-                        <li><a href=""><span class="bold">THE MAGAZINE</span></a> <a href="">PAPER MAGAZINE</a> / <a href="">ONLINE MAGAZINE</a></li>
+                        <li><a href="/magazine.html"><span class="bold">THE MAGAZINE</span></a> <a href="">PAPER MAGAZINE</a> / <a href="">ONLINE MAGAZINE</a></li>
                         <li><a href="sign-up-now.php"><span class="bold">SIGN UP NOW!</span></a></li>
-                        <li><a href=""><span class="bold">MEXI-GO! NEWS</span></a></li>
-                        <li><a href=""><span class="bold">CONTACT</span></a></li>
+                        <li><a href="/partners/news.html"><span class="bold">MEXI-GO! NEWS</span></a></li>
+                        <li><a href="/contact.html"><span class="bold">CONTACT</span></a></li>
                     </ul>
-                </nav>                
+                </nav>
                 <nav id="footer-social-links" class="nav-right">
                     <ul >
-                        <li><span>SOCIAL MEDIA:</span> </li>
-                        <li><a href="" class="social-icons facebook-icon">follow us facebook</a></li>
-                        <li><a href="" class="social-icons twitter-icon" >follow us twitter</a></li>
-                        <li><a href="" class="social-icons linked-in-icon" >follow us linked in</a></li>
-                        <li><a href="" class="social-icons tumblr-icon" >follow us tumblr</a></li>
-                        <li><a href="" class="social-icons pinterest-icon" >follow us pinterest</a></li>
+                         <li><span>SOCIAL MEDIA:</span> </li>
+                            <li><a href="https://www.facebook.com/MexiGoProperties" class="social-icons facebook-icon">follow us facebook</a></li>
+                            <li><a href="https://twitter.com/MexigoProperty" class="social-icons twitter-icon" >follow us twitter</a></li>
+                            <li><a href="http://www.linkedin.com/company/2285345?trk=tyah" class="social-icons linked-in-icon" >follow us linked in</a></li>
+                            <li><a href="" class="social-icons tumblr-icon" >follow us tumblr</a></li>
+                            <li><a href="http://pinterest.com/madelinemilne/mexico-travels/" class="social-icons pinterest-icon" >follow us pinterest</a></li>
                     </ul>
                 </nav>
                 <p class="copyright">&copy;2012 Mexi-Go.ca - Connecting Mexico to Canadians</p>
             </footer>
-        </div>    
+        </div>
     </body>
 </html>

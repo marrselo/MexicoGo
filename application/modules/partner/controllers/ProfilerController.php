@@ -9,12 +9,13 @@ class Partner_ProfilerController extends CST_Controller_ActionPartner {
 
     public function indexAction() {
         $partner = new Application_Entity_PartnertEnterprises();
+        $form = new Application_Form_Profiler();
         $partner->identifiquePartner($this->_identityPartner->par_id);
         $ubigeo = new Application_Entity_Ubigeo();
         $estados = $ubigeo->getEstados();
         $this->view->estado = '';
         $this->view->ciudades = array();
-        $this->view->estados = Application_Entity_Ubigeo::getEstados();
+        $this->view->estados = $form->getElement('profilerLocationState')->getMultiOptions();//Application_Entity_Ubigeo::getEstados();
         $this->view->dataProfiler = $dataProfiler = $partner->getProfiler();
         $this->view->dataVideo = $partner->getVideoProfiler();
         $this->view->file = $partner->getProfilerFile();
@@ -23,6 +24,9 @@ class Partner_ProfilerController extends CST_Controller_ActionPartner {
         $this->view->listingSubcategoriaRel = $partner->getSubCategoriePartnerRel();
         $this->view->listingCategoriaRel = $partner->getCategoriePartnerRel();
         $this->view->listingCategoria = $partner->listingsCategories();
+        $this->view->ciudades=array();
+        if($this->view->location['state']!='')
+        $this->view->ciudades = Application_Entity_Ubigeo::getCiudades($this->view->location['state']);
         
         if( $dataProfiler['logo'] ){
             $logo[] = array(
@@ -52,9 +56,10 @@ class Partner_ProfilerController extends CST_Controller_ActionPartner {
             $this->view->json_images = 'null';
         }
         
+        //echo '<pre>';print_r($this->_request->getParams());die();
         
         if ($this->_request->isPost()) {
-            $form = new Application_Form_Profiler();
+            //$form = new Application_Form_Profiler();
             $ft = new Zend_File_Transfer();
             $fileTranferInfo = $ft->getFileInfo();
             $keysFileTranfer = array_keys($fileTranferInfo);
@@ -67,9 +72,14 @@ class Partner_ProfilerController extends CST_Controller_ActionPartner {
                     $form->removeElement($index);
                 }
             }
-            //echo '<pre>';print_r($this->getRequest()->getPost());die();
             
-            if ($form->isValid($this->_request->getParams())) {
+            
+            $aValues = $this->_request->getParams();
+            $_post = $this->getRequest()->getPost();
+
+            //echo '<pre>';print_r($aValues); print_r($form->getValues());die();
+            
+            if ($form->isValid($aValues)) { 
                 foreach ($fileTranferInfo as $file => $info) {
                     if ($ft->isUploaded($file)) {
                         $extn = pathinfo($form->{$file}->getFileName(), PATHINFO_EXTENSION);
@@ -160,7 +170,9 @@ class Partner_ProfilerController extends CST_Controller_ActionPartner {
                 $partner->addCategorieProfilerRel($form->getElement('profileCategoria')->getValue());
                 $this->_redirect('/partner/profiler');
             } else {
-              //  print_r($form->getErrorMessages());
+                //echo '<pre>';die(print_r($form->getErrors()));
+                print_r($form->getErrorMessages());
+               // print_r($this->_request->getParams());
             }
         }
     }

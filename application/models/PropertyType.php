@@ -37,5 +37,5 @@ class Application_Model_PropertyType extends CST_Model {
     }
     
     
-}
+        }
 

@@ -7,7 +7,7 @@
                     <span>
                         <form id="forma"><input type="text" class="clean_field" value="   Search" id="text_search"><input type="submit"></form>
                     </span>
-                </div>                                      
+                </div>
             </div>
             <input type="hidden" id="categoria_partner" value="<?php echo (!empty($this->categoria))? $this->categoria:'';?>">
             <div class="filter_opt">
@@ -43,7 +43,7 @@
                         <option value="X">X</option>
                         <option value="Y">Y</option>
                         <option value="Z">Z</option>
-                    </select>                   
+                    </select>
                 </div>
                 <div class="input_middle">
                     <select name="d" class="mydds" alt="region">
@@ -51,11 +51,11 @@
                         <?php foreach($this->regiones as $kreg => $reg):?>
                         <option value="<?php echo $kreg;?>"><?php echo $reg;?></option>
                         <?php endforeach;?>
-                    </select>                   
+                    </select>
                 </div>
 
             </div>
-            <!--    CATEGORIES START 					
+            <!--    CATEGORIES START
             <div class="filter_opt">
                 <div class="living_content_title">
                     <h2 class="oswald <?php echo (!empty($this->color))? $this->color:'violet';?>_cat2">CATEGORIES</h2>
@@ -65,30 +65,30 @@
                         <option value="0" selected="selected_drop">Alphabetical</option>
                         <option value="1">Alphabetical one</option>
                         <option value="2">Alphabetical two</option>
-                    </select>                   
+                    </select>
                 </div>
                 <div class="input_middle">
                     <select name="d" class="mydds">
                         <option value="0" selected="selected_drop">Alphabetical</option>
                         <option value="1">Alphabetical one</option>
                         <option value="2">Alphabetical two</option>
-                    </select>                   
+                    </select>
                 </div>
 
-            </div>			
-                CATEGORIES END--> 
+            </div>
+                CATEGORIES END-->
             <div class="living_content">
                 <div class="living_content_inner">
-                    <div class="living_content_table">     
+                    <div class="living_content_table">
                         <input id="txt_subid" alt="subcategy" value="" type="hidden">
                         <table width="600" id="newspaper-a" border="2">
                             <tbody class="<?php echo (!empty($this->color))? $this->color:'violet';?>">
-                                <?php $tr_val = 1;$td_val = 1;?>     
+                                <?php $tr_val = 1;$td_val = 1;?>
                                 <?php for($tx=0;$tx<=$this->limite;$tx++):?>
                                 <tr class="<?php echo (($tx%2) == 0)? 'even':'odd';?>">
-                                <?php foreach($this->categorias as $kcat => $cat):?>                                
-                                    <td class="sub_partner" id="sub_<?php echo $kcat;?>"><?php echo $cat;?></td>                                
-                                    <?php 
+                                <?php foreach($this->categorias as $kcat => $cat):?>
+                                    <td class="sub_partner" id="sub_<?php echo $kcat;?>"><?php echo $cat;?></td>
+                                    <?php
                                         unset($this->categorias[$kcat]);
                                         if($tr_val<=2){
                                             $tr_val++;
@@ -101,22 +101,30 @@
                                 </tr>
                                 <?php endfor;?>
                             </tbody>
-                        </table>                        
+                        </table>
                     </div>
                     <a href="#" id="reset_field">
-                        <div class="reset_results"></div> 
+                        <div class="reset_results"></div>
                     </a>
                 </div>
             </div>
 
             <div class="living_footer <?php echo (!empty($this->color))? $this->color:'violet';?>bac">
-                <div class="hide_option"></div>                 
+                <div class="hide_option"></div>
             </div>
 
             <div class="result">
                 <h2 class="oswald <?php echo (!empty($this->color))? $this->color:'violet';?>">Accounting</h2>
                 <div class="result_content">
                     <ul>
+                        <li class="oswald-pink font-23">Logo</li>
+                        <div class="line_result"></div>
+                        <li></li>
+                        <div class="line_result"></div>
+                        <li></li>
+                        <div class="line_result"></div>
+                        <li></li>
+                        <div class="line_result_width"></div>
                         <li></li>
                         <div class="line_result"></div>
                         <li></li>
@@ -132,7 +140,7 @@
                         <li></li>
                         <div class="line_result"></div>
                         <li></li>
-                        <div class="line_result_width"></div>                          
+                        <div class="line_result_width"></div>
                         <li></li>
                         <div class="line_result"></div>
                         <li></li>
@@ -140,17 +148,9 @@
                         <li></li>
                         <div class="line_result"></div>
                         <li></li>
-                        <div class="line_result_width"></div>                          
-                        <li></li>
-                        <div class="line_result"></div>
-                        <li></li>
-                        <div class="line_result"></div>
-                        <li></li>
-                        <div class="line_result"></div>
-                        <li></li>                                       
                     </ul>
                 </div>
-            </div>                
+            </div>
         </div>
 
 

@@ -70,7 +70,6 @@ class Default_IndexController extends Zend_Controller_Action {
         $this->view->regiones = $regiones;
         //Obtiene las categorias
         $categorias = Application_Entity_PartnertEnterprises::listingsSubCategories();
-        echo '<pre>';print_r($categorias);
         $this->view->categorias = $categorias;
         $limit = ceil(count($categorias) / 3);
         $this->view->limite = $limit;
@@ -103,18 +102,28 @@ class Default_IndexController extends Zend_Controller_Action {
     }
 
     public function agentdetailAction() {
+        $agent = $this->_getParam('agent');        
+        $res = Application_Entity_Agent::detail(strip_tags($agent));
+        if($res > 0){
+            $this->view->agente = $res;
+        }else{
+            $this->_redirect('/404.html');
+        }
         $this->view->headTitle('Agent Detail');
     }
-
+    public function getUrlParams(){
+        $params = array();
+        parse_str($_SERVER['REQUEST_URI'],$params);
+        return $params;
+    }
     public function agentsearchAction() {
+        $data = array();
         if($this->getRequest()->isPost()){
-            $data = array();
             //LImpia campos de HMTL
             foreach ($_POST as $key=>$val){
                 $data[$key] = strip_tags($_POST[$key]);
-            }
-            echo '<pre>';print_r($data);
-            $this->view->resultado = $data;
+            }     
+            $this->view->campos_info = $data;
         }
         $this->view->headScript()->appendFile('/front/js/plugins/validity/jquery.validity.js');
         $this->view->headScript()->appendFile('/front/js/agents.js');
@@ -125,6 +134,19 @@ class Default_IndexController extends Zend_Controller_Action {
         //Obtiene estados
         //$estados = Application_Entity_Ubigeo::get
         $this->view->headTitle('Find Agent');
+        ///Paginado
+        $res = Application_Entity_Agent::search($data);
+        if(!empty($res['data']) and is_array($res['data'])){
+            $this->view->num_agt = count($res['data']);        
+            $paginator = Zend_Paginator::factory($res['data']);
+            $page = $this->_getParam('page',1);
+            $paginator->setItemCountPerPage(2);
+            $paginator->setCurrentPageNumber($page);
+             $this->view->list = $paginator;                 
+        }else{
+            $this->view->no_found = '<h3 class="oswald lateral">AGENTS NO FOUND.</h3>';
+        }
+        
     }
 
     public function agentsearch2Action() {
@@ -162,6 +184,10 @@ class Default_IndexController extends Zend_Controller_Action {
         } catch (Exception $e) {
             return $e->getMessage(); //Boring error messages from anything else!
         }
+    }
+    
+    public function closingcostAction(){
+         $this->view->headTitle('Closing Cost');
     }
 
 }

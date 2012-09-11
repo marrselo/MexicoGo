@@ -72,8 +72,7 @@ class Application_Entity_Agent extends CST_Entity
     {
         $this->_modelAgents->publishAgent($id,$flag);
     }
-    
-     public function AssignAgentHouse($idAgent,$idHouse)
+    public function AssignAgentHouse($idAgent,$idHouse)
      {
          $modelHouse = new Application_Model_Properties();
          $data = array('age_id'=>$idAgent );
@@ -85,4 +84,43 @@ class Application_Entity_Agent extends CST_Entity
          $data = array('age_id'=>'');
          $modelHouse->update($idHouse,$data);
      }
+    public function search($data){
+        $consulta['query'] = array();
+        $consulta['fields'] = array();
+        $fields_querys = array(
+            'first_name' => 'age_first_name LIKE ?',
+            'last_name' => 'age_last_name LIKE ?',
+            'brokerage' => 'age_brokerage LIKE ?'
+            //'keyword' => '',
+           // 'accountCountry' => 'ciu_id = ?',
+           // 'accountRegion' => 'reg_name LIKE ?'
+            //'address' => ''
+        );
+        foreach($data as $key => $val){
+            if (!empty($val) and $key != 'accountCountry' and $key != 'accountRegion') {
+                $consulta['query'][] = $fields_querys[$key];
+                $consulta['fields'][] = '%' . $val . '%';
+            }
+        }
+         //Agrega ciudad
+        if($data['accountCountry'] != 0){
+            $consulta['query'][] = 'core_ciudades.cd_id = ?';
+            $consulta['fields'][] = $data['accountCountry'];
+        }
+        //Agrega Region
+        if($data['accountRegion'] != 0){
+            $consulta['query'][] = 'regions.reg_id = ?';
+            $consulta['fields'][] = $data['accountRegion'];
+        }
+        
+        $modelAgent = new Application_Model_Agents();
+        return $modelAgent->getSearchAgents($consulta);
+    }
+    
+    public function detail($data){
+        $arr_data = explode('-', $data);
+        $num = count($arr_data);
+        $mod_agent = new Application_Model_Agents();
+        return $mod_agent->getAgents($arr_data[$num-1]);
+    }
 }

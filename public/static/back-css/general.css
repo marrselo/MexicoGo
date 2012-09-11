@@ -175,11 +175,11 @@ width: 130px !important;
 .flecha-combo select option{/*width:190px !important*/}
 .lateral-selected{background: url(../images/flecha-yellow.png) no-repeat left center #fff;position:relative;top:0px;left:-10px;width:190px}
 .lateral-selected,.lateral-selected a{color:#b5b5b5 !important}
-.drop-image{width:156px;height:156px;border: 1px solid #a1a0a0;   -webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;}
+.drop-image{width:145px;height:145px;border: 1px solid #a1a0a0;   -webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;}
 #form-account-setting  #billing-information,#form-account-setting #profile,#payment-details-setting fieldset{width:330px;margin:0 auto}
 #form-profile-page #business-contact{width:755px;margin:0 auto;text-align:left}
 #form-profile-page #upload-pdf{text-align:left}
-#div-drop-image div{float:left;height:165px;}
+#div-drop-image div{float:left;height:145px;}
 #div-drop-image{height:165px;clear:both;color:#606060;margin-top: 15px;}
 #div-drop-image p{width:260px;font-size:12px;padding-left:10px}
 #div-drop-image label{font-size: 14px;color:#000}
@@ -196,7 +196,7 @@ width: 130px !important;
 .boton-gris-1{background:url(../images/save-other-phone.png) no-repeat;width:186px;height:27px;line-height:27px;display:inline-block;text-align:center;margin-left:10px}
 .desc-subida-video{margin-left:10px;font-size:13px}
 #form-profile-page legend{padding-left: 50px}
-#upload-image,#upload-videos,#upload-pdf{text-align:left;padding-left:50px } 
+#upload-image,#upload-videos,#upload-pdf{text-align:left;padding-left:50px }
 #upload-gallery-images{width:325px;height:75px;text-align:center}
 #upload-gallery-images span{background-color:#FFCD00;padding:3px }
 .round-border-gris{border: 1px solid #a1a0a0;   -webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;}
@@ -549,3 +549,27 @@ p#sales-representative{text-align:right;margin-right:125px}
 #tabla-agentes-listings-not-added tr td a img{
     border: none;
 }
+
+/************** nuevo ******************/
+.btn-yellow{ background-color: #FFCD00; padding: 3px;}
+#div-drop-image {text-align: center; line-height: 24px; font-size: 12px; }
+.drop-image{overflow: hidden; position: relative }
+/*#div-drop-image img{max-height: 145px; max-width: 145px; }*/
+.fileupload {    cursor: pointer;    opacity: 0;    position: absolute;    width: 100px;    z-index: 100;}
+#div-drop-image span.examinar {    display: inline-block;    text-align: center;    width: 100px;    z-index: 1; margin: 0 auto}
+#div-drop-image  .btn-upload-image{float: none; margin: 0 auto;  text-align: center; height: auto;}
+.group:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
+.group { display: inline-block; clear: both; }
+/* start commented backslash hack \*/ * html .group { height: 1%; } .group { display: block; } /* close commented backslash hack */
+
+.drop-image .preview input{display: none;}
+.preview-galery {background: #444; margin: 5px auto 10px; text-align: center}
+.preview-galery .preview  {margin: 0px 15px; padding: 10px 5px; display: inline-block; position: relative}
+.preview-galery .preview:hover{background: #333}
+.preview-galery .preview  .cont-imagen{border: 2px solid #FFF;}
+.preview-galery .preview  .cont-imagen:hover{border-color: #D1389B;}
+.preview-galery .preview  input{display: none;}
+.preview-galery .preview .data input[type=text]{display: block; padding: 0px; border-radius: 3px; color: #333; font-size: 12px; height: auto; width:100%; background: transparent; color: #FFF; border-color: transparent}
+.preview-galery .preview .data input[type=text]:focus{background: #fff;  color: #333; }
+.preview-galery .preview .remove{background: #333; color: #FFF; border-radius: 50%; width: 24px; height: 24px; text-align: center; display: inline-block; position: absolute; top: -3px; right: -3px; font-size: 14px; }
+.preview-galery .preview .remove:hover{background: #000;}

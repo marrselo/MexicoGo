@@ -8,7 +8,7 @@ class Partner_LoginController extends CST_Controller_ActionPartner {
     }
 
     public function indexAction() {
-
+        $this->view->headTitle('Login');
         if ($this->_request->isPost()) {
             $usuario = new Application_Entity_Usuario();
             $params = $this->_request->getParams();

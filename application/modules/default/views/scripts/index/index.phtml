@@ -101,7 +101,7 @@
                         <p>Stunning Sayulita Villa</p>
                     </div>
                     <ul class="iconos-uls">
-                        <li> <span class="icon-add-this"></span></li>    
+                        <li> <a class="addthis_button" href="http://mexi-go.ca"><span class="icon-add-this"></span></a></li>    
                         <li> <span class="icon-letter"></span></li>
                         <li> <span class="icon-heart"></span></li>
                         <li><span class="icon-pfd"></span></li>
@@ -119,7 +119,7 @@
 
                     </div>
                     <ul class="iconos-uls">
-                        <li> <span class="icon-add-this"></span></li>    
+                        <li> <a class="addthis_button" href="http://mexi-go.ca"><span class="icon-add-this"></span></a></li>    
                         <li> <span class="icon-letter"></span></li>
                         <li> <span class="icon-heart"></span></li>
                         <li><span class="icon-pfd"></span></li>
@@ -135,7 +135,7 @@
                         <p>Stunning Sayulita Villa</p>
                     </div>
                     <ul class="iconos-uls">
-                        <li> <span class="icon-add-this"></span></li>    
+                        <li> <a class="addthis_button" href="http://mexi-go.ca"><span class="icon-add-this"></span></a></li>    
                         <li> <span class="icon-letter"></span></li>
                         <li> <span class="icon-heart"></span></li>
                         <li><span class="icon-pfd"></span></li>
@@ -219,8 +219,39 @@
         <div class="dashed"></div>
         <?php echo $this->MenuLateral('lateral-magazine'); ?>
         <div class="dashed"></div>
-
-
-
+        <div id="feedTwitter">
+            <h3>Mexi-GO!</h3>
+            <span>Connecting México to Canada</span>
+            <div id="jTweetsAnywhereSample"></div>
+        </div>
+        
+        <div class="dashed"></div>
     </div>
 </div>
+<script type="text/javascript">
+    $('#jTweetsAnywhereSample').jTweetsAnywhere({
+        username: ['MexigoProperty'],
+        count: 3, 
+        showTweetFeed: {
+            showProfileImages: true,
+            showUserScreenNames: true,
+            autoConformToTwitterStyleguide: true,
+            showTimestamp: {
+                refreshInterval: 15
+            },
+            autorefresh: {
+                mode: 'trigger-insert',
+                interval: 300
+            },
+            paging: { mode:  'endless-scroll' }
+        },
+        onDataRequestHandler: function(stats, options) {
+            if (stats.dataRequestCount < 11) {
+                return true;
+            }
+            else {
+                stopAutorefresh(options);
+            }
+        }
+    });
+</script>

@@ -13,22 +13,22 @@
 
             <section class="tipo-detail-agente-right">
                 <h3  class="mar-top-20 font-j1 font-jred oswald">Agent Details</h3>
-                <p class="mar-top-bot-5"> <span class="font-j1 font-jred oswald">MICHELE MURPHY</span><br/>
-                    <span class="line-height-14 font-j2 font-jlightgrey oswald">MEXICO / BUCERIAS</span></p>
-                <p class="oswald mar-top-bot-10">Visit Website</p>
-                <p class="mar-top-bot-10">Brokerage:<br/>Bienvenidos Real Estate</p>                        
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nunc diam, gravida ac fringilla vel, dignissim vel eros. Nulla sit amet quam ut nisi dapibus ullamcorper. In eu justo et metus ullamcorper lacinia. In faucibus molestie purus, sed pulvinar nibh porttitor eget. Ut pulvinar pellentesque leo vel lacinia. Suspendisse sagittis urna non dui dignissim volutpat interdum arcu porttitor. Mauris facilisis euismod tempor. Nunc scelerisque nisi vel sapien sagittis porta vel sit amet mauris. Cras vestibulum, velit vel malesuada interdum, sapien dui lacinia eros, ac imperdiet dolor massa vel sapien. Ut commodo sem eu augue ullamcorper scelerisque. Donec turpis tellus, ornare ac tristique vel, commodo suscipit metus.</p>
-                <p class="mar-top-bot-10"><span class="font-jred bold">Address: </span>500 Lazaro Cardenas / Bucerias /Mexico  </p>
-                <p class="mar-top-bot-10"><span class="font-jred bold">Phone Number: </span><span class="">322-2323</span></p>
+                <p class="mar-top-bot-5"> <span class="font-j1 font-jred oswald"><?php echo strtoupper($this->agente['age_first_name'].' '.  strtoupper($this->agente['age_last_name'])) ?></span><br/>
+                    <span class="line-height-14 font-j2 font-jlightgrey oswald"><?php echo strtoupper($this->agente['reg_name'].'/'.  strtoupper($this->agente['cd_nombre'])) ?></span></p>
+                <p class="oswald mar-top-bot-10"><?php echo (empty($this->agente['prof_website']))? $this->agente['prof_website']:'';?></p>
+                <p class="mar-top-bot-10">Brokerage:<br/><?php echo $this->agente['age_brokerage'];?></p>                        
+                <p><?php echo $this->agente['age_profile_dsc'];?></p>
+                <p class="mar-top-bot-10"><span class="font-jred bold">Address: </span><?php echo $this->agente['age_country'].' '.strtoupper($this->agente['reg_name'].'/'.  strtoupper($this->agente['cd_nombre'])) ?> </p>
+                <p class="mar-top-bot-10"><span class="font-jred bold">Phone Number: </span><span class=""><?php echo $this->agente['age_phone'];?></span></p>
                 <p class="mar-top-bot-10"><span class="font-jred bold">Fax: </span><span class="">322-2323</span></p>
-                <p class="mar-top-bot-10"><span class="font-jred bold">Mobile Phone: </span><span class="">322-2323</span></p>
+                <p class="mar-top-bot-10"><span class="font-jred bold">Mobile Phone: </span><span class=""><?php echo $this->agente['age_mobile_phone'];?></span></p>
                 <div id="nav-agent-icons" class="mar-top-bot-20">
                     <nav>
                         <ul>
                             <li><a href=""><img src="/front/images/website-icon.png" /></a></li>
                             <li><a href=""><img src="/front/images/email-icon.png" /></a></li>
-                            <li><a href=""><img src="/front/images/home-icon.png" /></a></li>
-                            <li><a href=""><img src="/front/images/profile-icon.png" /></a></li>
+                          <!-- <li><a href=""><img src="/front/images/home-icon.png" /></a></li>
+                            <li><a href=""><img src="/front/images/profile-icon.png" /></a></li> !-->
                         </ul>
                     </nav>
                 </div>

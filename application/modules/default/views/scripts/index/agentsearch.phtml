@@ -4,29 +4,36 @@
         <h3 class="no-margin h3-cms oswald oswald-pink font-18"  style="padding-left: 7px;">FIND AGENTS</h3>
         <div id="agent-search">
             <p class="grey-bar-style-2 font-18 oswald">Compliment Us/Make a Suggestion</p>
-            <form id="search-real-state-agents" method="POST" action="/find-agents.html">
+            <form id="search-real-state-agents" method="POST" action="">
                 <div class="left-column">
-                    <p><label>First Name</label><input type="text" name="first_name" class="validate_msj" title="First Name"></p>
-                    <p><label>Last Name</label><input type="text" name="last_name" class="validate_msj" title="Last Name"></p>
-                    <p><label>Brokerage</label><input type="text" name="brokerage" class="validate_msj" title="Brokerage"></p>
-                    <p><label>Keyword</label><input type="text" name="keyword" class="validate_msj" title="Keyword"></p>
+                    <p><label>First Name</label><input type="text" name="first_name" class="validate_msj" title="First Name" value="<?php echo (!empty($this->campos_info['first_name']))? $this->campos_info['first_name']:'';?>"></p>
+                    <p><label>Last Name</label><input type="text" name="last_name" class="validate_msj" title="Last Name" value="<?php echo (!empty($this->campos_info['last_name']))? $this->campos_info['last_name']:'';?>"></p>
+                    <p><label>Brokerage</label><input type="text" name="brokerage" class="validate_msj" title="Brokerage" value="<?php echo (!empty($this->campos_info['brokerage']))? $this->campos_info['brokerage']:'';?>"></p>
+                    <p><label>Keyword</label><input type="text" name="keyword" class="validate_msj" title="Keyword" value="<?php echo (!empty($this->campos_info['keyword']))? $this->campos_info['keyword']:'';?>"></p>
                 </div>
                 <div class="right-column">
                     <div class="combo-fix">
                         <label for="accountCountry">City or Country:</label>
                         <div class="flecha-combo">
                             <select type="text" id="accountCountry" name="accountCountry" >
-                                <?php foreach($this->ciudades as $kciu => $ciu):?>
-                                <option value="<?php echo $kciu;?>"><?php echo $ciu;?></option>
-                                <?php endforeach;?>
+                                <option value="0">All</option>
+                                <?php foreach ($this->ciudades as $kciu => $ciu): ?>
+                                    <option <?php echo ($kciu == $this->campos_info['accountCountry'])? 'selected="selected"':'';?> value="<?php echo $kciu; ?>"><?php echo $ciu; ?></option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
                     </div>
                     <div class="combo-fix">
                         <label for="accountCountry">Region:</label>
-                        <div class="flecha-combo"><select type="text" id="accountCountry" name="accountCountry" ><option>Uruguay</option><option>Brasil</option></select></div>
+                        <div class="flecha-combo">
+                            <select type="text" id="accountCountry" name="accountRegion" >
+                                <option value="0">All</option>
+                                <option value="1">Uruguay</option>
+                                <option value="2">Brasil</option>
+                            </select>
+                        </div>
                     </div>
-                    <p><label>Address</label><input type="text" name="address" class="validate_msj" title="Address"></p>
+                    <p><label>Address</label><input type="text" name="address" class="validate_msj" title="Address" value="<?php echo (!empty($this->campos_info['address']))? $this->campos_info['address']:'';?>"></p>
                 </div>
                 <div class="clear-both"></div>
                 <div class="separator-20"></div>
@@ -41,69 +48,111 @@
         <hr class="hr-gris-black-dashed">
         <div class="separator-10"></div>
         <!-- SI no tiene ninguna busqueda !-->
-        <?php if(empty($this->resultado)):?>
-        <div class="" id="show-agent-listings-div">
-            <h3 class="float-left separator-10 font-j1 font-jred oswald">Featured Listing</h3>
-            <a class="read-more"><span><<</span>VIEW ALL</a>
-            <div id="show-agent-listings-hiddable">
-                <div class="property-box no-padd-left">
-                    <div class="property-image-frame">
-                        <img src="/front/images/property1.jpg" alt="" title="">
-                    </div>
-                    <div class="alto-frmt">
-                        <h3 class="oswald-pink">Opportunity Knocks!</h3>
-                        <p>Stunning Sayulita Villa</p>
-                    </div>
-                    <ul class="iconos-uls">
-                        <li> <span class="icon-add-this"></span></li>    
-                        <li> <span class="icon-letter"></span></li>
-                        <li> <span class="icon-heart"></span></li>
-                        <li><span class="icon-pfd"></span></li>
-                    </ul>
-                    <p><a href="" class="view-details-property">View Details &gt;&gt;</a></p>
-                    <div class="float-right clear-both">Add to message<input type="checkbox"></div>
-
-                </div>
-                <div class="property-box">
-                    <div class="property-image-frame">
-                        <img src="/front/images/property1.jpg" alt="" title="">
-                    </div>
-                    <div class="alto-frmt">
-                        <h3 class="oswald-pink">Opportunity Knocks!</h3>
-                        <p>Stunning Sayulita Villa  </p>
-                        <p class="letter-pink"> USD $ 1,350,00 </p>
+        <?php if (empty($this->list)): ?>
+            <div class="" id="show-agent-listings-div">
+                <?php echo (!empty($this->no_found)) ? $this->no_found : ''; ?>
+                <h3 class="float-left separator-10 font-j1 font-jred oswald">Featured Listing</h3>
+                <a class="read-more"><span><<</span>VIEW ALL</a>
+                <div id="show-agent-listings-hiddable">
+                    <div class="property-box no-padd-left">
+                        <div class="property-image-frame">
+                            <img src="/front/images/property1.jpg" alt="" title="">
+                        </div>
+                        <div class="alto-frmt">
+                            <h3 class="oswald-pink">Opportunity Knocks!</h3>
+                            <p>Stunning Sayulita Villa</p>
+                        </div>
+                        <ul class="iconos-uls">
+                            <li> <span class="icon-add-this"></span></li>    
+                            <li> <span class="icon-letter"></span></li>
+                            <li> <span class="icon-heart"></span></li>
+                            <li><span class="icon-pfd"></span></li>
+                        </ul>
+                        <p><a href="" class="view-details-property">View Details &gt;&gt;</a></p>
+                        <div class="float-right clear-both">Add to message<input type="checkbox"></div>
 
                     </div>
-                    <ul class="iconos-uls">
-                        <li> <span class="icon-add-this"></span></li>    
-                        <li> <span class="icon-letter"></span></li>
-                        <li> <span class="icon-heart"></span></li>
-                        <li><span class="icon-pfd"></span></li>
-                    </ul>
-                    <p><a href="" class="view-details-property">View Details &gt;&gt;</a></p>
-                    <div class="float-right clear-both">Add to message<input type="checkbox"></div>
-                </div>
-                <div class="property-box no-padd-right">
-                    <div class="property-image-frame">
-                        <img src="/front/images/property1.jpg" alt="" title="">
+                    <div class="property-box">
+                        <div class="property-image-frame">
+                            <img src="/front/images/property1.jpg" alt="" title="">
+                        </div>
+                        <div class="alto-frmt">
+                            <h3 class="oswald-pink">Opportunity Knocks!</h3>
+                            <p>Stunning Sayulita Villa  </p>
+                            <p class="letter-pink"> USD $ 1,350,00 </p>
+
+                        </div>
+                        <ul class="iconos-uls">
+                            <li> <span class="icon-add-this"></span></li>    
+                            <li> <span class="icon-letter"></span></li>
+                            <li> <span class="icon-heart"></span></li>
+                            <li><span class="icon-pfd"></span></li>
+                        </ul>
+                        <p><a href="" class="view-details-property">View Details &gt;&gt;</a></p>
+                        <div class="float-right clear-both">Add to message<input type="checkbox"></div>
                     </div>
-                    <div class="alto-frmt">
-                        <h3 class="oswald-pink">Opportunity Knocks!</h3>
-                        <p>Stunning Sayulita Villa</p>
+                    <div class="property-box no-padd-right">
+                        <div class="property-image-frame">
+                            <img src="/front/images/property1.jpg" alt="" title="">
+                        </div>
+                        <div class="alto-frmt">
+                            <h3 class="oswald-pink">Opportunity Knocks!</h3>
+                            <p>Stunning Sayulita Villa</p>
+                        </div>
+                        <ul class="iconos-uls">
+                            <li> <span class="icon-add-this"></span></li>    
+                            <li> <span class="icon-letter"></span></li>
+                            <li> <span class="icon-heart"></span></li>
+                            <li><span class="icon-pfd"></span></li>
+                        </ul>
+                        <p><a href="" class="view-details-property ">View Details &gt;&gt;</a></p>
+                        <div class="float-right clear-both">Add to message<input type="checkbox"></div>
                     </div>
-                    <ul class="iconos-uls">
-                        <li> <span class="icon-add-this"></span></li>    
-                        <li> <span class="icon-letter"></span></li>
-                        <li> <span class="icon-heart"></span></li>
-                        <li><span class="icon-pfd"></span></li>
-                    </ul>
-                    <p><a href="" class="view-details-property ">View Details &gt;&gt;</a></p>
-                    <div class="float-right clear-both">Add to message<input type="checkbox"></div>
                 </div>
             </div>
-        </div>
-        <?php endif;?>
-        <!-- Termina si no tiene ninguna busqueda !-->
+        <?php else: ?>
+            <!-- Si tiene resultados !-->
+            <p style="float: left;"> <span class="letter-pink bold"><?php echo count($this->num_agt);?></span> Agents Found | View 10 per page</p>
+            <div class="paginador">
+                <?php echo $this->paginationControl($this->list,
+                            'Sliding',
+                            '/paginator/controls.phtml');                 
+                ?>
+               <!-- <span class="previous"><a href="">&lt;&lt; previous</a></span>
+                <span class="number"><a href="">1</a></span>
+                <span class="number actual"><a href="">2</a></span>
+                <span class="puntos"></span>
+                <span class="number "><a href="">10</a></span>
+                <span class="next"><a href="">next &gt;&gt;</a></span>!-->
+            </div>
+            <h3 class="float-left separator-10 font-j1 font-jred oswald">Agents</h3>
+            <table id="table-agents" class="agents-2">
+                <tbody>
+                    <tr>
+                        <?php foreach($this->list as $agent):?>
+                        <td>                            
+                            <div class="photo-frame">
+                                <img src="/front/images/grey-background.jpg"/>
+                            </div>
+                            <div class="align-left contact-photos">
+                                <h3 class="h3-cms font-18 oswald oswald-pink"><?php echo strtoupper($agent['age_first_name'].' '.  strtoupper($agent['age_last_name'])) ?></h3>
+                                <h3 class="h3-cms font-18 oswald oswald-grey"><?php echo strtoupper($agent['reg_name'].'/'.  strtoupper($agent['cd_nombre'])) ?></h3>
+                                <p>Certified international property Specialist</p>
+                                <a class="read-more" href="/agent-details.html/<?php echo strtolower($agent['age_first_name'].'-'.strtolower($agent['age_last_name'])).'-'.$agent['age_id'];?>">View Details >></a>
+                            </div>
+                        </td>
+                        <?php endforeach;?>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="paginador">
+                <?php echo $this->paginationControl($this->list,
+                            'Sliding',
+                            '/paginator/controls.phtml');                 
+                ?>
+            </div>
+        <?php endif; ?>
+        <!-- Termina comparacion de busqueda !-->
         <hr class="hr-gris-black-dashed clear-both" style="float: left; margin: 110px 0px;">
         <div class="separator-20"></div>
     </section>

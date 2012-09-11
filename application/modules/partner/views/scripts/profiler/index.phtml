@@ -95,7 +95,7 @@
                     Drag and drop your photos here<br>
                     or<br>
                     <div class="btn-upload-image">
-                        <input class="fileupload" type="file" name="gallery" multiple>
+                        <input class="fileupload" type="file" name="gallery" multiple >
                         <span class="round-border-yellow btn-yellow examinar">chose photos to upload</span>
                     </div>
                 </div>
@@ -134,27 +134,35 @@
                     <input type="text" id="profileLocationSuite" name="profileLocationSuite" value="<?php echo $this->location['site'] ?>">
                     <br>
                     <div class="combo-fix">
+                        <label for="profilerLocationState">State:</label>
+                        <div class="flecha-combo">
+                            <select type="text" id="profilerLocationState" name="profilerLocationState">
+                               <option value="" >-------</option>
+                        <?php foreach($this->estados as $index=>$value):
+                            $selected = $this->location['state']==$index?'Selected="Selected"':'';
+                            ?>
+                        <option <?php echo $selected; ?>  value="<?php echo $index?>" ><?php echo $value?></option>
+                        <?php endforeach; ?>
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="combo-fix">
                         <label for="profileLocationCity">City:</label>
                         <div class="flecha-combo">
                             <select type="text" id="profileLocationCity" name="profileLocationCity">
                                 <option value="" >-------</option>
-                        <?php foreach($this->estados as $index=>$value):
+                                <?php foreach($this->ciudades as $index=>$value):
                             $selected = $this->location['city']==$index?'Selected="Selected"':'';
                             ?>
                         <option <?php echo $selected; ?>  value="<?php echo $index?>" ><?php echo $value?></option>
-                        <?php endforeach;?>
+                        <?php endforeach; ?>
                             </select>
                         </div>
-                    </div><br>
+                    </div>
+                    <br>
                     
-                    <div class="combo-fix">
-                        <label for="profilerLocationState">State:</label>
-                        <div class="flecha-combo">
-                            <select type="text" id="profilerLocationState" name="profilerLocationState">
-                                <option value="">-------</option>
-                            </select>
-                        </div>
-                    </div><br>
+                    
                         <label for="profilerLocationZip">Zip/Postal Code:</label>
                         <input type="text" id="profilerLocationZip" name="profilerLocationZip" value="<?php echo $this->location['zip']?>" />
                     <br>

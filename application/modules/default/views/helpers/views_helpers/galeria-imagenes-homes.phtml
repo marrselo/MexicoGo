@@ -1,0 +1,48 @@
+<div id="blok-imagenes-slidr" >
+    <div id="gall-principal" class="shadow-gall">
+        <div id="cont_slide_adentro">
+            <?php
+            echo "<style>";
+            $arrayImagenesSlideEjemplo = array("imagen1", "imagen2", "imagen3", "imagen4", "imagen5", "imagen6", "imagen7", "imagen8", "imagen9", "imagen10");
+            $cont = 0;
+            foreach ($arrayImagenesSlideEjemplo as $imgRow) {
+                $imageHeight = 332;
+                $imageWidth = 590;
+                echo '#slide_img_' . ($cont + 1) . '{top:-' . ($imageHeight * $cont) . 'px;left:' . ($imageWidth * $cont) . 'px} ';
+                $cont++;
+            }
+            echo '</style>';
+            ?>
+            <input type="hidden" id="slide_corriendo" name="slide_corriendo" value="no" /> 
+            <img id="slide_img_1" class="image_slide actual_img_slide" src="/front/images/galeria-demo.jpg"/>
+            <img id="slide_img_2" class="image_slide " src="/front/images/galeria-demo.jpg"/>
+            <img id="slide_img_3" class="image_slide " src="/front/images/galeria-demo.jpg"/>
+            <img id="slide_img_4" class="image_slide " src="/front/images/galeria-demo.jpg"/>
+            <img id="slide_img_5" class="image_slide " src="/front/images/galeria-demo.jpg"/>
+            <img id="slide_img_6" class="image_slide " src="/front/images/galeria-demo.jpg"/>
+            <img id="slide_img_7" class="image_slide " src="/front/images/galeria-demo.jpg"/>
+            <img id="slide_img_8" class="image_slide " src="/front/images/galeria-demo.jpg"/>
+            <img id="slide_img_9" class="image_slide " src="/front/images/galeria-demo.jpg"/>
+            <img id="slide_img_10" class="image_slide " src="/front/images/galeria-demo.jpg"/>
+        </div>
+    </div>
+    <div id="gall-thumbs-wrap">
+        <div id="gall-flecha-izq"></div>
+        <div id="gall-nav-med">
+            <div id="cont-tumbs-gal">
+                <div id="thumb_slide_img_1" class="thumb-active slideToImage shadow-gall gall-thumb-avance"><img src="/front/images/galeria-thumb-demo.jpg"/></div>
+                <div id="thumb_slide_img_2" class="slideToImage shadow-gall gall-thumb-avance"><img src="/front/images/galeria-thumb-demo.jpg"/></div>
+                <div id="thumb_slide_img_3" class="slideToImage shadow-gall gall-thumb-avance"><img src="/front/images/galeria-thumb-demo.jpg"/></div>
+                <div id="thumb_slide_img_4" class="slideToImage shadow-gall gall-thumb-avance"><img src="/front/images/galeria-thumb-demo.jpg"/></div>
+                <div id="thumb_slide_img_5" class="slideToImage shadow-gall gall-thumb-avance"><img src="/front/images/galeria-thumb-demo.jpg"/></div>
+                <div id="thumb_slide_img_6" class="slideToImage shadow-gall gall-thumb-avance"><img src="/front/images/galeria-thumb-demo.jpg"/></div>
+                <div id="thumb_slide_img_7" class="slideToImage shadow-gall gall-thumb-avance"><img src="/front/images/galeria-thumb-demo.jpg"/></div>
+                <div id="thumb_slide_img_8" class="slideToImage shadow-gall gall-thumb-avance"><img src="/front/images/galeria-thumb-demo.jpg"/></div>
+                <div id="thumb_slide_img_9" class="slideToImage shadow-gall gall-thumb-avance"><img src="/front/images/galeria-thumb-demo.jpg"/></div>
+                <div id="thumb_slide_img_10" class="slideToImage shadow-gall gall-thumb-avance"><img src="/front/images/galeria-thumb-demo.jpg"/></div>    
+            </div>
+        </div>
+        <div id="gall-flecha-der"></div>
+
+    </div>
+</div>

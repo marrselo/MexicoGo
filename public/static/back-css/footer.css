@@ -5,7 +5,7 @@ footer.footer-back nav li a:hover{font-weight:bold }
 footer.footer-back nav li{list-style-type: none;font-size: 11px;}
 .copyright{text-align: center}
 
-#footer-social-links ul li{float:left;margin:0px !important;padding:0px 2px 0px 2px;list-style-type:none }
+#footer-social-links ul li{float:left;margin:0px !important;padding:0px 1px 0px 1px;list-style-type:none }
 #footer-social-links{float:right}
 #footer-social-links ul{margin:12px 18px 0px 0px}
 .copyright{margin:3px 0px 0px 0px;font-size: 12px;}

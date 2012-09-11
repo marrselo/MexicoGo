@@ -21,6 +21,7 @@ class CST_Controller_ActionPartner extends CST_Controller_Action {
         }else{
             
         }
-    
+        $this->view->headTitle()->setSeparator(' - ');
+        $this->view->headTitle('Mexi-Go!');
     }
 }

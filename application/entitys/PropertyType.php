@@ -11,4 +11,4 @@ class Application_Entity_PropertyType extends CST_Entity
        $model = new Application_Model_PropertyType();
        return CST_Utils::fetchPairs($model->listingPropertyType());
    }
-}
+            }

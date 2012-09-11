@@ -20,8 +20,10 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
         $response->sendResponse(); 
         
         require_once APPLICATION_PATH . '/../library/phpthumbs/ThumbLib.inc.php';
+
     }
     
+   
     public function _initRouter() {
         
         $frontController = Zend_Controller_Front::getInstance();
@@ -80,39 +82,66 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
                 1 => 'cat'
             ));
         $router->addRoute('partners', $route);
-        //Find Agents
-        $route = new Zend_Controller_Router_Route_Regex('find-agents.html',
+        //Agents Details
+        $route = new Zend_Controller_Router_Route_Regex('agent-details.html([A-Za-z\/\-{0-9}]*)',
+          array(
+          'action' => 'agentdetail',
+          'controller' => 'Index',
+          'module' => 'default'
+          ),
+        array(
+            1 => 'agent'
+        ));
+        $router->addRoute('agentdetail', $route);
+        //Agent Results
+        $route = new Zend_Controller_Router_Route_Regex('404.html',
+          array(
+          'action' => 'error',
+          'controller' => 'Index',
+          'module' => 'default'
+          ));
+        $router->addRoute('error', $route);
+        //Agent Results
+        $route = new Zend_Controller_Router_Route_Regex('agent-search.html',
           array(
           'action' => 'agentsearch',
           'controller' => 'Index',
           'module' => 'default'
           ));
-        $router->addRoute('findagents', $route);
-        //Agent Results
-        $route = new Zend_Controller_Router_Route_Regex('agent-results.html',
+        $router->addRoute('agentsearch', $route);
+        //Closing Cost
+        $route = new Zend_Controller_Router_Route_Regex('closing-cost.html',
           array(
-          'action' => 'agentsearch2',
+          'action' => 'closingcost',
           'controller' => 'Index',
           'module' => 'default'
           ));
-        $router->addRoute('agentsearch2', $route);
-        //------------Url Amigables------------------------------------//
-        //Contact
-       /* $route = new Zend_Controller_Router_Route_Regex('news.html',
+        $router->addRoute('closingcost', $route);
+        //------------Url Amigables Partners----------------------------------//
+        //News
+        $route = new Zend_Controller_Router_Route_Regex('partners/news.html',
           array(
           'action' => 'news',
-          'controller' => 'Index',
-          'module' => 'default'
+          'controller' => 'Front',
+          'module' => 'partner'
           ));
-        $router->addRoute('contact', $route); 
+        $router->addRoute('news_part', $route); 
+        //Login
+        $route = new Zend_Controller_Router_Route_Regex('partners/login.html',
+          array(
+          'action' => 'index',
+          'controller' => 'Login',
+          'module' => 'partner'
+          ));
+        $router->addRoute('login_part', $route); 
         //Marketing Services
-        $route = new Zend_Controller_Router_Route_Regex('marketing-services.html',
+        $route = new Zend_Controller_Router_Route_Regex('partners/marketing-services.html',
           array(
           'action' => 'mservices',
-          'controller' => 'Index',
-          'module' => 'default'
+          'controller' => 'Front',
+          'module' => 'partner'
           ));
-        $router->addRoute('mservices', $route); 
+        $router->addRoute('mservices_part', $route); 
         //Account Settings
         $route = new Zend_Controller_Router_Route_Regex('account-settings.html',
           array(
@@ -154,53 +183,61 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
           ));
         $router->addRoute('login', $route);
         //The Magazine
-        $route = new Zend_Controller_Router_Route_Regex('magazine.html',
+        $route = new Zend_Controller_Router_Route_Regex('partners/online-magazine.html',
           array(
           'action' => 'magazine',
-          'controller' => 'Index',
-          'module' => 'default'
+          'controller' => 'Front',
+          'module' => 'partner'
           ));
-        $router->addRoute('magazine', $route);
+        $router->addRoute('magazine_part', $route);
         //Registry Partners step 1
-        $route = new Zend_Controller_Router_Route_Regex('registry-partners-step-1.html',
+        $route = new Zend_Controller_Router_Route_Regex('partners/sign-up.html',
           array(
-          'action' => 'registry1',
-          'controller' => 'Profile',
-          'module' => 'default'
+          'action' => 'index',
+          'controller' => 'Inscription',
+          'module' => 'partner'
+          ));
+        $router->addRoute('sign_up_part', $route);
+        //Registry Partners step 1
+        $route = new Zend_Controller_Router_Route_Regex('partners/registry-partners-step-1.html',
+          array(
+          'action' => 'create-account',
+          'controller' => 'Inscription',
+          'module' => 'partner'
           ));
         $router->addRoute('registry1', $route);
         //Registry Partners step 2
-        $route = new Zend_Controller_Router_Route_Regex('registry-partners-step-2.html',
+        $route = new Zend_Controller_Router_Route_Regex('partners/registry-partners-step-2.html',
           array(
-          'action' => 'registry2',
-          'controller' => 'Profile',
-          'module' => 'default'
+          'action' => 'plans',
+          'controller' => 'single-agent',
+          'module' => 'partner'
           ));
         $router->addRoute('registry2', $route);
         //Registry Partners step 3
-        $route = new Zend_Controller_Router_Route_Regex('registry-partners-step-3.html',
+        $route = new Zend_Controller_Router_Route_Regex('partners/registry-partners-step-3.html',
           array(
-          'action' => 'registry3',
-          'controller' => 'Profile',
-          'module' => 'default'
+          'action' => 'plan-details',
+          'controller' => 'single-agent',
+          'module' => 'partner'
           ));
         $router->addRoute('registry3', $route);
         //Registry Partners step 4
-        $route = new Zend_Controller_Router_Route_Regex('registry-partners-step-4.html',
+        $route = new Zend_Controller_Router_Route_Regex('partners/registry-partners-step-4.html',
           array(
-          'action' => 'registry4',
-          'controller' => 'Profile',
-          'module' => 'default'
+          'action' => 'payment-details',
+          'controller' => 'single-agent',
+          'module' => 'partner'
           ));
         $router->addRoute('registry4', $route);
         //Registry Partners step 5
-        $route = new Zend_Controller_Router_Route_Regex('registry-partners-step-5.html',
+        $route = new Zend_Controller_Router_Route_Regex('partners/registry-partners-step-5.html',
           array(
           'action' => 'registry5',
           'controller' => 'Profile',
           'module' => 'default'
           ));
-        $router->addRoute('registry5', $route);*/
+        $router->addRoute('registry5', $route);
     }    
     
 

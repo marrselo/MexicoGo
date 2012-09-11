@@ -5,7 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <?php echo $this->headTitle() ?>
         <?php echo $this->headMeta() ?>
-        
+
         <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" href="/front/css/reset.css" />
@@ -42,16 +42,25 @@
         <script src="/front/galeria/js/highlight.js"></script>
         <script src="/front/galeria/js/sexy-bookmarks-public.js"></script>
         <script type="text/javascript" src="/front/js/script.js"></script>
+
+        <script type="text/javascript" src="/front/js/plugins/jTweetsAnywhere/jquery.jtweetsanywhere.js"></script>
+        <link href="/front/js/plugins/jTweetsAnywhere/jquery.jtweetsanywhere.css" type="text/css" media="all" rel="stylesheet" />
+
         <link href="/front/css/new-estilos.css" type="text/css" media="all" rel="stylesheet" />
         <?php echo $this->headStyle() ?>
         <?php echo $this->headLink() ?>
-        <?php echo $this->headScript() ?>     
+        <?php echo $this->headScript() ?>
     </head>
     <body>
-        <?php include 'layout/banner-top-home.php'; ?>
-        <!--<div id="header-shadow-left" class="header-shadow" ></div>
-        <div id="header-shadow-center" class="header-shadow" ></div>
-        <div id="header-shadow-right" class="header-shadow" ></div>-->
+
+        <div id="banners-superiores">
+            <div id="s1"></div>
+            <div id="s2"></div>
+        </div>
+
+        <div class="header-shadow-left-fro header-shadow-fro" ></div>
+        <div class="header-shadow-center-fro header-shadow-fro" ></div>
+        <div class="header-shadow-right-fro header-shadow-fro" ></div>
         <div id="wrapper-back">
             <header id="header-front-wrapper">
                 <div id="header-up" class="header-front-up">
@@ -81,7 +90,7 @@
 
                     </div>
                 </div>
-                <div id="header-down" class="header-front">                                         
+                <div id="header-down" class="header-front">
                     <ul id="nav">
                         <li class="realstateli">
                             <a class="realstate" href="#">REAL STATE</a>
@@ -89,7 +98,7 @@
                             <ul>
                                 <li class="header"></li>
                                 <li><a href="">SEARCH LISTINGS</a></li>
-                                <li><a href="/find-agents.html">FIND AN AGENT</a></li>
+                                <li><a href="/index/agentsearch">FIND AN AGENT</a></li>
                                 <li><a href="/partners-real-estate.html">PARTNERS</a></li>
                                 <li><a href="">DEVELOPMENTS</a></li>
                                 <li><a href="">REGIONS</a></li>
@@ -137,7 +146,7 @@
 
                             </ul>
                         </li>
-                        <li class="contact_menuli"> 
+                        <li class="contact_menuli">
                             <a class="contact_menu" href="/contact.html">CONTACT</a>
                             <ul>
 
@@ -156,9 +165,14 @@
                     </nav>
                 </div>
             </header>
-            <?php echo $this->layout()->content ?> 
-            <footer class="footer-front clear-both">
+            <?php echo $this->layout()->content ?>
+        </div>
 
+            <footer class="footer-front clear-both">
+<div class="footer-shadow-left-fro footer-shadow-fro" ></div>
+        <div class="footer-shadow-center-fro footer-shadow-fro" ></div>
+        <div class="footer-shadow-right-fro footer-shadow-fro" ></div>
+                        <div class="foot-content">
                 <div id="footer-front-left">
                     <div id="real-estate-menu-footer" class="title-menu-footer">
                         <div id="footer-title-real-estate" class="acual-format"><span  class="oswald">REAL ESTATE</span></div>
@@ -220,7 +234,7 @@
                             <P class="snd oswald" >CANADA & USA<br/><span>604 757-3835</span></P>
                             <p class="trd oswald" >MEXICO<br/><span>329 298-1639</span></p>
                         </div>
-                    </div>                   
+                    </div>
 
                 </div>
                 <div id="footer-front-right">
@@ -228,15 +242,15 @@
                         <div id="footer-title-partners" class="acual-format"><span class="oswald">PARTNERS</span></div>
                         <div class="barra-footer-dash"></div>
                         <div class="align-center">
-                            <a id="go-for-parts" class="boton-css-formato boton-css-gradient-yellow oswald round-corner-5" href="" id="">Mexi-Go! for PARTNERS</a>
+                            <a id="go-for-parts" class="boton-css-formato boton-css-gradient-yellow oswald round-corner-5" href="/partners/login.html" id="">Mexi-Go! for PARTNERS</a>
                         </div>
                         <div class="barra-footer-dash"></div>
                         <div id="contacto-footer-blok">
                             <span>Contact</span>
                             <nav>
                                 <ul>
-                                    <li><a href="">MEXI-GO! MARKETING</a></li>
-                                    <li><a href="">MEXI-GO MAGAZINE</a></li>
+                                    <li><a href="/partners/marketing-services.html">MEXI-GO! MARKETING</a></li>
+                                    <li><a href="/magazine.html">MEXI-GO MAGAZINE</a></li>
                                     <li><a href="">CONNECTING WITH CANADIANS</a></li>
                                     <li><a href="">MEXI-GO TEAM</a></li>
                                 </ul>
@@ -267,10 +281,14 @@
                         </nav>
                     </div>
                 </div>
-            </footer>
-            <section id="footer-front-bottom-banner">
+                        <section id="footer-front-bottom-banner">
                 <div id=""><img src="/front/images//banner-footer.jpg"/></div>
             </section>
-        </div>    
+                        </div>
+            </footer>
+
+        <!-- AddThis Button BEGIN -->
+            <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-5049b67e396a4a8f"></script>
+        <!-- AddThis Button END -->
     </body>
 </html>

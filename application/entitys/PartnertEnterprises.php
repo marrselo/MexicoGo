@@ -166,7 +166,7 @@ class Application_Entity_PartnertEnterprises extends Application_Entity_Partnert
     }
 
     function addImageProfiler($imagesInput = array()) {
-        
+
         $modelPartImgid = new Application_Model_PartnerImages();
 
         if (is_array($imagesInput) && !empty($imagesInput)) {            
@@ -197,6 +197,9 @@ class Application_Entity_PartnertEnterprises extends Application_Entity_Partnert
     }    
     
     function ajustarImagen($imagen){
+        if(!$imagen){
+            return false;
+        }
         $thumb = PhpThumbFactory::create($imagen['file']);
                 
         $name = substr($imagen['file'], strrpos($imagen['file'], '/')+1 );
@@ -234,8 +237,8 @@ class Application_Entity_PartnertEnterprises extends Application_Entity_Partnert
     function registerLocationProfiler($input) {
         $data['loc_address'] = $input['address'];
         $data['loc_sute_apt_unit'] = $input['site'];
-        $data['cit_id'] = $input['city'];
-        $data['reg_id'] = $input['state'];
+        $data['cd_id'] = $input['city']!=''?$input['city']:null;
+        $data['est_id'] = $input['state'];
         $data['loc_zip_posta_code'] = $input['zip'];
         $data['loc_lat'] = $input['latitud'];
         $data['loc_lon'] = $input['longitud'];
@@ -262,8 +265,8 @@ class Application_Entity_PartnertEnterprises extends Application_Entity_Partnert
         if ($data != FALSE) {
             $input['address'] = $data['loc_address'];
             $input['site'] = $data['loc_sute_apt_unit'];
-            $input['city'] = $data['cit_id'];
-            $input['state'] = $data['reg_id'];
+            $input['city'] = $data['cd_id'];
+            $input['state'] = $data['est_id'];
             $input['zip'] = $data['loc_zip_posta_code'];
             $input['latitud'] = $data['loc_lat'];
             $input['longitud'] = $data['loc_lon'];
